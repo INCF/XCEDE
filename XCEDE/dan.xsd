@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xcede="http://www.nbirn.net/xcede" xmlns:dan="http://www.dan.org/dan" targetNamespace="http://www.dan.org/dan" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.nbirn.net/xcede" schemaLocation="xcede-2.0-core.xsd"/>
+	<xs:complexType name="subjectInfoDan_t">
+		<xs:complexContent>
+			<xs:extension base="xcede:subjectInfo_t">
+				<xs:sequence>
+					<xs:element name="age" type="xs:float" minOccurs="0"/>
+					<xs:element name="gender" type="xs:string" minOccurs="0"/>
+					<xs:element name="handedness" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="acquisitionInfoMR_t">
+		<xs:complexContent>
+			<xs:extension base="xcede:acquisitionInfo_t">
+				<xs:sequence>
+					<xs:element name="scanner" minOccurs="0"/>
+					<xs:element name="scanParameters" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="tr" type="xs:float" minOccurs="0"/>
+								<xs:element name="te" type="xs:float" minOccurs="0"/>
+								<xs:element name="ti" type="xs:float" minOccurs="0"/>
+								<xs:element name="flip" type="xs:float" minOccurs="0"/>
+								<xs:element name="sequence" type="xs:string" minOccurs="0"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="acquisitionMR_t">
+		<xs:complexContent>
+			<xs:extension base="xcede:acquisition_t">
+				<xs:sequence>
+					<xs:element name="mrScanInfo" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="acquisitionClinNeuro_t">
+		<xs:complexContent>
+			<xs:extension base="xcede:acquisition_t">
+				<xs:sequence>
+					<xs:element name="MMSE" type="xs:int" minOccurs="0"/>
+					<xs:element name="CDR" type="xs:float" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="studyInfoMR_t">
+		<xs:complexContent>
+			<xs:extension base="xcede:studyInfo_t">
+				<xs:sequence>
+					<xs:element name="scanner" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="studyMR_t">
+		<xs:complexContent>
+			<xs:restriction base="xcede:study_t">
+				<xs:sequence>
+					<xs:sequence>
+						<xs:element name="annotationList" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="resourceList" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="resource" type="xcede:abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:sequence>
+						<xs:element name="projectRef" minOccurs="0"/>
+						<xs:element name="subjectRef" minOccurs="0"/>
+						<xs:element name="visitRef" minOccurs="0"/>
+						<xs:element name="studyInfo" type="xcede:studyInfo_t" minOccurs="0"/>
+						<xs:element name="acquisitionList" minOccurs="0">
+							<xs:complexType>
+								<xs:choice minOccurs="0" maxOccurs="unbounded">
+									<xs:element name="acquisition" type="xcede:acquisition_t"/>
+									<xs:element name="acquisitionRef"/>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="MRStudy" type="dan:studyMR_t"/>
+</xs:schema>
