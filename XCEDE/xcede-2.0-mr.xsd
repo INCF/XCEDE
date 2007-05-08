@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Dan Marcus (Washington University) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xcede="http://www.nbirn.net/xcede" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="xcede-2.0-core.xsd"/>
+	<xs:complexType name="mrAcquisitionInfo_t">
+		<xs:complexContent>
+			<xs:extension base="xcede:acquisitionInfo_t">
+				<xs:sequence>
+					<xs:element name="scanner" type="xcede:scanner_t" minOccurs="0"/>
+					<xs:element name="scanSeq" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0020): Scanning Sequence</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="seqVariant" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0021): Sequence Variant</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="options" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0022): Scan Options</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="acqType" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0023): MR Acquisition Type</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="seqName" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0024): Sequence Name</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="sliceThickness" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0050): Slice Thickness</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tr" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0080): Repetition Time</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="te" type="xs:float" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0081): Echo Time</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ti" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0082): Inversion Time</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="numAvgs" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0083): Number of Averages</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="freq" type="xs:float" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0084): Imaging Frequency</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="echoNums" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0086): Echo Number(s)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="phaseEncSteps" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0089): Number of Phase Encoding Steps</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="echoTrainLength" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0091): Echo Train Length</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="percSampling" type="xs:float" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0093): Percent Sampling</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="percFOV" type="xs:float" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0094): Percent Phase Field of View</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="pixBandwidth" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,0095): Pixel Bandwidth</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="protocolName" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,1030)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="phaseEncDir" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,1312): In-plane Phase Encoding Direction</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="flipAngle" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0018,1314): Flip Angle</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="rows" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0028,0010): Rows</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="columns" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>DICOM (0028,0010): Columns</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="addParams" type="xcede:addField" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="scanner_t">
+		<xs:sequence>
+			<xs:element name="manufacturer" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DICOM (0008,1010)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="model" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DICOM (0008,1090)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="station" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DICOM (0008,1010)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="serialNumber" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DICOM (0018,1000)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="softwareVersion" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DICOM (0018,1020)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transmitCoil" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DICOM (0018,1251)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fieldStrength" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>DICOM (0018,0087)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="additionalEquipment" type="xcede:addField" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="addField">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="name" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Dan Marcus (Washington University) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xcede="http://www.nbirn.net/xcede" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="xcede-2.0-core.xsd"/>
+	<xs:complexType name="events_t">
+		<xs:sequence>
+			<xs:element name="params" type="xcede:eventParams_t" minOccurs="0"/>
+			<xs:element name="event" type="xcede:event_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="event_t">
+		<xs:sequence>
+			<xs:element name="onset" type="xs:float" minOccurs="0"/>
+			<xs:element name="duration" type="xs:float" minOccurs="0"/>
+			<xs:element name="value" type="xcede:eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="xs:string" use="optional"/>
+		<xs:attribute name="units" type="xs:string" use="optional"/>
+		<xs:attribute name="name" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="eventValue_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="name" type="xs:string"/>
+				<xs:attribute name="type">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="number"/>
+							<xs:enumeration value="string"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="eventParams_t">
+		<xs:sequence>
+			<xs:element name="firstmritime" type="xs:float" minOccurs="0"/>
+			<xs:element name="value" type="xcede:eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

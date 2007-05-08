@@ -31,6 +31,7 @@
 				<xs:element name="catalog" type="catalog_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="analysis" type="analysis_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="protocol" type="abstract_protocol_t" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="version" type="xs:string"/>
 		</xs:complexType>
@@ -346,6 +347,40 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+	<xs:simpleType name="levelDescriptor">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="project"/>
+			<xs:enumeration value="subject"/>
+			<xs:enumeration value="visit"/>
+			<xs:enumeration value="study"/>
+			<xs:enumeration value="episode"/>
+			<xs:enumeration value="acquisition"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="abstract_protocol_t" abstract="true">
+		<xs:attributeGroup ref="ID_name_description"/>
+		<xs:attribute name="level" type="levelDescriptor">
+			<xs:annotation>
+				<xs:documentation>Describes the level of the XCEDE hierarchy that this protocol instance should be validated against</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="basic_protocol_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_protocol_t">
+				<xs:sequence>
+					<xs:element name="steps" minOccurs="0">
+						<xs:complexType>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="step" type="basic_protocol_t"/>
+								<xs:element name="stepRef"/>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:attributeGroup name="ID_name_description">
 		<xs:attribute name="ID" type="xs:string"/>
 		<xs:attribute name="name" type="xs:string"/>
@@ -360,10 +395,6 @@
 		<xs:attribute name="ID" type="xs:string"/>
 	</xs:complexType>
 	<!--Everything below here is obsolete or currently unused-->
-	<xs:complexType name="abstract_protocol_t" abstract="true">
-		<xs:attributeGroup ref="ID_name_description"/>
-	</xs:complexType>
-	<xs:complexType name="protocol_t"/>
 	<xs:complexType name="studyDefinition">
 		<xs:sequence>
 			<xs:element name="protocolGroups">
