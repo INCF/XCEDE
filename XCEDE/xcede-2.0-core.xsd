@@ -2,6 +2,7 @@
 <xs:schema xmlns="http://www.nbirn.net/xcede" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="xcede-2.0-resources.xsd"/>
 	<xs:include schemaLocation="xcede-2.0-provenance.xsd"/>
+	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
 	<xs:element name="XCEDE">
 		<xs:complexType>
 			<xs:sequence>
@@ -52,7 +53,7 @@
 						<xs:complexType>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:element name="subject" type="subject_t"/>
-								<xs:element name="subjectRef" type="xs:string">
+								<xs:element name="subjectRef" type="ref_t">
 									<xs:annotation>
 										<xs:documentation>This should be an xlink reference</xs:documentation>
 									</xs:annotation>
@@ -73,7 +74,7 @@
 						<xs:complexType>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:element name="exptDesign"/>
-								<xs:element name="exptDesignRef"/>
+								<xs:element name="exptDesignRef" type="ref_t"/>
 							</xs:choice>
 						</xs:complexType>
 					</xs:element>
@@ -88,7 +89,7 @@
 					<xs:element name="projectList" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="projectRef" minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="projectRef" minOccurs="0" maxOccurs="unbounded" type="ref_t">
 									<xs:annotation>
 										<xs:documentation>This should include participation information, including per project ID and group.</xs:documentation>
 									</xs:annotation>
@@ -101,7 +102,7 @@
 						<xs:complexType>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:element name="visit" type="visit_t"/>
-								<xs:element name="visitRef"/>
+								<xs:element name="visitRef" type="ref_t"/>
 							</xs:choice>
 						</xs:complexType>
 					</xs:element>
@@ -124,14 +125,14 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="projectRef" minOccurs="0"/>
-					<xs:element name="subjectRef" minOccurs="0"/>
-					<xs:element name="visitInfo" type="visitInfo_t" minOccurs="0"/>
+					<xs:element name="projectRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="subjectRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="visitInfo" type="visitInfo_t" minOccurs="0" />
 					<xs:element name="studyList" minOccurs="0">
 						<xs:complexType>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:element name="study" type="study_t"/>
-								<xs:element name="studyRef"/>
+								<xs:element name="studyRef" type="ref_t"/>
 							</xs:choice>
 						</xs:complexType>
 					</xs:element>
@@ -148,15 +149,15 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="projectRef" minOccurs="0"/>
-					<xs:element name="subjectRef" minOccurs="0"/>
-					<xs:element name="visitRef" minOccurs="0"/>
+					<xs:element name="projectRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="subjectRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="visitRef" minOccurs="0" type="ref_t"/>
 					<xs:element name="studyInfo" type="studyInfo_t" minOccurs="0"/>
 					<xs:element name="episodeList" minOccurs="0">
 						<xs:complexType>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
 								<xs:element name="episode" type="episode_t"/>
-								<xs:element name="episodeRef"/>
+								<xs:element name="episodeRef" type="ref_t"/>
 							</xs:choice>
 						</xs:complexType>
 					</xs:element>
@@ -173,10 +174,10 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="projectRef" minOccurs="0"/>
-					<xs:element name="subjectRef" minOccurs="0"/>
-					<xs:element name="visitRef" minOccurs="0"/>
-					<xs:element name="studyRef" minOccurs="0"/>
+					<xs:element name="projectRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="subjectRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="visitRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="studyRef" minOccurs="0" type="ref_t"/>
 					<xs:element name="episodeInfo" type="episodeInfo_t" minOccurs="0"/>
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
 						<xs:element name="acquisition" type="acquisition_t">
@@ -184,7 +185,7 @@
 								<xs:documentation>These represent the actual protocols and data obtained during an episode.  Multiple acquistions can occur simulataneously during an episode.  For example, MR, heart rate, and button presses.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="acquisitionRef"/>
+						<xs:element name="acquisitionRef" type="ref_t"/>
 					</xs:choice>
 				</xs:sequence>
 			</xs:extension>
@@ -206,7 +207,7 @@
 								<xs:documentation>A resource that contains acquistion data (i.e. a URL to a document that contains the data) . The resource could be any format: text file, a binary file, or an XCEDE xml document, etc</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="dataResourceRef">
+						<xs:element name="dataResourceRef" type="ref_t">
 							<xs:annotation>
 								<xs:documentation>A reference to a resource as described above.  The resource could be part of a catalog, a root level resource, etc.</xs:documentation>
 							</xs:annotation>
@@ -255,7 +256,7 @@
 								<xs:documentation>This should be an abstract analysis_t that is extended to capture derived data</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="analysisRef"/>
+						<xs:element name="analysisRef" type="ref_t"/>
 					</xs:choice>
 				</xs:complexType>
 			</xs:element>
@@ -364,17 +365,35 @@
 				<xs:documentation>Describes the level of the XCEDE hierarchy that this protocol instance should be validated against</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+		<xs:attribute name="required" type="xs:boolean"/>
+		<xs:attribute name="minOccurences" type="xs:integer"/>
+		<xs:attribute name="maxOccurences"/>
+		<xs:attribute name="minTimeSpan" type="xs:string"/>
+		<xs:attribute name="maxTimeSpan"/>
 	</xs:complexType>
-	<xs:complexType name="basic_protocol_t">
+	<xs:complexType name="protocolMeasure_t">
+		<xs:attribute name="name"/>
+		<xs:attribute name="required"/>
+		<xs:attribute name="minValue"/>
+		<xs:attribute name="maxValue"/>
+	</xs:complexType>
+	<xs:complexType name="protocol_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_protocol_t">
 				<xs:sequence>
 					<xs:element name="steps" minOccurs="0">
 						<xs:complexType>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
-								<xs:element name="step" type="basic_protocol_t"/>
-								<xs:element name="stepRef"/>
+								<xs:element name="step" type="abstract_protocol_t"/>
+								<xs:element name="stepRef" type="ref_t"/>
 							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="measures" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="measure" type="protocolMeasure_t" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
 				</xs:sequence>
@@ -386,6 +405,9 @@
 		<xs:attribute name="name" type="xs:string"/>
 		<xs:attribute name="description" type="xs:string"/>
 	</xs:attributeGroup>
+	<xs:complexType name="ref_t">
+		<xs:attributeGroup ref="xlink:href"/>
+	</xs:complexType>
 	<xs:complexType name="revision_t">
 		<xs:sequence>
 			<xs:element name="timestamp" type="xs:dateTime" minOccurs="0"/>
@@ -395,18 +417,6 @@
 		<xs:attribute name="ID" type="xs:string"/>
 	</xs:complexType>
 	<!--Everything below here is obsolete or currently unused-->
-	<xs:complexType name="studyDefinition">
-		<xs:sequence>
-			<xs:element name="protocolGroups">
-				<xs:complexType>
-					<xs:attribute name="protocolGroupID" type="xs:string"/>
-					<xs:attribute name="sequenceNumber" type="xs:integer"/>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="protocol"/>
-		</xs:sequence>
-		<xs:attributeGroup ref="ID_name_description"/>
-	</xs:complexType>
 	<xs:complexType name="derivedData_t">
 		<xs:complexContent>
 			<xs:extension base="derivedProduct_t"/>
@@ -422,54 +432,6 @@
 			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
 			<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="acqProtocol_t"/>
-	<xs:complexType name="expProtocol_t">
-		<xs:sequence>
-			<xs:element name="ID" type="xs:string" minOccurs="0"/>
-			<xs:element name="taxonomicClass" type="taxonomicClass_t" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="name" type="xs:string"/>
-			<xs:element name="events" type="xs:string" minOccurs="0" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>Was type events_t.  Events is defined in a branch document, so I'm not sure if it should or can be here as well. </xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="assessmentProtocol_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_protocol_t">
-				<xs:sequence>
-					<xs:element name="measurementDefinitions" minOccurs="0">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="measurementDefinition" type="measurementDefinition" minOccurs="0" maxOccurs="unbounded"/>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="measurementGroupDefinition" minOccurs="0">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="measurmentGroupDefinition" type="measurementGroupDefinition" minOccurs="0" maxOccurs="unbounded"/>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="imagingProtocol_t"/>
-	<xs:complexType name="protocolGroup_t">
-		<xs:sequence>
-			<xs:element name="protocolItem" minOccurs="0" maxOccurs="unbounded">
-				<xs:complexType>
-					<xs:attribute name="protocolID"/>
-					<xs:attribute name="sequenceNumber" type="xs:integer"/>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="ID_name_description"/>
 	</xs:complexType>
 	<xs:complexType name="measurementDefinition">
 		<xs:sequence>

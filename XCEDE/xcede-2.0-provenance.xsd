@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xcede="http://www.nbirn.net/xcede" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="xcede-2.0-core.xsd"/>
 	<xs:complexType name="processStep_t">
 		<xs:sequence>
 			<xs:element name="package" type="xcede:versionedEntity_t" minOccurs="0"/>

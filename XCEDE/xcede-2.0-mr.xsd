@@ -170,4 +170,9 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+	<xs:complexType name="mrAcquisitionProtocol_t">
+		<xs:complexContent>
+			<xs:extension base="xcede:abstract_protocol_t"/>
+		</xs:complexContent>
+	</xs:complexType>
 </xs:schema>
