@@ -359,6 +359,9 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="abstract_protocol_t" abstract="true">
+		<xs:sequence>
+			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
 		<xs:attributeGroup ref="ID_name_description"/>
 		<xs:attribute name="level" type="levelDescriptor">
 			<xs:annotation>
@@ -367,9 +370,25 @@
 		</xs:attribute>
 		<xs:attribute name="required" type="xs:boolean"/>
 		<xs:attribute name="minOccurences" type="xs:integer"/>
-		<xs:attribute name="maxOccurences"/>
-		<xs:attribute name="minTimeSpan" type="xs:string"/>
-		<xs:attribute name="maxTimeSpan"/>
+		<xs:attribute name="maxOccurences" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>Are these occurences within a step (i.e. during a single time point)?  How to refer to repeats across steps?</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="minTimeFromStart" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Absolute time from start of overall protocol</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="protocolOffset_t">
+		<xs:sequence>
+			<xs:element name="protocolTimeRef" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="preferedTimeOffset" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="minTimeOffset" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="maxTimeOffset" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="protocolMeasure_t">
 		<xs:attribute name="name"/>

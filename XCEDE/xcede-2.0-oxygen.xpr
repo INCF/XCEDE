@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <meta>
+        <filters directoryPatterns="" filePatterns=""
+            positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="xcede-2.0-oxygen.xpr">
+        <file name="dereference.xsl"/>
+        <file name="xcede-2.0-core.xsd"/>
+        <file name="xcede-2.0-events.xsd"/>
+        <file name="xcede-2.0-mr.xsd"/>
+        <file name="xcede-2.0-provenance.xsd"/>
+        <file name="xcede-2.0-resources.xsd"/>
+        <file name="xlink.xsd"/>
+    </projectTree>
+</project>
