@@ -199,6 +199,11 @@
 			<xs:extension base="abstract_info_t"/>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="assessmentInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t"/>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="acquisition_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
@@ -489,41 +494,27 @@
 		<xs:sequence>
 			<xs:element name="taxonomicClass" type="taxonomicClass_t" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="name" type="xs:string"/>
-			<xs:element name="assessmentInfo" type="abstract_info_t">
-				<xs:annotation>
-					<xs:documentation>Block for describing things like informant, clinical rater, assessment date, etc</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="assessmentValue" minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="reconciledData">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="itemText" minOccurs="0">
+						<xs:element name="assessmentInfo" type="assessmentInfo_t">
 							<xs:annotation>
-								<xs:documentation>'itemText' describes the text preceeding and following an assessment form item. It is different then 'itemName' which stores the shortened item identifier</xs:documentation>
-							</xs:annotation>
-							<xs:complexType>
-								<xs:sequence>
-									<xs:element name="leadText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-									<xs:element name="trailText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-								</xs:sequence>
-							</xs:complexType>
-						</xs:element>
-						<xs:element name="itemName" type="xs:string">
-							<xs:annotation>
-								<xs:documentation>'itemName' is a short identifier for the assessment item. 'itemText' should be used for the actual question text</xs:documentation>
+								<xs:documentation>Block for describing things like informant, clinical rater, assessment date, etc</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="itemValue" type="value_t">
+						<xs:element name="assessmentValue" type="assessmentValue_t" minOccurs="0" maxOccurs="unbounded">
 							<xs:annotation>
-								<xs:documentation>Actual value of the assessment item as recorded on the form</xs:documentation>
+								<xs:documentation>Block of final "reconciled" values</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="itemNormValue" type="value_t" minOccurs="0">
-							<xs:annotation>
-								<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="description" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="rawData" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="assessmentInfo" type="assessmentInfo_t" minOccurs="0" maxOccurs="0"/>
+						<xs:element name="assessmentValue" type="assessmentValue_t" minOccurs="0"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -534,6 +525,47 @@
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="assessmentValue_t">
+				<xs:sequence>
+					<xs:element name="itemText" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>'itemText' describes the text preceeding and following an assessment form item. It is different then 'itemName' which stores the shortened item identifier</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="leadText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="trailText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="itemName" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>'itemName' is a short identifier for the assessment item. 'itemText' should be used for the actual question text</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="valueStatus" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>Information on the status of a value (e.g. subject refused to answer)</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="itemValue" type="value_t">
+						<xs:annotation>
+							<xs:documentation>Actual value of the assessment item as recorded on the form</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="itemNormValue" type="value_t" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reconciliationNote" type="annotation_t" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="annotation" type="annotation_t" minOccurs="0"/>
+				</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="valueTypes_t">
 		<xs:restriction base="xs:string">
