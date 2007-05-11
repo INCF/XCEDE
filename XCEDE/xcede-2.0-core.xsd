@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.nbirn.net/xcede" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by dbk (UNIV CA IRVINE) -->
+<xs:schema targetNamespace="http://www.nbirn.net/xcede" xmlns="http://www.nbirn.net/xcede" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="xcede-2.0-resources.xsd"/>
 	<xs:include schemaLocation="xcede-2.0-provenance.xsd"/>
 	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
@@ -89,7 +90,7 @@
 					<xs:element name="projectList" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="projectRef" minOccurs="0" maxOccurs="unbounded" type="ref_t">
+								<xs:element name="projectRef" type="ref_t" minOccurs="0" maxOccurs="unbounded">
 									<xs:annotation>
 										<xs:documentation>This should include participation information, including per project ID and group.</xs:documentation>
 									</xs:annotation>
@@ -107,6 +108,7 @@
 						</xs:complexType>
 					</xs:element>
 					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="assessment" type="abstract_assessment_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -125,9 +127,9 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="projectRef" minOccurs="0" type="ref_t"/>
-					<xs:element name="subjectRef" minOccurs="0" type="ref_t"/>
-					<xs:element name="visitInfo" type="visitInfo_t" minOccurs="0" />
+					<xs:element name="projectRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="subjectRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="visitInfo" type="visitInfo_t" minOccurs="0"/>
 					<xs:element name="studyList" minOccurs="0">
 						<xs:complexType>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -149,9 +151,9 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="projectRef" minOccurs="0" type="ref_t"/>
-					<xs:element name="subjectRef" minOccurs="0" type="ref_t"/>
-					<xs:element name="visitRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="projectRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="subjectRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="visitRef" type="ref_t" minOccurs="0"/>
 					<xs:element name="studyInfo" type="studyInfo_t" minOccurs="0"/>
 					<xs:element name="episodeList" minOccurs="0">
 						<xs:complexType>
@@ -174,10 +176,11 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="projectRef" minOccurs="0" type="ref_t"/>
-					<xs:element name="subjectRef" minOccurs="0" type="ref_t"/>
-					<xs:element name="visitRef" minOccurs="0" type="ref_t"/>
-					<xs:element name="studyRef" minOccurs="0" type="ref_t"/>
+					<xs:element name="projectRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="subjectRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="visitRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="studyRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="assessmentRef" type="ref_t" minOccurs="0"/>
 					<xs:element name="episodeInfo" type="episodeInfo_t" minOccurs="0"/>
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
 						<xs:element name="acquisition" type="acquisition_t">
@@ -384,10 +387,10 @@
 	</xs:complexType>
 	<xs:complexType name="protocolOffset_t">
 		<xs:sequence>
-			<xs:element name="protocolTimeRef" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="preferedTimeOffset" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="minTimeOffset" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="maxTimeOffset" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="protocolTimeRef" type="xs:string" minOccurs="0"/>
+			<xs:element name="preferedTimeOffset" type="xs:string" minOccurs="0"/>
+			<xs:element name="minTimeOffset" type="xs:string" minOccurs="0"/>
+			<xs:element name="maxTimeOffset" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="protocolMeasure_t">
@@ -481,5 +484,110 @@
 			</xs:element>
 		</xs:sequence>
 		<xs:attributeGroup ref="ID_name_description"/>
+	</xs:complexType>
+	<xs:complexType name="abstract_assessment_t" abstract="true">
+		<xs:sequence>
+			<xs:element name="taxonomicClass" type="taxonomicClass_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="assessmentInfo" type="abstract_info_t">
+				<xs:annotation>
+					<xs:documentation>Block for describing things like informant, clinical rater, assessment date, etc</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="assessmentValue" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="itemText" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>'itemText' describes the text preceeding and following an assessment form item. It is different then 'itemName' which stores the shortened item identifier</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="leadText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+									<xs:element name="trailText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="itemName" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>'itemName' is a short identifier for the assessment item. 'itemText' should be used for the actual question text</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="itemValue" type="value_t">
+							<xs:annotation>
+								<xs:documentation>Actual value of the assessment item as recorded on the form</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="itemNormValue" type="value_t" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="description" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="assessmentRef" type="ref_t" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to externally defined assessment</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="valueTypes_t">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="float"/>
+			<xs:enumeration value="boolean"/>
+			<xs:enumeration value="varchar"/>
+			<xs:enumeration value="integer"/>
+			<xs:enumeration value="URI"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="value_t">
+		<xs:sequence>
+			<xs:element name="actualValue" type="xs:string"/>
+			<xs:element name="dataClassification" type="valueTypes_t" minOccurs="0"/>
+			<xs:element name="unitRef" minOccurs="0">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>'unitDefID' is a reference to a unitDef block defining units</xs:documentation>
+					</xs:annotation>
+					<xs:attribute name="unitDefID" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="codeRef" minOccurs="0">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>'codeDefID' is a reference to a codeDef block defining coded values</xs:documentation>
+					</xs:annotation>
+					<xs:attribute name="codeDefID" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="unitDef">
+		<xs:sequence>
+			<xs:element name="type" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>'type' indicates the type of unit</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="codeDef">
+		<xs:sequence>
+			<xs:element name="codeList" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>'codeList' is a list of code-value pairs which make up a code definition</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="code" type="xs:string"/>
+						<xs:element name="value" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
