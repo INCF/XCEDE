@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Dan Marcus (Washington University) -->
 <xs:schema xmlns="http://www.nbirn.net/xcede" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="xcede-2.0-core.xsd"/>
 	<xs:complexType name="abstract_resource_t" abstract="true">
 		<xs:annotation>
 			<xs:documentation>A resource is something that we haven't agreed on yet.</xs:documentation>
@@ -190,7 +191,7 @@
 	</xs:simpleType>
 	<xs:complexType name="catalog_t">
 		<xs:sequence minOccurs="0">
-			<xs:element name="metaDataRef" minOccurs="0">
+			<xs:element name="metaDataRef" type="ref_t" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Reference to the meta-date element that this catalog is related to.  Should point to one of the core xcede hierarchy components: project, subject, visit, study, acquisition.</xs:documentation>
 				</xs:annotation>
@@ -199,7 +200,7 @@
 				<xs:complexType>
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
 						<xs:element name="catalog" type="catalog_t"/>
-						<xs:element name="catalogRef"/>
+						<xs:element name="catalogRef" type="ref_t"/>
 					</xs:choice>
 				</xs:complexType>
 			</xs:element>
@@ -207,7 +208,7 @@
 				<xs:complexType>
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
 						<xs:element name="entry" type="abstract_resource_t"/>
-						<xs:element name="entryRef"/>
+						<xs:element name="entryRef" type="ref_t"/>
 					</xs:choice>
 				</xs:complexType>
 			</xs:element>

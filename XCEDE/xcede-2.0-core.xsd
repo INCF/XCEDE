@@ -117,8 +117,9 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_info_t">
 				<xs:sequence>
-					<xs:element name="sex" minOccurs="0"/>
-					<xs:element name="race" minOccurs="0"/>
+					<xs:element name="sex" type="terminologyString_t" minOccurs="0"/>
+					<xs:element name="species" type="terminologyString_t" minOccurs="0"/>
+					<xs:element name="birthdate" type="terminologyString_t" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -263,103 +264,92 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="assessmentValue_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_class_t">
-				<xs:sequence>
-					<xs:element name="itemText" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>'itemText' describes the text preceeding and following an assessment form item. It is different then 'itemName' which stores the shortened item identifier</xs:documentation>
-						</xs:annotation>
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="leadText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-								<xs:element name="trailText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="itemName" type="xs:string">
-						<xs:annotation>
-							<xs:documentation>'itemName' is a short identifier for the assessment item. 'itemText' should be used for the actual question text</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="valueStatus" type="xs:string">
-						<xs:annotation>
-							<xs:documentation>Information on the status of a value (e.g. subject refused to answer)</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="itemValue" type="value_t">
-						<xs:annotation>
-							<xs:documentation>Actual value of the assessment item as recorded on the form</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="itemNormValue" type="value_t" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="reconciliationNote" type="annotation_t" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="annotation" type="annotation_t" minOccurs="0"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="abstract_class_t" abstract="true">
 		<xs:sequence>
-			<xs:element name="terminologyLabel" type="terminologyLabel_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="itemText" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>'itemText' describes the text preceeding and following an assessment form item. It is different then 'itemName' which stores the shortened item identifier</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="leadText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="trailText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="itemName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>'itemName' is a short identifier for the assessment item. 'itemText' should be used for the actual question text</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="valueStatus" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Information on the status of a value (e.g. subject refused to answer)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="itemValue" type="value_t">
+				<xs:annotation>
+					<xs:documentation>Actual value of the assessment item as recorded on the form</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="itemNormValue" type="value_t" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="reconciliationNote" type="annotation_t" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="annotation" type="annotation_t" minOccurs="0"/>
 		</xs:sequence>
+		<xs:attributeGroup ref="terminologyAttributeGroup"/>
 	</xs:complexType>
 	<xs:complexType name="abstract_container_t" abstract="true">
-		<xs:complexContent>
-			<xs:extension base="abstract_class_t">
-				<xs:sequence>
-					<xs:element name="annotationList" minOccurs="0">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="resourceList" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>Informational resources related to the container</xs:documentation>
-						</xs:annotation>
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
-					<xs:element name="analysisList" minOccurs="0">
-						<xs:complexType>
-							<xs:choice minOccurs="0" maxOccurs="unbounded">
-								<xs:element name="analysis" type="analysis_t">
-									<xs:annotation>
-										<xs:documentation>This should be an abstract analysis_t that is extended to capture derived data</xs:documentation>
-									</xs:annotation>
-								</xs:element>
-								<xs:element name="analysisRef" type="ref_t"/>
-							</xs:choice>
-						</xs:complexType>
-					</xs:element>
-				</xs:sequence>
-				<xs:attribute name="ID" type="xs:ID"/>
-				<xs:attribute name="rev" type="xs:string">
-					<xs:annotation>
-						<xs:documentation>Revision number, should correspond with an appropriate revision ID in the XCEDE/history element</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="type" type="xs:string">
-					<xs:annotation>
-						<xs:documentation>Attribute for creating categories within a container set. For example, within study, types might include 'PET' or 'MR'.  One could also create sub-classes using colon notation: "MR:STRUCT"</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element name="annotationList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="resourceList" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informational resources related to the container</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
+			<xs:element name="analysisList" minOccurs="0">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="analysis" type="analysis_t">
+							<xs:annotation>
+								<xs:documentation>This should be an abstract analysis_t that is extended to capture derived data</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="analysisRef" type="ref_t"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:ID"/>
+		<xs:attribute name="rev" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Revision number, should correspond with an appropriate revision ID in the XCEDE/history element</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="type" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Attribute for creating categories within a container set. For example, within study, types might include 'PET' or 'MR'.  One could also create sub-classes using colon notation: "MR:STRUCT"</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="terminologyAttributeGroup"/>
 	</xs:complexType>
 	<xs:complexType name="abstract_info_t">
 		<xs:annotation>
@@ -401,13 +391,11 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="terminologyLabel_t">
-		<xs:sequence>
-			<xs:element name="scheme" type="xs:string"/>
-			<xs:element name="ID" type="xs:string"/>
-			<xs:element name="fullPath" type="xs:string"/>
-		</xs:sequence>
-	</xs:complexType>
+	<xs:attributeGroup name="terminology_ag">
+		<xs:attribute name="termScheme" type="xs:string"/>
+		<xs:attribute name="termID" type="xs:string"/>
+		<xs:attribute name="termPath" type="xs:string"/>
+	</xs:attributeGroup>
 	<xs:complexType name="person_t">
 		<xs:annotation>
 			<xs:documentation>Add additional fields (address, email, etc)</xs:documentation>
@@ -418,10 +406,14 @@
 					<xs:documentation>e.g. Dr., Mr., Mrs.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="firstname" type="xs:string"/>
-			<xs:element name="middleInitial" minOccurs="0"/>
-			<xs:element name="lastname" type="xs:string"/>
-			<xs:element name="academicTitles" minOccurs="0"/>
+			<xs:element name="givenName" type="xs:string" minOccurs="0"/>
+			<xs:element name="middleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="surname" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used for last name or only name (e.g. Prince)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="academicTitles" type="xs:string" minOccurs="0"/>
 			<xs:element name="institution" type="xs:string" minOccurs="0"/>
 			<xs:element name="department" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
@@ -447,32 +439,29 @@
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="abstract_protocol_t" abstract="true">
-		<xs:complexContent>
-			<xs:extension base="abstract_class_t">
-				<xs:sequence>
-					<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:sequence>
-				<xs:attributeGroup ref="ID_name_description"/>
-				<xs:attribute name="level" type="levelDescriptor">
-					<xs:annotation>
-						<xs:documentation>Describes the level of the XCEDE hierarchy that this protocol instance should be validated against</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="required" type="xs:boolean"/>
-				<xs:attribute name="minOccurences" type="xs:integer"/>
-				<xs:attribute name="maxOccurences" type="xs:integer">
-					<xs:annotation>
-						<xs:documentation>Are these occurences within a step (i.e. during a single time point)?  How to refer to repeats across steps?</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="minTimeFromStart" type="xs:string">
-					<xs:annotation>
-						<xs:documentation>Absolute time from start of overall protocol</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="maxTimeFromStart" type="xs:string"/>
-			</xs:extension>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ID_name_description"/>
+		<xs:attributeGroup ref="terminologyAttributeGroup"/>
+		<xs:attribute name="level" type="levelDescriptor">
+			<xs:annotation>
+				<xs:documentation>Describes the level of the XCEDE hierarchy that this protocol instance should be validated against</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="required" type="xs:boolean"/>
+		<xs:attribute name="minOccurences" type="xs:integer"/>
+		<xs:attribute name="maxOccurences" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>Are these occurences within a step (i.e. during a single time point)?  How to refer to repeats across steps?</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="minTimeFromStart" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Absolute time from start of overall protocol</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
 	</xs:complexType>
 	<xs:complexType name="protocolOffset_t">
 		<xs:sequence>
@@ -516,8 +505,17 @@
 		<xs:attribute name="name" type="xs:string"/>
 		<xs:attribute name="description" type="xs:string"/>
 	</xs:attributeGroup>
+	<xs:complexType name="terminologyString_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attributeGroup ref="terminology_ag"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<xs:complexType name="ref_t">
-		<xs:attributeGroup ref="xlink:href"/>
+		<xs:simpleContent>
+			<xs:extension base="xs:anyURI"/>
+		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="revision_t">
 		<xs:sequence>
@@ -526,107 +524,5 @@
 			<xs:element name="annotation" type="annotation_t" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
-	</xs:complexType>
-	<!--Everything below here is obsolete or currently unused-->
-	<xs:complexType name="derivedData_t">
-		<xs:complexContent>
-			<xs:extension base="derivedProduct_t"/>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="derivedStatistic_t">
-		<xs:complexContent>
-			<xs:extension base="derivedProduct_t"/>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="derivedProduct_t">
-		<xs:sequence>
-			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
-			<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="measurementDefinition">
-		<xs:sequence>
-			<xs:element name="type" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>'type' describes the expected values for this measurement (e.g. integer, double). This should be enumerated or something.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="referencePublication" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>'referencePublication' describes the publication that establishes a definition, usage, background, etc. for this measure.  referencePublicatoin should be of a 'publicationResource' type derived from abstractResource taht includes a pubmed ID, DOI, etc.</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="ID_name_description"/>
-	</xs:complexType>
-	<xs:complexType name="measurementGroupDefinition">
-		<xs:sequence>
-			<xs:element name="measurementDefinitionItem">
-				<xs:complexType>
-					<xs:attribute name="definitionID" type="xs:string">
-						<xs:annotation>
-							<xs:documentation>'definitionID' is a reference to a measurementDefinition</xs:documentation>
-						</xs:annotation>
-					</xs:attribute>
-					<xs:attribute name="sequenceNumber" type="xs:integer"/>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attributeGroup ref="ID_name_description"/>
-	</xs:complexType>
-	<xs:simpleType name="valueTypes_t">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="float"/>
-			<xs:enumeration value="boolean"/>
-			<xs:enumeration value="varchar"/>
-			<xs:enumeration value="integer"/>
-			<xs:enumeration value="URI"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:complexType name="value_t">
-		<xs:sequence>
-			<xs:element name="actualValue" type="xs:string"/>
-			<xs:element name="dataClassification" type="valueTypes_t" minOccurs="0"/>
-			<xs:element name="unitRef" minOccurs="0">
-				<xs:complexType>
-					<xs:annotation>
-						<xs:documentation>'unitDefID' is a reference to a unitDef block defining units</xs:documentation>
-					</xs:annotation>
-					<xs:attribute name="unitDefID" type="xs:string"/>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="codeRef" minOccurs="0">
-				<xs:complexType>
-					<xs:annotation>
-						<xs:documentation>'codeDefID' is a reference to a codeDef block defining coded values</xs:documentation>
-					</xs:annotation>
-					<xs:attribute name="codeDefID" type="xs:string"/>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="unitDef">
-		<xs:sequence>
-			<xs:element name="type" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>'type' indicates the type of unit</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-		</xs:sequence>
-	</xs:complexType>
-	<xs:complexType name="codeDef">
-		<xs:sequence>
-			<xs:element name="codeList" maxOccurs="unbounded">
-				<xs:annotation>
-					<xs:documentation>'codeList' is a list of code-value pairs which make up a code definition</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="code" type="xs:string"/>
-						<xs:element name="value" type="xs:string"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
