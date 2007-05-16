@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by dbk (UNIV CA IRVINE) -->
 <xs:schema xmlns="http://www.nbirn.net/xcede" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:include schemaLocation="xcede-2.0-resources.xsd"/>
-	<xs:include schemaLocation="xcede-2.0-provenance.xsd"/>
-	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
 	<xs:element name="XCEDE">
 		<xs:complexType>
 			<xs:sequence>
@@ -38,6 +35,7 @@
 			<xs:attribute name="version" type="xs:string"/>
 		</xs:complexType>
 	</xs:element>
+	<!--*********            Top-level containers            *********-->
 	<xs:complexType name="project_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
@@ -199,11 +197,6 @@
 			<xs:extension base="abstract_info_t"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="assessmentInfo_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_info_t"/>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="acquisition_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
@@ -220,7 +213,7 @@
 								<xs:documentation>A reference to a resource as described above.  The resource could be part of a catalog, a root level resource, etc.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="dataContainer" type="abstract_container_t">
+						<xs:element name="data" type="abstract_data_t">
 							<xs:annotation>
 								<xs:documentation>A container that the actual acquisition data can go into (as opposed to being in an external reousrce)</xs:documentation>
 							</xs:annotation>
@@ -235,10 +228,91 @@
 			<xs:extension base="abstract_info_t"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="analysis_t"/>
+	<!--*********            Abstract types            *********-->
+	<xs:complexType name="abstract_container_t" abstract="true">
+		<xs:sequence>
+			<xs:element name="annotationList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="resourceList" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Informational resources related to the container</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
+			<xs:element name="analysisList" minOccurs="0">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="analysis" type="analysis_t">
+							<xs:annotation>
+								<xs:documentation>This should be an abstract analysis_t that is extended to capture derived data</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="analysisRef" type="ref_t"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string"/>
+		<xs:attribute name="rev" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Revision number, should correspond with an appropriate revision ID in the XCEDE/history element</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="type" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Attribute for creating categories within a container set. For example, within study, types might include 'PET' or 'MR'.  One could also create sub-classes using colon notation: "MR:STRUCT"</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attributeGroup ref="terminology_ag"/>
+	</xs:complexType>
+	<xs:complexType name="abstract_info_t">
+		<xs:annotation>
+			<xs:documentation>info elements are present in each of the hierarchy levels. these can be extended to capture instance specific content (following recommendation 5)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="abstract_data_t"/>
+	<xs:complexType name="abstract_protocol_t" abstract="true">
+		<xs:sequence>
+			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ID_name_description"/>
+		<xs:attributeGroup ref="terminology_ag"/>
+		<xs:attribute name="level" type="levelDescriptor">
+			<xs:annotation>
+				<xs:documentation>Describes the level of the XCEDE hierarchy that this protocol instance should be validated against</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="required" type="xs:boolean"/>
+		<xs:attribute name="minOccurences" type="xs:integer"/>
+		<xs:attribute name="maxOccurences" type="xs:integer">
+			<xs:annotation>
+				<xs:documentation>Are these occurences within a step (i.e. during a single time point)?  How to refer to repeats across steps?</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="minTimeFromStart" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Absolute time from start of overall protocol</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
+	</xs:complexType>
+	<!--*********            Misc. types            *********-->
 	<xs:complexType name="assessment_t">
 		<xs:complexContent>
-			<xs:extension base="acquisition_t">
+			<xs:extension base="abstract_data_t">
 				<xs:sequence>
 					<xs:element name="name" type="xs:string"/>
 					<xs:element name="dataInstance" minOccurs="0" maxOccurs="unbounded">
@@ -261,6 +335,11 @@
 					<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="assessmentInfo_t">
+		<xs:complexContent>
+			<xs:extension base="acquisitionInfo_t"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="assessmentValue_t">
@@ -303,62 +382,9 @@
 			</xs:element>
 			<xs:element name="annotation" type="annotation_t" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attributeGroup ref="terminologyAttributeGroup"/>
+		<xs:attributeGroup ref="terminology_ag"/>
 	</xs:complexType>
-	<xs:complexType name="abstract_container_t" abstract="true">
-		<xs:sequence>
-			<xs:element name="annotationList" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="resourceList" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Informational resources related to the container</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
-			<xs:element name="analysisList" minOccurs="0">
-				<xs:complexType>
-					<xs:choice minOccurs="0" maxOccurs="unbounded">
-						<xs:element name="analysis" type="analysis_t">
-							<xs:annotation>
-								<xs:documentation>This should be an abstract analysis_t that is extended to capture derived data</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="analysisRef" type="ref_t"/>
-					</xs:choice>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
-		<xs:attribute name="ID" type="xs:ID"/>
-		<xs:attribute name="rev" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Revision number, should correspond with an appropriate revision ID in the XCEDE/history element</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="type" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Attribute for creating categories within a container set. For example, within study, types might include 'PET' or 'MR'.  One could also create sub-classes using colon notation: "MR:STRUCT"</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attributeGroup ref="terminologyAttributeGroup"/>
-	</xs:complexType>
-	<xs:complexType name="abstract_info_t">
-		<xs:annotation>
-			<xs:documentation>info elements are present in each of the hierarchy levels. these can be extended to capture instance specific content (following recommendation 5)</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="description" type="xs:string" minOccurs="0"/>
-		</xs:sequence>
-	</xs:complexType>
+	<xs:complexType name="analysis_t"/>
 	<xs:complexType name="investigator_t">
 		<xs:complexContent>
 			<xs:extension base="person_t"/>
@@ -438,31 +464,6 @@
 			<xs:enumeration value="acquisition"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:complexType name="abstract_protocol_t" abstract="true">
-		<xs:sequence>
-			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attributeGroup ref="ID_name_description"/>
-		<xs:attributeGroup ref="terminologyAttributeGroup"/>
-		<xs:attribute name="level" type="levelDescriptor">
-			<xs:annotation>
-				<xs:documentation>Describes the level of the XCEDE hierarchy that this protocol instance should be validated against</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="required" type="xs:boolean"/>
-		<xs:attribute name="minOccurences" type="xs:integer"/>
-		<xs:attribute name="maxOccurences" type="xs:integer">
-			<xs:annotation>
-				<xs:documentation>Are these occurences within a step (i.e. during a single time point)?  How to refer to repeats across steps?</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="minTimeFromStart" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Absolute time from start of overall protocol</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
-	</xs:complexType>
 	<xs:complexType name="protocolOffset_t">
 		<xs:sequence>
 			<xs:element name="protocolTimeRef" type="xs:string" minOccurs="0"/>
@@ -524,5 +525,343 @@
 			<xs:element name="annotation" type="annotation_t" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="value_t">
+		<xs:sequence>
+			<xs:element name="actualValue" type="xs:string"/>
+			<xs:element name="dataClassification" type="valueTypes_t" minOccurs="0"/>
+			<xs:element name="unitRef" minOccurs="0">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>'unitDefID' is a reference to a unitDef block defining units</xs:documentation>
+					</xs:annotation>
+					<xs:attribute name="unitDefID" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="codeRef" minOccurs="0">
+				<xs:complexType>
+					<xs:annotation>
+						<xs:documentation>'codeDefID' is a reference to a codeDef block defining coded values</xs:documentation>
+					</xs:annotation>
+					<xs:attribute name="codeDefID" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="valueTypes_t">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="float"/>
+			<xs:enumeration value="boolean"/>
+			<xs:enumeration value="varchar"/>
+			<xs:enumeration value="integer"/>
+			<xs:enumeration value="URI"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--*********            Provenance types            *********-->
+	<xs:complexType name="processStep_t">
+		<xs:sequence>
+			<xs:element name="package" type="versionedEntity_t" minOccurs="0"/>
+			<xs:element name="program" type="versionedEntity_t"/>
+			<xs:element name="programInvocation" type="mixedType_t"/>
+			<xs:element name="timeStamp" type="mixedType_t"/>
+			<xs:element name="cvs" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="user" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="machine" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="platform" type="versionedEntity_t" minOccurs="0"/>
+			<xs:element name="compiler" type="versionedEntity_t" minOccurs="0"/>
+			<xs:element name="library" type="versionedEntity_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="provenance_t">
+		<xs:annotation>
+			<xs:documentation>Note: sourceData should be included along with application parameters and configuration values</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="processStep" type="processStep_t" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string"/>
+	</xs:complexType>
+	<!--*********            Resource types            *********-->
+	<xs:complexType name="abstract_resource_t" abstract="true">
+		<xs:annotation>
+			<xs:documentation>A resource is something that we haven't agreed on yet.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
+			<xs:element name="metaFields" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0">
+						<xs:element name="metaField" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:string">
+										<xs:attribute name="name" type="xs:string"/>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="uri" type="frag_uri_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ID_name_description"/>
+		<xs:attribute name="format" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Format of file. E.g. DICOM, Analyze, 4dfp</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="content" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>Code indicating the contents of the image. E.g. GFC, T88</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="cachePath" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="255"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="informationResource_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_resource_t"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="binary_data_resource_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_resource_t">
+				<xs:sequence>
+					<xs:element name="elementType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This element describes the type of individual data elements in the data record.  For numeric data types, this indicates whether the element type is a signed integer ("int"), unsigned integer ("uint"), or floating-point ("float"), as well as the number of bits allocated to each element.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="int8"/>
+								<xs:enumeration value="uint8"/>
+								<xs:enumeration value="int16"/>
+								<xs:enumeration value="uint16"/>
+								<xs:enumeration value="int32"/>
+								<xs:enumeration value="uint32"/>
+								<xs:enumeration value="int64"/>
+								<xs:enumeration value="uint64"/>
+								<xs:enumeration value="float32"/>
+								<xs:enumeration value="float64"/>
+								<xs:enumeration value="ascii"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+					<xs:element name="byteOrder" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This element describes whether the individual data elements in the data record are stored with the most-significant-byte first (msbfirst) or least-significant-byte first (lsbfirst).  This element is required if the the data type given by the "elementtype" element has a size larger than one byte.</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="lsbfirst"/>
+								<xs:enumeration value="msbfirst"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="dimensioned_binary_data_resource_t">
+		<xs:complexContent>
+			<xs:extension base="binary_data_resource_t">
+				<xs:sequence>
+					<xs:element name="dimension" type="binary_data_dimension_t" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="mapped_binary_data_resource_t">
+		<xs:complexContent>
+			<xs:extension base="binary_data_resource_t">
+				<xs:sequence>
+					<xs:element name="dimension" type="mapped_binary_data_dimension_t" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="binary_data_dimension_t">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This element stores information about one of the N dimensions in the data record.  Multiple instances of this element are ordered from fastest-moving to slowest-moving.  These elements provide information to describe the size (in data elements) of the N-dimensional bounding box for the data, and in some cases to describe the mapping of indexes within this bounding box to 'real-world' coordinates.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="size" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The number of elements in the data along one traversal of this dimension.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="label" type="xs:string">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">This is a label for the dimension.  The first three spatial dimensions (or however many exist) must be labeled, in order, 'x', 'y', and 'z'.  The first temporal dimension must be labeled 't'.
+        The data record allows the writer to specify some measure of data permutation/dimension merging when data is read and presented to a higher application level.  This is useful, for example, if the data is stored in Siemens' Mosaic DICOM format, where slices of a 3-D volume are arranged to look like they are tiled onto a square 2-D area.  In this case, what would normally be called the 'z' dimension has two forks, one that occurs before the 'y' dimension (the first row in the data covers the first row of several slices), and one that occurs after the 'y' dimension.  If, as in this case, there are two or more dimensions that should be merged into one, they should be labeled 'DIMTYPE-splitRANK' where DIMTYPE is the name of the resultant merged dimension, and RANK specifies the order in which all 'split' dimensions of this type will be merged.  After merging, the resultant dimension should have the values of the highest-ranked DIMTYPE split dimension, except for the 'size' element, which will be the product of the sizes of all DIMTYPE split dimensions.  The position of the resultant dimension should be the position of the highest-ranked DIMTYPE split dimension.  The data itself should also be reordered to reflect the new dimension structure.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="outputselect" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation xml:lang="en">In the same way that the 'label' attribute allows you to specify dimensions that should be merged before presenting the data to an application, this attribute specifies a data filter along this dimension.  If this attribute exists, it should contain a whitespace-separated list of indices (indexed starting at 0).  Only data points along this dimension that occur in the index list should be presented to the application.  Likewise, the 'size' of the dimension, after selection, should be updated to reflect the new size of this dimension (which should be the number of indices in the content of this attribute).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="mapped_binary_data_dimension_t">
+		<xs:complexContent>
+			<xs:extension base="binary_data_dimension_t">
+				<xs:sequence>
+					<xs:element name="origin" type="xs:float" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">A value assigned to the first data element along this dimension.  For example, if this dimension corresponds to "time", this element could store the time corresponding to the first data element.  If this is a two-dimensional projection of the surface of the Earth, and this dimension takes you around the Earth parallel to the equator, this value could be the degrees longitude.  For MRI data, this is the single coordinate on the Left-to-Right, Posterior-to-Anterior, or Inferior-to-Superior axis to which this dimension most closely matches (see 'direction' element and 'rasorigin' element in 'mr_image_data_resource_t').</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="spacing" type="xs:float" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is the average distance between consecutive data elements in this dimension.  If the spacing is not regular, then it may be possible to calculate the actual distance between any two data elements in this dimension using the 'datapoints' element.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="gap" type="xs:float" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is the length of the unsampled space between consecutive data elements in this dimension, i.e. the distance between the end of one data element and the beginning of the next.  For MRI data, this can be used to specify the gap between two collected slices &#x02015; the actual width of each slice can be calculated as 'spacing' minus 'gap'.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="datapoints" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">The content of this element is either (1) a whitespace-separated list of values, or (2) a list of 'value' elements, that can be used as a label for each data point along this dimension.  The values can be numbers representing points on an axis (this is the typical case), text strings, coordinate tuples, etc.  Any datapoint label that includes whitespace (coordinate tuples included) must be encapsulated within a child 'value' element.  If this element is missing, it is assumed that labels can be calculated using information in other fields (such as 'origin', 'spacing', etc.).  This element is particularly useful for dimensions with irregular spacing.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="direction" type="listoffloats_t" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This element contains a vector (represented as a whitespace-separated list of floating-point values in the appropriate coordinate system) that is parallel to this dimension's edge of the bounding box.  The vector starts at the first element in the data and points towards subsequent elements along this dimension.  For MRI data, this should be a unit vector in (R,A,S) coordinates (positive values are Right, Anterior, or Superior respectively) &#x02015; for 'x' and 'y' dimensions, this corresponds to the two vectors in the ImagePatientOrientation field in DICOM.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="units" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This stores the units used for all numeric values in this dimension element.  In MRI data, this should be 'ms' for all spatial dimensions ('x', 'y', 'z') and 'ms' for the temporal dimension 't'.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="frag_uri_t">
+		<xs:annotation>
+			<xs:documentation>The external data pointed to by this uri is a "fragment", where a "fragment" is defined as a stream of data contiguously stored in the same file offset by 'offset' bytes and of 'size' bytes.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:anyURI">
+				<xs:attribute name="offset" type="xs:unsignedLong">
+					<xs:annotation>
+						<xs:documentation>The data for this fragment will start at this byte position in the resource specified by the 'uri' element.  If this attribute does not exist or is empty, it is assumed to be zero.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="size" type="xs:unsignedLong">
+					<xs:annotation>
+						<xs:documentation>This specifies the size(s) of this block in the resource specified by the 'uri' element.  If this attribute does not exist or is empty, it is calculated using the dimension and elementtype element.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="listoffloats_t">
+		<xs:list itemType="xs:float"/>
+	</xs:simpleType>
+	<xs:complexType name="catalog_t">
+		<xs:sequence minOccurs="0">
+			<xs:element name="metaDataRef" type="ref_t" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Reference to the meta-date element that this catalog is related to.  Should point to one of the core xcede hierarchy components: project, subject, visit, study, acquisition.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="catalogList" minOccurs="0">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="catalog" type="catalog_t"/>
+						<xs:element name="catalogRef" type="ref_t"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="entryList" minOccurs="0">
+				<xs:complexType>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="entry" type="abstract_resource_t"/>
+						<xs:element name="entryRef" type="ref_t"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="format_t">
+		<xs:annotation>
+			<xs:documentation>Container for describing imaging formats and file name extensions (currently underimplemented)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="documentationList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="documentation" type="informationResource_t" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="extensionList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="extension" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="name"/>
+	</xs:complexType>
+	<xs:complexType name="catalog_t_expt">
+		<xs:complexContent>
+			<xs:extension base="abstract_resource_t"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<!--*********            Event types            *********-->
+	<xs:complexType name="events_t">
+		<xs:sequence>
+			<xs:element name="params" type="eventParams_t" minOccurs="0"/>
+			<xs:element name="event" type="event_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+			<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="event_t">
+		<xs:sequence>
+			<xs:element name="onset" type="xs:float" minOccurs="0"/>
+			<xs:element name="duration" type="xs:float" minOccurs="0"/>
+			<xs:element name="value" type="eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="type" type="xs:string" use="optional"/>
+		<xs:attribute name="units" type="xs:string" use="optional"/>
+		<xs:attribute name="name" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="eventValue_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="name" type="xs:string"/>
+				<xs:attribute name="type">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="number"/>
+							<xs:enumeration value="string"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="eventParams_t">
+		<xs:sequence>
+			<xs:element name="firstmritime" type="xs:float" minOccurs="0"/>
+			<xs:element name="value" type="eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xcede="http://www.nbirn.net/xcede" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.nbirn.net/xcede" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="xcede-2.0-core.xsd"/>
 	<xs:complexType name="processStep_t">
 		<xs:sequence>
-			<xs:element name="package" type="xcede:versionedEntity_t" minOccurs="0"/>
-			<xs:element name="program" type="xcede:versionedEntity_t"/>
-			<xs:element name="programInvocation" type="xcede:mixedType_t"/>
-			<xs:element name="timeStamp" type="xcede:mixedType_t"/>
-			<xs:element name="cvs" type="xcede:mixedType_t" minOccurs="0"/>
-			<xs:element name="user" type="xcede:mixedType_t" minOccurs="0"/>
-			<xs:element name="machine" type="xcede:mixedType_t" minOccurs="0"/>
-			<xs:element name="platform" type="xcede:versionedEntity_t" minOccurs="0"/>
-			<xs:element name="compiler" type="xcede:versionedEntity_t" minOccurs="0"/>
-			<xs:element name="library" type="xcede:versionedEntity_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="package" type="versionedEntity_t" minOccurs="0"/>
+			<xs:element name="program" type="versionedEntity_t"/>
+			<xs:element name="programInvocation" type="mixedType_t"/>
+			<xs:element name="timeStamp" type="mixedType_t"/>
+			<xs:element name="cvs" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="user" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="machine" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="platform" type="versionedEntity_t" minOccurs="0"/>
+			<xs:element name="compiler" type="versionedEntity_t" minOccurs="0"/>
+			<xs:element name="library" type="versionedEntity_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="provenance_t">
@@ -19,7 +19,7 @@
 			<xs:documentation>Note: sourceData should be included along with application parameters and configuration values</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="processStep" type="xcede:processStep_t" maxOccurs="unbounded"/>
+			<xs:element name="processStep" type="processStep_t" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
 	</xs:complexType>
