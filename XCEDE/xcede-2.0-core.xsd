@@ -7,7 +7,7 @@
 				<xs:element name="annotationList" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -234,7 +234,7 @@
 			<xs:element name="annotationList" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -332,7 +332,7 @@
 							</xs:attribute>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -375,12 +375,12 @@
 					<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="reconciliationNote" type="annotation_t" minOccurs="0">
+			<xs:element name="reconciliationNote" type="textAnnotation_t" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="annotation" type="annotation_t" minOccurs="0"/>
+			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="terminology_ag"/>
 	</xs:complexType>
@@ -390,13 +390,37 @@
 			<xs:extension base="person_t"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="annotation_t">
-		<xs:simpleContent>
-			<xs:extension base="xs:string">
-				<xs:attribute name="annotator" type="xs:string"/>
-				<xs:attribute name="timestamp" type="xs:dateTime"/>
+	<xs:complexType name="textAnnotation_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_annotation_t"/>
+		</xs:complexContent>
+	</xs:complexType>	
+	<xs:complexType name="nsTermAnnotation_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_annotation_t">
+				<xs:sequence>
+					<xs:element name="ontologyClass" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
 			</xs:extension>
-		</xs:simpleContent>
+		</xs:complexContent>
+	</xs:complexType>	
+	<xs:complexType name="nsOntologyAnnotation_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_annotation_t">
+				<xs:sequence>
+					<xs:element name="term" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>	
+	<xs:complexType name="abstract_annotation_t">
+		<xs:annotation>
+			<xs:documentation>Text element needs to be optional so that derived annotation types can contain other types of annotations (e.g. genomic sequence annotations)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="annotation_ag"/>
 	</xs:complexType>
 	<xs:complexType name="generator_t">
 		<xs:sequence>
@@ -417,11 +441,27 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:attributeGroup name="annotation_ag">
+		<xs:attribute name="annotator" type="xs:string"/>
+		<xs:attribute name="timestamp" type="xs:dateTime"/>
+	</xs:attributeGroup>
 	<xs:attributeGroup name="terminology_ag">
 		<xs:attribute name="termScheme" type="xs:string"/>
 		<xs:attribute name="termID" type="xs:string"/>
 		<xs:attribute name="termPath" type="xs:string"/>
 	</xs:attributeGroup>
+	<xs:simpleType name="uniqueID_t">
+		<xs:annotation>
+			<xs:documentation> Having a distinct unique ID type is a convenience for building referential
+				links. The reason we are not using the native XML Schema ID attribute is that enforces
+				document-wide uniqueness, whereas there may be instances of this bioterm schema that contain
+				multiple namespace-qualified term or ontology class sets where IDs are unique within their
+				namespace but not across the entire document. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9-:_.]+"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="person_t">
 		<xs:annotation>
 			<xs:documentation>Add additional fields (address, email, etc)</xs:documentation>
@@ -522,7 +562,7 @@
 		<xs:sequence>
 			<xs:element name="timestamp" type="xs:dateTime" minOccurs="0"/>
 			<xs:element name="generator" type="generator_t" minOccurs="0"/>
-			<xs:element name="annotation" type="annotation_t" minOccurs="0"/>
+			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
 	</xs:complexType>
@@ -829,7 +869,7 @@
 			<xs:element name="params" type="eventParams_t" minOccurs="0"/>
 			<xs:element name="event" type="event_t" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="description" type="xs:string" minOccurs="0"/>
-			<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="event_t">
@@ -837,7 +877,7 @@
 			<xs:element name="onset" type="xs:float" minOccurs="0"/>
 			<xs:element name="duration" type="xs:float" minOccurs="0"/>
 			<xs:element name="value" type="eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="annotation" type="annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="type" type="xs:string" use="optional"/>
 		<xs:attribute name="units" type="xs:string" use="optional"/>
