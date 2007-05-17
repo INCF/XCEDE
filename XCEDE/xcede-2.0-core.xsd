@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by dbk (UNIV CA IRVINE) -->
-<xs:schema xmlns="http://www.nbirn.net/xcede" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.nbirn.net/xcede" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:element name="XCEDE">
 		<xs:complexType>
 			<xs:sequence>
@@ -231,10 +231,17 @@
 	<!--*********            Abstract types            *********-->
 	<xs:complexType name="abstract_container_t" abstract="true">
 		<xs:sequence>
+			<xs:element name="commentList" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="comment" type="authoredText_t" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="annotationList" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="annotation" type="abstract_annotation_t" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -390,37 +397,42 @@
 			<xs:extension base="person_t"/>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="authoredText_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attributeGroup ref="authoredText_ag"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="abstract_annotation_t" abstract="true">
+		<xs:attributeGroup ref="authoredText_ag"/>
+	</xs:complexType>
 	<xs:complexType name="textAnnotation_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_annotation_t"/>
+			<xs:extension base="abstract_annotation_t">
+				<xs:sequence>
+					<xs:element name="text" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
 		</xs:complexContent>
-	</xs:complexType>	
+	</xs:complexType>
 	<xs:complexType name="nsTermAnnotation_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_annotation_t">
 				<xs:sequence>
-					<xs:element name="ontologyClass" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element name="ontologyClass" type="xs:string" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
-	</xs:complexType>	
+	</xs:complexType>
 	<xs:complexType name="nsOntologyAnnotation_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_annotation_t">
 				<xs:sequence>
-					<xs:element name="term" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element name="term" type="xs:string" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
-	</xs:complexType>	
-	<xs:complexType name="abstract_annotation_t">
-		<xs:annotation>
-			<xs:documentation>Text element needs to be optional so that derived annotation types can contain other types of annotations (e.g. genomic sequence annotations)</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="1"/>
-		</xs:sequence>
-		<xs:attributeGroup ref="annotation_ag"/>
 	</xs:complexType>
 	<xs:complexType name="generator_t">
 		<xs:sequence>
@@ -441,13 +453,16 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:attributeGroup name="annotation_ag">
-		<xs:attribute name="annotator" type="xs:string"/>
+	<xs:attributeGroup name="authoredText_ag">
+		<xs:attribute name="author" type="xs:string"/>
 		<xs:attribute name="timestamp" type="xs:dateTime"/>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="terminology_ag">
-		<xs:attribute name="termScheme" type="xs:string"/>
-		<xs:attribute name="termID" type="xs:string"/>
+		<xs:attribute name="termID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Applications will likely want to constrain what are valid IDs within the context of their application (for example, allowing only LSID's)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="termPath" type="xs:string"/>
 	</xs:attributeGroup>
 	<xs:simpleType name="uniqueID_t">
