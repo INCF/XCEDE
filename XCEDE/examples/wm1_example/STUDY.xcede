@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.nbirn.net/xcede" xmlns:xcede="http://www.nbirn.net/xcede" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <project ID="Project0050" type="FBIRNSubject2007TE">
+    <annotationList>
+      <annotation annotator="Syam Gadde">What other data goes here?</annotation>
+    </annotationList>
+    <projectInfo>
+    </projectInfo>
+  </project>
+  <subject ID="Subject001399999999">
+    <subjectInfo>
+      <sex>male</sex>
+    </subjectInfo>
+  </subject>
+  <visit ID="Visit0003__0002">
+    <visitInfo>
+    </visitInfo>
+  </visit>
+  <study>
+    <projectRef>#xpointer(//xcede:project[@ID="Project0050"])</projectRef>
+    <subjectRef>#xpointer(//xcede:subject[@ID="Subject001399999999"])</subjectRef>
+    <visitRef>#xpointer(//xcede:visit[@ID="Visit0003__0002"])</visitRef>
+    <studyInfo>
+      <description>This study will ultimately contain the following episodes: 8 working memory, one breath hold, two resting state, 3 asl, 2 anatomicals, and probably others.</description>
+    </studyInfo>
+    <episodeList>
+      <episodeRef>DICOM/EPISODE.xcede#xpointer(//xcede:episode[@ID="wm1"])</episodeRef>
+    </episodeList>
+  </study>
+</XCEDE>
