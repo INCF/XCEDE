@@ -1,0 +1,1 @@
+scp -p xcede-2.0-core.xsd www.neuroinformatics.org:/var/www/xcede/xcede-2/
