@@ -459,7 +459,7 @@
 				namespace but not across the entire document. </xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">
-			<xs:pattern value="[A-Za-z0-9-:_.]+"/>
+			<xs:pattern value="[A-Za-z0-9\-:_.]+"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:complexType name="person_t">
@@ -865,12 +865,16 @@
 	</xs:complexType>
 	<!--*********            Event types            *********-->
 	<xs:complexType name="events_t">
-		<xs:sequence>
-			<xs:element name="params" type="eventParams_t" minOccurs="0"/>
-			<xs:element name="event" type="event_t" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="description" type="xs:string" minOccurs="0"/>
-			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
+		<xs:complexContent>
+			<xs:extension base="abstract_data_t">
+				<xs:sequence>
+					<xs:element name="params" type="eventParams_t" minOccurs="0"/>
+					<xs:element name="event" type="event_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="description" type="xs:string" minOccurs="0"/>
+					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="event_t">
 		<xs:sequence>
@@ -895,6 +899,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:attribute>
+				<xs:anyAttribute processContents="lax"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
