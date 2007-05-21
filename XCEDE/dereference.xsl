@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet
-  xmlns="http://www.nbirn.net/xcede"
-  xmlns:xcede="http://www.nbirn.net/xcede"
+  xmlns="http://www.xcede.org/xcede-2"
+  xmlns:xcede="http://www.xcede.org/xcede-2"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:dyn="http://exslt.org/dynamic"
   exclude-result-prefixes="xsl xcede"
