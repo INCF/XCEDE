@@ -568,9 +568,9 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:complexType name="ref_t">
+	<xs:complexType name="admin">
 		<xs:simpleContent>
-			<xs:extension base="xs:anyURI"/>
+			<xs:extension base="xs:string"/>
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="revision_t">
