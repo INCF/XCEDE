@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter>
+<preface>
   <title>Introduction</title>
 
-  <para>This is a manual for version 2.0 of XCEDE (XML-based Clinical and Experimental Data Exchange).  XCEDE is an extensible schema designed to store scientific data and metadata.</para>
-</chapter>
+  <para>This is a manual for version 2.0 of XCEDE (XML-based Clinical and Experimental Data Exchange).  The target audience for this manual is anyone who is interested in using or learning more about XCEDE.  This manual will serve as both a tutorial and as a reference.</para>
+  <para>XCEDE is an extensible schema designed to store scientific data and metadata.  XCEDE has its origins in various XML schemas developed for collaborative neuroinformatics projects, and was developed to enable the transfer and storage of several types of data including (but not limited to) clinical, demographic, behavioral, physiological and image data.</para>
+</preface>

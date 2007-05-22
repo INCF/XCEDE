@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appendix>
+  <title>Schema</title>
+  <programlisting>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../xcede-2.0-core.xsd" parse="text"/>
+  </programlisting>
+</appendix>
