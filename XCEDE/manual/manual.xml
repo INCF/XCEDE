@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book>
+  <bookinfo>
+    <title>XCEDE 2.0 - A Manual</title>
+  </bookinfo>
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_intro.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_hierarchy.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_data_resource.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_catalog.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_provenance.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_events.xml" />
+</book>

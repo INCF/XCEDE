@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter>
+  <title>Introduction</title>
+
+  <para>This is a manual for version 2.0 of XCEDE (XML-based Clinical and Experimental Data Exchange).  XCEDE is an extensible schema designed to store scientific data and metadata.</para>
+</chapter>
