@@ -317,6 +317,11 @@
 		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
 	</xs:complexType>
 	<!--*********            Misc. types            *********-->
+	<xs:complexType name="ref_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:anyURI"/>
+		</xs:simpleContent>
+	</xs:complexType>
 	<xs:complexType name="assessment_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_data_t">
