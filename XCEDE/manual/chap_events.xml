@@ -2,5 +2,56 @@
 <chapter>
   <title>Events</title>
 
-  <para>This is where the events text goes.</para>
+  <para><emphasis>Events</emphasis> in XCEDE are merely time intervals annotated with arbitrary metadata.</para>
+  <sidebar>This example represents stimuli and responses in a neuroimaging study as XCEDE events.  However, this is not the only type of data that can be represented using XCEDE events.  A different example will be shown later in the chapter.</sidebar>
+  <figure id="events.timeline">
+    <title>An event timeline</title>
+    <mediaobject>
+      <imageobject><imagedata fileref="images/events_timeline.gif" format="gif"/> </imageobject>
+    </mediaobject>
+  </figure>
+  <para>Consider the timeline shown in <xref linkend='events.timeline'/>.  We show in <xref linkend='events.xcede_example'/> how the first 5 seconds worth of the events might be represented in XCEDE.</para>
+  <figure id="events.xcede_example">
+    <title>XCEDE Events example</title>
+    <programlisting><![CDATA[<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <acquisition ID="my_wm1_events">
+    <data xsi:type="events_t">
+      <event type="visual">
+        <onset>0</onset>
+        <duration>2</duration>
+        <value name="shape">square</value>
+        <value name="shapecolor">red</value>
+      </event>
+      <event type="visual">
+        <onset>2.5</onset>
+        <duration>2</duration>
+        <value name="shape">square</value>
+        <value name="shapecolor">blue</value>
+      </event>
+      <event type="audio">
+        <onset>0.3</onset>
+        <duration>1.4</onset>
+        <value name="frequency">low</value>
+      </event>
+      <event type="audio">
+        <onset>2.0</onset>
+        <duration>1.4</onset>
+        <value name="frequency">low</value>
+      </event>
+      <event type="audio">
+        <onset>3.5</onset>
+        <duration>1.4</onset>
+        <value name="frequency">low</value>
+      </event>
+      <event type="response">
+        <onset>3.4</onset>
+        <value name="button">1</value>
+      </event>
+    </data>
+  </acquisition>
+</XCEDE>
+]]></programlisting>
+  </figure>
+  <para>Each stimulus and each response are stored as separate event elements.  Note that all the visual events appear first in the XCEDE file, then the audio events, and then the response event.  This ordering is arbitrary, and the events could easily have been presented in chronological (or random!) order.  The semantic interpretation of the events within an event list must not depend on their document order.</para>
 </chapter>
