@@ -9,4 +9,6 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_catalog.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_provenance.xml" />
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_events.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_assessment.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_protocol.xml" />
 </book>
