@@ -3,4 +3,17 @@
   <title>Data Resources</title>
 
   <para>This is where the data resource text goes.</para>
+
+  <section>
+    <title>Overview</title>
+  </section>
+
+  <section>
+    <title>Examples</title>
+  </section>
+
+  <section>
+    <title>Reference</title>
+  </section>
+
 </chapter>
