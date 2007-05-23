@@ -526,10 +526,10 @@
 	</xs:simpleType>
 	<xs:complexType name="protocolOffset_t">
 		<xs:sequence>
-			<xs:element name="protocolTimeRef" type="xs:string" minOccurs="0"/>
-			<xs:element name="preferedTimeOffset" type="xs:string" minOccurs="0"/>
-			<xs:element name="minTimeOffset" type="xs:string" minOccurs="0"/>
-			<xs:element name="maxTimeOffset" type="xs:string" minOccurs="0"/>
+			<xs:element name="protocolTimeRef" type="unitString_t" minOccurs="0"/>
+			<xs:element name="preferedTimeOffset" type="unitString_t" minOccurs="0"/>
+			<xs:element name="minTimeOffset" type="unitString_t" minOccurs="0"/>
+			<xs:element name="maxTimeOffset" type="unitString_t" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="protocolMeasure_t">
@@ -545,7 +545,7 @@
 					<xs:element name="steps" minOccurs="0">
 						<xs:complexType>
 							<xs:choice minOccurs="0" maxOccurs="unbounded">
-								<xs:element name="step" type="abstract_protocol_t"/>
+								<xs:element name="step" type="protocol_t"/>
 								<xs:element name="stepRef" type="ref_t"/>
 							</xs:choice>
 						</xs:complexType>
@@ -578,6 +578,13 @@
 			<xs:extension base="xs:string"/>
 		</xs:simpleContent>
 	</xs:complexType>
+	<xs:complexType name="unitString_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="units" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<xs:complexType name="revision_t">
 		<xs:sequence>
 			<xs:element name="timestamp" type="xs:dateTime" minOccurs="0"/>
@@ -587,26 +594,13 @@
 		<xs:attribute name="ID" type="xs:string"/>
 	</xs:complexType>
 	<xs:complexType name="value_t">
-		<xs:sequence>
-			<xs:element name="actualValue" type="xs:string"/>
-			<xs:element name="dataClassification" type="valueTypes_t" minOccurs="0"/>
-			<xs:element name="unitRef" minOccurs="0">
-				<xs:complexType>
-					<xs:annotation>
-						<xs:documentation>'unitDefID' is a reference to a unitDef block defining units</xs:documentation>
-					</xs:annotation>
-					<xs:attribute name="unitDefID" type="xs:string"/>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="codeRef" minOccurs="0">
-				<xs:complexType>
-					<xs:annotation>
-						<xs:documentation>'codeDefID' is a reference to a codeDef block defining coded values</xs:documentation>
-					</xs:annotation>
-					<xs:attribute name="codeDefID" type="xs:string"/>
-				</xs:complexType>
-			</xs:element>
-		</xs:sequence>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="units" type="xs:string"/>
+				<xs:attribute name="codeID" type="xs:string"/>
+				<xs:attributeGroup ref="terminology_ag"/>
+			</xs:extension>
+		</xs:simpleContent>
 	</xs:complexType>
 	<xs:simpleType name="valueTypes_t">
 		<xs:restriction base="xs:string">
@@ -620,9 +614,21 @@
 	<!--*********            Provenance types            *********-->
 	<xs:complexType name="processStep_t">
 		<xs:sequence>
-			<xs:element name="package" type="versionedEntity_t" minOccurs="0"/>
-			<xs:element name="program" type="versionedEntity_t"/>
-			<xs:element name="programInvocation" type="mixedType_t"/>
+			<xs:element name="package" type="versionedEntity_t" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Software package that contains the program</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="program" type="versionedEntity_t">
+				<xs:annotation>
+					<xs:documentation>Software executable to was run in this step </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="programInvocation" type="mixedType_t">
+				<xs:annotation>
+					<xs:documentation>Exact command line text used to run the executable</xs:documentation>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="timeStamp" type="mixedType_t"/>
 			<xs:element name="cvs" type="mixedType_t" minOccurs="0"/>
 			<xs:element name="user" type="mixedType_t" minOccurs="0"/>
@@ -639,7 +645,11 @@
 		<xs:sequence>
 			<xs:element name="processStep" type="processStep_t" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="ID" type="xs:string"/>
+		<xs:attribute name="ID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Optional identifier indicating the </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<!--*********            Resource types            *********-->
 	<xs:complexType name="abstract_resource_t" abstract="true">
