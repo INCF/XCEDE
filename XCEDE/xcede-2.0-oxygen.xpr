@@ -6,12 +6,21 @@
         <options/>
     </meta>
     <projectTree name="xcede-2.0-oxygen.xpr">
+        <folder name="Manual">
+            <file name="manual/app_schema.xml"/>
+            <file name="manual/chap_assessment.xml"/>
+            <file name="manual/chap_catalog.xml"/>
+            <file name="manual/chap_data_resource.xml"/>
+            <file name="manual/chap_events.xml"/>
+            <file name="manual/chap_hierarchy.xml"/>
+            <file name="manual/chap_intro.xml"/>
+            <file name="manual/chap_protocol.xml"/>
+            <file name="manual/chap_provenance.xml"/>
+            <file name="manual/manual.xml"/>
+        </folder>
         <file name="dereference.xsl"/>
         <file name="xcede-2.0-core.xsd"/>
-        <file name="xcede-2.0-events.xsd"/>
         <file name="xcede-2.0-mr.xsd"/>
-        <file name="xcede-2.0-provenance.xsd"/>
-        <file name="xcede-2.0-resources.xsd"/>
         <file name="xlink.xsd"/>
     </projectTree>
 </project>
