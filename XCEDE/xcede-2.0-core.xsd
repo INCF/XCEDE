@@ -126,6 +126,7 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
+					<xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="projectRef" type="ref_t" minOccurs="0"/>
 					<xs:element name="subjectRef" type="ref_t" minOccurs="0"/>
 					<xs:element name="visitInfo" type="visitInfo_t" minOccurs="0"/>
