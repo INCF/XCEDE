@@ -319,7 +319,7 @@
 	<!--*********            Misc. types            *********-->
 	<xs:complexType name="ref_t">
 		<xs:simpleContent>
-			<xs:extension base="xs:anyURI"/>
+			<xs:extension base="xs:string"/>
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="assessment_t">
