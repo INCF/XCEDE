@@ -6,6 +6,12 @@
         <options/>
     </meta>
     <projectTree name="xcede-2.0-oxygen.xpr">
+        <folder name="Examples">
+            <folder name="fMRIDC">
+                <file name="examples/fMRIDC/111A4.xml"/>
+                <file name="examples/fMRIDC/111A4.xml.orig"/>
+            </folder>
+        </folder>
         <folder name="Manual">
             <file name="manual/app_schema.xml"/>
             <file name="manual/chap_assessment.xml"/>
