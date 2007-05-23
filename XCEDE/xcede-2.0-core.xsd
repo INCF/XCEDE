@@ -593,6 +593,13 @@
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
 	</xs:complexType>
+	<xs:complexType name="orderedString_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="order" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<xs:complexType name="value_t">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
@@ -697,6 +704,29 @@
 	<xs:complexType name="informationResource_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_resource_t"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="dcResource_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_resource_t">
+				<xs:sequence>
+					<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="creator" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="subject" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="publisher" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="contributor" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="date" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="format" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="identifier" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="relation" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="coverage" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="rights" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="binary_data_resource_t">
