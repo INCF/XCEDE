@@ -31,6 +31,7 @@
 				<xs:element name="analysis" type="analysis_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="protocol" type="protocol_t" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="acquisitionProtocol" type="acquisitionProtocol_t" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="version" type="xs:string"/>
 		</xs:complexType>
@@ -222,6 +223,7 @@
 						</xs:element>
 					</xs:choice>
 				</xs:sequence>
+				<xs:attribute name="acquisitionProtocol" use="optional"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -231,6 +233,16 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<!--*********            Abstract types            *********-->
+	<xs:complexType name="abstract_acqProtocol_t" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="abstract_container_t">
+				<xs:sequence>
+					<xs:element name="name" type="xs:string"/>
+					<xs:element name="acqParam" type="protocolDescriptor_t" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="abstract_container_t" abstract="true">
 		<xs:sequence>
 			<xs:element name="commentList" minOccurs="0">
@@ -319,6 +331,18 @@
 		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
 	</xs:complexType>
 	<!--*********            Misc. types            *********-->
+	<xs:complexType name="acquisitionProtocol_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_acqProtocol_t"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="protocolDescriptor_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="description" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
 	<xs:complexType name="ref_t">
 		<xs:simpleContent>
 			<xs:extension base="xs:string"/>
@@ -729,6 +753,11 @@
 					<xs:element name="rights" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="dataResource_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_resource_t"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="binary_data_resource_t">

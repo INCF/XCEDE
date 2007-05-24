@@ -134,18 +134,24 @@
   </subjectInfo>
  </subject>
  
-  <visit>
+ <visit researchGroup="2-2001-111A4-01">
    <timestamp>8/27/1997</timestamp>
    <subjectRef>2-2001-111A4-01</subjectRef> 
    <studyList>
     <study>
      <episodeList>
       <episode>
-       
+       <acquisition acquisitionProtocol="Co-Planar">
+        <dataResource xsi:type="dataResource_t" format="Analyze" ID="raw_rfunc1_1.tgz">2-2001-111A4-01/raw/rfunc1_1.tgz</dataResource>
+       </acquisition>
       </episode>
      </episodeList>
     </study>
    </studyList>
   </visit>
 
+ <acquisitionProtocol ID="Co-Planar">
+  <name>Co-Planar</name>
+ </acquisitionProtocol>
+ 
 </XCEDE>
