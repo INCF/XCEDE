@@ -127,7 +127,7 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="timestamp" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="timestamp" type="xs:string" minOccurs="0"/>
 					<xs:element name="projectRef" type="ref_t" minOccurs="0"/>
 					<xs:element name="subjectRef" type="ref_t" minOccurs="0"/>
 					<xs:element name="visitInfo" type="visitInfo_t" minOccurs="0"/>
@@ -800,7 +800,7 @@
 					</xs:element>
 					<xs:element name="compression" type="xs:string" minOccurs="0">
 						<xs:annotation>
-                                                  <xs:documentation>If this element is present, the files pointed to by the uri elements are compressed data files.  The only compression method specifically named by this specification is "gzip".  As a special case for binaryDataResource_t and derived types, files compressed with gzip and containing a .gz suffix can be referenced in the uri element without the suffix.  If a file pointed to by the URI does not exist, the application should search for the same file with the .gz suffix appended -- if it exists, use that file and act as if the compression element had been specified with the value "gzip".  This allows the referenced files to be compressed or uncompressed at will (as long as the .gz suffix is appropriately added/removed from the filename), without needing to change the URI's in this element.</xs:documentation>
+							<xs:documentation>If this element is present, the files pointed to by the uri elements are compressed data files.  The only compression method specifically named by this specification is "gzip".  As a special case for binaryDataResource_t and derived types, files compressed with gzip and containing a .gz suffix can be referenced in the uri element without the suffix.  If a file pointed to by the URI does not exist, the application should search for the same file with the .gz suffix appended -- if it exists, use that file and act as if the compression element had been specified with the value "gzip".  This allows the referenced files to be compressed or uncompressed at will (as long as the .gz suffix is appropriately added/removed from the filename), without needing to change the URI's in this element.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
@@ -847,11 +847,11 @@
 				<xs:documentation xml:lang="en">This is a label for the dimension.  The first three spatial dimensions (or however many exist) must be labeled, in order, 'x', 'y', and 'z'.  The first temporal dimension must be labeled 't'.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-                <xs:attribute name="splitrank" type="xs:string">
-                  <xs:annotation>
-                    <xs:documentation>If this attribute exists, this dimension is a "split" dimension, and this dimension must be "merged" with one or more other dimensions (with the same label) before presenting the data to the application.  This is useful, for example, if the data is stored in Siemens' Mosaic DICOM format, where slices of a 3-D volume are arranged to look like they are tiled onto a square 2-D area.  In this case, what would normally be called the 'z' dimension has two forks, one that occurs before the 'y' dimension (the first row in the data covers the first row of several slices), and one that occurs after the 'y' dimension.  If, as in this case, there are two or more dimensions that should be merged into one, both component dimensions should have the label 'z', but have splitrank attributes "1" and "2", which specifies the order in which all 'split' dimensions of the same label will be merged.  After merging, the resultant 'z' dimension element should contain the same children of the highest-ranked split 'z' dimension, except for the 'size' element, which will be the product of the sizes of all 'z' split dimensions.  The position of the resultant dimension should be the position of the highest-ranked 'z' split dimension.  The data itself should also be reordered to reflect the new dimension structure.</xs:documentation>
-                  </xs:annotation>
-                </xs:attribute>
+		<xs:attribute name="splitrank" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>If this attribute exists, this dimension is a "split" dimension, and this dimension must be "merged" with one or more other dimensions (with the same label) before presenting the data to the application.  This is useful, for example, if the data is stored in Siemens' Mosaic DICOM format, where slices of a 3-D volume are arranged to look like they are tiled onto a square 2-D area.  In this case, what would normally be called the 'z' dimension has two forks, one that occurs before the 'y' dimension (the first row in the data covers the first row of several slices), and one that occurs after the 'y' dimension.  If, as in this case, there are two or more dimensions that should be merged into one, both component dimensions should have the label 'z', but have splitrank attributes "1" and "2", which specifies the order in which all 'split' dimensions of the same label will be merged.  After merging, the resultant 'z' dimension element should contain the same children of the highest-ranked split 'z' dimension, except for the 'size' element, which will be the product of the sizes of all 'z' split dimensions.  The position of the resultant dimension should be the position of the highest-ranked 'z' split dimension.  The data itself should also be reordered to reflect the new dimension structure.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="outputselect" type="xs:string">
 			<xs:annotation>
 				<xs:documentation xml:lang="en">In the same way that the 'splitrank' attribute allows you to specify dimensions that should be merged before presenting the data to an application, this attribute specifies a data filter along this dimension.  If this attribute exists, it should contain a whitespace-separated list of indices (indexed starting at 0).  Only data points along this dimension that occur in the index list should be presented to the application.  Likewise, the 'size' of the dimension, after selection, should be updated to reflect the new size of this dimension (which should be the number of indices in the content of this attribute).</xs:documentation>
@@ -1000,7 +1000,7 @@
 			<xs:annotation>
 				<xs:documentation>This attribute is optional, but an group using this schema should agree on, use, and enforce measurement units consistently, to avoid the need for unit conversion in an application.</xs:documentation>
 			</xs:annotation>
-                </xs:attribute>
+		</xs:attribute>
 		<xs:attribute name="name" type="xs:string" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="eventValue_t">
