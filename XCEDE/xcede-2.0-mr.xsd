@@ -170,4 +170,13 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+	<xs:complexType name="mrImageResource_t">
+		<xs:complexContent>
+			<xs:extension base="mappedBinaryDataResource_t">
+				<xs:sequence>
+					<xs:element name="rasOrigin" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	 </xs:complexType>
 </xs:schema>

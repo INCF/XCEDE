@@ -265,7 +265,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="resource" type="informationResource_t" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -760,7 +760,7 @@
 			<xs:extension base="abstract_resource_t"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="binary_data_resource_t">
+	<xs:complexType name="binaryDataResource_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_resource_t">
 				<xs:sequence>
@@ -799,25 +799,25 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="dimensioned_binary_data_resource_t">
+	<xs:complexType name="dimensionedBinaryDataResource_t">
 		<xs:complexContent>
-			<xs:extension base="binary_data_resource_t">
+			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
-					<xs:element name="dimension" type="binary_data_dimension_t" maxOccurs="unbounded"/>
+					<xs:element name="dimension" type="binaryDataDimension_t" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="mapped_binary_data_resource_t">
+	<xs:complexType name="mappedBinaryDataResource_t">
 		<xs:complexContent>
-			<xs:extension base="binary_data_resource_t">
+			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
-					<xs:element name="dimension" type="mapped_binary_data_dimension_t" maxOccurs="unbounded"/>
+					<xs:element name="dimension" type="mappedBinaryDataDimension_t" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="binary_data_dimension_t">
+	<xs:complexType name="binaryDataDimension_t">
 		<xs:annotation>
 			<xs:documentation xml:lang="en">This element stores information about one of the N dimensions in the data record.  Multiple instances of this element are ordered from fastest-moving to slowest-moving.  These elements provide information to describe the size (in data elements) of the N-dimensional bounding box for the data, and in some cases to describe the mapping of indexes within this bounding box to 'real-world' coordinates.</xs:documentation>
 		</xs:annotation>
@@ -840,13 +840,13 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
-	<xs:complexType name="mapped_binary_data_dimension_t">
+	<xs:complexType name="mappedBinaryDataDimension_t">
 		<xs:complexContent>
-			<xs:extension base="binary_data_dimension_t">
+			<xs:extension base="binaryDataDimension_t">
 				<xs:sequence>
 					<xs:element name="origin" type="xs:float" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation xml:lang="en">A value assigned to the first data element along this dimension.  For example, if this dimension corresponds to "time", this element could store the time corresponding to the first data element.  If this is a two-dimensional projection of the surface of the Earth, and this dimension takes you around the Earth parallel to the equator, this value could be the degrees longitude.  For MRI data, this is the single coordinate on the Left-to-Right, Posterior-to-Anterior, or Inferior-to-Superior axis to which this dimension most closely matches (see 'direction' element and 'rasorigin' element in 'mr_image_data_resource_t').</xs:documentation>
+							<xs:documentation xml:lang="en">A value assigned to the first data element along this dimension.  For example, if this dimension corresponds to "time", this element could store the time corresponding to the first data element.  If this is a two-dimensional projection of the surface of the Earth, and this dimension takes you around the Earth parallel to the equator, this value could be the degrees longitude.  For MRI data, this is the single coordinate on the Left-to-Right, Posterior-to-Anterior, or Inferior-to-Superior axis to which this dimension most closely matches (see 'direction' element and 'rasOrigin' element in 'mrImageDataResource_t').</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="spacing" type="xs:float" minOccurs="0">
@@ -975,28 +975,23 @@
 			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="type" type="xs:string" use="optional"/>
-		<xs:attribute name="units" type="xs:string" use="optional"/>
+		<xs:attribute name="units" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>This attribute is optional, but an group using this schema should agree on, use, and enforce the same measurement units consistently, to avoid the need for unit conversion in an application.</xs:documentation>
+			</xs:annotation>
+                </xs:attribute>
 		<xs:attribute name="name" type="xs:string" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="eventValue_t">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
 				<xs:attribute name="name" type="xs:string"/>
-				<xs:attribute name="type">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:enumeration value="number"/>
-							<xs:enumeration value="string"/>
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:attribute>
 				<xs:anyAttribute processContents="lax"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="eventParams_t">
 		<xs:sequence>
-			<xs:element name="firstmritime" type="xs:float" minOccurs="0"/>
 			<xs:element name="value" type="eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
