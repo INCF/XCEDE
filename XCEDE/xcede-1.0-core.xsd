@@ -1,0 +1,1034 @@
+<?xml version="1.0"?>
+
+<!-- $Id: xcede-1.0-core.xsd,v 1.1 2007-05-24 03:21:36 jgrethe Exp $ -->
+
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xcede="http://nbirn.net/Resources/Users/Applications/xcede/"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  targetNamespace="http://nbirn.net/Resources/Users/Applications/xcede/"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified">
+
+  <xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink-ns.xsd"/>
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="en">
+      This schema describes the structure of an XCEDE
+      (XML-based Clinical and Experimental Data Exchange) data file.
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <!--
+    ++++++++++++++++++++++++
+    ++ TOP LEVEL ELEMENTS ++
+    ++++++++++++++++++++++++
+    -->
+
+  <xsd:element name="projectlevel" type="xcede:projectlevel_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        This is the root element for a Project level XML file.
+        This element encapsulates XML data for an entire research project.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name="subjectlevel" type="xcede:subjectlevel_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        This is the root element for a Subject level XML file.
+        This element encapsulates XML data for a particular subject.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="visitlevel" type="xcede:visitlevel_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        This is the root element for a Visit level XML file.
+        This element encapsulates XML data for a subject visit.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="studylevel" type="xcede:studylevel_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        This is the root element for a Study level XML file.
+        This element encapsulates XML data for scans within a
+        subject visit performed on the same scanner.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  <xsd:element name="serieslevel" type="xcede:serieslevel_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        This is the root element for a Series level XML file.
+        This element encapsulates XML data for one series of
+        images.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:complexType name="projectlevel_up_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_up_t"/>
+      <xsd:group ref="xcede:projectData_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="projectlevel_down_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_down_t"/>
+      <xsd:group ref="xcede:projectlevel_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="projectlevel_t">
+    <xsd:group ref="xcede:projectlevel_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="projectlevel_g">
+    <xsd:sequence>
+      <xsd:group ref="xcede:projectData_g"/>
+      <xsd:element name="subject" type="xcede:subjectlevel_down_s" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file lower in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="xcede:levelcommon_g"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="subjectlevel_up_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_up_t"/>
+      <xsd:group ref="xcede:subjectData_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="subjectlevel_down_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_down_t"/>
+      <xsd:group ref="xcede:subjectlevel_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="subjectlevel_t">
+    <xsd:group ref="xcede:subjectlevel_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="subjectlevel_g">
+    <xsd:sequence>
+      <xsd:element name="project" type="xcede:projectlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="xcede:subjectData_g"/>
+      <xsd:element name="visit" type="xcede:visitlevel_down_s" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file lower in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="xcede:levelcommon_g"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="visitlevel_up_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_up_t"/>
+      <xsd:group ref="xcede:visitData_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="visitlevel_down_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_down_t"/>
+      <xsd:group ref="xcede:visitlevel_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="visitlevel_t">
+    <xsd:group ref="xcede:visitlevel_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="visitlevel_g">
+    <xsd:sequence>
+      <xsd:element name="project" type="xcede:projectlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="subject" type="xcede:subjectlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="xcede:visitData_g"/>
+      <xsd:element name="study" type="xcede:studylevel_down_s" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file lower in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="xcede:levelcommon_g"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="studylevel_up_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_up_t"/>
+      <xsd:group ref="xcede:studyData_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="studylevel_down_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_down_t"/>
+      <xsd:group ref="xcede:studylevel_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="studylevel_t">
+    <xsd:group ref="xcede:studylevel_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="studylevel_g">
+    <xsd:sequence>
+      <xsd:element name="project" type="xcede:projectlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="subject" type="xcede:subjectlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="visit" type="xcede:visitlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="xcede:studyData_g"/>
+      <xsd:element name="series" type="xcede:serieslevel_down_s" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file lower in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="xcede:levelcommon_g"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="serieslevel_up_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_up_t"/>
+      <xsd:group ref="xcede:seriesData_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="serieslevel_down_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_down_t"/>
+      <xsd:group ref="xcede:serieslevel_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="serieslevel_t">
+    <xsd:group ref="xcede:serieslevel_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="serieslevel_g">
+    <xsd:sequence>
+      <xsd:element name="project" type="xcede:projectlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="subject" type="xcede:subjectlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="visit" type="xcede:visitlevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="study" type="xcede:studylevel_up_s" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">May be spliced from XML file higher in hierarchy</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:group ref="xcede:seriesData_g"/>
+      <xsd:group ref="xcede:levelcommon_g"/>
+    </xsd:sequence>
+  </xsd:group>
+
+
+  <!--
+    ++++++++++++++++++++++++++++++++++++++++
+    ++ CONTAINERS FOR LEVEL-SPECIFIC DATA ++
+    ++++++++++++++++++++++++++++++++++++++++
+    -->
+
+  <xsd:group name="projectData_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">Container for project-specific metadata.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A string identifier that uniquely identifies this research project.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This element stores free-form text describing a research project, its goals, and perhaps a list of principal investigators and their affiliations.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="funding" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This element stores free-form text describing the funding sources for the research project.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="subjectData_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">Container for subject-specific info that does not vary between visits.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A string identifier that uniquely identifies this subject.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="birthDate" type="xsd:date" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Date of subject's birth, if applicable.  The value must be in the ISO 8601-based form prescribed by XML Schema Part 2: Datatypes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="deathDate" type="xsd:date" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Date of subject's death, if applicable.  The value must be in the ISO 8601-based form prescribed by XML Schema Part 2: Datatypes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="name" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Subject's full name, if applicable.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="sex" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Subject's gender, one of "male", "female", or "other".</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="male"/>
+            <xsd:enumeration value="female"/>
+            <xsd:enumeration value="other"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="species" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="commonName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="latinName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="strain" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="extendedDescriptor" type="xcede:extendedDescriptor_t" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en"></xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="visitData_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">Container for visit-specific metadata.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A string identifier that uniquely identifies this visit.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="location" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Location for this visit (e.g. an Institution ID).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="subjectVar" type="xcede:subjectVar_t" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="studyData_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">Container for study-specific metadata.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A string identifier that uniquely identifies this study.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:group name="seriesData_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">Container for series-specific metadata.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A string identifier that uniquely identifies this series.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="scanner" type="xcede:scanner_t" minOccurs="0"/>
+      <xsd:element name="expProtocol" type="xcede:expProtocol_t" minOccurs="0"/>
+      <xsd:element name="acqProtocol" type="xcede:acqProtocol_t" minOccurs="0"/>
+      <xsd:element name="datarec" minOccurs="0" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:complexContent>
+            <xsd:extension base="xcede:datarec_down_s">
+              <xsd:attributeGroup ref="xcede:datarecAttrs_g"/>
+            </xsd:extension>
+          </xsd:complexContent>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+
+  <!--
+    +++++++++++++++++++++++++++++++++++++++++++++++
+    ++ HELPER TYPES/GROUPS FOR ABOVE DEFINITIONS ++
+    +++++++++++++++++++++++++++++++++++++++++++++++
+    -->
+
+  <xsd:complexType name="subjectVar_t">
+    <xsd:group ref="xcede:subjectVar_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="subjectVar_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">Assessments gathered during a subject visit.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="age" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:simpleContent>
+            <xsd:extension base="xsd:float">
+              <xsd:attribute name="units" default="years">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="hours"/>
+                    <xsd:enumeration value="days"/>
+                    <xsd:enumeration value="weeks"/>
+                    <xsd:enumeration value="years"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:attribute>
+              <xsd:attribute name="agetype" default="postnatal">
+                <xsd:simpleType>
+                  <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="gestational"/>
+                    <xsd:enumeration value="postnatal"/>
+                    <xsd:enumeration value="portmortem"/>
+                  </xsd:restriction>
+                </xsd:simpleType>
+              </xsd:attribute>
+            </xsd:extension>
+          </xsd:simpleContent>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="assessment" type="xcede:assessment_t" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en"></xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en"></xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="scanner_t">
+    <xsd:group ref="xcede:scanner_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="scanner_g">
+    <xsd:sequence>
+      <xsd:element name="manufacturer" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="model" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="additionalEquipment" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:attributeGroup name="datarecAttrs_g">
+    <xsd:attribute name="type" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="en">This attribute describes the type of data referred to by this record.  The type "image" refers to multi-dimensional image data and may only occur once within a bxh file.  Other types may occur multiple times and each instance may be identified by its subtype.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="subtype" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="en">This attribute is a string identify this instance of a datarec with this type.  Each type, subtype pair must be unique within a bxh file.  If this attribute is not included, it is implicitly equal to "0".</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:attributeGroup>
+
+  <xsd:group name="datarecFrag_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">The external data pointed to by this data record is represented as a list of "fragments", where a "fragment" is defined as a stream of data contiguously stored in the same file.  Data stored in multiple files necessitates multiple fragments, as does data stored non-contiguously within the same file.  Each data fragment is represented, in data stream order, by the following group of elements.  This group should be repeated to describe multiple fragments.
+      There is one shortcut to help make this list more compact.  If there is a subsequence of fragments that are co-located in the same file, the individual offsets and sizes of these fragments can be provided as a list of values within the fileoffset and filerecordsize elements, instead of specifying a separate filename/fileoffset/filerecordsize combination for each element.
+      Obviously, this list of fragments can be made arbitrarily long by defining a fragment size as small as one byte &#x02015; there is no requirement that fragment sizes be as large as possible, nor that subsequent fragments within the same file be represented in the same element group.  However, the most compact form is of course preferable.
+      The data is typically presented to the application as a concatenation of the data pointed to by each of the fragments in the list (possibly transformed using the filters described in the "dimension" element)</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="filename" type="xsd:string">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">The file in which to find the data in this data fragment</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="fileoffset" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">The data for this fragment will start at this/these byte position(s) in the file specified by the 'filename' element.  If this element does not exist or is empty, it is assumed to be zero.  Each instance of this element may contain multiple values, indicating multiple valid data areas within the same file.  The number of values in the content of this element must be the same as in the 'filerecordsize' element, should it exist.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:list itemType="xsd:unsignedLong"/>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="filerecordsize" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This specifies the size(s) of the fragment(s) in the file specified by the 'filename' element.  If this element does not exist or is empty, it is calculated using the dimension and elementtype element.  Each instance of this element may contain multiple values, indicating multiple valid data areas within the same file.  The number of values in the content of this element must be the same as in the 'fileoffset' element, should it exist.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:list itemType="xsd:unsignedLong"/>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="datarec_down_s">
+    <xsd:choice>
+      <xsd:element name="spliceFrom" type="xcede:splice_down_t"/>
+      <xsd:group ref="xcede:datarec_g"/>
+    </xsd:choice>
+  </xsd:complexType>
+
+  <xsd:complexType name="datarec_t">
+    <xsd:group ref="xcede:datarec_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="datarec_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">Data interface, describing how to read/interpret the encapsulated data files.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="provenanceID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="rasorigin" type="xcede:listoffloats_t" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">If the datarec represents an image, this element provides the location in patient coordinates of the first data element (pixel, voxel, etc.) in the datarec.  The location is an ordered triple (r, a, s) of floats where a positive number indicates positions on the Right, Anterior, and Superior sides of the left-to-right, posterior-to-anterior, and inferior-to-superior axes, respectively.  This is the same coordinate system used by GE scanners.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="dimension" type="xcede:dimension_t" maxOccurs="unbounded"/>
+      <xsd:element name="byteorder" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This element describes whether the individual data elements in the data record are stored with the most-significant-byte first (msbfirst) or least-significant-byte first (lsbfirst).  This element is required if the the data type given by the "elementtype" element has a size larger than one byte.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="lsbfirst"/>
+            <xsd:enumeration value="msbfirst"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="elementtype">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This element describes the type of individual data elements in the data record.  For numeric data types, this indicates whether the element type is a signed integer ("int"), unsigned integer ("uint"), or floating-point ("float"), as well as the number of bits allocated to each element.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="int8"/>
+            <xsd:enumeration value="uint8"/>
+            <xsd:enumeration value="int16"/>
+            <xsd:enumeration value="uint16"/>
+            <xsd:enumeration value="int32"/>
+            <xsd:enumeration value="uint32"/>
+            <xsd:enumeration value="int64"/>
+            <xsd:enumeration value="uint64"/>
+            <xsd:enumeration value="float32"/>
+            <xsd:enumeration value="float64"/>
+            <xsd:enumeration value="ascii"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+        <xsd:group ref="xcede:datarecFrag_g"/>
+      </xsd:sequence>
+      <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="dimension_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">This element stores information about one of the N dimensions in the data record.  Multiple instances of this element are ordered from fastest-moving to slowest-moving.  These elements provide information to describe the size (in data elements) of the N-dimensional bounding box for the data, and in some cases to describe the mapping of indexes within this bounding box to 'real-world' coordinates.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="size" type="xsd:int" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">The number of elements in the data along one traversal of this dimension.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="origin" type="xsd:float" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A value assigned to the first data element along this dimension.  This value represents a point on the axis in the implicit real-world coordinate space most congruent to the line formed when mapping this dimension's edge of the N-dimensional bounding box to real-world coordinates.  In layman's terms, if this dimension corresponds to "time", this elements stores the time corresponding to the first data element.  If this is a two-dimensional projection of the surface of the Earth, and this dimension takes you around the Earth parallel to the equator, this value could be the degrees longitude.  For MRI data, this is the single coordinate on the Left-to-Right, Posterior-to-Anterior, or Inferior-to-Superior axis to which this dimension most closely matches (see 'direction' element).</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="spacing" type="xsd:float" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This is the average real-world distance between consecutive data elements in this dimension.  If the spacing is not regular, then it may be possible to calculate the actual distance between any two data elements in this dimension using the 'datapoints' element.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="gap" type="xsd:float" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This is the real-world length of the unsampled space between consecutive data elements in this dimension, or the distance between the end of one data element and the beginning of the next.  For MRI data, this can be used to specify the gap between two collected slices &#x02015; the actual width of each slice can be calculated as 'spacing' minus 'gap'.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="datapoints" type="xcede:mixedType_t" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">The content of this element is either (1) a whitespace-separated list of values, or (2) a list of 'value' elements, that can be used as a label for each data point along this dimension.  The values can be numbers representing points on an axis (this is the typical case), text strings, coordinate tuples, etc.  Any datapoint label that includes whitespace (coordinate tuples included) must be encapsulated within a child 'value' element.  If this element is missing, it is assumed that labels can be calculated using information in other fields (such as 'origin', 'spacing', etc.).  This element is particularly useful for dimensions with irregular spacing.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="direction" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This element contains a vector (represented as a whitespace-separated list of floating-point values) in real-world coordinates that is parallel to this dimension's edge of the bounding box, when mapped to real-world coordinates.  The vector starts at the first element in the data and points towards subsequent elements along this dimension.  For MRI data, this is a unit vector in (R,A,S) coordinates (positive values are Right, Anterior, or Superior respectively) &#x02015; for 'x' and 'y' dimensions, this corresponds to the two vectors in the ImagePatientOrientation field in DICOM.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xcede:listoffloats_t">
+            <xsd:length value="3"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="units" type="xsd:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">This stores the units used for all numeric values in this dimension element.  In MRI data, this should be 'ms' for all spatial dimensions ('x', 'y', 'z') and 'ms' for the temporal dimension 't'.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="type" type="xsd:string">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="en">This is a label for the dimension.  The first three spatial dimensions (or however many exist) must be labeled, in order, 'x', 'y', and 'z'.  The first temporal dimension must be labeled 't'.
+        The data record allows the writer to specify some measure of data permutation/dimension merging when data is read and presented to a higher application level.  This is useful, for example, if the data is stored in Siemens' Mosaic DICOM format, where slices of a 3-D volume are arranged to look like they are tiled onto a square 2-D area.  In this case, what would normally be called the 'z' dimension has two forks, one that occurs before the 'y' dimension (the first row in the data covers the first row of several slices), and one that occurs after the 'y' dimension.  If, as in this case, there are two or more dimensions that should be merged into one, they should be labeled 'DIMTYPE-splitRANK' where DIMTYPE is the name of the resultant merged dimension, and RANK specifies the order in which all 'split' dimensions of this type will be merged.  After merging, the resultant dimension should have the values of the highest-ranked DIMTYPE split dimension, except for the 'size' element, which will be the product of the sizes of all DIMTYPE split dimensions.  The position of the resultant dimension should be the position of the highest-ranked DIMTYPE split dimension.  The data itself should also be reordered to reflect the new dimension structure.</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="outputselect" type="xsd:string" use="optional">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="en">In the same way that the 'type' attribute allows you to specify dimensions that should be merged before presenting the data to an application, this attribute specifies a data filter along this dimension.  If this attribute exists, it should contain a whitespace-separated list of indices (indexed starting at 0).  Only data points along this dimension that occur in the index list should be presented to the application.  Likewise, the 'size' of the dimension, after selection, should be updated to reflect the new size of this dimension (which should be the number of indices in the content of this attribute).</xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <xsd:simpleType name="listoffloats_t">
+    <xsd:list itemType="xsd:float"/>
+  </xsd:simpleType>
+
+  <xsd:group name="levelcommon_g">
+    <xsd:sequence>
+      <xsd:element name="provenance" type="xcede:provenance_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="statistic" type="xcede:statistic_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="provenance_t">
+    <xsd:sequence>
+      <xsd:group ref="xcede:provenance_g"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:string"/>
+  </xsd:complexType>
+
+  <xsd:group name="provenance_g">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">Info related to data provenance (derivation history, processing tools used, versions, etc.).</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="processStep" type="xcede:processStep_t" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="processStep_t">
+    <xsd:sequence>
+      <xsd:element name="programName" type="xcede:mixedType_t"/>
+      <xsd:element name="programArgument" type="xcede:mixedType_t"/>
+      <xsd:element name="version" type="xcede:mixedType_t"/>
+      <xsd:element name="timeStamp" type="xcede:mixedType_t"/>
+      <xsd:element name="cvs" type="xcede:mixedType_t" minOccurs="0"/>
+      <xsd:element name="user" type="xcede:mixedType_t"/>
+      <xsd:element name="machine" type="xcede:mixedType_t"/>
+      <xsd:element name="platform" type="xcede:mixedType_t"/>
+      <xsd:element name="platformVersion" type="xcede:mixedType_t"/>
+      <xsd:sequence minOccurs="0">
+        <xsd:element name="compilerName" type="xcede:mixedType_t"/>
+        <xsd:element name="compilerVersion" type="xcede:mixedType_t"/>
+      </xsd:sequence>
+      <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+        <xsd:element name="libName" type="xcede:mixedType_t"/>
+        <xsd:element name="libVersion" type="xcede:mixedType_t"/>
+      </xsd:sequence>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="mixedType_t" mixed="true"/>
+
+  <xsd:complexType name="statistic_t">
+    <xsd:group ref="xcede:statistic_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="statistic_g">
+    <xsd:sequence>
+      <xsd:element name="sourceData" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="process" type="xsd:string" maxOccurs="unbounded"/>
+      <xsd:element name="provenanceID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="description" type="xsd:string"/>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+  <xsd:complexType name="pCorrected_t">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:float">
+        <xsd:attribute name="correctionType" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+  <xsd:complexType name="thresh_t">
+    <xsd:sequence>
+      <xsd:element name="value" type="xsd:float"/>
+      <xsd:element name="pUncorrected" type="xsd:float"/>
+      <xsd:element name="pCorrected" type="xcede:pCorrected_t" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="threshType" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="extent_t">
+    <xsd:complexContent>
+      <xsd:extension base="xcede:location_t">
+        <xsd:sequence>
+          <xsd:element name="size" type="xsd:float"/>
+          <xsd:element name="pUncorrected" type="xsd:float" minOccurs="0"/>
+          <xsd:element name="pCorrected" type="xcede:pCorrected_t" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="locationFoci" type="xsd:string" use="required"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="setLevel_t">
+    <xsd:sequence>
+      <xsd:element name="numClusters" type="xsd:float"/>
+      <xsd:element name="p" type="xsd:float"/>
+      <xsd:element name="extents" type="xcede:extent_t" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="voxelLevel_t">
+    <xsd:sequence>
+      <xsd:element name="location" type="xcede:location_t" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="location_t">
+    <xsd:sequence>
+      <xsd:element name="label" type="xcede:label_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="X" type="xsd:float"/>
+      <xsd:element name="Y" type="xsd:float"/>
+      <xsd:element name="Z" type="xsd:float"/>
+      <xsd:element name="thresh" type="xcede:thresh_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="units" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="label_t">
+    <xsd:sequence>
+      <xsd:element name="value" type="xsd:string" maxOccurs="unbounded"/>
+      <xsd:element name="brodman" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="lateralization">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="left"/>
+            <xsd:enumeration value="right"/>
+            <xsd:enumeration value="bilateral"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="atlas" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="fwhm_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en"> Smoothness FWHM of the parametric map.  Units are in mm, voxels, etc.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fwhm" type="xsd:float" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="fwhmUnits" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="searchVol_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en"> Volume searched in the parametric map.  Units are in mm, voxels, resels, etc.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="S" type="xsd:float"/>
+    </xsd:sequence>
+    <xsd:attribute name="searchUnits" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="vox_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en"> Voxel size.  Units are in mm, cm, etc.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="vox" type="xsd:float" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="voxelUnits" type="xsd:string" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType name="activationParams_t">
+    <xsd:sequence>
+      <xsd:element name="thresh" type="xcede:thresh_t" maxOccurs="2"/>
+      <xsd:element name="expVoxPerCluster" type="xsd:float"/>
+      <xsd:element name="expNumClusters" type="xsd:float"/>
+      <xsd:element name="df" type="xsd:float" maxOccurs="unbounded"/>
+      <xsd:element name="fwhmSmoothness" type="xcede:fwhm_t" maxOccurs="unbounded"/>
+      <xsd:element name="searchVol" type="xcede:searchVol_t" maxOccurs="unbounded"/>
+      <xsd:element name="voxelSize" type="xcede:vox_t" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="activation_t">
+    <xsd:complexContent>
+      <xsd:extension base="xcede:statistic_t">
+        <xsd:sequence>
+          <xsd:element name="activationParams" type="xcede:activationParams_t" minOccurs="0"/>
+          <xsd:element name="clusters" type="xcede:setLevel_t"/>
+          <xsd:element name="voxel" type="xcede:voxelLevel_t"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="simpleStatisticList_t">
+    <xsd:complexContent>
+      <xsd:extension base="xcede:statistic_t">
+        <xsd:sequence>
+          <xsd:element name="item" type="xcede:compactValue_t" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  
+  <xsd:complexType name="acqProtocol_t">
+    <xsd:group ref="xcede:acqProtocol_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="acqProtocol_g">
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="taxonomicClass" type="xcede:taxonomicClass_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="name" type="xsd:string"/>
+      <xsd:element name="acqParam" type="xcede:protocolDescriptor_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="protocolDescriptor_t">
+    <xsd:simpleContent>
+      <xsd:extension base="xcede:convertedCompactValue_t">
+        <xsd:attribute name="description" type="xsd:string"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="expProtocol_t">
+    <xsd:group ref="xcede:expProtocol_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="expProtocol_g">
+    <xsd:sequence>
+      <xsd:element name="ID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="taxonomicClass" type="xcede:taxonomicClass_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="name" type="xsd:string"/>
+      <xsd:element name="events" type="xcede:events_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+  
+  <xsd:complexType name="events_t">
+    <xsd:sequence>
+      <xsd:element name="params" type="xcede:eventparams_t" minOccurs="0"/>
+      <xsd:element name="event" type="xcede:event_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="eventvalue_t">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="type">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:enumeration value="number"/>
+              <xsd:enumeration value="string"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:attribute>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="eventparams_t">
+    <xsd:sequence>
+      <xsd:element name="firstmritime" type="xsd:float" minOccurs="0"/>
+      <xsd:element name="value" type="xcede:eventvalue_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="event_t">
+    <xsd:sequence>
+      <xsd:element name="onset" type="xsd:float" minOccurs="0"/>
+      <xsd:element name="duration" type="xsd:float" minOccurs="0"/>
+      <xsd:element name="value" type="xcede:eventvalue_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="type" type="xsd:string" use="optional"/>
+    <xsd:attribute name="units" type="xsd:string" use="optional"/>
+    <xsd:attribute name="name" type="xsd:string" use="optional"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="annotation_t">
+    <xsd:group ref="xcede:annotation_g"/>
+  </xsd:complexType>
+
+  <xsd:group name="annotation_g">
+    <xsd:sequence>
+      <xsd:element name="text" type="xsd:string"/>
+      <xsd:element name="annotator" type="xsd:string"/>
+      <xsd:element name="timeStamp" type="xsd:dateTime" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="splice_up_t">
+    <xsd:complexContent>
+      <xsd:extension base="xcede:splice_t">
+        <xsd:attribute name="direction" type="xsd:string" use="required" fixed="up"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="splice_down_t">
+    <xsd:complexContent>
+      <xsd:extension base="xcede:splice_t">
+        <xsd:attribute name="direction" type="xsd:string" use="required" fixed="down"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="splice_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">
+        This is a reference to a particular node in the spliced file.
+        The XLink href should point to a single node using
+        XPointer syntax in the fragment of the URL.
+        This node will be "spliced in" to replace the parent
+        of this link element.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="type" type="xlink:type"/>
+    <xsd:attribute name="href" type="xlink:href"/>
+    <xsd:attribute name="description" type="xsd:string"/>
+  </xsd:complexType>
+
+  <xsd:complexType name="extendedDescriptor_t">
+    <xsd:sequence>
+      <xsd:element name="name" type="xsd:string"/>
+      <xsd:element name="description" type="xsd:string"/>
+      <xsd:element name="value" type="xcede:value_t"/>
+      <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="assessment_t">
+    <xsd:sequence>
+      <xsd:element name="taxonomicClass" type="xcede:taxonomicClass_t" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="name" type="xsd:string"/>
+      <xsd:element name="description" type="xsd:string"/>
+      <xsd:element name="assessmentValue" maxOccurs="unbounded">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="summaryName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="summaryValue" type="xcede:value_t" minOccurs="0"/>
+            <xsd:element name="normalizedValue" type="xcede:value_t" minOccurs="0"/>
+            <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="annotation" type="xcede:annotation_t" minOccurs="0" maxOccurs="unbounded"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="taxonomicClass_t">
+    <xsd:sequence>
+      <xsd:element name="scheme" type="xsd:string"/>
+      <xsd:element name="ID" type="xsd:string"/>
+      <xsd:element name="fullPath" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="valueTypes_t">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="float"/>
+      <xsd:enumeration value="boolean"/>
+      <xsd:enumeration value="varchar"/>
+      <xsd:enumeration value="integer"/>
+      <xsd:enumeration value="URI"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:complexType name="value_t">
+    <xsd:sequence>
+      <xsd:element name="actualValue" type="xsd:string"/>
+      <xsd:element name="dataClassification" type="xcede:valueTypes_t" minOccurs="0"/>
+      <xsd:element name="units" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="compactValue_t">
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="type" type="xcede:valueTypes_t"/>
+        <xsd:attribute name="units" type="xsd:string" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="convertedCompactValue_t">
+    <xsd:annotation>
+      <xsd:documentation xml:lang="en">This allows optional attributes to specify the original value and units of this data, if the value was converted to standard units to comply with a given specification.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xcede:compactValue_t">
+        <xsd:attribute name="originalvalue" type="xsd:string" use="optional"/>
+        <xsd:attribute name="originalunits" type="xsd:string" use="optional"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+</xsd:schema>
