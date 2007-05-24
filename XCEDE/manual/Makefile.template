@@ -1,0 +1,32 @@
+CUSTOMXSL=docbook_custom.xsl
+DOCBOOKXSL=/usr/share/sgml/docbook/xsl-stylesheets/fo/docbook.xsl
+XALANPATH=${HOME}/xml/xalan-j_2_7_0
+XALANJAR=${XALANPATH}/xalan.jar
+XERCESIMPLJAR=${XALANPATH}/xercesImpl.jar
+XMLAPISJAR=${XALANPATH}/xml-apis.jar
+DOCBOOKXALANEXT=xalan27.jar
+FOP=${HOME}/xml/fop-0.93/fop
+
+all: manual_full.pdf
+
+rebuild: clean all
+
+clean:
+	rm -f manual_full.xml manual_full.fo manual_full.pdf
+
+manual_full.xml: manual.xml chap_intro.xml chap_hierarchy.xml chap_events.xml chap_catalog.xml chap_data_resource.xml chap_provenance.xml chap_assessment.xml chap_protocol.xml app_schema.xml
+	xmllint --xinclude manual.xml > manual_full.xml
+
+manual_full.fo: manual_full.xml ${CUSTOMXSL}
+	java -cp ${DOCBOOKXALANEXT}:${XALANJAR}:${XERCESIMPLJAR}:${XMLAPISJAR} \
+		-Djava.endorsed.dirs=${XALANPATH} \
+		org.apache.xalan.xslt.Process \
+		-PARAM use.extensions 1 \
+		-PARAM textinsert.extension 1 \
+		-PARAM hyphenate.verbatim 1 \
+		-PARAM xref.with.number.and.title 0 \
+		-XSL ${CUSTOMXSL} -IN manual_full.xml -OUT manual_full.fo
+#	xsltproc --stringparam use.extensions 1 --stringparam textinsert.extension 1 --stringparam hyphenate.verbatim 1 ${CUSTOMXSL} manual_full.xml > manual_full.fo
+
+manual_full.pdf: manual_full.fo
+	${FOP} -fo manual_full.fo -pdf manual_full.pdf

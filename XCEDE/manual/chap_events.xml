@@ -4,7 +4,57 @@
 
   <section>
     <title>Overview</title>
-    <para><emphasis>Events</emphasis> in XCEDE are merely time intervals annotated with arbitrary metadata.</para>
+    <para><emphasis>Events</emphasis> in XCEDE are merely time intervals annotated with arbitrary metadata.  This component can be used to represent several types of behavioral data, statistics calculated on time series data, or any other metadata whose proper interpretation requires that it be associated with a particular time interval.</para>
+    <para>An XCEDE event consists of the following:</para>
+    <variablelist>
+      <varlistentry>
+        <term>onset</term>
+        <listitem>
+          <para>The onset (in seconds) of the time interval.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>duration</term>
+        <listitem>
+          <para>The duration (in seconds) of the time interval.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>type</term>
+        <listitem>
+          <para>Usage of this field is user-specified</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>name</term>
+        <listitem>
+          <para>Usage of this field is user-specified</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>units</term>
+        <listitem>
+          <para>The units of the onset and duration fields.  This field is optional, and it is recommended that users of the schema prescribe an implicit unit of measurement and use it consistently.  In that case, this field may be considered informational only.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>values</term>
+        <listitem>
+          <para>A <emphasis>value</emphasis> adds named metadata to this event.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>The following instance shows how each of these fields may be populated.</para>
+    <programlisting><![CDATA[<event type="visual" name="event#1" units="secs">
+  <onset>0</onset>
+  <duration>2</duration>
+  <value name="shape">square</value>
+  <value name="shapecolor">red</value>
+</event>]]></programlisting>
+    <para>Event elements are stored within the <literal>&lt;data&gt;</literal> element of an <literal>&lt;acquisition&gt;</literal>.  The <literal>&lt;data&gt;</literal> element should be of type <literal>events_t</literal> (using <literal>xsi:type</literal> &#x2014; see examples below).</para>
+    <para>All onsets are relative to an arbitrary time reference.  Typically, time 0 (zero) could mean the start of data acquisition.  An event list may be interpreted as concurrent with data in other <literal>&lt;acquisition&gt;</literal> elements (which could be other event lists).  If so, the same time reference should be used in all concurrent acquisition data.</para>
+    <para>There is no ordering constraint on events in a list.  Applications should depend on using the <literal>&lt;onset&gt;</literal> elements to order the events chronologically if they so desire.</para>
+    <para>An optional <literal>&lt;params&gt;</literal> element may precede the first event in a list, and this element stores arbitrary metadata (using the same <literal>&lt;value&gt;</literal> element used above) that apply to all events in the list.</para>
   </section>
   <section>
     <title>Examples</title>
@@ -20,7 +70,7 @@
       <title>XCEDE Events example</title>
       <programlisting><![CDATA[<XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <acquisition ID="my_wm1_events">
+  <acquisition ID="my_events">
     <data xsi:type="events_t">
       <event type="visual">
         <onset>0</onset>
@@ -59,8 +109,5 @@
 ]]></programlisting>
     </figure>
     <para>Each stimulus and each response are stored as separate event elements.  Note that all the visual events appear first in the XCEDE file, then the audio events, and then the response event.  This ordering is arbitrary, and the events could easily have been presented in chronological (or random!) order.  The semantic interpretation of the events within an event list must not depend on their document order.</para>
-  </section>
-  <section>
-    <title>Reference</title>
   </section>
 </chapter>
