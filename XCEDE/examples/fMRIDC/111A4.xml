@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.xcede.org/xcede-2 http://www.xcede.org/xcede-2/xcede-2.0-core.xsd">
+ 
+ <project ID="111A4:1">
+ 
+  <resourceList>
+   <resource xsi:type="dcResource_t" name="PubMed">
+    <title>Hierarchical Organization of Human Auditory Cortex Revealed by Functional Magnetic Resonance Imaging</title>
+    <description>The concept of hierarchical processing--that the sensory world is broken down into basic features later integrated into more complex stimulus preferences--originated from investigations of the visual cortex. Recent studies of the auditory cortex in nonhuman primates revealed a comparable architecture, in which core areas, receiving direct input from the thalamus, in turn, provide input to a surrounding belt. Here functional magnetic resonance imaging (fMRI) shows that the human auditory cortex displays a similar hierarchical organization: pure tones (PTs) activate primarily the core, whereas belt areas prefer complex sounds, such as narrow-band noise bursts.</description>
+    <publisher>Journal of Cognitive Neuroscience</publisher>
+    <contributor order="1">Wessinger CM</contributor>
+    <contributor order="2">VanMeter J</contributor>
+    <contributor order="3">Tian B</contributor>
+    <contributor order="4">Van Lare J</contributor>
+    <contributor order="5">Pekar J</contributor>
+    <contributor order="6">Rauschecker JP</contributor>
+    <date>January 1, 2001</date>
+    <type>Journal</type>
+    <identifier>PMID: 11224904</identifier>
+    <identifier>J Cogn Neurosci. 2001 Jan 1;13(1):1-7.</identifier>
+   </resource> 
+   <resource xsi:type="informationResource_t" name="fMRIDC">
+    <uri>http://www.fmridc.org/f/fmridc/accession/2-2001-111A4</uri>
+   </resource>
+  </resourceList>
+  
+  <projectInfo>
+   <description>Four participants underwent 12 functional runs, with each run consisting of four 32-second cycles divided into 16-second stimulus-ON and stimulus-OFF epochs (for a total time of 128 seconds per functional run). In order to minimize functional activation associated with the scanner sound, a sparsesampling technique was used that allowed for silence between volume acquisitions, that is, a repetition time (TR) of 8000 ms was used, with volume collection being accomplished during the first 2000 ms. Thus, two timepoints were collected during each 16-second epoch, resulting in 16 timepoints per functional run, resulting in a total of 192 timepoints being collected for each participant. Seven participants underwent six functional runs, with each run consisting of eight 32-second cycles divided into 16-second stimulus-ON and stimulus-OFF epochs (for a total time of 256 seconds per functional run). The same sparse sampling technique described above was used, resulting in 32 timepoints per functional run, resulting in a total of 192 timepoints being collected for each participant.</description>
+  </projectInfo>
+  
+  <subjectList>
+   <subjectRef>2-2001-111A4-01</subjectRef>
+   <subjectRef>2-2001-111A4-02</subjectRef>
+   <subjectRef>2-2001-111A4-03</subjectRef>
+   <subjectRef>2-2001-111A4-04</subjectRef>
+   <subjectRef>2-2001-111A4-05</subjectRef>
+   <subjectRef>2-2001-111A4-06</subjectRef>
+   <subjectRef>2-2001-111A4-07</subjectRef>
+   <subjectRef>2-2001-111A4-08</subjectRef>
+   <subjectRef>2-2001-111A4-09</subjectRef>
+   <subjectRef>2-2001-111A4-10</subjectRef>
+   <subjectRef>2-2001-111A4-11</subjectRef>
+  </subjectList>
+  
+ </project>
+ 
+ <subject ID="2-2001-111A4-01">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_144">f</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-02">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_143">m</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-03">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_144">f</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-04">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_144">f</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-05">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_143">m</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-06">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_143">m</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-07">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_143">m</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-08">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_144">f</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-09">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_144">f</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-10">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_143">m</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+ <subject ID="2-2001-111A4-11">
+  <subjectInfo>
+   <description></description>
+   <sex termID="birnlexMain_143">m</sex>
+   <species termID="birnOrgAnatomy_366">Homo sapiens</species>
+  </subjectInfo>
+ </subject>
+ 
+  <visit>
+   <timestamp>8/27/1997</timestamp>
+   <subjectRef>2-2001-111A4-01</subjectRef> 
+   <studyList>
+    <study>
+     <episodeList>
+      <episode>
+       
+      </episode>
+     </episodeList>
+    </study>
+   </studyList>
+  </visit>
+
+</XCEDE>

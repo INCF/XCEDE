@@ -139,6 +139,7 @@
 						</xs:complexType>
 					</xs:element>
 				</xs:sequence>
+				<xs:attribute name="researchGroup" use="optional"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
