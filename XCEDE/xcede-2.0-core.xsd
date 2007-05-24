@@ -208,7 +208,7 @@
 					<xs:choice minOccurs="0">
 						<xs:element name="dataResource" type="abstract_resource_t">
 							<xs:annotation>
-								<xs:documentation>A resource that contains acquistion data (i.e. a URL to a document that contains the data) . The resource could be any format: text file, a binary file, or an XCEDE xml document, etc</xs:documentation>
+								<xs:documentation>A resource that contains acquistion data (i.e. a URL to a document that contains the data) . The resource could be any format: text file, a binary file, or an XCEDE xml document, etc.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 						<xs:element name="dataResourceRef" type="ref_t">
@@ -761,6 +761,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="binaryDataResource_t">
+		<xs:annotation>
+			<xs:documentation>The parent type (abstract_resource_t) can describe a stream of data.  The extensions in this derived type (binaryDataResource_t) tell you that this data stream is composed of a sequence of units of a given data type and byte order.  If the </xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="abstract_resource_t">
 				<xs:sequence>
@@ -795,11 +798,19 @@
 							</xs:restriction>
 						</xs:simpleType>
 					</xs:element>
+					<xs:element name="compression" type="xs:string" minOccurs="0">
+						<xs:annotation>
+                                                  <xs:documentation>If this element is present, the files pointed to by the uri elements are compressed data files.  The only compression method specifically named by this specification is "gzip".  As a special case for binaryDataResource_t and derived types, files compressed with gzip and containing a .gz suffix can be referenced in the uri element without the suffix.  If a file pointed to by the URI does not exist, the application should search for the same file with the .gz suffix appended -- if it exists, use that file and act as if the compression element had been specified with the value "gzip".  This allows the referenced files to be compressed or uncompressed at will (as long as the .gz suffix is appropriately added/removed from the filename), without needing to change the URI's in this element.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="dimensionedBinaryDataResource_t">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This type adds multi-dimensionality to the (uni-dimensional) data stream represented by binaryDataResource_t.</xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
@@ -809,6 +820,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="mappedBinaryDataResource_t">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">This type places the multi-dimensional data array (say a 3-dimensional cube) into a coordinate space (say MR scanner coordinates).</xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
@@ -822,21 +836,25 @@
 			<xs:documentation xml:lang="en">This element stores information about one of the N dimensions in the data record.  Multiple instances of this element are ordered from fastest-moving to slowest-moving.  These elements provide information to describe the size (in data elements) of the N-dimensional bounding box for the data, and in some cases to describe the mapping of indexes within this bounding box to 'real-world' coordinates.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="size" type="xs:int" minOccurs="0">
+			<xs:element name="size" type="xs:int">
 				<xs:annotation>
 					<xs:documentation xml:lang="en">The number of elements in the data along one traversal of this dimension.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
-		<xs:attribute name="label" type="xs:string">
+		<xs:attribute name="label" type="xs:string" minOccurs="0">
 			<xs:annotation>
-				<xs:documentation xml:lang="en">This is a label for the dimension.  The first three spatial dimensions (or however many exist) must be labeled, in order, 'x', 'y', and 'z'.  The first temporal dimension must be labeled 't'.
-        The data record allows the writer to specify some measure of data permutation/dimension merging when data is read and presented to a higher application level.  This is useful, for example, if the data is stored in Siemens' Mosaic DICOM format, where slices of a 3-D volume are arranged to look like they are tiled onto a square 2-D area.  In this case, what would normally be called the 'z' dimension has two forks, one that occurs before the 'y' dimension (the first row in the data covers the first row of several slices), and one that occurs after the 'y' dimension.  If, as in this case, there are two or more dimensions that should be merged into one, they should be labeled 'DIMTYPE-splitRANK' where DIMTYPE is the name of the resultant merged dimension, and RANK specifies the order in which all 'split' dimensions of this type will be merged.  After merging, the resultant dimension should have the values of the highest-ranked DIMTYPE split dimension, except for the 'size' element, which will be the product of the sizes of all DIMTYPE split dimensions.  The position of the resultant dimension should be the position of the highest-ranked DIMTYPE split dimension.  The data itself should also be reordered to reflect the new dimension structure.</xs:documentation>
+				<xs:documentation xml:lang="en">This is a label for the dimension.  The first three spatial dimensions (or however many exist) must be labeled, in order, 'x', 'y', and 'z'.  The first temporal dimension must be labeled 't'.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
+                <xs:attribute name="splitrank" type="xs:string" minOccurs="0">
+                  <xs:annotation>
+                    <xs:documentation>If this attribute exists, this dimension is a "split" dimension, and this dimension must be "merged" with one or more other dimensions (with the same label) before presenting the data to the application.  This is useful, for example, if the data is stored in Siemens' Mosaic DICOM format, where slices of a 3-D volume are arranged to look like they are tiled onto a square 2-D area.  In this case, what would normally be called the 'z' dimension has two forks, one that occurs before the 'y' dimension (the first row in the data covers the first row of several slices), and one that occurs after the 'y' dimension.  If, as in this case, there are two or more dimensions that should be merged into one, both component dimensions should have the label 'z', but have splitrank attributes "1" and "2", which specifies the order in which all 'split' dimensions of the same label will be merged.  After merging, the resultant 'z' dimension element should contain the same children of the highest-ranked split 'z' dimension, except for the 'size' element, which will be the product of the sizes of all 'z' split dimensions.  The position of the resultant dimension should be the position of the highest-ranked 'z' split dimension.  The data itself should also be reordered to reflect the new dimension structure.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
 		<xs:attribute name="outputselect" type="xs:string" use="optional">
 			<xs:annotation>
-				<xs:documentation xml:lang="en">In the same way that the 'label' attribute allows you to specify dimensions that should be merged before presenting the data to an application, this attribute specifies a data filter along this dimension.  If this attribute exists, it should contain a whitespace-separated list of indices (indexed starting at 0).  Only data points along this dimension that occur in the index list should be presented to the application.  Likewise, the 'size' of the dimension, after selection, should be updated to reflect the new size of this dimension (which should be the number of indices in the content of this attribute).</xs:documentation>
+				<xs:documentation xml:lang="en">In the same way that the 'splitrank' attribute allows you to specify dimensions that should be merged before presenting the data to an application, this attribute specifies a data filter along this dimension.  If this attribute exists, it should contain a whitespace-separated list of indices (indexed starting at 0).  Only data points along this dimension that occur in the index list should be presented to the application.  Likewise, the 'size' of the dimension, after selection, should be updated to reflect the new size of this dimension (which should be the number of indices in the content of this attribute).</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
@@ -891,7 +909,7 @@
 				</xs:attribute>
 				<xs:attribute name="size" type="xs:unsignedLong">
 					<xs:annotation>
-						<xs:documentation>This specifies the size(s) of this block in the resource specified by the 'uri' element.  If this attribute does not exist or is empty, it is calculated using the dimension and elementtype element.</xs:documentation>
+						<xs:documentation>This specifies the size of this block (in bytes) in the resource specified by the 'uri' element.  If this attribute does not exist or is empty, it is calculated using the dimension and elementtype element.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
 			</xs:extension>
@@ -968,6 +986,9 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="event_t">
+		<xs:annotation>
+			<xs:documentation>This element represents an interval of time, with arbitrary metadata (in the value element).</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="onset" type="xs:float" minOccurs="0"/>
 			<xs:element name="duration" type="xs:float" minOccurs="0"/>
@@ -977,12 +998,15 @@
 		<xs:attribute name="type" type="xs:string" use="optional"/>
 		<xs:attribute name="units" type="xs:string" use="optional">
 			<xs:annotation>
-				<xs:documentation>This attribute is optional, but an group using this schema should agree on, use, and enforce the same measurement units consistently, to avoid the need for unit conversion in an application.</xs:documentation>
+				<xs:documentation>This attribute is optional, but an group using this schema should agree on, use, and enforce measurement units consistently, to avoid the need for unit conversion in an application.</xs:documentation>
 			</xs:annotation>
                 </xs:attribute>
 		<xs:attribute name="name" type="xs:string" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="eventValue_t">
+		<xs:annotation>
+			<xs:documentation>User-specified metadata associated with an event.</xs:documentation>
+		</xs:annotation>
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
 				<xs:attribute name="name" type="xs:string"/>
@@ -991,6 +1015,9 @@
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="eventParams_t">
+		<xs:annotation>
+			<xs:documentation>These value elements apply to all events in the parent event list.</xs:documentation>
+		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="value" type="eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
