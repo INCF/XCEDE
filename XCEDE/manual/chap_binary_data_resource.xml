@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter>
+  <title>Binary Data Resources</title>
+
+  <section>
+    <title>Overview</title>
+    <para>The XCEDE <emphasis>Binary Data Resource</emphasis> component is used to provide a generic interface to a binary data stream stored in one or more external files.  Any of the binary data resource types described in this chapter can be used anywhere an abstract_resource_t is called for (with the appropriate <literal>xsi:type</literal> attribute); in the current XCEDE schema, these locations are the top-level <literal>&lt;resource&gt;</literal> element and the <literal>&lt;dataResource&gt;</literal> child element of <literal>&lt;acquisition&gt;</literal>.</para>
+    <para>XCEDE provides multiple layers of derived types to store more specialized information about the binary data.  The base type and each of the derived types are described in turn.</para>
+
+    <formalpara>
+      <title><literal>abstract_resource_t</literal></title>
+      
+      <para>The abstract base type <literal>abstract_resource_t</literal> provides a few elements and attributes that are especially important for binary data resources.  In particular, the <literal>&lt;uri&gt;</literal> element and its <literal>offset</literal> and <literal>size</literal> attributes point to a <quote>chunk</quote> of data stored in an external file.  A series of <literal>&lt;uri&gt;</literal> elements define a stream of data that may be described in greater detail by the data types described below.</para>
+    </formalpara>
+
+    <formalpara>
+      <title><literal>binaryDataResource_t</literal></title>
+      
+      <para>This type derives from <literal>abstract_resource_t</literal> and allows an application to interpret the data stream as a sequence of data items with a given data type (<literal>&lt;elementType&gt;</literal>) and byte order(<literal>&lt;byteOrder&gt;</literal>).</para>
+    </formalpara>
+
+    <formalpara>
+      <title><literal>dimensionedBinaryDataResource_t</literal></title>
+      
+      <para>The data stream, until now, could only be interpreted as a one-dimensional sequence.  This type provides <literal>&lt;dimension&gt;</literal> elements that allow the data stream to be interpreted as a multi-dimensional array of data items.  Each dimension has a <literal>&lt;size&gt;</literal> and a <literal>&lt;label&gt;</literal>, as well as the ability to discard subsets of the data in the data stream (using the <literal>outputselect</literal> attribute).</para>
+    </formalpara>
+
+    <formalpara>
+      <title><literal>mappedBinaryDataResource_t</literal></title>
+      
+      <para>This type places the multi-dimensional array of data items represented by <literal>dimensionedBinaryDataResource_t</literal> into an arbitrary coordinate system.</para>
+    </formalpara>
+  </section>
+
+  <section>
+    <title>Examples</title>
+
+    <para>Several examples of binary data are presented here, each showing the use of one of the different binary data types described in this chapter.</para>
+
+    <section>
+      <title><literal>binaryDataResource_t</literal></title>
+      
+      <para>The basic binary data resource type describes a sequence of data items.  For example, consider a data file (<literal>random_data_file.bin</literal>) containing 2048 random 32-bit floating point numbers, stored in little-endian (least-significant-byte first) order.  The <literal>&lt;dataResource&gt;</literal> describing this data is shown in <xref linkend='binary_data_resource.simple_example'/>.</para>
+
+      <figure id="binary_data_resource.simple_example">
+        <title>Simple <literal>binaryDataResource_t</literal> example</title>
+        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
+  <uri offset="0" size="8192">random_data_file.bin</uri>
+  <elementType>float32</elementType>
+  <byteOrder>lsbfirst</byteOrder>
+</dataResource>]]></programlisting>
+      </figure>
+
+      <para>Note the <literal>xsi:type</literal> specifying that this <literal>&lt;dataResource&gt;</literal> element is of type <literal>binaryDataResource_t</literal>.  (The <literal>xsi:</literal> prefix should have already been declared previously in the XML file using something similar to <literal>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</literal>)</para>
+
+      <para>The <literal>&lt;elementType&gt;</literal> element is restricted one of several pre-defined strings (see the schema for details).  The <literal>&lt;byteOrder&gt;</literal> element must be <literal>lsbfirst</literal> for little-endian data or <literal>msbfirst</literal> for big-endian data.</para>
+
+      <para>If the <literal>&lt;compression&gt;</literal> element is specified, it specifies that the file(s) pointed to by the <literal>&lt;uri&gt;</literal> elements are compressed.  The content of the element should specify which type of compression (the only compression method specifically recognized by this specification is <literal>gzip</literal>).  An example of this is shown in <xref linkend='binary_data_resource.gzip_example'/>.</para>
+
+      <figure id="binary_data_resource.gzip_example">
+        <title><literal>binaryDataResource_t</literal> with compression</title>
+        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
+  <uri offset="0" size="8192">random_data_file.bin.gz</uri>
+  <elementType>float32</elementType>
+  <byteOrder>lsbfirst</byteOrder>
+  <compression>gzip</compression>
+</dataResource>]]></programlisting>
+      </figure>
+
+      <para>As a special case, applications may transparently support data files compressed with gzip, even if only the uncompressed file is referenced in the <literal>&lt;uri&gt;</literal> element.  If <literal>random_data_file.bin</literal> did not exist, but <literal>random_data_file.bin.gz</literal> did, the application may uncompress the data itself and use the uncompressed data as if it had came from the file <literal>random_data_file.bin</literal>.  Note that it would be an error to reference the uncompressed file <literal>random_data_file.bin</literal> and yet say that it was compressed using <literal>&lt;compression&gt;gzip&lt;/compression&gt;</literal>.  Compressed files that do not have the <literal>.gz</literal> suffix must use the explicit <literal>compression</literal> element.</para>
+
+    </section>
+
+    <section>
+      <title><literal>dimensionedBinaryDataResource_t</literal></title>
+      
+      <para>Consider a camera that acquires an image using a 256x256 matrix of big-endian 32-bit signed integer voxels.  This data has two spatial dimensions, which, by convention, we label <quote>x</quote>, and <quote>y</quote> (and <quote>z</quote> if a third spatial dimension is needed, and <quote>t</quote> if there is a time dimension).  <xref linkend='binary_data_resource.dimension_example'/> shows how this data might be represented.</para>
+
+      <figure id="binary_data_resource.dimension_example">
+        <title><literal>dimensionedBinaryDataResource_t</literal> example</title>
+        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
+  <uri offset="0" size="262144">rawdata.img</uri>
+  <elementType>int32</elementType>
+  <byteOrder>msbfirst</byteOrder>
+  <dimension label="x">
+    <size>256</size>
+  </dimension>
+  <dimension label="y">
+    <size>256</size>
+  </dimension>
+</dataResource>]]></programlisting>
+      </figure>
+
+      <para>A more complicated example is given by data generated by a Siemens MR scanner.  In this case, the data represents a three-dimensional 64x64x32 image, stored in DICOM format.  However, because the earlier versions of the DICOM format did not support three-dimensional data in one file, Siemens came upon the clever idea to <quote>tile</quote> the 32 two-dimensional slices across a two-dimensional grid (<xref linkend='binary_data_resource.tile'/>).</para>
+
+    <figure id="binary_data_resource.tile">
+      <title>A <quote>tiled</quote>image</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/binary_data_resource_tile.png" format="png"/> </imageobject>
+      </mediaobject>
+    </figure>
+
+    </section>      
+
+  </section>
+
+</chapter>
