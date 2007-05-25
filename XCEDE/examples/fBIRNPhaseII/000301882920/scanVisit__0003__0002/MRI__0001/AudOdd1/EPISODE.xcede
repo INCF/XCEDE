@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <episode ID="AudOdd1">
+    <episodeInfo xsi:type="fipsEpisodeInfo_t">
+      <!-- Local naming convention -->
+      <nameLocal>wm1</nameLocal>
+      <!-- nameStandard is the SRB location and standard naming convention -->
+      <nameStandard>wm1</nameStandard>
+      <!-- This ID linked to segmentID in nc_expSegment table of HID; this element can be left blank for automatic numbering -->
+      <segmentID/>
+      <!-- seriesTime is the time when the series starts.  It's in HH:MM:SS format where HH is between 00 and 23 -->
+      <seriesTime>12:26:00</seriesTime>
+      <!-- any notes about the series -->
+      <comment>No exceptions happened in this series. </comment>
+      <!-- type describes the scan type as functional, structural, or exclude -->
+      <type>functional</type>
+      <!-- paradigm describes the type of stimulus the participant is engaged in, NO SPACES ALLOWED -->
+      <paradigm>working_memory</paradigm>
+      <paradigmVersion>1</paradigmVersion>
+      <!-- the Nth run for that task within this Study -->
+      <number>1</number>
+      <!-- slice order must be of the form X1,X2,X3,,...,XN with as many entries as there are slices in each volume.  Slice indices start at 1.  The first number in the list is the index of the slice that was acquired first.  For sequential data, this is most likely 1,2,3,4,5,...,numslices (unless?) -->
+      <sliceOrder>1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30</sliceOrder>
+      <!-- If your scanner acquires AND STORES volumes at the beginning of the acquisition that need to be ignored for analysis, AND you are uploading these volumes, please enter the number of volumes here.  i.e. this should only be non-zero if you are uploading data with more volumes than is expected for this paradigm -->
+      <skipInitialVols>0</skipInitialVols>
+      <!-- Boiler plate FIPS analysis stuff...nothing needs to be done here -->
+      <analysisLevel>
+        <level> none </level>
+        <name>DICOM</name>
+      </analysisLevel>
+    </episodeInfo>
+    <acquisitionRef>NIFTI/ACQUISITION.xcede#xpointer(//xcede:acquisition[@ID='AudOdd1_MR'])</acquisitionRef>
+    <acquisitionRef>EVENTS.xcede#xpointer(//xcede:acquisition[@ID='AudOdd1_events'])</acquisitionRef>
+  </episode>
+</XCEDE>
