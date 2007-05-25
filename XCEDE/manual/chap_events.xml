@@ -45,7 +45,7 @@
       </varlistentry>
     </variablelist>
     <para>The following instance shows how each of these fields may be populated.</para>
-    <programlisting><![CDATA[<event type="visual" name="event#1" units="secs">
+    <programlisting><![CDATA[<event type="visual" name="event#1" units="sec">
   <onset>0</onset>
   <duration>2</duration>
   <value name="shape">square</value>
