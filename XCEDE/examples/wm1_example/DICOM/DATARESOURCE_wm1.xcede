@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<XCEDE xmlns='http://www.nbirn.net/xcede' xmlns:xcede='http://www.nbirn.net/xcede' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<XCEDE xmlns='http://www.xcede.org/xcede-2' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
   <acquisition ID='my_wm1_id'>
 <!--
     <acquisitionInfo xsi:type="mrAcquisitionInfo_t">
@@ -27,7 +27,7 @@
       <acqParam type='varchar' name='discacq'>0</acqParam>
     </acquisitionInfo>
 -->
-    <dataResource xsi:type="xcede:mrImageResource_t" format="DICOM">
+    <dataResource xsi:type="mappedBinaryDataResource_t" format="DICOM">
       <provenance>
         <processStep>
           <program>dicom2bxh</program>
@@ -4346,7 +4346,7 @@
       <gap>0</gap>
       <units>ms</units>
     </dimension>
-    <rasOrigin>106.56225 121.21983671875 -63.072710625</rasOrigin>
+    <originCoords>106.56225 121.21983671875 -63.072710625</originCoords>
   </dataResource>
 </acquisition>
 </XCEDE>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<XCEDE xmlns="http://www.nbirn.net/xcede" xmlns:xcede="http://www.nbirn.net/xcede" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
   <acquisition ID="my_wm1_events">
-	<data xsi:type="xcede:events_t">
+	<data xsi:type="events_t">
     <event>
       <onset>0.002</onset>
       <duration>6.000</duration>

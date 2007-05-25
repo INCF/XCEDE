@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XCEDE xmlns="http://www.nbirn.net/xcede" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <episode ID="wm1">
     <episodeInfo xsi:type="fipsEpisodeInfo_t">
       <!-- Local naming convention -->
