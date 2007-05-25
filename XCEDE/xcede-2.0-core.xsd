@@ -827,6 +827,11 @@
 			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
 					<xs:element name="dimension" type="mappedBinaryDataDimension_t" maxOccurs="unbounded"/>
+					<xs:element name="originCoords" type="xs:string" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">This is a coordinate tuple giving the location of the first item in the data.  For example, if this is an MR volume, this could be a triple giving the location in RAS coordinates of the first voxel in the data.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -889,7 +894,7 @@
 					</xs:element>
 					<xs:element name="units" type="xs:string" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation xml:lang="en">This stores the units used for all numeric values in this dimension element.  In MRI data, this should be 'ms' for all spatial dimensions ('x', 'y', 'z') and 'ms' for the temporal dimension 't'.</xs:documentation>
+							<xs:documentation xml:lang="en">This stores the units used for all numeric values in this dimension element.  In MRI data, this should be 'mm' for all spatial dimensions ('x', 'y', 'z') and 'ms' for the temporal dimension 't'.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
