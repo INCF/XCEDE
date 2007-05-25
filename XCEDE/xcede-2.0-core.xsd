@@ -31,7 +31,6 @@
 				<xs:element name="analysis" type="analysis_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="protocol" type="protocol_t" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="acquisitionProtocol" type="acquisitionProtocol_t" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="version" type="xs:string"/>
 		</xs:complexType>
@@ -107,7 +106,6 @@
 						</xs:complexType>
 					</xs:element>
 					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="assessment" type="assessment_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -204,6 +202,11 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
+					<xs:element name="projectRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="subjectRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="visitRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="studyRef" type="ref_t" minOccurs="0"/>
+					<xs:element name="episodeRef" type="ref_t" minOccurs="0"/>
 					<xs:element name="acquisitionInfo" type="acquisitionInfo_t" minOccurs="0"/>
 					<xs:choice minOccurs="0">
 						<xs:element name="dataResource" type="abstract_resource_t">
@@ -232,17 +235,34 @@
 			<xs:extension base="abstract_info_t"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<!--*********            Abstract types            *********-->
-	<xs:complexType name="abstract_acqProtocol_t" abstract="true">
+	<xs:complexType name="protocol_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
+			<xs:extension base="abstract_protocol_t">
 				<xs:sequence>
-					<xs:element name="name" type="xs:string"/>
-					<xs:element name="acqParam" type="protocolDescriptor_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="steps" minOccurs="0">
+						<xs:complexType>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="step" type="protocol_t"/>
+								<xs:element name="stepRef" type="ref_t"/>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="items" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="item" type="abstract_protocolItem_t" minOccurs="0" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>protocolItem_t implements a standard version of the abstract type</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<!--*********            Abstract types            *********-->
 	<xs:complexType name="abstract_container_t" abstract="true">
 		<xs:sequence>
 			<xs:element name="commentList" minOccurs="0">
@@ -305,6 +325,7 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="abstract_data_t"/>
+	<xs:complexType name="abstract_protocolItem_t"/>
 	<xs:complexType name="abstract_protocol_t" abstract="true">
 		<xs:sequence>
 			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
@@ -331,18 +352,6 @@
 		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
 	</xs:complexType>
 	<!--*********            Misc. types            *********-->
-	<xs:complexType name="acquisitionProtocol_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_acqProtocol_t"/>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="protocolDescriptor_t">
-		<xs:simpleContent>
-			<xs:extension base="xs:string">
-				<xs:attribute name="description" type="xs:string"/>
-			</xs:extension>
-		</xs:simpleContent>
-	</xs:complexType>
 	<xs:complexType name="ref_t">
 		<xs:simpleContent>
 			<xs:extension base="xs:string"/>
@@ -361,9 +370,9 @@
 										<xs:documentation>Block for describing things like informant, clinical rater, assessment date, etc</xs:documentation>
 									</xs:annotation>
 								</xs:element>
-								<xs:element name="assessmentValue" type="assessmentValue_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="assessmentItem" type="assessmentItem_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
-							<xs:attribute name="validated" type="xs:boolean" default="false">
+							<xs:attribute name="validated" type="xs:boolean">
 								<xs:annotation>
 									<xs:documentation>Indicates whether the instance has been validated (e.g. by reconciling double-entry instances).  There should be only one validated instance per assessment.</xs:documentation>
 								</xs:annotation>
@@ -380,35 +389,19 @@
 			<xs:extension base="acquisitionInfo_t"/>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="assessmentValue_t">
+	<xs:complexType name="assessmentItem_t">
 		<xs:sequence>
-			<xs:element name="itemText" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>'itemText' describes the text preceeding and following an assessment form item. It is different then 'itemName' which stores the shortened item identifier</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="leadText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-						<xs:element name="trailText" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="itemName" type="xs:string">
-				<xs:annotation>
-					<xs:documentation>'itemName' is a short identifier for the assessment item. 'itemText' should be used for the actual question text</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="valueStatus" type="xs:string">
+			<xs:element name="valueStatus" type="xs:string" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Information on the status of a value (e.g. subject refused to answer)</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="itemValue" type="value_t">
+			<xs:element name="value" type="value_t">
 				<xs:annotation>
 					<xs:documentation>Actual value of the assessment item as recorded on the form</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="itemNormValue" type="value_t" minOccurs="0">
+			<xs:element name="normValue" type="value_t" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Normalized or scaled value of the assessment item</xs:documentation>
 				</xs:annotation>
@@ -421,6 +414,8 @@
 			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="terminology_ag"/>
+		<xs:attribute name="ID"/>
+		<xs:attribute name="name"/>
 	</xs:complexType>
 	<xs:complexType name="analysis_t"/>
 	<xs:complexType name="investigator_t">
@@ -558,32 +553,27 @@
 			<xs:element name="maxTimeOffset" type="unitString_t" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="protocolMeasure_t">
-		<xs:attribute name="name"/>
-		<xs:attribute name="required"/>
-		<xs:attribute name="minValue"/>
-		<xs:attribute name="maxValue"/>
-	</xs:complexType>
-	<xs:complexType name="protocol_t">
+	<xs:complexType name="protocolItem_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_protocol_t">
-				<xs:sequence>
-					<xs:element name="steps" minOccurs="0">
+			<xs:extension base="abstract_protocolItem_t">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="range">
 						<xs:complexType>
-							<xs:choice minOccurs="0" maxOccurs="unbounded">
-								<xs:element name="step" type="protocol_t"/>
-								<xs:element name="stepRef" type="ref_t"/>
-							</xs:choice>
+							<xs:attribute name="min" type="xs:string"/>
+							<xs:attribute name="max" type="xs:string"/>
+							<xs:attribute name="units" type="xs:string"/>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="measures" minOccurs="0">
+					<xs:element name="set">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="measure" type="protocolMeasure_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="value" type="xs:string" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
-				</xs:sequence>
+				</xs:choice>
+				<xs:attribute name="name" type="xs:string"/>
+				<xs:attribute name="required" type="xs:boolean"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -630,8 +620,6 @@
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
 				<xs:attribute name="units" type="xs:string"/>
-				<xs:attribute name="codeID" type="xs:string"/>
-				<xs:attributeGroup ref="terminology_ag"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -852,11 +840,11 @@
 				<xs:documentation xml:lang="en">This is a label for the dimension.  The first three spatial dimensions (or however many exist) must be labeled, in order, 'x', 'y', and 'z'.  The first temporal dimension must be labeled 't'.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-                <xs:attribute name="splitRank" type="xs:string">
-                  <xs:annotation>
-                    <xs:documentation>If this attribute exists, this dimension is a "split" dimension, and this dimension must be "merged" with one or more other dimensions (with the same label) before presenting the data to the application.  This is useful, for example, if the data is stored in Siemens' Mosaic DICOM format, where slices of a 3-D volume are arranged to look like they are tiled onto a square 2-D area.  In this case, what would normally be called the 'z' dimension has two forks, one that occurs before the 'y' dimension (the first row in the data covers the first row of several slices), and one that occurs after the 'y' dimension.  If, as in this case, there are two or more dimensions that should be merged into one, both component dimensions should have the label 'z', but have splitRank attributes "1" and "2", which specifies the order in which all 'split' dimensions of the same label will be merged.  After merging, the resultant 'z' dimension element should contain the same children of the highest-ranked split 'z' dimension, except for the 'size' element, which will be the product of the sizes of all 'z' split dimensions.  The position of the resultant dimension should be the position of the highest-ranked 'z' split dimension.  The data itself should also be reordered to reflect the new dimension structure.</xs:documentation>
-                  </xs:annotation>
-                </xs:attribute>
+		<xs:attribute name="splitRank" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>If this attribute exists, this dimension is a "split" dimension, and this dimension must be "merged" with one or more other dimensions (with the same label) before presenting the data to the application.  This is useful, for example, if the data is stored in Siemens' Mosaic DICOM format, where slices of a 3-D volume are arranged to look like they are tiled onto a square 2-D area.  In this case, what would normally be called the 'z' dimension has two forks, one that occurs before the 'y' dimension (the first row in the data covers the first row of several slices), and one that occurs after the 'y' dimension.  If, as in this case, there are two or more dimensions that should be merged into one, both component dimensions should have the label 'z', but have splitRank attributes "1" and "2", which specifies the order in which all 'split' dimensions of the same label will be merged.  After merging, the resultant 'z' dimension element should contain the same children of the highest-ranked split 'z' dimension, except for the 'size' element, which will be the product of the sizes of all 'z' split dimensions.  The position of the resultant dimension should be the position of the highest-ranked 'z' split dimension.  The data itself should also be reordered to reflect the new dimension structure.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="outputSelect" type="xs:string">
 			<xs:annotation>
 				<xs:documentation xml:lang="en">In the same way that the 'splitRank' attribute allows you to specify dimensions that should be merged before presenting the data to an application, this attribute specifies a data filter along this dimension.  If this attribute exists, it should contain a whitespace-separated list of indices (indexed starting at 0).  Only data points along this dimension that occur in the index list should be presented to the application.  Likewise, the 'size' of the dimension, after selection, should be updated to reflect the new size of this dimension (which should be the number of indices in the content of this attribute).</xs:documentation>
