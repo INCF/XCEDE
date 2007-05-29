@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Dan Marcus (Washington University) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xcede="http://www.xcede.org/xcede-2" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xcede="http://www.xcede.org/xcede-2" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:include schemaLocation="xcede-2.0-core.xsd"/>
 	<xs:complexType name="mrAcquisitionInfo_t">
 		<xs:complexContent>
@@ -169,14 +169,5 @@
 				<xs:attribute name="name" type="xs:string"/>
 			</xs:extension>
 		</xs:simpleContent>
-	</xs:complexType>
-	<xs:complexType name="mrImageResource_t">
-		<xs:complexContent>
-			<xs:extension base="mappedBinaryDataResource_t">
-				<xs:sequence>
-					<xs:element name="rasOrigin" type="xs:string" minOccurs="0"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
 	</xs:complexType>
 </xs:schema>
