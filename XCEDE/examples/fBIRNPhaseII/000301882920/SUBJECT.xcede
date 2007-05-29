@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <subject ID="000301882920">
+    <subjectInfo>
+    </subjectInfo>
+    <visitList>
+      <visitRef>scanVisit__0003__0002/VISIT.xcede#xpointer(//xcede:visit[@ID='Visit0003__0002'])</visitRef>
+    </visitList>
+  </subject>
+</XCEDE>

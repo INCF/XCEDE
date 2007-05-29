@@ -2,6 +2,7 @@
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <episode ID="AudOdd1">
+    <studyRef>../STUDY.xcede#xpointer(//xcede:visit[@ID='MRI__0001'])</studyRef>
     <episodeInfo xsi:type="fipsEpisodeInfo_t">
       <!-- Local naming convention -->
       <nameLocal>wm1</nameLocal>

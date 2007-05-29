@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <study>
-    <projectRef>#xpointer(//xcede:project[@ID='fBIRNPhaseII__0050'])</projectRef>
-    <subjectRef>#xpointer(//xcede:subject[@ID='001399999999'])</subjectRef>
-    <visitRef>#xpointer(//xcede:visit[@ID='Visit0003__0002'])</visitRef>
+  <study ID="MRI__0001">
+    <visitRef>../VISIT.xcede#xpointer(//xcede:visit[@ID='Visit0003__0002'])</visitRef>
     <studyInfo>
       <description>This study contains a subset of a full fBIRN Phase II study, including only the first auditory oddball run.</description>
     </studyInfo>
