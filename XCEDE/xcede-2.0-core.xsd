@@ -250,11 +250,7 @@
 					<xs:element name="items" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="item" type="abstract_protocolItem_t" minOccurs="0" maxOccurs="unbounded">
-									<xs:annotation>
-										<xs:documentation>protocolItem_t implements a standard version of the abstract type</xs:documentation>
-									</xs:annotation>
-								</xs:element>
+								<xs:element name="item" type="protocolItem_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -557,25 +553,32 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_protocolItem_t">
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element name="range">
-						<xs:complexType>
-							<xs:attribute name="min" type="xs:string"/>
-							<xs:attribute name="max" type="xs:string"/>
-							<xs:attribute name="units" type="xs:string"/>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="set">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="value" type="xs:string" maxOccurs="unbounded"/>
-							</xs:sequence>
-						</xs:complexType>
-					</xs:element>
+					<xs:element name="range" type="protocolItemRange_t"/>
+					<xs:element name="set" type="protocolItemSet_t"/>
 				</xs:choice>
 				<xs:attribute name="name" type="xs:string"/>
 				<xs:attribute name="required" type="xs:boolean"/>
 			</xs:extension>
 		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="protocolItemSet_t">
+		<xs:sequence>
+			<xs:element name="value" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="units" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="protocolItemRange_t">
+		<xs:attribute name="min" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Minimum value for item (inclusive)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="max" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Maximum value for item (inclusive)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="units" type="xs:string"/>
 	</xs:complexType>
 	<xs:attributeGroup name="ID_name_description">
 		<xs:attribute name="ID" type="xs:string"/>
