@@ -2,6 +2,9 @@
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <subject ID="000301882920">
+    <projectList>
+      <projectRef>../PROJECT.xcede#xpointer(//xcede:project[@ID='fBIRNPhaseII__0050'])</projectRef>
+    </projectList>
     <subjectInfo>
     </subjectInfo>
     <visitList>
