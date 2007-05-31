@@ -199,7 +199,7 @@
 
       <para>Applications should read this data as if it were four dimensions, and then permute the data to bring the two <inlineequation>z</inlineequation> dimensions together (in the order specified by splitRank) in the position of the highest-ranked split dimension, and the two dimensions can then be merged into one.  The size of the new <inlineequation>z</inlineequation> dimension is the product of the sizes of the component split dimensions, so <inlineequation>6 * 6 = 36</inlineequation>.</para>
 
-      <para>You may recall that the original data was acquired as a 64x64x32 volume, but the NxN tiling representation requires that the number of tiles be the square of two integers.  One more mechanism has been added to the <literal>&lt;dimension&gt;</literal> element to accomodate the presence of data that should be disregarded: the <literal>outputSelect</literal> attribute (see <xref linkend="binary_data_resource.outputSelect"/>).</para>
+      <para>You may recall that the original data was acquired as a 64x64x32 volume, but the NxN tiling representation requires that the number of tiles be the square of an integer N.  One more mechanism has been added to the <literal>&lt;dimension&gt;</literal> element to accomodate the presence of data that should be disregarded: the <literal>outputSelect</literal> attribute (see <xref linkend="binary_data_resource.outputSelect"/>).</para>
 
       <figure id="binary_data_resource.outputSelect">
         <title><literal>outputSelect</literal> example</title>
