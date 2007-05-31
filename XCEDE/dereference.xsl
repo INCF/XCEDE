@@ -15,7 +15,7 @@
     omit-xml-declaration="no"
     />
 
-  <xsl:template match="//xcede:projectList/xcede:projectRef|//xcede:subjectList/xcede:subjectRef|//xcede:visitList/xcede:visitRef|//xcede:studyList/xcede:studyRef|//xcede:episodeList/xcede:episodeRef|//xcede:acquisitionRef|//xcede:analysisRef|//xcede:dataResourceRef|//xcede:protocolTimeRef|//xcede:stepRef">
+  <xsl:template match="//xcede:subjectList/xcede:subjectRef|//xcede:visitList/xcede:visitRef|//xcede:studyList/xcede:studyRef|//xcede:episodeList/xcede:episodeRef|//xcede:acquisitionRef|//xcede:analysisRef|//xcede:dataResourceRef|//xcede:protocolTimeRef|//xcede:stepRef">
     <xsl:variable name="url" select="substring-before(., '#xpointer(')"/>
     <xsl:variable name="xpath" select="substring-before(substring-after(., '#xpointer('), ')')"/>
 
