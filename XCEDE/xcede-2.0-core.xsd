@@ -285,7 +285,6 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
 			<xs:element name="analysisList" minOccurs="0">
 				<xs:complexType>
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -413,7 +412,11 @@
 		<xs:attribute name="ID"/>
 		<xs:attribute name="name"/>
 	</xs:complexType>
-	<xs:complexType name="analysis_t"/>
+	<xs:complexType name="analysis_t">
+		<xs:sequence>
+			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
 	<xs:complexType name="investigator_t">
 		<xs:complexContent>
 			<xs:extension base="person_t"/>
@@ -681,7 +684,6 @@
 			<xs:documentation>A resource is something that we haven't agreed on yet.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
 			<xs:element name="metaFields" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence minOccurs="0">
@@ -748,7 +750,11 @@
 	</xs:complexType>
 	<xs:complexType name="dataResource_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_resource_t"/>
+			<xs:extension base="abstract_resource_t">
+				<xs:sequence>
+					<xs:element name="provenance" type="provenance_t"/>
+				</xs:sequence>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="binaryDataResource_t">
