@@ -29,7 +29,7 @@
 				<xs:element name="acquisition" type="acquisition_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="catalog" type="catalog_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="analysis" type="analysis_t" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="resource" type="abstract_resource_t" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="resource" type="resource_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="protocol" type="protocol_t" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 			<xs:attribute name="version" type="xs:string"/>
@@ -149,8 +149,7 @@
 	</xs:complexType>
 	<xs:complexType name="studyInfo_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_info_t">
-			</xs:extension>
+			<xs:extension base="abstract_info_t"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="episode_t">
@@ -176,11 +175,6 @@
 				<xs:sequence>
 					<xs:element name="acquisitionInfo" type="acquisitionInfo_t" minOccurs="0"/>
 					<xs:choice minOccurs="0">
-						<xs:element name="dataResource" type="dataResource_t">
-							<xs:annotation>
-								<xs:documentation>A resource that contains acquisition data (i.e. a URL to a document that contains the data). The resource could be any format: text file, a binary file, or an XCEDE xml document, etc.</xs:documentation>
-							</xs:annotation>
-						</xs:element>
 						<xs:element name="dataResourceRef" type="ref_t">
 							<xs:annotation>
 								<xs:documentation>A reference to a resource as described above.  The resource could be part of a catalog, a root level resource, etc.</xs:documentation>
@@ -210,7 +204,7 @@
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
 					<xs:choice minOccurs="0">
-						<xs:element name="dataResource" type="abstract_resource_t">
+						<xs:element name="dataResource" type="resource_t">
 							<xs:annotation>
 								<xs:documentation>A resource that contains acquistion data (i.e. a URL to a document that contains the data) . The resource could be any format: text file, a binary file, or an XCEDE xml document, etc.</xs:documentation>
 							</xs:annotation>
@@ -255,7 +249,7 @@
 	</xs:complexType>
 	<xs:complexType name="catalog_t">
 		<xs:complexContent>
-			<xs:extension base="catalogEntry_t">
+			<xs:extension base="abstract_tagged_entity_t">
 				<xs:sequence>
 					<xs:element name="catalogList" minOccurs="0">
 						<xs:complexType>
@@ -272,7 +266,7 @@
 					<xs:element name="entryList" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="entry" type="catalogEntry_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="entry" type="resource_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -371,10 +365,9 @@
 		<xs:annotation>
 			<xs:documentation>Reference to the meta-data element that this catalog is related to.  Should point to one of the core xcede hierarchy components: project, subject, visit, study, acquisition.</xs:documentation>
 		</xs:annotation>
-		<xs:attribute name="level" type="levelDescriptor_t" />
-		<xs:attributeGroup ref="allLevelExternalIDs_ag" />
+		<xs:attribute name="level" type="levelDescriptor_t"/>
+		<xs:attributeGroup ref="allLevelExternalIDs_ag"/>
 	</xs:attributeGroup>
-
 	<!--*********            Abstract types            *********-->
 	<xs:complexType name="abstract_container_t" abstract="true">
 		<xs:sequence>
@@ -467,7 +460,10 @@
 	</xs:complexType>
 	<xs:complexType name="ref_t">
 		<xs:simpleContent>
-			<xs:extension base="xs:string"/>
+			<xs:extension base="xs:string">
+				<xs:attribute name="ID" type="xs:string"/>
+				<xs:attribute name="URI" type="xs:string"/>
+			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="assessment_t">
@@ -792,55 +788,44 @@
 		</xs:attribute>
 	</xs:complexType>
 	<!--*********            Resource types            *********-->
-	<xs:complexType name="abstract_resource_t" abstract="true">
+	<xs:complexType name="resource_t">
 		<xs:annotation>
 			<xs:documentation>A resource is something that we haven't agreed on yet.</xs:documentation>
 		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="metaFields" minOccurs="0">
-				<xs:complexType>
-					<xs:sequence minOccurs="0">
-						<xs:element name="metaField" minOccurs="0" maxOccurs="unbounded">
-							<xs:complexType>
-								<xs:simpleContent>
-									<xs:extension base="xs:string">
-										<xs:attribute name="name" type="xs:string"/>
-									</xs:extension>
-								</xs:simpleContent>
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="uri" type="frag_uri_t" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attributeGroup ref="ID_name_description"/>
-		<xs:attribute name="format" type="xs:string" use="optional">
-			<xs:annotation>
-				<xs:documentation>Format of file. E.g. DICOM, Analyze, 4dfp</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="content" type="xs:string" use="optional">
-			<xs:annotation>
-				<xs:documentation>Code indicating the contents of the image. E.g. GFC, T88</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="cachePath" use="optional">
-			<xs:simpleType>
-				<xs:restriction base="xs:string">
-					<xs:maxLength value="255"/>
-				</xs:restriction>
-			</xs:simpleType>
-		</xs:attribute>
+		<xs:complexContent>
+			<xs:extension base="abstract_tagged_entity_t">
+				<xs:sequence>
+					<xs:element name="uri" type="frag_uri_t" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="ID_name_description"/>
+				<xs:attribute name="format" type="xs:string" use="optional">
+					<xs:annotation>
+						<xs:documentation>Format of file. E.g. DICOM, Analyze, 4dfp</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="content" type="xs:string" use="optional">
+					<xs:annotation>
+						<xs:documentation>Code indicating the contents of the image. E.g. GFC, T88</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="cachePath" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="255"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="informationResource_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_resource_t"/>
+			<xs:extension base="resource_t"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="dcResource_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_resource_t">
+			<xs:extension base="resource_t">
 				<xs:sequence>
 					<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="creator" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
@@ -863,7 +848,7 @@
 	</xs:complexType>
 	<xs:complexType name="dataResource_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_resource_t">
+			<xs:extension base="resource_t">
 				<xs:sequence>
 					<xs:element name="provenance" type="provenance_t" minOccurs="0"/>
 				</xs:sequence>
@@ -998,7 +983,7 @@
 						</xs:annotation>
 						<xs:complexType mixed="true">
 							<xs:sequence>
-								<xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+								<xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -1018,7 +1003,7 @@
 						</xs:annotation>
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="vector" type="listoffloats_t" minOccurs="0" maxOccurs="unbounded" />
+								<xs:element name="vector" type="listoffloats_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -1071,11 +1056,6 @@
 		</xs:sequence>
 		<xs:attribute name="name"/>
 	</xs:complexType>
-	<xs:complexType name="catalog_t_expt">
-		<xs:complexContent>
-			<xs:extension base="abstract_resource_t"/>
-		</xs:complexContent>
-	</xs:complexType>
 	<!--*********            Event types            *********-->
 	<xs:complexType name="events_t">
 		<xs:complexContent>
@@ -1124,6 +1104,25 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="value" type="eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="abstract_tagged_entity_t">
+		<xs:sequence>
+			<xs:element name="metaFields" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0">
+						<xs:element name="metaField" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:string">
+										<xs:attribute name="name" type="xs:string"/>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
