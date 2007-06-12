@@ -311,7 +311,7 @@
 				<xs:documentation>The content of this attribute should match the ID attribute of the project_t to which this element is associated.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="projectRef" type="xs:string">
+		<xs:attribute name="projectURI" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>This is the location of a document where to find an element matching the projectID (see projectID attribute).</xs:documentation>
 			</xs:annotation>
@@ -321,7 +321,7 @@
 				<xs:documentation>The content of this attribute should match the ID attribute of the subject_t to which this element is associated.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="subjectRef" type="xs:string">
+		<xs:attribute name="subjectURI" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>This is the location of a document where to find an element matching the subjectID (see subjectID attribute).</xs:documentation>
 			</xs:annotation>
@@ -339,7 +339,7 @@
 				<xs:documentation>The content of this attribute should match the ID attribute of the visit_t to which this element is associated.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="visitRef" type="xs:string">
+		<xs:attribute name="visitURI" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>This is the location of a document where to find an element matching the visitID (see visitID attribute).</xs:documentation>
 			</xs:annotation>
@@ -352,7 +352,7 @@
 				<xs:documentation>The content of this attribute should match the ID attribute of the study_t to which this element is associated.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="studyRef" type="xs:string">
+		<xs:attribute name="studyURI" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>This is the location of a document where to find an element matching the studyID (see studyID attribute).</xs:documentation>
 			</xs:annotation>
@@ -365,7 +365,7 @@
 				<xs:documentation>The content of this attribute should match the ID attribute of the episode_t to which this element is associated.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="episodeRef" type="xs:string">
+		<xs:attribute name="episodeURI" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>This is the location of a document where to find an element matching the episodeID (see episodeID attribute).</xs:documentation>
 			</xs:annotation>
@@ -378,7 +378,7 @@
 				<xs:documentation>The content of this attribute should match the ID attribute of the acquisition_t to which this element is associated.</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="acquisitionRef" type="xs:string">
+		<xs:attribute name="acquisitionURI" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>This is the location of a document where to find an element matching the acquisitionID (see acquisitionID attribute).</xs:documentation>
 			</xs:annotation>
