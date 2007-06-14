@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <project ID="fBIRNPhaseII__0050">
+  <project ID="fBIRNPhaseII__0010">
     <projectInfo>
+      <subjectGroupList>
+        <subjectGroup ID="healthy">
+          <subjectID>000301882920</subjectID>
+        </subjectGroup>
+        <subjectGroup ID="schizophrenic">
+        </subjectGroup>
+      </subjectGroupList>
     </projectInfo>
-    <subjectList>
-      <subjectRef>000301882920/SUBJECT.xcede#xpointer(//xcede:subject[@ID='000301882920'])</subjectRef>
-    </subjectList>
   </project>
 </XCEDE>

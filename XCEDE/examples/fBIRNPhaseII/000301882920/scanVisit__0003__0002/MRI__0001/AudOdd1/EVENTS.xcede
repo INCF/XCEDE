@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <acquisition ID="AudOdd1_events">
+  <acquisition ID="AudOdd1_events" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="000301882920" projectID="fBIRNPhaseII__0010">
     <data xsi:type="events_t">
       <event type='sound' units='sec'>
         <onset>0</onset>

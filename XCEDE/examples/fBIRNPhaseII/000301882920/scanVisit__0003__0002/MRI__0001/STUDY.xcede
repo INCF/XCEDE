@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <study ID="MRI__0001">
-    <visitRef>../VISIT.xcede#xpointer(//xcede:visit[@ID='Visit0003__0002'])</visitRef>
-    <studyInfo>
-      <description>This study contains a subset of a full fBIRN Phase II study, including only the first auditory oddball run.</description>
-    </studyInfo>
-    <episodeList>
-      <episodeRef>AudOdd1/EPISODE.xcede#xpointer(//xcede:episode[@ID='AudOdd1'])</episodeRef>
-    </episodeList>
+  <study ID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="000301882920" projectID="fBIRNPhaseII__0010">
+    <annotationList>
+      <annotation><text>This study contains a subset of a full fBIRN Phase II study, including only the first auditory oddball run.</text></annotation>
+    </annotationList>
   </study>
 </XCEDE>
