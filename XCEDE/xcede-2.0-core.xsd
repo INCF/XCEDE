@@ -31,6 +31,7 @@
 				<xs:element name="analysis" type="analysis_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="resource" type="resource_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="protocol" type="protocol_t" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="data" type="abstract_data_t" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
 			<xs:attribute name="version" type="xs:string"/>
 		</xs:complexType>
@@ -180,9 +181,9 @@
 								<xs:documentation>A reference to a resource as described above.  The resource could be part of a catalog, a root level resource, etc.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="data" type="abstract_data_t">
+						<xs:element name="dataRef" type="ref_t">
 							<xs:annotation>
-								<xs:documentation>A container that the actual acquisition data can go into (as opposed to being in an external reousrce)</xs:documentation>
+								<xs:documentation>A refrence to a container that the actual acquisition data goes into (as opposed to being in an external non-XCEDE format)</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:choice>
@@ -265,10 +266,19 @@
 					</xs:element>
 					<xs:element name="entryList" minOccurs="0">
 						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="entry" type="resource_t" minOccurs="0" maxOccurs="unbounded"/>
-								<xs:element name="entryRef" type="ref_t" minOccurs="0" maxOccurs="unbounded"/>
-							</xs:sequence>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="entry" type="resource_t"/>
+								<xs:element name="entryDataRef" type="ref_t">
+									<xs:annotation>
+										<xs:documentation>A reference to a data element at the top level of an XCEDE document</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+								<xs:element name="entryResourceRef" type="ref_t">
+									<xs:annotation>
+										<xs:documentation>A reference to a resource element at the top level of an XCEDE document</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:choice>
 						</xs:complexType>
 					</xs:element>
 				</xs:sequence>
