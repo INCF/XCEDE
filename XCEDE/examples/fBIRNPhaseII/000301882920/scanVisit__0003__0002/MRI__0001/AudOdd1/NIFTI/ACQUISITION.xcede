@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <XCEDE xmlns='http://www.xcede.org/xcede-2'
        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <acquisition xsi:type="mrAcquisition_t" ID='AudOdd1_MR' episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="000301882920" projectID="fBIRNPhaseII__0010">
-    <acquisitionInfo>
+  <acquisition ID='AudOdd1_MR' episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="000301882920" projectID="fBIRNPhaseII__0010">
+    <acquisitionInfo xsi:type="mrAcquisitionInfo_t">
 <!--
     <scanner>
       <manufacturer>GE</manufacturer>

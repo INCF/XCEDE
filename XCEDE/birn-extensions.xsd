@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
-  <xs:include schemaLocation="xcede-2.0-core.xsd"/>
+  <xs:include schemaLocation="xcede-2.0-mr.xsd"/>
   <xs:complexType name="fipsEpisodeInfo_t">
     <xs:complexContent>
       <xs:extension base="episodeInfo_t">
