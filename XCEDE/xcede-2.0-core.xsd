@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by dbk (UNIV CA IRVINE) -->
-<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.xcede.org/xcede-2" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:sch="http://purl.oclc.org/dsdl/schematron" 
+	xmlns:gml="http://www.opengis.net/gml" 
+	xmlns:xlink="http://www.w3.org/1999/xlink" 
+	targetNamespace="http://www.xcede.org/xcede-2" 
+	elementFormDefault="qualified" 
+	attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+	
 	<xs:element name="XCEDE">
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -204,6 +214,9 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
+					<xs:element name="provenance" type="provenance_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="measurementGroup" type="measurementGroup_t" minOccurs="1" maxOccurs="unbounded"/>
+				
 					<xs:choice minOccurs="0">
 						<xs:element name="dataResource" type="resource_t">
 							<xs:annotation>
@@ -224,6 +237,69 @@
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="measurementGroup_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_container_t">
+				<xs:sequence>
+					<xs:element name="anatomicalEntity" type="anatomicalEntity_t" minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element name="atlasEntity" type="atlasEntity_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="observation" type="observation_t" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>	
+	</xs:complexType>
+	<xs:complexType name="observation_t">
+		<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute name="name" type="xs:string" use="required"/>
+					<xs:attribute name="units" type="xs:string" use="optional"/>
+					<xs:attribute name="type" type="valueTypes_t" use="optional"/>
+				</xs:extension>
+		</xs:simpleContent>	
+	</xs:complexType>
+	<xs:complexType name="nomenclatureEntity_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_container_t">
+				<xs:sequence>
+					<xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="abbreviation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="nomenclature" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="atlasEntity_t">
+		<xs:sequence>
+			<xs:element name="atlasEntity" type="gml:_Geometry"/>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string"/>
+		<xs:attribute name="preferedLabel" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Preferred Name for the anatomical Entity</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="anatomicalEntity_t">
+		<xs:sequence>
+			<xs:element name="entity" type="nomenclatureEntity_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string"/>
+		<xs:attribute name="preferedLabel" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Preferred Name for the anatomical Entity</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="laterality" type="laterality_t" use="required">
+			<xs:annotation>
+				<xs:documentation>Laterality of region (or none) </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="tissueType" type="tissueType_t" use="required">
+			<xs:annotation>
+				<xs:documentation>Tissue type of region (or none) </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 	</xs:complexType>
 	<xs:complexType name="protocol_t">
 		<xs:complexContent>
@@ -791,6 +867,22 @@
 		<xs:attributeGroup ref="levelRef_ag"/>
 		<xs:attributeGroup ref="ID_name_description"/>
 	</xs:complexType>
+	
+	<xs:simpleType name="laterality_t">
+		<xs:restriction base=" xs:string ">
+			<xs:enumeration value="left"/>
+			<xs:enumeration value="right"/>
+			<xs:enumeration value="both"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="tissueType_t">
+		<xs:restriction base=" xs:string ">
+			<xs:enumeration value="gross"/>
+			<xs:enumeration value="gray matter"/>
+			<xs:enumeration value="white"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<!--*********            Provenance types            *********-->
 	<xs:complexType name="processStep_t">
 		<xs:sequence>
