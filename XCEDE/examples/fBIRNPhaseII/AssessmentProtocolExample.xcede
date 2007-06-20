@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xcede:XCEDE xmlns:xcede="http://www.xcede.org/xcede-2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.xcede.org/xcede-2 /users/dbkeator/Desktop/XCEDE/xcede-2.0-core.xsd">
+    <xcede:protocol ID="MRIV1" name="MRI Visit 1" minOccurences="1" maxOccurences="1"
+        required="true" level="visit" description="MRI scanning visit 1">
+        <xcede:steps>
+            <xcede:step ID="SES" name="Socio-Economic Scale" minOccurences="1" maxOccurences="1"
+                required="true">
+                <xcede:protocolOffset>
+                    <xcede:protocolTimeRef>MRIV1</xcede:protocolTimeRef>
+                    <xcede:preferedTimeOffset units="days">0</xcede:preferedTimeOffset>
+                    <xcede:minTimeOffset units="days">0</xcede:minTimeOffset>
+                    <xcede:maxTimeOffset units="days">0</xcede:maxTimeOffset>
+                </xcede:protocolOffset>
+                <xcede:items>
+                    <xcede:item ID="ses_education_subject">
+                        <xcede:itemText>
+                            <xcede:textLabel location="leadText"
+                                value="What is the highest level of education or professional training
+                                that you have achieved?"/>
+                            <xcede:textLabel location="trailText"
+                                value="Any trailing text might go here"/>
+                        </xcede:itemText>
+                        <xcede:itemChoices>
+                            <xcede:choice itemCode="1"
+                                itemValue="professional or graduate training (received degree)"/>
+                            <xcede:choice itemCode="2" itemValue="college graduate"/>
+                            <xcede:choice itemCode="3" itemValue="some college (at least one year)"
+                            />
+                        </xcede:itemChoices>
+                    </xcede:item>
+                    <xcede:item ID="ses_education_p_caretaker_prior_18">
+                        <xcede:itemText>
+                            <xcede:textLabel location="leadText"
+                                value="What is the highest level of education or professional training that your primary caretaker until you were 18 years old has achieved?"
+                            />
+                        </xcede:itemText>
+                        <xcede:itemChoices>
+                            <xcede:choice itemCode="1"
+                                itemValue="professional or graduate training (received degree)"/>
+                            <xcede:choice itemCode="2" itemValue="college graduate"/>
+                            <xcede:choice itemCode="3" itemValue="some college (at least one year)"
+                            />
+                        </xcede:itemChoices>
+                    </xcede:item>
+                </xcede:items>
+            </xcede:step>
+            <xcede:step ID="MRISCN1" name="MRI Scan Protocol, Visit 1" minOccurences="1"
+                maxOccurences="1" required="true">
+                <xcede:protocolOffset>
+                    <xcede:protocolTimeRef>SES</xcede:protocolTimeRef>
+                    <xcede:preferedTimeOffset units="hours">1</xcede:preferedTimeOffset>
+                    <xcede:minTimeOffset units="hours">1</xcede:minTimeOffset>
+                    <xcede:maxTimeOffset units="hours">8</xcede:maxTimeOffset>
+                </xcede:protocolOffset>
+                <xcede:steps>
+                    <xcede:step name="T1" required="true" minOccurences="1">
+                        <xcede:items>
+                            <xcede:item xsi:type="xcede:protocolItem_t" name="FOV">
+                                <xcede:itemRange min="24" max="24" units="mm"/>
+                            </xcede:item>
+                            <xcede:item xsi:type="xcede:protocolItem_t" name="Sequence">
+                                <xcede:itemChoices>
+                                    <xcede:choice itemValue="FSPGR"/>
+                                    <xcede:choice itemValue="MP-RAGE"/>
+                                </xcede:itemChoices>
+                            </xcede:item>
+                            <xcede:item xsi:type="xcede:protocolItem_t" name="Slice Thickness">
+                                <xcede:itemRange min="1.2" max="1.5" units="mm"/>
+                            </xcede:item>
+                            <xcede:item xsi:type="xcede:protocolItem_t" name="Slices">
+                                <xcede:itemRange min="160" max="170"/>
+                            </xcede:item>
+                        </xcede:items>
+                    </xcede:step>
+                    <xcede:step name="Sensory Motor" required="true" minOccurences="1"
+                        maxOccurences="4" ID="SM">
+                        <xcede:items>
+                            <xcede:item name="weighting" xsi:type="xcede:protocolItem_t">
+                                <xcede:itemChoices>
+                                    <xcede:choice itemValue="t2"/>
+                                </xcede:itemChoices>
+
+                            </xcede:item>
+
+                            <xcede:item name="TR" xsi:type="xcede:protocolItem_t">
+                                <xcede:itemRange min="2" max="2" units="s"/>
+                            </xcede:item>
+                            <xcede:item name="NumberTRs" xsi:type="xcede:protocolItem_t">
+                                <xcede:itemRange min="123" max="123" units="TR"/>
+                            </xcede:item>
+                            <xcede:item name="TE" xsi:type="xcede:protocolItem_t">
+                                <xcede:itemRange min="30" max="30" units="ms"/>
+                            </xcede:item>
+                            <xcede:item name="FlipAngle" xsi:type="xcede:protocolItem_t">
+                                <xcede:itemRange min="90" max="90" units="degrees"/>
+                            </xcede:item>
+                        </xcede:items>
+                    </xcede:step>
+
+                </xcede:steps>
+
+            </xcede:step>
+
+        </xcede:steps>
+
+    </xcede:protocol>
+    <xcede:subject ID="000301882920"/>
+    <xcede:acquisition subjectID="000301882920">
+        <xcede:dataRef ID="??????"/>
+    </xcede:acquisition>
+    <xcede:episode subjectID="000301882920"> </xcede:episode>
+    <xcede:data xsi:type="xcede:assessment_t">
+        <xcede:name>Socio-Economic Status</xcede:name>
+        <xcede:dataInstance validated="true">
+            <xcede:assessmentInfo>
+                <xcede:description>This is the socio-economic scale. I'm sure there is more
+                    intersting things to say about it but I have no idea what</xcede:description>
+            </xcede:assessmentInfo>
+            <xcede:assessmentItem ID="ses_education_subject">
+                <xcede:value>1</xcede:value>
+            </xcede:assessmentItem>
+            <xcede:assessmentItem ID="ses_education_p_caretaker_prior_18">
+                <xcede:value>2</xcede:value>
+            </xcede:assessmentItem>
+            <xcede:assessmentItem ID="ses_education_p_caretaker_lifetime">
+                <xcede:value>2</xcede:value>
+            </xcede:assessmentItem>
+            <xcede:assessmentItem ID="ses_education_s_caretaker_prior18">
+                <xcede:value>1</xcede:value>
+            </xcede:assessmentItem>
+        </xcede:dataInstance>
+    </xcede:data>
+</xcede:XCEDE>
