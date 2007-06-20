@@ -531,7 +531,6 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="abstract_data_t"/>
-	<xs:complexType name="abstract_protocolItem_t"/>
 	<xs:complexType name="abstract_protocol_t" abstract="true">
 		<xs:sequence>
 			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
@@ -558,6 +557,49 @@
 		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
 	</xs:complexType>
 	<!--*********            Misc. types            *********-->
+	
+	<xs:complexType name="protocolItem_t">
+		<xs:sequence>
+			<xs:element name="itemText" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="textLabel" minOccurs="0" maxOccurs="unbounded" >
+							<xs:complexType>
+								<xs:attribute name = "location" use = "required">
+									<xs:simpleType>
+										<xs:restriction base = "xs:string">
+											<xs:pattern value = "leadText|trailText"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="value" use="required" type="xs:string"></xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice>
+			<xs:element name="itemRange" type="protocolItemRange_t"/>
+			<xs:element name="itemChoices" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="choice" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="itemCode" type="xs:string"/>
+								<xs:attribute name="itemValue" type="xs:string"/>
+								<xs:attribute name="ID" type="xs:string"/>
+								<xs:attribute name="units" type="xs:string"></xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string"></xs:attribute>
+		<xs:attribute name="ID" type="xs:string"></xs:attribute>
+		<xs:attribute name="required" type="xs:boolean"/>
+	</xs:complexType>
 	<xs:complexType name="nameValue_t">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
@@ -578,6 +620,11 @@
 				<xs:attribute name="URI" type="xs:string"/>
 			</xs:extension>
 		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="assessmentInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t"/>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="assessment_t">
 		<xs:complexContent>
@@ -606,9 +653,12 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="assessmentInfo_t">
+	<xs:complexType name="assessmentDescItem_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_info_t"/>
+			<xs:extension base="protocolItem_t">
+				<xs:attribute name="version" type="xs:string"/>
+				<xs:attribute name="formRef" type="xs:string"/>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="assessmentItem_t">
@@ -774,19 +824,8 @@
 			<xs:element name="maxTimeOffset" type="unitString_t" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="protocolItem_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_protocolItem_t">
-				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element name="range" type="protocolItemRange_t"/>
-					<xs:element name="set" type="protocolItemSet_t"/>
-				</xs:choice>
-				<xs:attribute name="name" type="xs:string"/>
-				<xs:attribute name="required" type="xs:boolean"/>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="protocolItemSet_t">
+	
+	<xs:complexType name="protocolItemChoice_t">
 		<xs:sequence>
 			<xs:element name="value" type="xs:string" maxOccurs="unbounded"/>
 		</xs:sequence>
