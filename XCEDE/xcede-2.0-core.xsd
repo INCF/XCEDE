@@ -221,33 +221,26 @@
 	</xs:complexType>
 	<xs:complexType name="analysis_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
+			<xs:extension base="abstract_data_t">
 				<xs:sequence>
 					<xs:element name="provenance" type="provenance_t" minOccurs="0"
-						maxOccurs="unbounded"/>
+					maxOccurs="unbounded"/>
+					<xs:element name="analysisInputRef" type="analysisInputRef_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="measurementGroup" type="measurementGroup_t" minOccurs="1"
 						maxOccurs="unbounded"/>
-
-					<xs:choice minOccurs="0">
-						<xs:element name="dataResource" type="resource_t">
-							<xs:annotation>
-								<xs:documentation>A resource that contains acquistion data (i.e. a
-									URL to a document that contains the data) . The resource could
-									be any format: text file, a binary file, or an XCEDE xml
-									document, etc.</xs:documentation>
-							</xs:annotation>
-						</xs:element>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
 						<xs:element name="dataResourceRef" type="ref_t">
 							<xs:annotation>
 								<xs:documentation>A reference to a resource as described above. The
 									resource could be part of a catalog, a root level resource,
-								etc.</xs:documentation>
+									etc.</xs:documentation>
 							</xs:annotation>
 						</xs:element>
-						<xs:element name="data" type="abstract_data_t">
+						<xs:element name="dataRef" type="ref_t">
 							<xs:annotation>
-								<xs:documentation>A container that the analysis results go
-								into</xs:documentation>
+								<xs:documentation>A refrence to a container that the actual
+									acquisition data goes into (as opposed to being in an external
+									non-XCEDE format)</xs:documentation>
 							</xs:annotation>
 						</xs:element>
 					</xs:choice>
@@ -259,9 +252,7 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="anatomicalEntity" type="anatomicalEntity_t" minOccurs="1"
-						maxOccurs="unbounded"/>
-					<xs:element name="atlasEntity" type="atlasEntity_t" minOccurs="0"
+					<xs:element name="entity" type="abstract_entity_t" minOccurs="1"
 						maxOccurs="unbounded"/>
 					<xs:element name="observation" type="observation_t" minOccurs="1"
 						maxOccurs="unbounded"/>
@@ -290,37 +281,32 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="atlasEntity_t">
-		<xs:sequence>
-			<xs:element name="atlasEntity" type="gml:_Geometry"/>
-		</xs:sequence>
-		<xs:attribute name="ID" type="xs:string"/>
-		<xs:attribute name="preferedLabel" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Preferred Name for the anatomical Entity</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+		<xs:complexContent>
+			<xs:extension base="abstract_entity_t">
+				<xs:sequence>
+					<xs:element name="atlasEntity" type="gml:_Geometry"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="anatomicalEntity_t">
-		<xs:sequence>
-			<xs:element name="entity" type="nomenclatureEntity_t" minOccurs="0"
-				maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute name="ID" type="xs:string"/>
-		<xs:attribute name="preferedLabel" type="xs:string" use="required">
-			<xs:annotation>
-				<xs:documentation>Preferred Name for the anatomical Entity</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="laterality" type="laterality_t" use="required">
-			<xs:annotation>
-				<xs:documentation>Laterality of region (or none) </xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="tissueType" type="tissueType_t" use="required">
-			<xs:annotation>
-				<xs:documentation>Tissue type of region (or none) </xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+		<xs:complexContent>
+			<xs:extension base="abstract_entity_t">
+				<xs:sequence>
+					<xs:element name="entity" type="nomenclatureEntity_t" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="laterality" type="laterality_t" use="required">
+					<xs:annotation>
+						<xs:documentation>Laterality of region (or none) </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="tissueType" type="tissueType_t" use="required">
+					<xs:annotation>
+						<xs:documentation>Tissue type of region (or none) </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="protocol_t">
 		<xs:complexContent>
@@ -528,6 +514,9 @@
 	<xs:complexType name="abstract_container_t" abstract="true">
 		<xs:sequence>
 			<xs:element name="commentList" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A comment is a description of the entity refered to by the current element.  For example, a description of a particular subject or series.</xs:documentation>
+				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="comment" type="authoredText_t" minOccurs="0"
@@ -536,6 +525,9 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="annotationList" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>An annotation is a description related to the xml document and the current element.  Fore example, some processing that ahs edited content in the element itself.</xs:documentation>
+				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
@@ -572,7 +564,21 @@
 		</xs:attribute>
 		<xs:attributeGroup ref="terminology_ag"/>
 	</xs:complexType>
-	<xs:complexType name="abstract_info_t">
+	<xs:complexType name="abstract_entity_t" abstract="true">
+		<xs:annotation>
+			<xs:documentation>entity elements are used to describe the resultant scope of an analysis (e.g. anatomical entity, atlas entity)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="description" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string"/>
+		<xs:attribute name="preferredLabel" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>Preferred Name for the anatomical Entity</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="abstract_info_t" abstract="true">
 		<xs:annotation>
 			<xs:documentation>info elements are present in each of the hierarchy levels. these can
 				be extended to capture instance specific content (following recommendation
@@ -582,9 +588,12 @@
 			<xs:element name="description" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="abstract_data_t">
-		<xs:attribute name="ID" type="xs:string"></xs:attribute>
-		<xs:attributeGroup ref="levelRef_ag" ></xs:attributeGroup>
+	<xs:complexType name="abstract_data_t" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="abstract_container_t">
+				<xs:attributeGroup ref="levelRef_ag" ></xs:attributeGroup>
+			</xs:extension>
+		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="abstract_protocol_t" abstract="true">
 		<xs:sequence>
@@ -976,7 +985,9 @@
 		<xs:attributeGroup ref="levelRef_ag"/>
 		<xs:attributeGroup ref="ID_name_description"/>
 	</xs:complexType>
-
+	<xs:complexType name="analysisInputRef_t">
+		<xs:attributeGroup ref="levelRef_ag"/>
+	</xs:complexType>
 	<xs:simpleType name="laterality_t">
 		<xs:restriction base=" xs:string ">
 			<xs:enumeration value="left"/>
