@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by dbk (UNIV CA IRVINE) -->
-<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:gml="http://www.opengis.net/gml"
-	xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.xcede.org/xcede-2"
-	elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
-	<xs:import namespace="http://www.opengis.net/gml"
-		schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
-
+<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
 	<xs:element name="XCEDE">
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
 				<xs:element name="annotationList" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
-								maxOccurs="unbounded"/>
+							<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -25,8 +18,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="revision" type="revision_t" minOccurs="0"
-								maxOccurs="unbounded"/>
+							<xs:element name="revision" type="revision_t" minOccurs="0" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -35,8 +27,7 @@
 				<xs:element name="visit" type="visit_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="study" type="study_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="episode" type="episode_t" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="acquisition" type="acquisition_t" minOccurs="0"
-					maxOccurs="unbounded"/>
+				<xs:element name="acquisition" type="acquisition_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="catalog" type="catalog_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="analysis" type="analysis_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="resource" type="resource_t" minOccurs="0" maxOccurs="unbounded"/>
@@ -55,8 +46,7 @@
 					<xs:element name="contributorList" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="contributor" type="person_t" minOccurs="0"
-									maxOccurs="unbounded"/>
+								<xs:element name="contributor" type="person_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -85,8 +75,7 @@
 						</xs:annotation>
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="subjectGroup" type="subjectGroup_t" minOccurs="0"
-									maxOccurs="unbounded"/>
+								<xs:element name="subjectGroup" type="subjectGroup_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 							<xs:anyAttribute namespace="##other" processContents="lax"/>
 						</xs:complexType>
@@ -223,11 +212,9 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_data_t">
 				<xs:sequence>
-					<xs:element name="provenance" type="provenance_t" minOccurs="0"
-					maxOccurs="unbounded"/>
+					<xs:element name="provenance" type="provenance_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="analysisInputRef" type="analysisInputRef_t" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="measurementGroup" type="measurementGroup_t" minOccurs="1"
-						maxOccurs="unbounded"/>
+					<xs:element name="measurementGroup" type="measurementGroup_t" maxOccurs="unbounded"/>
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
 						<xs:element name="dataResourceRef" type="ref_t">
 							<xs:annotation>
@@ -248,18 +235,6 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="measurementGroup_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
-				<xs:sequence>
-					<xs:element name="entity" type="abstract_entity_t" minOccurs="1"
-						maxOccurs="unbounded"/>
-					<xs:element name="observation" type="observation_t" minOccurs="1"
-						maxOccurs="unbounded"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="observation_t">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
@@ -268,45 +243,6 @@
 				<xs:attribute name="type" type="valueTypes_t" use="optional"/>
 			</xs:extension>
 		</xs:simpleContent>
-	</xs:complexType>
-	<xs:complexType name="nomenclatureEntity_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
-				<xs:sequence>
-					<xs:element name="name" type="xs:string" minOccurs="0" maxOccurs="1"/>
-					<xs:element name="abbreviation" type="xs:string" minOccurs="0" maxOccurs="1"/>
-					<xs:element name="nomenclature" type="xs:string" minOccurs="0" maxOccurs="1"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="atlasEntity_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_entity_t">
-				<xs:sequence>
-					<xs:element name="atlasEntity" type="gml:_Geometry"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="anatomicalEntity_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_entity_t">
-				<xs:sequence>
-					<xs:element name="entity" type="nomenclatureEntity_t" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:sequence>
-				<xs:attribute name="laterality" type="laterality_t" use="required">
-					<xs:annotation>
-						<xs:documentation>Laterality of region (or none) </xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute name="tissueType" type="tissueType_t" use="required">
-					<xs:annotation>
-						<xs:documentation>Tissue type of region (or none) </xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-			</xs:extension>
-		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="protocol_t">
 		<xs:complexContent>
@@ -323,8 +259,7 @@
 					<xs:element name="items" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="item" type="protocolItem_t" minOccurs="0"
-									maxOccurs="unbounded"/>
+								<xs:element name="item" type="protocolItem_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -519,8 +454,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="comment" type="authoredText_t" minOccurs="0"
-							maxOccurs="unbounded"/>
+						<xs:element name="comment" type="authoredText_t" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -530,8 +464,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
-							maxOccurs="unbounded"/>
+						<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -542,8 +475,7 @@
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="resource" type="informationResource_t" minOccurs="0"
-							maxOccurs="unbounded"/>
+						<xs:element name="resource" type="informationResource_t" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -591,14 +523,13 @@
 	<xs:complexType name="abstract_data_t" abstract="true">
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
-				<xs:attributeGroup ref="levelRef_ag" ></xs:attributeGroup>
+				<xs:attributeGroup ref="levelRef_ag"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="abstract_protocol_t" abstract="true">
 		<xs:sequence>
-			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0"
-				maxOccurs="unbounded"/>
+			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="ID_name_description"/>
 		<xs:attributeGroup ref="terminology_ag"/>
@@ -624,7 +555,55 @@
 		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
 	</xs:complexType>
 	<!--*********            Misc. types            *********-->
-
+	<xs:complexType name="measurementGroup_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_container_t">
+				<xs:sequence>
+					<xs:element name="entity" type="abstract_entity_t" maxOccurs="unbounded"/>
+					<xs:element name="observation" type="observation_t" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="nomenclatureEntity_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_container_t">
+				<xs:sequence>
+					<xs:element name="name" type="xs:string" minOccurs="0"/>
+					<xs:element name="abbreviation" type="xs:string" minOccurs="0"/>
+					<xs:element name="nomenclature" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="atlasEntityGML_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_entity_t">
+				<xs:sequence>
+					<xs:element name="atlasEntity" type="gml:AbstractGeometryType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="anatomicalEntity_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_entity_t">
+				<xs:sequence>
+					<xs:element name="entity" type="nomenclatureEntity_t" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:attribute name="laterality" type="laterality_t" use="required">
+					<xs:annotation>
+						<xs:documentation>Laterality of region (or none) </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="tissueType" type="tissueType_t" use="required">
+					<xs:annotation>
+						<xs:documentation>Tissue type of region (or none) </xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="protocolItem_t">
 		<xs:sequence>
 			<xs:element name="itemText" minOccurs="0">
@@ -633,26 +612,21 @@
 						<xs:element name="textLabel" minOccurs="0" maxOccurs="unbounded">
 							<xs:complexType>
 								<xs:attribute name="location" use="required"/>
-
-
-								<xs:attribute name="value" use="required" type="xs:string"/>
+								<xs:attribute name="value" type="xs:string" use="required"/>
 							</xs:complexType>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:choice>
-				<xs:element name="itemRange" type="protocolItemRange_t" minOccurs="0"
-					maxOccurs="unbounded"/>
+				<xs:element name="itemRange" type="protocolItemRange_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="itemChoice" minOccurs="0" maxOccurs="unbounded">
-
 					<xs:complexType>
 						<xs:attribute name="itemCode" type="xs:string"/>
 						<xs:attribute name="itemValue" type="xs:string"/>
 						<xs:attribute name="ID" type="xs:string"/>
 						<xs:attribute name="units" type="xs:string"/>
 					</xs:complexType>
-
 				</xs:element>
 			</xs:choice>
 		</xs:sequence>
@@ -694,16 +668,14 @@
 					<xs:element name="dataInstance" minOccurs="0" maxOccurs="unbounded">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="assessmentInfo" type="assessmentInfo_t"
-									minOccurs="0">
+								<xs:element name="assessmentInfo" type="assessmentInfo_t" minOccurs="0">
 									<xs:annotation>
 										<xs:documentation>Block for describing things like
 											informant, clinical rater, assessment date,
 										etc</xs:documentation>
 									</xs:annotation>
 								</xs:element>
-								<xs:element name="assessmentItem" type="assessmentItem_t"
-									minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="assessmentItem" type="assessmentItem_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 							<xs:attribute name="validated" type="xs:boolean">
 								<xs:annotation>
@@ -715,8 +687,7 @@
 							</xs:attribute>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
-						maxOccurs="unbounded"/>
+					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -903,7 +874,6 @@
 			<xs:element name="maxTimeOffset" type="unitString_t" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-
 	<xs:complexType name="protocolItemChoice_t">
 		<xs:sequence>
 			<xs:element name="value" type="xs:string" maxOccurs="unbounded"/>
@@ -989,19 +959,10 @@
 		<xs:attributeGroup ref="levelRef_ag"/>
 	</xs:complexType>
 	<xs:simpleType name="laterality_t">
-		<xs:restriction base=" xs:string ">
-			<xs:enumeration value="left"/>
-			<xs:enumeration value="right"/>
-			<xs:enumeration value="both"/>
-		</xs:restriction>
+		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
-
 	<xs:simpleType name="tissueType_t">
-		<xs:restriction base=" xs:string ">
-			<xs:enumeration value="gross"/>
-			<xs:enumeration value="gray matter"/>
-			<xs:enumeration value="white"/>
-		</xs:restriction>
+		<xs:restriction base="xs:string"/>
 	</xs:simpleType>
 	<!--*********            Provenance types            *********-->
 	<xs:complexType name="processStep_t">
@@ -1029,8 +990,7 @@
 			<xs:element name="machine" type="mixedType_t" minOccurs="0"/>
 			<xs:element name="platform" type="versionedEntity_t" minOccurs="0"/>
 			<xs:element name="compiler" type="versionedEntity_t" minOccurs="0"/>
-			<xs:element name="library" type="versionedEntity_t" minOccurs="0" maxOccurs="unbounded"
-			/>
+			<xs:element name="library" type="versionedEntity_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="provenance_t">
@@ -1060,17 +1020,13 @@
 					<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="creator" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="subject" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="description" type="xs:string" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:element name="publisher" type="xs:string" minOccurs="0"
-						maxOccurs="unbounded"/>
-					<xs:element name="contributor" type="orderedString_t" minOccurs="0"
-						maxOccurs="unbounded"/>
+					<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="publisher" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="contributor" type="orderedString_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="date" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="format" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="identifier" type="xs:string" minOccurs="0"
-						maxOccurs="unbounded"/>
+					<xs:element name="identifier" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="relation" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
@@ -1169,8 +1125,7 @@
 		<xs:complexContent>
 			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
-					<xs:element name="dimension" type="binaryDataDimension_t" maxOccurs="unbounded"
-					/>
+					<xs:element name="dimension" type="binaryDataDimension_t" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1184,8 +1139,7 @@
 		<xs:complexContent>
 			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
-					<xs:element name="dimension" type="mappedBinaryDataDimension_t"
-						maxOccurs="unbounded"/>
+					<xs:element name="dimension" type="mappedBinaryDataDimension_t" maxOccurs="unbounded"/>
 					<xs:element name="originCoords" type="xs:string" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation xml:lang="en">This is a coordinate tuple giving the
@@ -1311,8 +1265,7 @@
 						</xs:annotation>
 						<xs:complexType mixed="true">
 							<xs:sequence>
-								<xs:element name="value" type="xs:string" minOccurs="0"
-									maxOccurs="unbounded"/>
+								<xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -1348,8 +1301,7 @@
 						</xs:annotation>
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="vector" type="listoffloats_t" minOccurs="0"
-									maxOccurs="unbounded"/>
+								<xs:element name="vector" type="listoffloats_t" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -1397,16 +1349,14 @@
 			<xs:element name="documentationList" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="documentation" type="informationResource_t" minOccurs="0"
-							maxOccurs="unbounded"/>
+						<xs:element name="documentation" type="informationResource_t" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="extensionList" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="extension" type="xs:string" minOccurs="0"
-							maxOccurs="unbounded"/>
+						<xs:element name="extension" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -1421,8 +1371,7 @@
 					<xs:element name="params" type="eventParams_t" minOccurs="0"/>
 					<xs:element name="event" type="event_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="description" type="xs:string" minOccurs="0"/>
-					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
-						maxOccurs="unbounded"/>
+					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1436,8 +1385,7 @@
 			<xs:element name="onset" type="xs:float" minOccurs="0"/>
 			<xs:element name="duration" type="xs:float" minOccurs="0"/>
 			<xs:element name="value" type="eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
-				maxOccurs="unbounded"/>
+			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="type" type="xs:string" use="optional"/>
 		<xs:attribute name="units" type="xs:string" use="optional">
