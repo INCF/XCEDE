@@ -55,37 +55,6 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="projectInfo_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_info_t">
-				<xs:sequence>
-					<xs:element name="exptDesignList" minOccurs="0">
-						<xs:complexType>
-							<xs:choice minOccurs="0" maxOccurs="unbounded">
-								<xs:element name="exptDesign"/>
-								<xs:element name="exptDesignRef" type="ref_t"/>
-							</xs:choice>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="subjectGroupList" minOccurs="0">
-						<xs:annotation>
-							<xs:documentation>This provides a mapping of subjects to subject groups
-								within projects. A subject can be a member of subject groups in
-								multiple projects.</xs:documentation>
-						</xs:annotation>
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="subjectGroup" type="subjectGroup_t" minOccurs="0" maxOccurs="unbounded"/>
-							</xs:sequence>
-							<xs:anyAttribute namespace="##other" processContents="lax"/>
-						</xs:complexType>
-					</xs:element>
-					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:sequence>
-				<xs:anyAttribute namespace="##other" processContents="lax"/>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="subjectGroup_t">
 		<xs:annotation>
 			<xs:documentation>There should be one of these elements for each subject group in this
@@ -106,19 +75,6 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="subjectInfo_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_info_t">
-				<xs:sequence>
-					<xs:element name="sex" type="terminologyString_t" minOccurs="0"/>
-					<xs:element name="species" type="terminologyString_t" minOccurs="0"/>
-					<xs:element name="birthdate" type="terminologyString_t" minOccurs="0"/>
-					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
-				</xs:sequence>
-				<xs:anyAttribute namespace="##other" processContents="lax"/>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="visit_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
@@ -128,15 +84,6 @@
 				</xs:sequence>
 				<xs:attributeGroup ref="visitExternalIDs_ag"/>
 				<xs:anyAttribute namespace="##other" processContents="lax"/>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="visitInfo_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_info_t">
-				<xs:sequence>
-					<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
-				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -169,11 +116,6 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="episodeInfo_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_info_t"/>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="acquisition_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
@@ -203,17 +145,13 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="acquisitionInfo_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_info_t"/>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="analysis_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_data_t">
+			<xs:extension base="abstract_container_t">
 				<xs:sequence>
 					<xs:element name="provenance" type="provenance_t" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="analysisInputRef" type="analysisInputRef_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="inputRef" type="analysisRef_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="outputRef" type="analysisRef_t" minOccurs="0"/>
 					<xs:element name="measurementGroup" type="measurementGroup_t" maxOccurs="unbounded"/>
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
 						<xs:element name="dataResourceRef" type="ref_t">
@@ -446,6 +384,13 @@
 		<xs:attributeGroup ref="allLevelExternalIDs_ag"/>
 	</xs:attributeGroup>
 	<!--*********            Abstract types            *********-->
+	<xs:complexType name="abstract_data_t" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="abstract_container_t">
+				<xs:attributeGroup ref="levelRef_ag"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="abstract_container_t" abstract="true">
 		<xs:sequence>
 			<xs:element name="commentList" minOccurs="0">
@@ -520,13 +465,6 @@
 			<xs:element name="description" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="abstract_data_t" abstract="true">
-		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
-				<xs:attributeGroup ref="levelRef_ag"/>
-			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
 	<xs:complexType name="abstract_protocol_t" abstract="true">
 		<xs:sequence>
 			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
@@ -555,6 +493,69 @@
 		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
 	</xs:complexType>
 	<!--*********            Misc. types            *********-->
+	<xs:complexType name="projectInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t">
+				<xs:sequence>
+					<xs:element name="exptDesignList" minOccurs="0">
+						<xs:complexType>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element name="exptDesign"/>
+								<xs:element name="exptDesignRef" type="ref_t"/>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="subjectGroupList" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>This provides a mapping of subjects to subject groups
+								within projects. A subject can be a member of subject groups in
+								multiple projects.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="subjectGroup" type="subjectGroup_t" minOccurs="0" maxOccurs="unbounded"/>
+							</xs:sequence>
+							<xs:anyAttribute namespace="##other" processContents="lax"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:anyAttribute namespace="##other" processContents="lax"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="subjectInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t">
+				<xs:sequence>
+					<xs:element name="sex" type="terminologyString_t" minOccurs="0"/>
+					<xs:element name="species" type="terminologyString_t" minOccurs="0"/>
+					<xs:element name="birthdate" type="terminologyString_t" minOccurs="0"/>
+					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:anyAttribute namespace="##other" processContents="lax"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="visitInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t">
+				<xs:sequence>
+					<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="episodeInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="acquisitionInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t"/>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="measurementGroup_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
@@ -565,16 +566,12 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="nomenclatureEntity_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
-				<xs:sequence>
-					<xs:element name="name" type="xs:string" minOccurs="0"/>
-					<xs:element name="abbreviation" type="xs:string" minOccurs="0"/>
-					<xs:element name="nomenclature" type="xs:string" minOccurs="0"/>
-				</xs:sequence>
-			</xs:extension>
-		</xs:complexContent>
+	<xs:complexType name="nomenclature_t">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<xs:element name="abbreviation" type="xs:string" minOccurs="0"/>
+			<xs:element name="nomenclature" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="atlasEntityGML_t">
 		<xs:complexContent>
@@ -589,7 +586,7 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_entity_t">
 				<xs:sequence>
-					<xs:element name="entity" type="nomenclatureEntity_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="nomenclature" type="nomenclature_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 				<xs:attribute name="laterality" type="laterality_t" use="required">
 					<xs:annotation>
@@ -955,7 +952,7 @@
 		<xs:attributeGroup ref="levelRef_ag"/>
 		<xs:attributeGroup ref="ID_name_description"/>
 	</xs:complexType>
-	<xs:complexType name="analysisInputRef_t">
+	<xs:complexType name="analysisRef_t">
 		<xs:attributeGroup ref="levelRef_ag"/>
 	</xs:complexType>
 	<xs:simpleType name="laterality_t">
