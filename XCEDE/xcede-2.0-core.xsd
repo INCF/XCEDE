@@ -567,11 +567,12 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="nomenclature_t">
-		<xs:sequence>
-			<xs:element name="name" type="xs:string" minOccurs="0"/>
-			<xs:element name="abbreviation" type="xs:string" minOccurs="0"/>
-			<xs:element name="nomenclature" type="xs:string" minOccurs="0"/>
-		</xs:sequence>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="abbreviation" type="xs:string"/>
+				<xs:attribute name="nomenclature" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="atlasEntityGML_t">
 		<xs:complexContent>
@@ -588,12 +589,12 @@
 				<xs:sequence>
 					<xs:element name="nomenclature" type="nomenclature_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
-				<xs:attribute name="laterality" type="laterality_t" use="required">
+				<xs:attribute name="laterality" type="laterality_t">
 					<xs:annotation>
 						<xs:documentation>Laterality of region (or none) </xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="tissueType" type="tissueType_t" use="required">
+				<xs:attribute name="tissueType" type="tissueType_t">
 					<xs:annotation>
 						<xs:documentation>Tissue type of region (or none) </xs:documentation>
 					</xs:annotation>
