@@ -449,9 +449,9 @@
 			<xs:element name="description" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
-		<xs:attribute name="preferredLabel" type="xs:string" use="required">
+		<xs:attribute name="preferredEntityLabel" type="xs:string" use="required">
 			<xs:annotation>
-				<xs:documentation>Preferred Name for the anatomical Entity</xs:documentation>
+				<xs:documentation>Preferred Name for the Entity</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
@@ -587,14 +587,14 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_entity_t">
 				<xs:sequence>
-					<xs:element name="nomenclature" type="nomenclature_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="label" type="terminologyString_t" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
-				<xs:attribute name="laterality" type="laterality_t">
+				<xs:attribute name="laterality" type="laterality_t" use="optional">
 					<xs:annotation>
 						<xs:documentation>Laterality of region (or none) </xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
-				<xs:attribute name="tissueType" type="tissueType_t">
+				<xs:attribute name="tissueType" type="tissueType_t" use="optional">
 					<xs:annotation>
 						<xs:documentation>Tissue type of region (or none) </xs:documentation>
 					</xs:annotation>
@@ -799,14 +799,17 @@
 		<xs:attribute name="timestamp" type="xs:dateTime"/>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="terminology_ag">
-		<xs:attribute name="termID" type="xs:string">
+		<xs:attribute name="preferredLabel" type="xs:string" use="required"/>
+		<xs:attribute name="abbreviation" type="xs:string" use="optional"/>
+		<xs:attribute name="nomenclature" type="xs:string" use="required"/>
+		<xs:attribute name="termID" type="xs:string" use="required">
 			<xs:annotation>
 				<xs:documentation>Applications will likely want to constrain what are valid IDs
 					within the context of their application (for example, allowing only
 				LSID's)</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="termPath" type="xs:string"/>
+		<xs:attribute name="termPath" type="xs:string" use="optional"/>
 	</xs:attributeGroup>
 	<xs:simpleType name="uniqueID_t">
 		<xs:annotation>
