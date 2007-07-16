@@ -2,6 +2,11 @@
 <!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by dbk (UNIV CA IRVINE) -->
 <xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:gml="http://www.opengis.net/gml" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+	<xs:annotation>
+		<xs:documentation>The XCEDE schema provides an extensive metadata hierarchy for describing and documenting research and clinical studies. The schema organizes information into five general hierarchical levels: a complete project; studies within a project; subjects involved in the studies; visits for each of the subjects; the full description of the subject's participation during each visit</xs:documentation>
+		<xs:documentation>Each of these sub-schemas is composed of information relevant to that aspect of an experiment and can be stored in separate XML files or spliced into one large file allowing for the XML data to be stored in a hierarchical directory structure along with the primary data. Each sub-schema also allows for the storage of data provenance information allowing for a traceable record of processing and/or changes to the underlying data. Additionally, the sub-schemas contain support for derived statistical data in the form of human imaging activation maps and simple statistical value lists.</xs:documentation>
+		<xs:documentation>XCEDE was originally designed in the context of neuroimaging studies and complements the Biomedical Informatics Research Network (BIRN) Human Imaging Database, an extensible database and intuitive web-based user interface for the management, discovery, retrieval, and analysis of clinical and brain imaging data. This close coupling allows for an interchangeable source-sink relationship between the database and the XML files, which can be used for the import/export of data to/from the database, the standardized transport and interchange of experimental data, the local storage of experimental information within data collections, and human and machine readable description of the actual data.</xs:documentation>
+	</xs:annotation>
 	<xs:element name="XCEDE">
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -146,13 +151,24 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="analysis_t">
+		<xs:annotation>
+			<xs:documentation>A collection of output from ana analysis of data.</xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="provenance" type="provenance_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="provenance" type="provenance_t" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>The record of the origin and transformations applied to source data that produced this analysis</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 					<xs:element name="inputRef" type="analysisRef_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="outputRef" type="analysisRef_t" minOccurs="0"/>
-					<xs:element name="measurementGroup" type="measurementGroup_t" maxOccurs="unbounded"/>
+					<xs:element name="measurementGroup" type="measurementGroup_t" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>A measurementGroup contains information and data related to the outcome of an analysis.  For example, this could be a statistic (e.g. from a Statistical Parametric Map) or a measurement (e.g. the volume of the hippocmapus).</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
 						<xs:element name="dataResourceRef" type="ref_t">
 							<xs:annotation>
@@ -174,11 +190,26 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="observation_t">
+		<xs:annotation>
+			<xs:documentation>Observations that are made concerning an entity (e.g. in a measurementGroup).  For example, following hte hippocmapus example, might be the total volume, surface area, etc.</xs:documentation>
+		</xs:annotation>
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
-				<xs:attribute name="name" type="xs:string" use="required"/>
-				<xs:attribute name="units" type="xs:string" use="optional"/>
-				<xs:attribute name="type" type="valueTypes_t" use="optional"/>
+				<xs:attribute name="name" type="xs:string" use="required">
+					<xs:annotation>
+						<xs:documentation>The name (preferred label) of the observation value</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="units" type="xs:string" use="optional">
+					<xs:annotation>
+						<xs:documentation>The measurement units for the returned value of the observation</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="valueTypes_t" use="optional">
+					<xs:annotation>
+						<xs:documentation>The declared data type for the returned value of the observation</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -557,11 +588,22 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="measurementGroup_t">
+		<xs:annotation>
+			<xs:documentation>A measurementGroup contains information and data related to the outcome of an analysis.  For example, this could be a statistic (e.g. from a Statistical Parametric Map) or a measurement (e.g. the volume of the hippocmapus).</xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:sequence>
-					<xs:element name="entity" type="abstract_entity_t" maxOccurs="unbounded"/>
-					<xs:element name="observation" type="observation_t" maxOccurs="unbounded"/>
+					<xs:element name="entity" type="abstract_entity_t" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>In the context of a measurement Group, is the entity being measured.  For example, the hippocampus. </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="observation" type="observation_t" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>In the context of a measurement Group, are the observations that are made concerning the entity.  For example, following hte hippocmapus example, might be the total volume, surface area, etc.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -575,19 +617,33 @@
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:complexType name="atlasEntityGML_t">
+		<xs:annotation>
+			<xs:documentation>entity elements are used to describe the resultant scope of an analysis</xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="abstract_entity_t">
 				<xs:sequence>
-					<xs:element name="atlasEntity" type="gml:AbstractGeometryType"/>
+					<xs:element name="atlasEntity" type="gml:AbstractGeometryType">
+						<xs:annotation>
+							<xs:documentation>Atlas entity defined through the use of GML base geometries.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="anatomicalEntity_t">
+		<xs:annotation>
+			<xs:documentation>Entity elements are used to describe the resultant scope of an analysis</xs:documentation>
+		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="abstract_entity_t">
 				<xs:sequence>
-					<xs:element name="label" type="terminologyString_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="label" type="terminologyString_t" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>The set of terms that name this entity.  This set can contain a collection of synonymous terms</xs:documentation>
+						</xs:annotation>
+					</xs:element>
 				</xs:sequence>
 				<xs:attribute name="laterality" type="laterality_t" use="optional">
 					<xs:annotation>
@@ -799,9 +855,21 @@
 		<xs:attribute name="timestamp" type="xs:dateTime"/>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="terminology_ag">
-		<xs:attribute name="preferredLabel" type="xs:string" use="required"/>
-		<xs:attribute name="abbreviation" type="xs:string" use="optional"/>
-		<xs:attribute name="nomenclature" type="xs:string" use="required"/>
+		<xs:attribute name="preferredLabel" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>The preferred label of this term. This can be different than the term used by the applications (e.g. CBLM versus cerebellum)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="abbreviation" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>The preferred abbreviation for the term</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="nomenclature" type="xs:string" use="required">
+			<xs:annotation>
+				<xs:documentation>The source ontology of this terminology/ontology term</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="termID" type="xs:string" use="required">
 			<xs:annotation>
 				<xs:documentation>Applications will likely want to constrain what are valid IDs
@@ -900,6 +968,9 @@
 		<xs:attribute name="description" type="xs:string"/>
 	</xs:attributeGroup>
 	<xs:complexType name="terminologyString_t">
+		<xs:annotation>
+			<xs:documentation>A simple representation of terms for use within the schema.</xs:documentation>
+		</xs:annotation>
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
 				<xs:attributeGroup ref="terminology_ag"/>
