@@ -2,10 +2,22 @@
 <chapter>
   <title>Provenance</title>
 
-  <para>This is where the provenance text goes.</para>
+  <para>Provenance is used to record in detail the sequence of processing and analysis 
+steps that have been executed to create a derived image and/or measures. 
+These details include the name and type of machine on which the executable was run, 
+the name of the executable, and input parameters to the exectuable.</para>
 
   <section>
     <title>Overview</title>
+  <para>XCEDE-represented studies will be populated with large numbers of medical image volumes which 
+researchers will wish to access and run various processing tools on in order to obtain 
+derived data. This derived data, such as volumes of various brain structures, cortical thickness etc., 
+will then be placed back into the database, linked to the original volume from which it was produced.
+ If a researcher would like to recreate the processing steps, in order to apply it to a new data set,
+ they will be able to obtain the information needed to download or reconstruct the tools that were 
+used on the original data set. Information about the processing tools needs to be made available by 
+the authors of the tools, is collected at run time by the processing scripts, and written into XCDED.
+</para>
   </section>
 
   <section>
