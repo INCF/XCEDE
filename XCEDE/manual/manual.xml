@@ -5,9 +5,9 @@
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_intro.xml" />
 
   <part>
-    <title>Components of the XCEDE Core</title>
+    <title>XCEDE 2.0 Core Specification</title>
     <partintro>
-      <para>This section of the XCEDE manual focuses on the high-level structure and major components of the XCEDE Core schema.  Each chapter contains a description of the component and provides examples of usage.  The examples in this section are largely drawn from neuroscientific metadata, as this data served as the driving force behind development.  However, these examples are by no means comprehensive; the schema was designed to be generally applicable (and extensible) to many types of scientific data, and this manual by necessity focuses on only a few.</para>
+      <para>This section of the XCEDE 2.0 manual focuses on the high-level structure and major components of the XCEDE 2.0 Core schema.  Each chapter contains a description of the component and provides examples of usage.  The examples in this section are largely drawn from neuroscientific metadata, as this data served as the driving force behind development.  However, these examples are by no means comprehensive; the schema was designed to be generally applicable (and extensible) to many types of scientific data, and this manual by necessity focuses on only a few.</para>
     </partintro>
 
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_structure.xml" />
@@ -23,10 +23,13 @@
   </part>
 
   <part>
-    <title>Using and Extending XCEDE</title>
+    <title>Using and Extending XCEDE 2.0</title>
     <partintro>
-      <para>This section of the XCEDE manual provides practical lessons on using the schema, as well as discussions on how to use W3C XML Schema to extend the core XCEDE datatypes.</para>
+      <para>This section of the XCEDE 2.0 manual provides practical lessons on using the schema, as well as discussions on how to use W3C XML Schema to extend the core XCEDE 2.0 datatypes and how to integrate it into applications, databases and web services.</para>
     </partintro>
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_usecase.xml" />
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_extending.xml" />
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_integrating.xml" />
   </part>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="app_schema.xml" />
