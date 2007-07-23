@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<preface>
+<preface xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Introduction</title>
 
-  <para>This is a manual for version 2.0 of XCEDE (XML-based Clinical and Experimental Data Exchange).  The target audience for this manual is anyone who is interested in using or learning more about XCEDE.  This manual will serve as both a tutorial and as a reference.</para>
-  <para>XCEDE is an extensible schema designed to store scientific data and metadata.  XCEDE has its origins in various XML schemas developed for collaborative neuroinformatics projects, and was developed to enable the transfer and storage of several types of data including (but not limited to) clinical, demographic, behavioral, physiological and image data.</para>
+  <para>This is a manual for version 2.0 of XCEDE (XML-based Clinical and Experimental Data Exchange).  XCEDE 2.0 is an extensible schema designed to enable the transfer and storage of several types of scientific data and metadata including (but not limited to) clinical, demographic, behavioral, physiological and image data.  The target audience for this manual is anyone who is interested in using or learning more about XCEDE 2.0.  This manual will serve as both a tutorial and as a reference.</para>
+  <para>Though the schema was designed in the context of neuroscientific projects, the structure of the schema is quite generic and can be applied as is to a wide variety of scientific disciplines.</para>
+
+  <section>
+    <title>Manual structure</title>
+    <para>This manual has two parts.  <xref linkend="part.spec"/> describes the various components of XCEDE 2.0 and describes the specification in some detail.  <xref linkend="part.use"/> is a more practical guide to the use of XCEDE 2.0, providing guidance to those users who wish to extend the schema to represent project-specific metadata, or integrating XCEDE 2.0 into software applications and services.</para>
+  </section>
+
+  <section>
+    <title>Development</title>
+    <para>XCEDE 2.0 development started as an effort to "harmonize" the uses of XML within the BIRN (Biomedical Informatics Research Network) testbeds and collaborators within the neuroscientific community.  The feedback from these discussion sessions led to an initial prototype (based on XCEDE 1.0) of a next-generation schema.  Over the course of four months of daily teleconferences, the first public release of XCEDE 2.0 took form.</para>
+    <para>XCEDE 2.0 has its origins in various XML schemas developed for collaborative neuroinformatics projects, including:</para>
+    <variablelist>
+      <varlistentry>
+        <term>fMRI Data Center schema</term>
+        <listitem>
+          <para>a general scientific metadata storage framework.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>XNAT (Extensible Neuroimaging Toolkit)</term>
+        <listitem>
+          <para>database and web service designed to facilitate management and exploration of neuroimaging and related data.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>BIAC XML Header schema</term>
+        <listitem>
+          <para>provides a format-agnostic interface to image data and is the basis for the <emphasis>binary data resource</emphasis> in XCEDE 2.0.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>BIRN Data Provenance schema</term>
+        <listitem>
+          <para>records the history of processing steps.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>XCEDE (1.0) SPM Toolbox</term>
+        <listitem>
+          <para>provides a general framework (and MATLAB interface) for storage and retrieval of thresholded statistical parametric maps and associated anatomical labels.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>The primary developers of XCEDE 2.0 are (in alphabetical order): Syam Gadde (Duke University), Jeff Grethe (University of California, San Diego), Dave Keator (University of California, Irvine), and Dan Marcus (Washington University, St. Louis), all of whom have received support for this project through various BIRN testbeds.</para>
+  </section>
+
+  <section>
+    <title>For More Information</title>
+    <para>XXX Contacts XXX</para>
+    <para>The latest schema and related information can be found on the project's web page at <ulink url="http://www.xcede.org/"/>.</para>
+  </section>  
 </preface>
