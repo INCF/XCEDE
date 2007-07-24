@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter>
+<chapter id="chapter.assessment">
   <title>Assessments</title>
 
  
@@ -64,6 +64,8 @@
                 </xcede:items>
             </xcede:step>]]></programlisting>
       </figure>
+    </section>
+    <section>
       <title>Actual Acquired Assessment Data</title>
       <para>An instance of actual assessment data acquired on a subject during a protocol collection</para>
       <figure id="acquired_assessment.simple_example">
@@ -89,6 +91,7 @@
         </xcede:dataInstance>
     </xcede:data>]]></programlisting>
       </figure>       
+    </section>
   </section>
   <section>
     <title>Reference</title>

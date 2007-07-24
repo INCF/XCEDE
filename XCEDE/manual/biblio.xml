@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+                 "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<bibliography>
+  <biblioentry>
+    <abbrev>CostelloSchemaVersioning</abbrev>
+    <title>Impact of XML Schema Versioning on System Design</title>
+    <releaseinfo>URL:&lt;<literal><ulink url="http://www.xfront.com/SchemaVersioning.html"/></literal>&gt;</releaseinfo>
+  </biblioentry>
+  <biblioentry>
+    <abbrev>Schematron</abbrev>
+    <author><firstname>Rick</firstname><surname>Jelliffe</surname></author>
+    <releaseinfo>URL:&lt;<literal><ulink url="http://www.schematron.com/"/></literal>&gt;.  ISO specification for Schematron available as ISO/IEC 19757-3:2006</releaseinfo>
+  </biblioentry>
+  <biblioentry>
+    <abbrev>XML10</abbrev>
+    <title>Extensible Markup Language (XML) 1.0 (Fourth Edition)</title>
+    <authorgroup>
+      <editor>
+        <firstname>Tim</firstname>
+        <surname>Bray</surname>
+      </editor>
+      <editor>
+        <firstname>Jean</firstname>
+        <surname>Paoli</surname>
+      </editor>
+      <editor>
+        <firstname>C.</firstname>
+        <othername role="mi">M.</othername>
+        <surname>Sperberg-McQueen</surname>
+      </editor>
+      <editor>
+        <firstname>Eve</firstname>
+        <surname>Maler</surname>
+      </editor>
+      <editor>
+        <firstname>François</firstname>
+        <surname>Yergeau</surname>
+      </editor>
+    </authorgroup>
+    <publisher><publishername>W3C</publishername></publisher>
+    <releaseinfo>URL:&lt;<literal><ulink url="http://www.w3.org/TR/xml/"/></literal>&gt;</releaseinfo>
+  </biblioentry>
+  <biblioentry>
+    <abbrev>XMLSchema10</abbrev>
+    <title>XML Schema 1.0</title>
+    <authorgroup>
+      <editor>
+        <firstname>Henry</firstname>
+        <othername role="mi">S.</othername>
+        <surname>Thompson</surname>
+      </editor>
+      <editor>
+        <firstname>David</firstname>
+        <surname>Beech</surname>
+      </editor>
+      <editor>
+        <firstname>Murray</firstname>
+        <surname>Maloney</surname>
+      </editor>
+      <editor>
+        <firstname>Noah</firstname>
+        <surname>Mendelsohn</surname>
+      </editor>
+    </authorgroup>
+    <publisher><publishername>W3C</publishername></publisher>
+    <releaseinfo>Primer: &lt;<literal><ulink url="http://www.w3.org/TR/xmlschema-0/"/></literal>&gt;, Structures: &lt;<literal><ulink url="http://www.w3.org/TR/xmlschema-1/"/></literal>&gt;, Datatypes: &lt;<literal><ulink url="http://www.w3.org/TR/xmlschema-2/"/></literal>&gt;</releaseinfo>
+  </biblioentry>
+</bibliography>

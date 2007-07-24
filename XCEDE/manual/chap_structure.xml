@@ -1,5 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<chapter>
-  <title>XCEDE Structure and Conventions</title>
+<chapter id="chapter.structure">
+  <title>Structure&#160;and&#160;Conventions</title>
 
+  <section>
+    <title>The XCEDE 2.0 Dataset</title>
+
+    <para>An XCEDE 2.0 Dataset is a data repository (stored in files, databases, or using other storage mechanisms) that can be represented as a collection of one or more XML documents, each of which validates against the XCEDE 2.0 XML schema (<xref linkend="appendix.schema"/>).  The XCEDE 2.0 specification does not prescribe any particular mechanism by which these documents are located, stored, grouped, or linked, though XCEDE 2.0 allows certain XML elements to link to other target elements and to optionally specify URLs as hints as to the location of the documents containing these targets.</para>
+    <para>For example, a given XCEDE 2.0 dataset may be stored as a single XML document, or a collection of files in a single directory on a file system, or may be distributed within a hierarchical directory structure (which may or may not reflect the structure of the data within), or may be stored within a database accessible by query through a web interface.  The semantics of the dataset should be fully reflected in the XML representation, and should not be dependent on how the dataset is stored.</para>
+    <para>A schema-compliant XCEDE 2.0 document must be a valid XML 1.0 document <citation>XML10</citation>, and must have one root element, <literal>&lt;XCEDE&gt;</literal>, which (like all other XCEDE 2.0 elements) is in the XML namespace <literal>http://www.xcede.org/xcede-2</literal>.  All major components of the XCEDE 2.0 dataset are represented as children of the XCEDE root element.</para>
+  </section>
+
+  <section>
+    <title>XCEDE 2.0 Schema conventions</title>
+
+    <para>The XCEDE XML document structure is defined using W3C XML Schema language <citation>XMLSchema10</citation>.  With a few exceptions, the XCEDE 2.0 XML schema subscribes to the following conventions and best practices.</para>
+
+    <formalpara>
+      <title>Naming and capitalization</title>
+    </formalpara>
+    <itemizedlist>
+      <listitem>
+        <para>Element and attribute names are alphanumeric (<literal>&lt;project&gt;</literal>).  All letters are lowercase, with the exception of acronyms, which are uppercase (<literal>&lt;XCEDE&gt;</literal>, <literal>projectID</literal>), and, in multi-word names, the initial letters of the second and following words which are capitalized (<literal>&lt;dataResourceRef&gt;</literal>).  For the purposes of this rule, <literal>ID</literal> (for "identifier") is considered an acronym.</para>
+      </listitem>
+      <listitem>
+        <para>Schema type names (which do not appear in XML instance documents except in <literal>xsi:type</literal> attributes) follow the same naming conventions as element and attribute names, but have the <literal>_t</literal> suffix (<literal>analysis_t</literal>).  If the type is "abstract", then it has an <literal>abstract_</literal> prefix (<literal>abstract_container_t</literal>).</para>
+      </listitem>
+      <listitem>
+        <para>Attribute group names (which do not appear in XML instance documents) follow the same naming conventions as element and attribute names, but have the <literal>_ag</literal> suffix (<literal>allLevelExternalIDs_ag</literal>).</para>
+      </listitem>
+    </itemizedlist>
+
+    <formalpara>
+      <title>Schema best practices</title>
+    </formalpara>
+    <itemizedlist>
+      <listitem>
+        <para>Follow the schema versioning best practices recommended by Roger Costello in <citation>CostelloSchemaVersioning</citation>.  Some of the implications are listed below:</para>
+        <itemizedlist>
+          <listitem>
+            <para>The XCEDE namespace will change for major versions, but not minor versions. So, the namespace is as follows: <literal>http://www.xcede.org/xcede-major_version</literal>. For example: <literal>http://www.xcede.org/xcede-2</literal></para>
+          </listitem>
+          <listitem>
+            <para>XSD files will be named <literal>xcede-<emphasis>version</emphasis>-<emphasis>domain</emphasis></literal>. For example: <literal>xcede-2.0-core.xsd</literal></para>
+          </listitem>
+          <listitem>
+            <para>All elements should have a corresponding named <literal>complexType</literal>. For example: <literal>&lt;project&gt;</literal> is of type <literal>project_t</literal>.</para>
+          </listitem>
+          <listitem>
+            <para>The schema prescribes a particular document order for some elements -- document creators should follow this strictly.  However, applications should be written without expecting a particular element order, in case later versions of the schema change the order of elements.  That is, be conservative in what you write, but liberal in what you accept.</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </itemizedlist>
+
+    <para>Content within XCEDE documents is expected to be validated using other content-based schema languages, such as Schematron <citation>Schematron</citation>.</para>
+  </section>
 </chapter>
