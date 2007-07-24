@@ -2,18 +2,98 @@
 <chapter>
   <title>Assessments</title>
 
-  <para>This is where the assessment text goes.</para>
-  
+ 
   <section>
     <title>Overview</title>
+    <para>Complete data storage and assessment specifications and descriptions are stored in XCEDE using the <literal>assessment_t</literal> and <literal>assessmentDescItem_t</literal> tag structures.</para>
+    <para>The description of the assessment questions and possible answer choices are specified in the protocol section of the schema whereas the actual assessment data for an acquisition are stored in the <literal>assessment_t</literal> tags</para>
+    <formalpara>
+      <title><literal>assessment_t</literal></title>
+      <para>The <literal>assessment_t</literal> tag extends the <literal>abstract_data_t</literal> tag to include information about the acquired assessment.</para>
+      <para>The <emphasis>name</emphasis> element contains the assessment name which is unique within the document and links the acquired listing of assessment data back to the formal assessment definition optionally contained within the protocol description</para>
+      <para>The <emphasis>dataInstance</emphasis> element specifies the state of the acquired data.  Specifically whether it is first entry, second entry, validated, unvalidated, etc.</para>
+      
+    </formalpara>
+    
+    <formalpara>
+      <title><literal>assessmentInfo_t</literal></title>
+      <para>The <literal>assessmentInfo_t</literal> tag is derived from the <literal>abstract_info_t</literal> element and is used to store a description of the assessment</para>
+      
+    </formalpara>
+    
+    <formalpara>
+      <title><literal>assessmentItem_t</literal></title>
+      <para>The <literal>assessmentItem_t</literal> tag is used to store the actual data captured by the assessment.  The <literal>assessmentItem_t</literal> tag is composed of a <literal>&lt;valueStatus&gt;</literal> element which contains information about whether the subject declined to answer the question or why the data value might be missing.  The <literal>&lt;value&gt;</literal> element stores the actual value of the assessment item as captured on the assessment iteself.  The <literal>&lt;normValue&gt;</literal> is used to store the normalized value for the element.  The <literal>&lt;reconciliationNote&gt;</literal> is used to document whether the values have been reconcilied if this data is part of multiple data entries.  The <literal>&lt;annotation&gt;</literal> is used to annotate the assessment item.</para>
+      <para>The <literal>terminology_ag</literal> reference is used to give contextual meaning to the question and link it with known ontologies and concepts.</para>
+    </formalpara>
   </section>
 
   <section>
     <title>Examples</title>
+    <para>The assessment example below shows both a formal assessment description stored in the <literal>&lt;protocol&gt;</literal> block and also the actual acquired assessment data</para>
+    <section>
+      <title>Formal Assessment Description</title>
+      <para>The formal description of each question for the assessment and possible answer choices</para>
+      <figure id="assessment_description.simple_example">
+        <programlisting><![CDATA[ <xcede:step ID="SES" name="Socio-Economic Scale" minOccurences="1" maxOccurences="1"
+                required="true">
+                   <xcede:items>
+                    <xcede:item ID="ses_education_subject">
+                        <xcede:itemText>
+                            <xcede:textLabel location="leadText"
+                                value="What is the highest level of education or professional training
+                                that you have achieved?"/>
+                            <xcede:textLabel location="trailText"
+                                value="Any trailing text might go here"/>
+                        </xcede:itemText>
+                        <xcede:itemChoice itemCode="1"
+                            itemValue="professional or graduate training (received degree)"/>
+                        <xcede:itemChoice itemCode="2" itemValue="college graduate"/>
+                        <xcede:itemChoice itemCode="3" itemValue="some college (at least one year)"/>
+                    </xcede:item>
+                    <xcede:item ID="ses_education_p_caretaker_prior_18">
+                        <xcede:itemText>
+                            <xcede:textLabel location="leadText"
+                                value="What is the highest level of education or professional training that your primary caretaker until you were 18 years old has achieved?"/>
+                        </xcede:itemText>
+                        <xcede:itemChoice itemCode="1"
+                            itemValue="professional or graduate training (received degree)"/>
+                        <xcede:itemChoice itemCode="2" itemValue="college graduate"/>
+                        <xcede:itemChoice itemCode="3" itemValue="some college (at least one year)"/>
+                    </xcede:item>
+                </xcede:items>
+            </xcede:step>]]></programlisting>
+      </figure>
+      <title>Actual Acquired Assessment Data</title>
+      <para>An instance of actual assessment data acquired on a subject during a protocol collection</para>
+      <figure id="acquired_assessment.simple_example">
+        <programlisting><![CDATA[<xcede:data xsi:type="xcede:assessment_t" subjectID="00301882920">
+        <xcede:name>Socio-Economic Status</xcede:name>
+        <xcede:dataInstance validated="true">
+            <xcede:assessmentInfo>
+                <xcede:description>This is the socio-economic scale. I'm sure there is more
+                    intersting things to say about it but I have no idea what</xcede:description>
+            </xcede:assessmentInfo>
+            <xcede:assessmentItem ID="ses_education_subject">
+                <xcede:value>1</xcede:value>
+            </xcede:assessmentItem>
+            <xcede:assessmentItem ID="ses_education_p_caretaker_prior_18">
+                <xcede:value>2</xcede:value>
+            </xcede:assessmentItem>
+            <xcede:assessmentItem ID="ses_education_p_caretaker_lifetime">
+                <xcede:value>2</xcede:value>
+            </xcede:assessmentItem>
+            <xcede:assessmentItem ID="ses_education_s_caretaker_prior18">
+                <xcede:value>1</xcede:value>
+            </xcede:assessmentItem>
+        </xcede:dataInstance>
+    </xcede:data>]]></programlisting>
+      </figure>       
   </section>
-
   <section>
     <title>Reference</title>
+    
   </section>
 
 </chapter>
+
