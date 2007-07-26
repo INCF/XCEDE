@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <appendix id="appendix.schema">
-  <title>Schema</title>
+  <title>XML Schema for XCEDE 2.0</title>
   <programlisting>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="../xcede-2.0-core.xsd" parse="text"/>
   </programlisting>
