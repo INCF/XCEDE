@@ -27,6 +27,7 @@ manual_full.fo: manual_full.xml ${CUSTOMXSL}
 		-PARAM xref.with.number.and.title 0 \
 		-PARAM section.autolabel 1 \
 		-PARAM section.label.includes.component.label 1 \
+                -PARAM header.column.widths '30 40 30' \
 		-XSL ${CUSTOMXSL} -IN manual_full.xml -OUT manual_full.fo
 #	xsltproc --stringparam use.extensions 1 --stringparam textinsert.extension 1 --stringparam hyphenate.verbatim 1 ${CUSTOMXSL} manual_full.xml > manual_full.fo
 
