@@ -7,12 +7,12 @@
 
   <section>
     <title>Manual structure</title>
-    <para>This manual has two parts.  <xref linkend="part.spec"/> describes the various components of XCEDE 2.0 and describes the specification in some detail.  <xref linkend="part.use"/> is a more practical guide to the use of XCEDE 2.0, providing guidance to those users who wish to extend the schema to represent project-specific metadata, or integrating XCEDE 2.0 into software applications and services.</para>
+    <para>This manual has two parts.  <xref linkend="part.spec"/> describes the various components of XCEDE 2.0 and describes the specification in some detail.  <xref linkend="part.use"/> is a more practical guide to the use of XCEDE 2.0, providing guidance to those users who wish to extend the schema to represent project-specific metadata, or integrate XCEDE 2.0 into software applications and services.</para>
   </section>
 
   <section>
     <title>Development</title>
-    <para>XCEDE 2.0 development started as an effort to "harmonize" the uses of XML within the BIRN (Biomedical Informatics Research Network) testbeds and collaborators within the neuroscientific community.  The feedback from these discussion sessions led to an initial prototype (based on XCEDE 1.0) of a next-generation schema.  Over the course of four months of daily teleconferences, the first public release of XCEDE 2.0 took form.</para>
+    <para>XCEDE 2.0 development started as an effort to "harmonize" the uses of XML within the BIRN (Biomedical Informatics Research Network) <citation>BIRN</citation> testbeds and collaborators within the neuroscientific community.  The feedback from these discussion sessions led to an initial prototype (based on XCEDE 1.0) of a next-generation schema.  Over the course of four months of daily teleconferences, the first public release of XCEDE 2.0 took form.</para>
     <para>XCEDE 2.0 has its origins in various XML schemas developed for collaborative neuroinformatics projects, including:</para>
     <variablelist>
       <varlistentry>
@@ -36,7 +36,7 @@
       <varlistentry>
         <term>BIRN Data Provenance schema</term>
         <listitem>
-          <para>records the history of processing steps.</para>
+          <para>records the history of processing steps and is the basis for the <literal>&lt;provenance&gt;</literal> element in the schema.</para>
         </listitem>
       </varlistentry>
       <varlistentry>

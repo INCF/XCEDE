@@ -3,6 +3,11 @@
                  "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <bibliography>
   <biblioentry>
+    <abbrev>BIRN</abbrev>
+    <title>Biomedical Informatics Research Network</title>
+    <releaseinfo>URL:&lt;<literal><ulink url="http://www.nbirn.net/"/></literal>&gt;</releaseinfo>
+  </biblioentry>
+  <biblioentry>
     <abbrev>CostelloSchemaVersioning</abbrev>
     <title>Impact of XML Schema Versioning on System Design</title>
     <releaseinfo>URL:&lt;<literal><ulink url="http://www.xfront.com/SchemaVersioning.html"/></literal>&gt;</releaseinfo>
