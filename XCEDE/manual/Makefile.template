@@ -14,7 +14,7 @@ rebuild: clean all
 clean:
 	rm -f manual_full.xml manual_full.fo manual_full.pdf
 
-manual_full.xml: manual.xml chap_analysis.xml chap_assessment.xml chap_binary_data_resource.xml chap_catalog.xml chap_data_resource.xml chap_events.xml chap_extending.xml chap_hierarchy.xml chap_integrating.xml chap_intro.xml chap_protocol.xml chap_provenance.xml chap_structure.xml chap_terminology.xml chap_usecase.xml app_schema.xml biblio.xml
+manual_full.xml: manual.xml chap_analysis.xml chap_assessment.xml chap_binary_data_resource.xml chap_catalog.xml chap_events.xml chap_extending.xml chap_hierarchy.xml chap_integrating.xml chap_intro.xml chap_protocol.xml chap_provenance.xml chap_structure.xml chap_terminology.xml chap_usecase.xml app_schema.xml biblio.xml
 	xmllint --xinclude manual.xml > manual_full.xml
 
 manual_full.fo: manual_full.xml ${CUSTOMXSL}
