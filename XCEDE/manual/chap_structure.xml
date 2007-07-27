@@ -25,7 +25,7 @@
       <listitem>
         <formalpara>
           <title>Protocols</title>
-          <para>Structures to describe the expected course of an experimental paradigm are provided by the <literal>&lt;protocol&gt;</literal> element.  See <xref linkend="chapter.protocol"/></para>
+          <para>Structures to describe the expected course of an experimental paradigm are provided by the <literal>&lt;protocol&gt;</literal> element.  See <xref linkend="chapter.protocol"/>.</para>
         </formalpara>
       </listitem>
       <listitem>
@@ -46,7 +46,7 @@
       <listitem>
         <formalpara>
           <title>Data provenance</title>
-          <para>The <literal>&lt;provenance&gt;</literal> element appears in the types <literal>analysis_t</literal> type (on which the <literal>&lt;analysis&gt;</literal> element is based) and <literal>dataResource_t</literal> (one of the available data models for the top-level <literal>&lt;resource&gt;</literal> element).  See <xref linkend="chapter.provenance"/>.</para>
+          <para>The <literal>&lt;provenance&gt;</literal> element appears in the types <literal>analysis_t</literal> (on which the <literal>&lt;analysis&gt;</literal> element is based) and <literal>dataResource_t</literal> (one of the available data models for the top-level <literal>&lt;resource&gt;</literal> element).  See <xref linkend="chapter.provenance"/>.</para>
         </formalpara>
       </listitem>
     </itemizedlist>

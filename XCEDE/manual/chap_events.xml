@@ -69,41 +69,42 @@
       <title>XCEDE Events example - stimulus/response data</title>
       <programlisting><![CDATA[<XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <acquisition ID="my_events">
-    <data xsi:type="events_t">
-      <event type="visual">
-        <onset>0</onset>
-        <duration>2</duration>
-        <value name="shape">square</value>
-        <value name="shapecolor">red</value>
-      </event>
-      <event type="visual">
-        <onset>2.5</onset>
-        <duration>2</duration>
-        <value name="shape">square</value>
-        <value name="shapecolor">blue</value>
-      </event>
-      <event type="audio">
-        <onset>0.3</onset>
-        <duration>1.4</onset>
-        <value name="frequency">low</value>
-      </event>
-      <event type="audio">
-        <onset>2.0</onset>
-        <duration>1.4</onset>
-        <value name="frequency">low</value>
-      </event>
-      <event type="audio">
-        <onset>3.5</onset>
-        <duration>1.4</onset>
-        <value name="frequency">low</value>
-      </event>
-      <event type="response">
-        <onset>3.4</onset>
-        <value name="button">1</value>
-      </event>
-    </data>
+  <acquisition ID="my_stimulus_response_data">
+    <dataRef ID="my_events" />
   </acquisition>
+  <data ID="my_events" xsi:type="events_t">
+    <event type="visual">
+      <onset>0</onset>
+      <duration>2</duration>
+      <value name="shape">square</value>
+      <value name="shapecolor">red</value>
+    </event>
+    <event type="visual">
+      <onset>2.5</onset>
+      <duration>2</duration>
+      <value name="shape">square</value>
+      <value name="shapecolor">blue</value>
+    </event>
+    <event type="audio">
+      <onset>0.3</onset>
+      <duration>1.4</onset>
+      <value name="frequency">low</value>
+    </event>
+    <event type="audio">
+      <onset>2.0</onset>
+      <duration>1.4</onset>
+      <value name="frequency">low</value>
+    </event>
+    <event type="audio">
+      <onset>3.5</onset>
+      <duration>1.4</onset>
+      <value name="frequency">low</value>
+    </event>
+    <event type="response">
+      <onset>3.4</onset>
+      <value name="button">1</value>
+    </event>
+  </data>
 </XCEDE>
 ]]></programlisting>
     </figure>
@@ -113,27 +114,28 @@
       <title>XCEDE Events example - QA data</title>
       <programlisting><![CDATA[<XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <acquisition ID="my_events">
-    <data xsi:type="events_t">
-      <event>
-        <onset>0</onset>
-        <duration>2</duration>
-        <value name="volmean">759.218</value>
-        <value name="cmassx">106.781</value>
-        <value name="cmassy">118.279</value>
-        <value name="cmassz">66.9694</value>
-      </event>
-      <event>
-        <onset>2</onset>
-        <duration>2</duration>
-        <value name="volmean">759.218</value>
-        <value name="cmassx">106.801</value>
-        <value name="cmassy">118.242</value>
-        <value name="cmassz">67.1636</value>
-      </event>
-      <!-- ... etc. ... -->
-    </data>
+  <acquisition ID="my_stimulus_response_data">
+    <dataRef ID="my_events" />
   </acquisition>
+  <data ID="my_events" xsi:type="events_t">
+    <event>
+      <onset>0</onset>
+      <duration>2</duration>
+      <value name="volmean">759.218</value>
+      <value name="cmassx">106.781</value>
+      <value name="cmassy">118.279</value>
+      <value name="cmassz">66.9694</value>
+    </event>
+    <event>
+      <onset>2</onset>
+      <duration>2</duration>
+      <value name="volmean">759.218</value>
+      <value name="cmassx">106.801</value>
+      <value name="cmassy">118.242</value>
+      <value name="cmassz">67.1636</value>
+    </event>
+    <!-- ... etc. ... -->
+  </data>
 </XCEDE>]]></programlisting>
     </figure>
   </section>
