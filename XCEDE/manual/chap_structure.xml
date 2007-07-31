@@ -3,12 +3,12 @@
   <title>Structure and Conventions</title>
 
   <section>
-    <title>The XCEDE 2.0 Dataset</title>
+    <title>The XCEDE 2 Dataset</title>
 
-    <para>An XCEDE 2.0 Dataset is a data repository (stored in files, databases, or using other storage mechanisms) that can be represented as a collection of one or more XML documents, each of which validates against the XCEDE 2.0 XML schema (<xref linkend="appendix.schema"/>).  The XCEDE 2.0 specification does not prescribe any particular mechanism by which these documents are located, stored, grouped, or linked, though XCEDE 2.0 allows certain XML elements to link to other target elements and to optionally specify URLs as hints as to the location of the documents containing these targets.</para>
-    <para>For example, a given XCEDE 2.0 dataset may be stored as a single XML document, or a collection of files in a single directory on a file system, or may be distributed within a hierarchical directory structure (which may or may not reflect the structure of the data within), or may be stored within a database accessible by query through a web interface.  The semantics of the dataset should be fully reflected in the XML representation, and should not be dependent on how the dataset is stored.</para>
-    <para>A schema-compliant XCEDE 2.0 document must be a valid XML 1.0 document <citation>XML10</citation>, and must have one root element, <literal>&lt;XCEDE&gt;</literal>, which (like all other XCEDE 2.0 elements) is in the XML namespace <literal>http://www.xcede.org/xcede-2</literal>.</para>
-    <para>Several major components of the XCEDE 2.0 dataset are represented as children of the XCEDE root element.  These components include:</para>
+    <para>An XCEDE 2 Dataset is a data repository (stored in files, databases, or using other storage mechanisms) that can be represented as a collection of one or more XML documents, each of which validates against the XCEDE 2 XML schema (<xref linkend="appendix.schema"/>).  The XCEDE 2 specification does not prescribe any particular mechanism by which these documents are located, stored, grouped, or linked, though XCEDE 2 allows certain XML elements to link to other target elements and to optionally specify URLs as hints as to the location of the documents containing these targets.</para>
+    <para>For example, a given XCEDE 2 dataset may be stored as a single XML document, or a collection of files in a single directory on a file system, or may be distributed within a hierarchical directory structure (which may or may not reflect the structure of the data within), or may be stored within a database accessible by query through a web interface.  The semantics of the dataset should be fully reflected in the XML representation, and should not be dependent on how the dataset is stored.</para>
+    <para>A schema-compliant XCEDE 2 document must be a valid XML 1.0 document <citation>XML10</citation>, and must have one root element, <literal>&lt;XCEDE&gt;</literal>, which (like all other XCEDE 2 elements) is in the XML namespace <literal>http://www.xcede.org/xcede-2</literal>.</para>
+    <para>Several major components of the XCEDE 2 dataset are represented as children of the XCEDE root element.  These components include:</para>
     <itemizedlist>
       <listitem>
         <formalpara>
@@ -73,9 +73,9 @@
   </section>
 
   <section>
-    <title>XCEDE 2.0 Schema conventions</title>
+    <title>XCEDE 2 Schema conventions</title>
 
-    <para>The XCEDE XML document structure is defined using W3C XML Schema language <citation>XMLSchema10</citation>.  With a few exceptions, the XCEDE 2.0 XML schema subscribes to the following conventions and best practices.</para>
+    <para>The XCEDE XML document structure is defined using W3C XML Schema language <citation>XMLSchema10</citation>.  With a few exceptions, the XCEDE 2 XML schema subscribes to the following conventions and best practices.</para>
 
     <formalpara>
       <title>Naming and capitalization</title>

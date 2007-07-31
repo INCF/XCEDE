@@ -6,7 +6,7 @@
 
   <section>
     <title>Overview</title>
-    <para>The XCEDE <emphasis>Binary Data Resource</emphasis> component is used to provide a generic interface to a binary data stream stored in one or more external files.  Any of the binary data resource types described in this chapter can be used anywhere an <literal>abstract_resource_t</literal> is called for (with the appropriate <literal>xsi:type</literal> attribute); in the current XCEDE schema, these locations are the top-level <literal>&lt;resource&gt;</literal> element and the <literal>&lt;dataResource&gt;</literal> child element of <literal>&lt;acquisition&gt;</literal>.</para>
+    <para>The XCEDE 2 <emphasis>Binary Data Resource</emphasis> component is used to provide a generic interface to a binary data stream stored in one or more external files.  Any of the binary data resource types described in this chapter can be used anywhere an <literal>abstract_resource_t</literal> is called for (with the appropriate <literal>xsi:type</literal> attribute); in the current XCEDE schema, these locations are the top-level <literal>&lt;resource&gt;</literal> element and the <literal>&lt;dataResource&gt;</literal> child element of <literal>&lt;acquisition&gt;</literal>.</para>
     <para>XCEDE provides multiple layers of derived types to store more specialized information about the binary data.  The base type and each of the derived types are described in turn.</para>
 
     <formalpara>
