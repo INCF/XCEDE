@@ -9,7 +9,8 @@
     <figure id="hierarchy.levels">
       <title>XCEDE hierarchy</title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/hierarchy_levels.svg" format="asvg" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/hierarchy_levels.svg" format="asvg" width="6in"/></imageobject>
+        <imageobject role="html"><imagedata fileref="images/hierarchy_levels.png" format="png" width="6in"/></imageobject>
       </mediaobject>
     </figure>
 
