@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by dbk (UNIV CA IRVINE) -->
 <xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:gml="http://www.opengis.net/gml" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
 	<xs:annotation>
 		<xs:documentation>The XCEDE schema provides an extensive metadata hierarchy for describing and documenting research and clinical studies. The schema organizes information into five general hierarchical levels: a complete project; studies within a project; subjects involved in the studies; visits for each of the subjects; the full description of the subject's participation during each visit</xs:documentation>
 		<xs:documentation>Each of these sub-schemas is composed of information relevant to that aspect of an experiment and can be stored in separate XML files or spliced into one large file allowing for the XML data to be stored in a hierarchical directory structure along with the primary data. Each sub-schema also allows for the storage of data provenance information allowing for a traceable record of processing and/or changes to the underlying data. Additionally, the sub-schemas contain support for derived statistical data in the form of human imaging activation maps and simple statistical value lists.</xs:documentation>
@@ -102,11 +100,6 @@
 				<xs:attributeGroup ref="studyExternalIDs_ag"/>
 				<xs:anyAttribute namespace="##other" processContents="lax"/>
 			</xs:extension>
-		</xs:complexContent>
-	</xs:complexType>
-	<xs:complexType name="studyInfo_t">
-		<xs:complexContent>
-			<xs:extension base="abstract_info_t"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="episode_t">
@@ -258,14 +251,13 @@
 								<xs:element name="entry" type="resource_t"/>
 								<xs:element name="entryDataRef" type="ref_t">
 									<xs:annotation>
-										<xs:documentation>A reference to a data element at the top
-											level of an XCEDE document</xs:documentation>
+										<xs:documentation>A reference to a data element at the top level of an XCEDE document</xs:documentation>
 									</xs:annotation>
 								</xs:element>
 								<xs:element name="entryResourceRef" type="ref_t">
 									<xs:annotation>
 										<xs:documentation>A reference to a resource element at the
-											top level of an XCEDE document</xs:documentation>
+top level of an XCEDE document</xs:documentation>
 									</xs:annotation>
 								</xs:element>
 							</xs:choice>
@@ -407,9 +399,7 @@
 	</xs:attributeGroup>
 	<xs:attributeGroup name="levelRef_ag">
 		<xs:annotation>
-			<xs:documentation>Reference to the meta-data element that this catalog is related to.
-				Should point to one of the core xcede hierarchy components: project, subject, visit,
-				study, acquisition.</xs:documentation>
+			<xs:documentation>Reference to the meta-data element that this catalog is related to. Should point to one of the core xcede hierarchy components: project, subject, visit, study, acquisition.</xs:documentation>
 		</xs:annotation>
 		<xs:attribute name="level" type="levelDescriptor_t"/>
 		<xs:attributeGroup ref="allLevelExternalIDs_ag"/>
@@ -568,6 +558,11 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="studyInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t"/>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="visitInfo_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_info_t">
@@ -616,14 +611,14 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:complexType name="atlasEntityGML_t">
+	<xs:complexType name="atlasEntity_t">
 		<xs:annotation>
 			<xs:documentation>entity elements are used to describe the resultant scope of an analysis</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="abstract_entity_t">
 				<xs:sequence>
-					<xs:element name="atlasEntity" type="gml:AbstractGeometryType">
+					<xs:element name="geometry" type="abstract_geometry_t">
 						<xs:annotation>
 							<xs:documentation>Atlas entity defined through the use of GML base geometries.</xs:documentation>
 						</xs:annotation>
@@ -632,6 +627,7 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="abstract_geometry_t"/>
 	<xs:complexType name="anatomicalEntity_t">
 		<xs:annotation>
 			<xs:documentation>Entity elements are used to describe the resultant scope of an analysis</xs:documentation>
@@ -917,14 +913,6 @@
 		<xs:attribute name="ID" type="xs:string"/>
 		<xs:attribute name="role" type="xs:string"/>
 	</xs:complexType>
-	<xs:complexType name="mixedType_t" mixed="true"/>
-	<xs:complexType name="versionedEntity_t">
-		<xs:simpleContent>
-			<xs:extension base="xs:string">
-				<xs:attribute name="version" type="xs:string"/>
-			</xs:extension>
-		</xs:simpleContent>
-	</xs:complexType>
 	<xs:simpleType name="levelDescriptor_t">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="project"/>
@@ -1039,45 +1027,58 @@
 	<!--*********            Provenance types            *********-->
 	<xs:complexType name="processStep_t">
 		<xs:sequence>
-			<xs:element name="package" type="versionedEntity_t" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Software package that contains the program</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="program" type="versionedEntity_t">
-				<xs:annotation>
-					<xs:documentation>Software executable to was run in this step
-					</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="programInvocation" type="mixedType_t">
-				<xs:annotation>
-					<xs:documentation>Exact command line text used to run the
-					executable</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="timeStamp" type="mixedType_t"/>
-			<xs:element name="cvs" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="program" type="versionedProgramEntity_t" minOccurs="0"/>
+			<xs:element name="programArguments" type="argumentsType_t" minOccurs="0"/>
+			<xs:element name="timeStamp" type="mixedType_t" minOccurs="0"/>
 			<xs:element name="user" type="mixedType_t" minOccurs="0"/>
-			<xs:element name="machine" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="hostName" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="architecture" type="mixedType_t" minOccurs="0"/>
 			<xs:element name="platform" type="versionedEntity_t" minOccurs="0"/>
+			<xs:element name="cvs" type="mixedType_t" minOccurs="0"/>
 			<xs:element name="compiler" type="versionedEntity_t" minOccurs="0"/>
 			<xs:element name="library" type="versionedEntity_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="buildTimeStamp" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="package" type="versionedEntity_t" minOccurs="0"/>
+			<xs:element name="repository" type="mixedType_t" minOccurs="0"/>
 		</xs:sequence>
+		<xs:attribute name="ID" type="xs:string"/>
+		<xs:attribute name="parent" type="xs:string"/>
 	</xs:complexType>
 	<xs:complexType name="provenance_t">
-		<xs:annotation>
-			<xs:documentation>Note: sourceData should be included along with application parameters
-				and configuration values</xs:documentation>
-		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="processStep" type="processStep_t" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="ID" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Optional identifier indicating the </xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
+		<xs:attribute name="ID" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="mixedType_t" mixed="true"/>
+	<xs:complexType name="argumentsType_t">
+		<xs:annotation>
+			<xs:documentation>input and output arguments of the processing tool</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="inputs" type="xs:string"/>
+				<xs:attribute name="outputs" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="versionedEntity_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="version" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="versionedProgramEntity_t">
+		<xs:annotation>
+			<xs:documentation>version and build type of the processing tool</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="version" type="xs:string"/>
+				<xs:attribute name="build" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
 	</xs:complexType>
 	<!--*********            Resource types            *********-->
 	<xs:complexType name="informationResource_t">
