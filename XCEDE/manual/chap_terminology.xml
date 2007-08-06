@@ -17,9 +17,9 @@
     
     <para>The use of terminologies is embedded within the XCEDE schema itself.  For example, in regards to subject information, terminology strings are utilized to define the sex and species.</para>
  
-    <figure id="terminologyString_t.example_instance1">
+    <figure id="terminologyString_t.example_schema">
       <title>Terminology String Instance</title>
-      <programlisting><![CDATA[<XCEDE>
+      <programlisting><![CDATA[
 	<xs:complexType name="subjectInfo_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_info_t">
@@ -33,15 +33,14 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-</XCEDE>
  ]]></programlisting>
     </figure>
     
     <para>As an example of the use of terminology strings, in the context of a subject detailed above, the following example shows how sex and species are represented for a human female subject.</para>
     
-    <figure id="terminologyString_t.example_instance2">
+    <figure id="terminologyString_t.example_instance">
       <title>Terminology String Instance</title>
-      <programlisting><![CDATA[<XCEDE>
+      <programlisting><![CDATA[
 	<sex preferredLabel="Female" abbreviation="F" nomenclature="UMLS" termID="C0015780" termPath="SNOMED CT Concept:Observable entity:General clinical state:Gender:Female">f</sex>
 	<species preferredLabel="Human" abbreviation="human" nomenclature="BIRNLex" termID="birn_org_anat:birnOrgAnatomy_366" termPath="Thing:entity:continuant:independent_continuant:object:Biomaterial_object:Organismal_object:Organism:Mammal:Eutheria:Euarchontoglires:Primate:Haplorrhini:Simiiformes:Catarrhini:Hominoidea:Hominidae:Homo_Pan_Gorilla_group:Homo:Human">human</species
  ]]></programlisting>
