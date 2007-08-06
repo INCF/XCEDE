@@ -16,14 +16,14 @@ will then be placed back into the database, linked to the original volume from w
  If a researcher would like to recreate the processing steps, in order to apply it to a new data set,
  they will be able to obtain the information needed to download or reconstruct the tools that were 
 used on the original data set. Information about the processing tools needs to be made available by 
-the authors of the tools, is collected at run time by the processing scripts, and written into XCDED.
+the authors of the tools, is collected at run time by the processing scripts, and written into XCEDE.
 </para>
-</literal>
+
     <formalpara>
       <title><literal>provenance_t</literal></title>
       <para>This type contains an ordered sequence of processing steps (<literal>processStep_t</literal>) that 
 	were executed to create the data that this element is contained within, which can be
-	<literal>dataResource_t</literal> or an <literel>analysis_t.</literal></para>
+	<literal>dataResource_t</literal> or an <literal>analysis_t.</literal></para>
     </formalpara>
 
     <formalpara>
@@ -45,13 +45,13 @@ platform: This is the operating system under which the processing step is being 
 
 	These are optional:
 	<literal>cvs</literal>		Revision control repository information. Use the CVS keyword Id, inserted into your source code
- file as $Id: chap_provenance.xml,v 1.5 2007-08-06 20:10:27 dmarcus Exp $ and it will be replaced with the file name, version, date of change and who changed it. 
+ file as $Id: chap_provenance.xml,v 1.6 2007-08-06 21:07:32 gadde Exp $ and it will be replaced with the file name, version, date of change and who changed it. 
 Also works with SVN, but see SVN notes for enabling it.
 	<literal>compiler</literal>	What was used to compile this executable? Name and version.
 	<literal>library</literal>	The name and version of a linked library. Can be repeated as many times as necessary. 
 This is dependent on the library in question, examples are given for VTK and Tcl and Tk.
 	<literal>buildTimeStamp</literal>	The time stamp showing when the executable was built
-	<literal>package	This tag gives the overall package version, if the executable is part of a larger unit, for example, 
+	<literal>package</literal>	This tag gives the overall package version, if the executable is part of a larger unit, for example, 
 mri_convert is part of FreeSurfer, and the whole FreeSurfer package may have a different version number than the
  mri_convert executable that might change at a different rate.
 	<literal>repository</literal>	Where can the software be found? Link to a code repository or a web page. Can be extracted automatically 
@@ -70,8 +70,7 @@ if using SVN, via the HeadURL keyword.
 <para>The figure below illustrates a C code snippet (written by Nicole Aucoin and implemented in 3DSlicer) that generates
 provenance XML from an application. [Note: This may not be completely compliant with XCEDE2.]</para>
 
-<figure id="provenance_generation.example">
-<title>Generating provenance from an application</title>
+<informalexample id="provenance_generation.example">
 <programlisting><![CDATA[
 void printAllInfo(int argc, char **argv)
 {
@@ -83,14 +82,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.5 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.6 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.5 2007-08-06 20:10:27 dmarcus Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.6 2007-08-06 21:07:32 gadde Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
@@ -193,7 +192,7 @@ void printAllInfo(int argc, char **argv)
   fprintf(stdout, "\n");
 }
 ]]></programlisting>
-</figure>
+</informalexample>
 
 <para>For the version, you can use the CVS keyword Name, inserted into your source code file as $Name: not supported by cvs2svn $
  and it will be replaced with a the version tag when you check out the code with a tag:</para>
@@ -205,6 +204,7 @@ the appropriate values, you must enable the SVN repository's properties on a fil
 basis by issuing the following command:</para>
 
 <programlisting><![CDATA[svn propset svn:keywords "Revision Id Date HeadURL" [filename.ext]]]></programlisting>
+</section>
 
   <section>
     <title>Reference</title>
