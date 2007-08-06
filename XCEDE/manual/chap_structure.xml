@@ -66,7 +66,7 @@
       <listitem>
         <formalpara>
           <title>Terminology</title>
-          <para>Various elements in XCEDE 2 include the attribute group <literal>terminology_ag</literal> or use the type <literal>terminologyString</literal>, which allow the user to associate them with terms from particular nomenclatures/ontologies.  For example, a subject's <literal>&lt;species&gt;</literal> may refer to a standard term listed in a well-known public nomenclature.</para>
+          <para>Various elements in XCEDE 2 include the attribute group <literal>terminology_ag</literal> or use the type <literal>terminologyString</literal>, which allow the user to associate them with terms from particular nomenclatures/ontologies.  For example, a subject's <literal>&lt;species&gt;</literal> may refer to a standard term listed in a well-known public nomenclature.  See <xref linkend="chapter.terminology"/>.</para>
         </formalpara>
       </listitem>
     </itemizedlist>
