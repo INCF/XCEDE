@@ -6,14 +6,67 @@
 
   <section>
     <title>Overview</title>
-  </section>
-
+    
+    <para>The use of terminologies (and ontologies) are critical in the sharing of data.  Ontologies specify the terms used to describe and represent areas of knowledge. They are commonly used by people, databases, and applications that have a requirement to share information about a subject. For example, the subject areas of medicine, real estate, and automobile repair all have specific ways of representing and communicating knowledge. Ontologies include computer-usable definitions of the basic terms describing the domain and the relationships between concepts. They encode knowledge within a domain and also knowledge that spans multiple domains. In this way, they make that knowledge reusable.  For comprehensive information on ontologies and their use in biomedical science, please visit the National Center for Biomedical Ontology (NCBiO; http://www.bioontology.org/).</para>
+    
+    <para>In the context of XCEDE, the use of terminologies is critical for data exchange.  By specifying the exact terminological correspondences for data within XCEDE a user of the data is clear about what the data represents.</para>
+  
+    <para>In order to accomplish this within XCEDE, two constructs are primarily used: terminology_ag and terminologyString_t.  The terminology_ag attribute group defines the necessary information required to annotate a data item with its terminology correspondence.  The terminologyString_t utilizes this attribute group and provides a basic type that can be utilized in the schema for data items that should have an associated terminology reference.</para>
+   </section>
+  
   <section>
     <title>Examples</title>
+    
+    <para>The use of terminologies is embedded within the XCEDE schema itself.  For example, in regards to subject information, terminology strings are utilized to define the sex and species.</para>
+ 
+    <figure id="terminologyString_t.example_instance">
+      <title>Terminology String Instance</title>
+      <programlisting><![CDATA[<XCEDE>
+	<xs:complexType name="subjectInfo_t">
+		<xs:complexContent>
+			<xs:extension base="abstract_info_t">
+				<xs:sequence>
+					<xs:element name="sex" type="terminologyString_t" minOccurs="0"/>
+					<xs:element name="species" type="terminologyString_t" minOccurs="0"/>
+					<xs:element name="birthdate" type="terminologyString_t" minOccurs="0"/>
+					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:anyAttribute namespace="##other" processContents="lax"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</XCEDE>
+ ]]></programlisting>
+    </figure>
+    
+    <para>As an example of the use of terminology strings, in the context of a subject detailed above, the following example shows how sex and species are represented for a human female subject.</para>
+    
+    <figure id="terminologyString_t.example_instance">
+      <title>Terminology String Instance</title>
+      <programlisting><![CDATA[<XCEDE>
+	<sex preferredLabel="Female" abbreviation="F" nomenclature="UMLS" termID="C0015780" termPath="SNOMED CT Concept:Observable entity:General clinical state:Gender:Female">f</sex>
+	<species preferredLabel="Human" abbreviation="human" nomenclature="BIRNLex" termID="birn_org_anat:birnOrgAnatomy_366" termPath="Thing:entity:continuant:independent_continuant:object:Biomaterial_object:Organismal_object:Organism:Mammal:Eutheria:Euarchontoglires:Primate:Haplorrhini:Simiiformes:Catarrhini:Hominoidea:Hominidae:Homo_Pan_Gorilla_group:Homo:Human">human</species
+ ]]></programlisting>
+    </figure>
   </section>
 
   <section>
     <title>Reference</title>
+    
+    <figure id="terminology_ag.ref_diagram ">
+      <title>terminology_ag</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/terminology_ag.png" format="png" width="6in"/> </imageobject>
+      </mediaobject>
+    </figure>
+    
+    <figure id="terminologyString_t.ref_diagram ">
+      <title>terminologyString_t</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/terminologyString_t.png" format="png" width="6in"/> </imageobject>
+      </mediaobject>
+    </figure>
+    
   </section>
-
+  
 </chapter>
