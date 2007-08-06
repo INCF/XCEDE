@@ -2,13 +2,13 @@
 <chapter id="chapter.provenance">
   <title>Provenance</title>
 
+  <section>
+    <title>Overview</title>
   <para>Provenance is used to record in detail the sequence of processing and analysis 
 steps that have been executed to create a derived image and/or measures. 
 These details include the name and type of machine on which the executable was run, 
 the name of the executable, and input parameters to the exectuable.</para>
 
-  <section>
-    <title>Overview</title>
   <para>XCEDE-represented studies will be populated with large numbers of medical image volumes which 
 researchers will wish to access and run various processing tools on in order to obtain 
 derived data. This derived data, such as volumes of various brain structures, cortical thickness etc., 
@@ -18,6 +18,47 @@ will then be placed back into the database, linked to the original volume from w
 used on the original data set. Information about the processing tools needs to be made available by 
 the authors of the tools, is collected at run time by the processing scripts, and written into XCDED.
 </para>
+</literal>
+    <formalpara>
+      <title><literal>provenance_t</literal></title>
+      <para>This type contains an ordered sequence of processing steps (<literal>processStep_t</literal>) that 
+	were executed to create the data that this element is contained within, which can be
+	<literal>dataResource_t</literal> or an <literel>analysis_t.</literal></para>
+    </formalpara>
+
+    <formalpara>
+      <title><literal>processStep_t</literal></title>
+      <para>This type contains two attributes, ID and parent, indicating a unique ID for the step and its 
+parent step, respectively. It include a number of child elements that describe the conditions
+under which an executable was run. All of the child elements are formally optional. The following are strongly
+recommended:
+  	<literal>program</literal> The name of the executable. The version attribute is required, build number is optional. 
+See instructions below for inserting versino control content. Alternately, you can define it as a user string.
+	<literal>programArguments</literal> The arguments passed into the executable. The attributes are optional, they are used to break 
+down the full list of arguments into input and output arguments.
+	<literal>timeStamp</literal> The time at which the program started to run, milliseconds are optional until 
+cross platform code can be found.
+	<literal>user</literal> Who was logged in and running this executable?
+	<literal>hostName</literal> The unique id of the computer running this executable. Replaces Machine from old schema.
+	<literal>architecture</literal> This is the type of hardware that the processing step is run on, sun, x86, etc. 	
+platform: This is the operating system under which the processing step is being run.
+
+	These are optional:
+	<literal>cvs</literal>		Revision control repository information. Use the CVS keyword Id, inserted into your source code
+ file as $Id: chap_provenance.xml,v 1.5 2007-08-06 20:10:27 dmarcus Exp $ and it will be replaced with the file name, version, date of change and who changed it. 
+Also works with SVN, but see SVN notes for enabling it.
+	<literal>compiler</literal>	What was used to compile this executable? Name and version.
+	<literal>library</literal>	The name and version of a linked library. Can be repeated as many times as necessary. 
+This is dependent on the library in question, examples are given for VTK and Tcl and Tk.
+	<literal>buildTimeStamp</literal>	The time stamp showing when the executable was built
+	<literal>package	This tag gives the overall package version, if the executable is part of a larger unit, for example, 
+mri_convert is part of FreeSurfer, and the whole FreeSurfer package may have a different version number than the
+ mri_convert executable that might change at a different rate.
+	<literal>repository</literal>	Where can the software be found? Link to a code repository or a web page. Can be extracted automatically 
+if using SVN, via the HeadURL keyword.
+
+</para>
+    </formalpara>
   </section>
 
   <section>
@@ -25,7 +66,156 @@ the authors of the tools, is collected at run time by the processing scripts, an
   </section>
 
   <section>
+	<title>Generating provenance XML from applications</title>
+<para>The figure below illustrates a C code snippet (written by Nicole Aucoin and implemented in 3DSlicer) that generates
+provenance XML from an application. [Note: This may not be completely compliant with XCEDE2.]</para>
+
+<figure id="provenance_generation.example">
+<title>Generating provenance from an application</title>
+<programlisting><![CDATA[
+void printAllInfo(int argc, char **argv)
+{
+  int i;
+  struct tm * timeInfo;
+  time_t rawtime;
+  // yyyy/mm/dd-hh-mm-ss-ms-TZ
+  // plus one for 3 char time zone
+  char timeStr[27];
+
+  fprintf(stdout, "<ProcessStep>\n");
+  fprintf(stdout, "<Program version=\"$Revision: 1.5 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<ProgramArguments>");
+  for (i = 1; i < argc; i++)
+    {
+    fprintf(stdout, " %s", argv[i]);
+    }
+  fprintf(stdout, "</ProgramArguments>\n");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.5 2007-08-06 20:10:27 dmarcus Exp $</CVS> <TimeStamp>");
+  time ( &rawtime );
+  timeInfo = localtime (&rawtime);
+  strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
+  fprintf(stdout, "%s</TimeStamp>\n", timeStr);
+  fprintf(stdout, "<User>%s</User>\n", getenv("USER"));
+
+  fprintf(stdout, "<HostName>");
+  if (getenv("HOSTNAME") == NULL)
+    {
+    if (getenv("HOST") == NULL)
+      {
+      fprintf(stdout, "(unknown)");
+      }
+    else
+      {
+      fprintf(stdout, "%s", getenv("HOST"));
+      }
+    }
+  else
+    {
+    fprintf(stdout, "%s", getenv("HOSTNAME"));
+    }
+  fprintf(stdout, "</HostName><Platform version=\"");
+#if defined(sun) || defined(__sun)
+#if defined(__SunOS_5_7)
+  fprintf(stdout, "2.7");
+#endif
+#if defined(__SunOS_5_8)
+  fprintf(stdout, "8");
+#endif
+#endif
+#if defined(linux) || defined(__linux)
+  fprintf(stdout, "unknown");
+#endif
+
+  fprintf(stdout, "\">");
+  // now the platform name
+#if defined(linux) || defined(__linux)
+  fprintf(stdout, "Linux");
+#endif
+#if defined(macintosh) || defined(Macintosh)
+  fprintf(stdout, "MAC OS 9");
+#endif
+#ifdef __MACOSX__
+  fprintf(stdout, "MAC OS X");
+#endif
+#if defined(sun) || defined(__sun)
+# if defined(__SVR4) || defined(__svr4__)
+  fprintf(stdout, "Solaris");
+# else
+  fprintf(stdout, "SunOS");
+# endif
+#endif
+#if defined(_WIN32) || defined(__WIN32__)
+  fprintf(stdout, "Windows");
+#endif
+  fprintf(stdout, "</Platform>\n");
+
+  if (getenv("MACHTYPE") != NULL)
+    {
+    fprintf(stdout, "<Architecture>%s</Architecture>\n", getenv("MACHTYPE"));
+    }
+
+  fprintf(stdout, "<Compiler version=\"");
+  #if defined(__GNUC__)
+#if defined(__GNU_PATCHLEVEL__)
+  fprintf(stdout, "%d", (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__));
+#else
+  fprintf(stdout, "%d", (__GNUC__ * 10000 + __GNUC_MINOR__ * 100));
+#endif
+#endif
+#if defined(_MSC_VER)
+  fprintf(stdout, "%d", (_MSC_VER));
+#endif
+  // now the compiler name
+  fprintf(stdout, ">");
+#if defined(__GNUC__)
+  fprintf(stdout, "GCC");
+#else
+#if defined(_MSC_VER)
+  fprintf(stdout, "MSC");
+#else
+  fprintf(stdout, "UKNOWN");
+#endif
+#endif
+  fprintf(stdout, "</Compiler>\n");
+
+
+  fprintf(stdout, "<Library version=\"%s\">VTK</Librarary><Library version=\"unknown\">ITK</Library><Library version=\"%s\">KWWidgets</Library>\n", VTK_VERSION, KWWidgets_VERSION);
+  int major, minor, patchLevel;
+  Tcl_GetVersion(&major, &minor, &patchLevel, NULL);
+  fprintf(stdout, "<Library version=\"%d.%d.%d\">TCL</Library>\n", major, minor, patchLevel);
+  //fprintf(stdout, "<Library version=\"%d.%d.%d\">TK</Library>\n", major,
+  //minor, patchLevel);
+#ifdef USE_PYTHON
+  fprintf(stdout, "<Library version=\"%s\">Python</Library>\n", PY_VERSION);
+#endif
+  fprintf(stdout, "<Repository>$HeadURL: http://www.na-mic.org/svn/Slicer3/trunk/Applications/GUI/Slicer3.cxx $</Repository>\n");
+  fprintf(stdout, "<ProcessStep>\n");
+  fprintf(stdout, "\n");
+}
+]]></programlisting>
+</figure>
+
+<para>For the version, you can use the CVS keyword Name, inserted into your source code file as $Name: not supported by cvs2svn $
+ and it will be replaced with a the version tag when you check out the code with a tag:</para>
+
+<programlisting><![CDATA[cvs -r tag co [modulename]</programlisting>]]></programlisting>
+
+<para>If you are using SVN, in order to use CVS style keywords and have them be replaced with 
+the appropriate values, you must enable the SVN repository's properties on a file by file (and keyword by keyword) 
+basis by issuing the following command:</para>
+
+<programlisting><![CDATA[svn propset svn:keywords "Revision Id Date HeadURL" [filename.ext]]]></programlisting>
+
+  <section>
     <title>Reference</title>
+
+    <figure id="provenance.ref_diagram ">
+      <title>provenance_t</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/provenance_t.png" format="asvg" width="6in"/> </imageobject>
+      </mediaobject>
+    </figure>
+
   </section>
 
 </chapter>
