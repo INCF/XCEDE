@@ -2,8 +2,6 @@
 <chapter id="chapter.terminology">
   <title>Terminology</title>
 
-  <para>This is where the terminology text goes.</para>
-
   <section>
     <title>Overview</title>
     
@@ -19,7 +17,7 @@
     
     <para>The use of terminologies is embedded within the XCEDE schema itself.  For example, in regards to subject information, terminology strings are utilized to define the sex and species.</para>
  
-    <figure id="terminologyString_t.example_instance">
+    <figure id="terminologyString_t.example_instance1">
       <title>Terminology String Instance</title>
       <programlisting><![CDATA[<XCEDE>
 	<xs:complexType name="subjectInfo_t">
@@ -41,7 +39,7 @@
     
     <para>As an example of the use of terminology strings, in the context of a subject detailed above, the following example shows how sex and species are represented for a human female subject.</para>
     
-    <figure id="terminologyString_t.example_instance">
+    <figure id="terminologyString_t.example_instance2">
       <title>Terminology String Instance</title>
       <programlisting><![CDATA[<XCEDE>
 	<sex preferredLabel="Female" abbreviation="F" nomenclature="UMLS" termID="C0015780" termPath="SNOMED CT Concept:Observable entity:General clinical state:Gender:Female">f</sex>
