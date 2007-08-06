@@ -109,12 +109,21 @@
             <para>All elements should have a corresponding named <literal>complexType</literal>. For example: <literal>&lt;project&gt;</literal> is of type <literal>project_t</literal>.</para>
           </listitem>
           <listitem>
-            <para>The schema prescribes a particular document order for some elements -- document creators should follow this strictly.  However, applications should be written without expecting a particular element order, in case later versions of the schema change the order of elements.  That is, be conservative in what you write, but liberal in what you accept.</para>
+            <para>The schema prescribes that some elements precede or follow other elements -- document creators should follow this strictly.  However, applications should be written without expecting a particular element order, in case later versions of the schema change the order of elements.  That is, be conservative in what you write, but liberal in what you accept.</para>
+            <para>This is not to say that element order is not important -- the relative order of multiple elements with the same name should be preserved and can be relied upon by applications.  So, if the schema specifies the content model of an element to have multiple <literal>&lt;A&gt;</literal> children and then multiple <literal>&lt;B&gt;</literal> children, applications should treat a dataset the same whether all the <literal>&lt;B&gt;</literal> children came first or second.  The corollary is that the semantics of an XCEDE element must not depend on the order in which differently-named children are presented in the document.</para>
           </listitem>
         </itemizedlist>
       </listitem>
     </itemizedlist>
 
-    <para>Content within XCEDE documents is expected to be validated using other content-based schema languages, such as Schematron <citation>Schematron</citation>.</para>
+    <formalpara>
+      <title>Document validation</title>
+    </formalpara>
+    <itemizedlist>
+      <listitem>
+        <para>The structure of an XCEDE document can be validated using the XCEDE 2 Core schema.  Several XML Schema validators are available to perform this task.  Validating against the schema will ensure that generic XCEDE 2 parsers can read the document.</para>
+        <para>Users may wish to run <emphasis>content-based</emphasis> validation of XCEDE document, for example, to make sure that "MR" image metadata stored in an XCEDE document have certain required fields such as TR, TE, magnet field strength, etc.  This kind of validation is not possible using XML Schema.  However, other content-based schema languages exist for this purpose, most notably Schematron <citation>Schematron</citation>.  As long as the XCEDE 2 Core schema is structurally sufficient to represent data for a given project or type of data, using a content-based schema language such as Schematron allows users to restrict or "specialize" the content of XCEDE documents without needing to modify or extend from the XCEDE 2 Core schema itself.</para>
+      </listitem>
+    </itemizedlist>
   </section>
 </chapter>

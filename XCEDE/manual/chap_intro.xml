@@ -51,7 +51,6 @@
 
   <section>
     <title>For More Information</title>
-    <para>XXX Contacts XXX</para>
-    <para>The latest schema and related information can be found on the project's web page at <ulink url="http://www.xcede.org/"/>.</para>
+    <para>XCEDE is an evolving format -- later versions will be informed by feedback from users and developers.  The latest schema and related information can be found on the project's web page at <ulink url="http://www.xcede.org/"/>.</para>
   </section>  
 </preface>
