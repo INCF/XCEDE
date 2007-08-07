@@ -1,5 +1,5 @@
-CUSTOMXSL=docbook_custom.xsl
-DOCBOOKXSL=/usr/share/sgml/docbook/xsl-stylesheets/fo/docbook.xsl
+CUSTOMPDFXSL=docbook_custom.xsl
+DOCBOOKXSL=/usr/share/sgml/docbook/xsl-stylesheets
 XALANPATH=${HOME}/xml/xalan-j_2_7_0
 XALANJAR=${XALANPATH}/xalan.jar
 XERCESIMPLJAR=${XALANPATH}/xercesImpl.jar
@@ -7,21 +7,27 @@ XMLAPISJAR=${XALANPATH}/xml-apis.jar
 DOCBOOKXALANEXT=xalan27.jar
 FOP=${HOME}/xml/fop-0.93/fop
 
-all: manual_full.pdf
+all: manual_full.pdf manual_full.html manual_full.txt
 
 rebuild: clean all
 
 clean:
-	rm -f manual_full.xml manual_full.fo manual_full.pdf
+	rm -f manual_full.xml manual_full.fo manual_full.pdf manual_full.txt html
 
 manual_full.xml: manual.xml chap_analysis.xml chap_assessment.xml chap_binary_data_resource.xml chap_catalog.xml chap_events.xml chap_extending.xml chap_hierarchy.xml chap_integrating.xml chap_intro.xml chap_protocol.xml chap_provenance.xml chap_structure.xml chap_terminology.xml chap_usecase.xml app_schema.xml biblio.xml
 	xmllint --xinclude manual.xml > manual_full.xml
 
-manual_full.fo: manual_full.xml ${CUSTOMXSL}
-	java -cp ${DOCBOOKXALANEXT}:${XALANJAR}:${XERCESIMPLJAR}:${XMLAPISJAR} -Djava.endorsed.dirs=${XALANPATH} org.apache.xalan.xslt.Process -PARAM use.extensions 1 -PARAM textinsert.extension 1 -PARAM hyphenate.verbatim 1 -PARAM xref.with.number.and.title 0 -PARAM section.autolabel 1 -PARAM section.label.includes.component.label 1 -PARAM header.column.widths '30 40 30' -XSL ${CUSTOMXSL} -IN manual_full.xml -OUT manual_full.fo
+manual_full.fo: manual_full.xml ${CUSTOMPDFXSL}
+	java -cp ${DOCBOOKXALANEXT}:${XALANJAR}:${XERCESIMPLJAR}:${XMLAPISJAR} -Djava.endorsed.dirs=${XALANPATH} org.apache.xalan.xslt.Process -PARAM use.extensions 1 -PARAM textinsert.extension 1 -PARAM hyphenate.verbatim 1 -PARAM xref.with.number.and.title 0 -PARAM section.autolabel 1 -PARAM section.label.includes.component.label 1 -PARAM header.column.widths '30 40 30' -XSL ${CUSTOMPDFXSL} -IN manual_full.xml -OUT manual_full.fo
 
 #manual_full.fo: manual.xml chap_analysis.xml chap_assessment.xml chap_binary_data_resource.xml chap_catalog.xml chap_events.xml chap_extending.xml chap_hierarchy.xml chap_integrating.xml chap_intro.xml chap_protocol.xml chap_provenance.xml chap_structure.xml chap_terminology.xml chap_usecase.xml app_schema.xml biblio.xml ${CUSTOMXSL}
 #	xsltproc --xinclude --stringparam use.extensions 1 --stringparam textinsert.extension 1 --stringparam hyphenate.verbatim 1 --stringparam xref.with.number.and.title 0 --stringparam section.autolabel 1 --stringparam section.label.includes.component.label 1 --stringparam header.column.widths '30 40 30' ${CUSTOMXSL} manual.xml > manual_full.fo
 
 manual_full.pdf: manual_full.fo
 	${FOP} -fo manual_full.fo -pdf manual_full.pdf
+
+manual_full.html: manual_full.xml
+	xsltproc --stringparam root.filename manual_full -stringparam chunk.fast 1 ${DOCBOOKXSL}/html/onechunk.xsl manual_full.xml
+
+manual_full.txt: manual_full.html
+	perl -e 'local $$/; $$_ = <>; s%<(a|link)(\s+\w+="[^"]*")*(\s+href="([^h]|h[^t]|ht[^t]|htt[^p]|http[^:])[^"]*")(\s+\w+="[^"]*")*\s*>%%g; print $$_' manual_full.html | lynx -dump -stdin > manual_full.txt
