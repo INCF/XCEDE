@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <book>
   <title>XCEDE 2.0 - A Manual</title>
-  <subtitle>(work in progress)</subtitle>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_intro.xml" />
 
@@ -27,6 +26,7 @@
     <title>Using and Extending XCEDE 2</title>
     <partintro>
       <para>This section of the XCEDE 2.0 manual provides practical lessons on using the schema, as well as discussions on how to use W3C XML Schema to extend the core XCEDE 2 datatypes and how to integrate it into applications, databases and web services.</para>
+      <para><emphasis role="bold">This part of the manual is not yet written.</emphasis></para>
     </partintro>
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_usecase.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_extending.xml" />

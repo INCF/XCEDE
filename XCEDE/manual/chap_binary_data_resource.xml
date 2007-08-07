@@ -114,6 +114,7 @@
       <figure id="binary_data_resource.matrix">
         <title>Transformation matrix</title>
 	  <mediaobject>
+<!--	    <textobject role="tex"><phrase><![CDATA[\left(\begin{array}{cccc}X_A&Y_A&Z_A&O_A\\X_B&Y_B&Z_B&O_B\\X_C&Y_C&Z_C&O_C\\0&0&0&1\\\end{array}\right)\left(\begin{array}{cccc}S_X&0&0&0\\0&S_Y&0&0\\0&0&S_Z&0\\0&0&0&1\\\end{array}\right)\left(\begin{array}{c}x\\y\\z\\1\end{array}\right)=\left(\begin{array}{c}a\\b\\c\\1\end{array}\right)]]></phrase></textobject> -->
 	    <imageobject role="fo"><imagedata fileref="images/binary_data_resource_tmatrix.png" format="png" width="4.81in"/> </imageobject>
 	    <imageobject role="html"><imagedata fileref="images/binary_data_resource_tmatrix.png" format="png"/> </imageobject>
 	  </mediaobject>

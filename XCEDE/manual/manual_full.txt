@@ -1,7 +1,5 @@
 
 XCEDE 2.0 - A Manual
-
-(work in progress)
      _________________________________________________________________
 
    Table of Contents
@@ -1616,6 +1614,8 @@ Part II. Using and Extending XCEDE 2
    schema, as well as discussions on how to use W3C XML Schema to extend the
    core XCEDE 2 datatypes and how to integrate it into applications, databases
    and web services.
+
+   This part of the manual is not yet written.
 
    Table of Contents
 
