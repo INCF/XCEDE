@@ -1,5 +1,7 @@
 
 XCEDE 2.0 - A Manual
+
+(work in progress)
      _________________________________________________________________
 
    Table of Contents
@@ -165,11 +167,11 @@ Manual structure
 Development
 
    XCEDE 2 development started as an effort to "harmonize" the uses of XML
-   within the BIRN (Biomedical Informatics Research Network) [BIRN
-   ] testbeds and collaborators within the neuroscientific community. The
-   feedback from these discussion sessions led to an initial prototype (based
-   on XCEDE 1.0) of a next-generation schema. Over the course of four months of
-   daily teleconferences, the first public release of XCEDE 2 took form.
+   within the testbeds of the Biomedical Informatics Research Network [BIRN
+   ] and their collaborators within the neuroscientific community. The feedback
+   from these discussion sessions led to an initial prototype (based on XCEDE
+   1.0) of a next-generation schema. Over the course of four months of daily
+   teleconferences, the first public release of XCEDE 2 took form.
 
    XCEDE 2 has its origins in various XML schemas developed for collaborative
    neuroinformatics projects, including:
@@ -183,7 +185,7 @@ Development
 
    BIAC XML Header schema
           provides a format-agnostic interface to image data and is the basis
-          for the binary data resource in XCEDE 2.0.
+          for the binary data resource in XCEDE 2.
 
    BIRN Data Provenance schema
           records the history of processing steps and is the basis for the
@@ -300,7 +302,7 @@ Chapter 1. Structure and Conventions
 
 The XCEDE 2 Dataset
 
-   An XCEDE 2 Dataset is a data repository (stored in files, databases, or
+   An XCEDE 2 dataset is a data repository (stored in files, databases, or
    using other storage mechanisms) that can be represented as a collection of
    one or more XML documents, each of which validates against the XCEDE 2 XML
    schema (Appendix A, XML Schema for XCEDE 2.0
@@ -329,21 +331,22 @@ The XCEDE 2 Dataset
        <episode>,  <acquisition>.  These  are described in more detail in
        Chapter 2, Experiment Hierarchy
        .
+     * Data. The element <data> is used to store actual data within the XML
+       document. Examples include events (Chapter 6, Events
+       ) and assessments (Chapter 8, Assessments).
+     * Data resources. Represented by the element <resource>, these point to
+       external files which store actual data. See Chapter 3, Binary Data
+       Resources
+       .
      * Analyses. The <analysis> element encapsulates metadata about data that
-       is derived from one or more inputs, whose data is represented by other
-       XCEDE elements. See Chapter 9, Analysis
+       is derived from one or more inputs, whose data may be represented by
+       other XCEDE components, such as <data> or data resources. See Chapter 9,
+       Analysis
        .
      * Protocols. Structures to describe the expected course of an experimental
        paradigm  are  provided  by the <protocol> element. See Chapter 7,
        Protocols
        .
-     * Data resources. Represented by the element <resource>, these point to
-       external files which store actual data. See Chapter 3, Binary Data
-       Resources
-       .
-     * Data. The element <data> is used to store actual data within the XML
-       document. Examples include events (Chapter 6, Events
-       ) and assessments (Chapter 8, Assessments).
 
    Other XCEDE components appear as subcomponents of other XCEDE structures:
      * Data  provenance. The  <provenance>  element  appears in the types
@@ -352,12 +355,12 @@ The XCEDE 2 Dataset
        See Chapter 5, Provenance
        .
 
-     * Comments and annotations. The <commentList> and <annotationList> provide
-       a mechanism to store descriptive text regarding the real-world entities
-       or concepts represented by the associated XML element, or about the
-       stored XML element itself. These are available in all elements based on
-       abstract_container_t, which includes all the hierarchy elements and
-       <analysis>.
+     * Comments  and  annotations. The <commentList> and <annotationList>
+       elements provide mechanisms to store, respectively, descriptive text
+       regarding  the  real-world entities or concepts represented by the
+       associated XML element, or about the stored XML element itself. These
+       are available in all elements based on abstract_container_t, which
+       includes all the hierarchy elements and <analysis>.
      * Informational  resources. These  point  to  documentation that may
        illuminate aspects of the data, data collection, protocol, etc. -- these
        might include peer-reviewed publications, equipment manuals, and others.
@@ -417,21 +420,24 @@ XCEDE 2 Schema conventions
             specifies the content model of an element to have multiple <A>
             children and then multiple <B> children, applications should treat
             a dataset the same whether all the <B> children came first or
-            second. The corollary is that the semantics of an XCEDE element
-            must not depend on the order in which differently-named children
-            are presented in the document.
+            second, but all <A> elements should be presented to the application
+            in the same order they appear in the document. The corollary is
+            that the semantics of any XCEDE element must not depend on the
+            order in which differently-named children are presented in the
+            document.
 
    Document validation. 
      * The structure of an XCEDE document can be validated using the XCEDE 2
        Core schema. Several XML Schema validators are available to perform this
        task. Validating against the schema will ensure that generic XCEDE 2
        parsers can read the document.
-       Users may wish to run content-based validation of XCEDE document, for
-       example,  to make sure that "MR" image metadata stored in an XCEDE
+       Users may wish to perform content-based validation of an XCEDE document,
+       for example, to make sure that "MR" image metadata stored in an XCEDE
        document have certain required fields such as TR, TE, magnet field
-       strength, etc. This kind of validation is not possible using XML Schema.
-       However, other content-based schema languages exist for this purpose,
-       most notably Schematron [Schematron
+       strength, etc., and that their values fall within reasonable ranges.
+       This kind of validation is not possible using XML Schema. However, other
+       content-based schema languages exist for this purpose, most notably
+       Schematron [Schematron
        ]. As long as the XCEDE 2 Core schema is structurally sufficient to
        represent  data  for  a  given  project  or  type of data, using a
        content-based  schema  language such as Schematron allows users to
@@ -505,31 +511,37 @@ Hierarchy Levels
 
 IDs and Linking
 
-   Any level element can be the target of a link from another element. In
-   addition, most level elements are implicitly linked to "ancestor" level
-   elements. Both these types of links are created by specifying one or more
-   level IDs that together uniquely describe a target level element.
-
-   Every level element has a set of these level IDs, composed of the element's
-   own  ID attribute, plus its "ancestor" ID attributes, indicating which
-   higher-level elements have this element in their scope. For example, the
-   <visit>  element  contains  subjectGroupID,  subjectID,  and projectID
-   attributes.
+   Specifying  one  or more level IDs allows one to explicitly define the
+   hierarchical relations between XCEDE elements in different levels in the
+   experiment hierarchy. Every level element has a set of these level IDs,
+   composed  of  the  element's  own ID attribute, plus its "ancestor" ID
+   attributes, indicating which higher-level elements have this element in
+   their scope. For example, the <visit> element contains the ancestor ID
+   attributes subjectGroupID, subjectID, and projectID. Level elements are
+   linked to their ancestors in the hierarchy by sharing the appropriate subset
+   of level IDs. In addition, any level element can linked from another XCEDE
+   element that likewise specifies the appropriate level IDs.
 
    For example, a link to a visit element may specify visitID, subjectID,
    subjectGroupID, and projectID attributes, and a level attribute with the
    value visit, indicating that this link is to a visit element. An application
    resolving this link will search for a visit element in the XCEDE 2 dataset
-   whose attributes match those specified in the link (the visitID attribute is
-   matched against the ID attribute in the visit element). Level ID attributes
-   not specified in the link should match any value, but a link must specify
-   enough of these IDs match at most one level element.
+   whose attributes match those specified in the link (the visitID attribute in
+   the link is matched against the ID attribute in the visit element).
 
-   The elements that can link to any level element are <catalog>, <resource>,
-   and  <data>  (children  of  the  <XCEDE> root element), <inputRef> and
-   <outputRef> (children of the <analysis> element). Level elements (except for
-   <project> and <subject>, which are at the top of the experiment hierarchy)
-   can be implicitly linked to ancestor elements using the attributes provided.
+   Though the individual ID attributes are not required to be unique, the set
+   of these level IDs applied to a level element must be unique. In addition,
+   any  link to a level element must provide enough level IDs to uniquely
+   describe a single target level element. Level ID attributes not specified in
+   the link are understood to match any value, but a link must specify enough
+   of these IDs match at most one level element.
+
+   The elements that can link to level elements are <catalog>, <resource>, and
+   <data>  (children  of  the  <XCEDE>  root element), and <inputRef> and
+   <outputRef> (children of the <analysis> element). As previously described,
+   level elements (except for <project> and <subject>, which are at the top of
+   the experiment hierarchy), by virtue of specifying their own ancestor IDs,
+   automatically incorporate links to their ancestor elements.
 
 Examples
 
@@ -538,7 +550,13 @@ Metadata hierarchy
    The metadata hierarchy illustrated in Figure 2.1, “XCEDE hierarchy”
    can be represented in XCEDE as shown in Figure 2.2, “Metadata hierarchy
    instance” (only those elements/attributes relevant to linking are shown; the
-   actual metadata contents of the elements are omitted for space).
+   actual metadata contents of the elements are omitted for space). Note that
+   subject "1" in the illustration is represented in two different projects,
+   and so the corresponding <subject> element may be an ancestor for visits in
+   both project "A" and "B". However, the subject's role in each project is
+   specified by the combination of the project ID and subject group ID (defined
+   in the subject group lists in <project>), and these are used in every level
+   element starting with <visit> and below.
 
    Figure 2.2. Metadata hierarchy instance
 <XCEDE xmlns="http://www.xcede.org/xcede-2">
@@ -1025,7 +1043,7 @@ Overview
    step is run on, sun, x86, etc. platform: This is the operating system under
    which the processing step is being run. These are optional: cvs Revision
    control repository information. Use the CVS keyword Id, inserted into your
-   source code file as $Id: manual_full.html,v 1.1 2007/08/06 21:56:58 gadde
+   source code file as $Id: chap_provenance.xml,v 1.6 2007/08/06 21:07:32 gadde
    Exp $ and it will be replaced with the file name, version, date of change
    and who changed it. Also works with SVN, but see SVN notes for enabling it.
    compiler What was used to compile this executable? Name and version. library
@@ -1057,7 +1075,7 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.1 $\">%s</ProgramName>\n", a
+  fprintf(stdout, "<Program version=\"$Revision: 1.6 $\">%s</ProgramName>\n", a
 rgv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
@@ -1065,8 +1083,8 @@ rgv[0]);
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: manual_full.html,v 1.1 2007/08/06 21:56:58 gadde E
-xp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.6 2007/08/06 21:07:32 gadd
+e Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
@@ -1664,14 +1682,10 @@ Reference
 Appendix A. XML Schema for XCEDE 2.0
 
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by dbk (UNIV CA
-IRVINE) -->
 <xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/200
 1/XMLSchema" xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:gml="http:/
 /www.opengis.net/gml" targetNamespace="http://www.xcede.org/xcede-2" elementFor
 mDefault="qualified" attributeFormDefault="unqualified">
-        <xs:import namespace="http://www.opengis.net/gml" schemaLocation="http:
-//schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
         <xs:annotation>
                 <xs:documentation>The XCEDE schema provides an extensive metada
 ta hierarchy for describing and documenting research and clinical studies. The
@@ -1823,11 +1837,6 @@ yInfo_t" minOccurs="0"/>
                                 <xs:anyAttribute namespace="##other" processCon
 tents="lax"/>
                         </xs:extension>
-                </xs:complexContent>
-        </xs:complexType>
-        <xs:complexType name="studyInfo_t">
-                <xs:complexContent>
-                        <xs:extension base="abstract_info_t"/>
                 </xs:complexContent>
         </xs:complexType>
         <xs:complexType name="episode_t">
@@ -2040,9 +2049,8 @@ e="entryDataRef" type="ref_t">
                                                                         <xs:ann
 otation>
 
-<xs:documentation>A reference to a data element at the top
-
-        level of an XCEDE document</xs:documentation>
+<xs:documentation>A reference to a data element at the top level of an XCEDE do
+cument</xs:documentation>
                                                                         </xs:an
 notation>
                                                                 </xs:element>
@@ -2052,8 +2060,7 @@ e="entryResourceRef" type="ref_t">
 otation>
 
 <xs:documentation>A reference to a resource element at the
-
-        top level of an XCEDE document</xs:documentation>
+top level of an XCEDE document</xs:documentation>
                                                                         </xs:an
 notation>
                                                                 </xs:element>
@@ -2232,10 +2239,8 @@ tionID attribute).</xs:documentation>
         <xs:attributeGroup name="levelRef_ag">
                 <xs:annotation>
                         <xs:documentation>Reference to the meta-data element th
-at this catalog is related to.
-                                Should point to one of the core xcede hierarchy
- components: project, subject, visit,
-                                study, acquisition.</xs:documentation>
+at this catalog is related to. Should point to one of the core xcede hierarchy
+components: project, subject, visit, study, acquisition.</xs:documentation>
                 </xs:annotation>
                 <xs:attribute name="level" type="levelDescriptor_t"/>
                 <xs:attributeGroup ref="allLevelExternalIDs_ag"/>
@@ -2439,6 +2444,11 @@ tents="lax"/>
                         </xs:extension>
                 </xs:complexContent>
         </xs:complexType>
+        <xs:complexType name="studyInfo_t">
+                <xs:complexContent>
+                        <xs:extension base="abstract_info_t"/>
+                </xs:complexContent>
+        </xs:complexType>
         <xs:complexType name="visitInfo_t">
                 <xs:complexContent>
                         <xs:extension base="abstract_info_t">
@@ -2500,7 +2510,7 @@ ng"/>
                         </xs:extension>
                 </xs:simpleContent>
         </xs:complexType>
-        <xs:complexType name="atlasEntityGML_t">
+        <xs:complexType name="atlasEntity_t">
                 <xs:annotation>
                         <xs:documentation>entity elements are used to describe
 the resultant scope of an analysis</xs:documentation>
@@ -2508,8 +2518,8 @@ the resultant scope of an analysis</xs:documentation>
                 <xs:complexContent>
                         <xs:extension base="abstract_entity_t">
                                 <xs:sequence>
-                                        <xs:element name="atlasEntity" type="gm
-l:AbstractGeometryType">
+                                        <xs:element name="geometry" type="abstr
+act_geometry_t">
                                                 <xs:annotation>
                                                         <xs:documentation>Atlas
  entity defined through the use of GML base geometries.</xs:documentation>
@@ -2519,6 +2529,7 @@ l:AbstractGeometryType">
                         </xs:extension>
                 </xs:complexContent>
         </xs:complexType>
+        <xs:complexType name="abstract_geometry_t"/>
         <xs:complexType name="anatomicalEntity_t">
                 <xs:annotation>
                         <xs:documentation>Entity elements are used to describe
@@ -2881,14 +2892,6 @@ s="0"/>
                 <xs:attribute name="ID" type="xs:string"/>
                 <xs:attribute name="role" type="xs:string"/>
         </xs:complexType>
-        <xs:complexType name="mixedType_t" mixed="true"/>
-        <xs:complexType name="versionedEntity_t">
-                <xs:simpleContent>
-                        <xs:extension base="xs:string">
-                                <xs:attribute name="version" type="xs:string"/>
-                        </xs:extension>
-                </xs:simpleContent>
-        </xs:complexType>
         <xs:simpleType name="levelDescriptor_t">
                 <xs:restriction base="xs:string">
                         <xs:enumeration value="project"/>
@@ -3015,59 +3018,74 @@ inOccurs="0"/>
         <!--*********            Provenance types            *********-->
         <xs:complexType name="processStep_t">
                 <xs:sequence>
-                        <xs:element name="package" type="versionedEntity_t" min
-Occurs="0">
-                                <xs:annotation>
-                                        <xs:documentation>Software package that
- contains the program</xs:documentation>
-                                </xs:annotation>
-                        </xs:element>
-                        <xs:element name="program" type="versionedEntity_t">
-                                <xs:annotation>
-                                        <xs:documentation>Software executable t
-o was run in this step
-                                        </xs:documentation>
-                                </xs:annotation>
-                        </xs:element>
-                        <xs:element name="programInvocation" type="mixedType_t"
->
-                                <xs:annotation>
-                                        <xs:documentation>Exact command line te
-xt used to run the
-                                        executable</xs:documentation>
-                                </xs:annotation>
-                        </xs:element>
-                        <xs:element name="timeStamp" type="mixedType_t"/>
-                        <xs:element name="cvs" type="mixedType_t" minOccurs="0"
-/>
+                        <xs:element name="program" type="versionedProgramEntity
+_t" minOccurs="0"/>
+                        <xs:element name="programArguments" type="argumentsType
+_t" minOccurs="0"/>
+                        <xs:element name="timeStamp" type="mixedType_t" minOccu
+rs="0"/>
                         <xs:element name="user" type="mixedType_t" minOccurs="0
 "/>
-                        <xs:element name="machine" type="mixedType_t" minOccurs
-="0"/>
+                        <xs:element name="hostName" type="mixedType_t" minOccur
+s="0"/>
+                        <xs:element name="architecture" type="mixedType_t" minO
+ccurs="0"/>
                         <xs:element name="platform" type="versionedEntity_t" mi
 nOccurs="0"/>
+                        <xs:element name="cvs" type="mixedType_t" minOccurs="0"
+/>
                         <xs:element name="compiler" type="versionedEntity_t" mi
 nOccurs="0"/>
                         <xs:element name="library" type="versionedEntity_t" min
 Occurs="0" maxOccurs="unbounded"/>
+                        <xs:element name="buildTimeStamp" type="mixedType_t" mi
+nOccurs="0"/>
+                        <xs:element name="package" type="versionedEntity_t" min
+Occurs="0"/>
+                        <xs:element name="repository" type="mixedType_t" minOcc
+urs="0"/>
                 </xs:sequence>
+                <xs:attribute name="ID" type="xs:string"/>
+                <xs:attribute name="parent" type="xs:string"/>
         </xs:complexType>
         <xs:complexType name="provenance_t">
-                <xs:annotation>
-                        <xs:documentation>Note: sourceData should be included a
-long with application parameters
-                                and configuration values</xs:documentation>
-                </xs:annotation>
                 <xs:sequence>
                         <xs:element name="processStep" type="processStep_t" max
 Occurs="unbounded"/>
                 </xs:sequence>
-                <xs:attribute name="ID" type="xs:string">
-                        <xs:annotation>
-                                <xs:documentation>Optional identifier indicatin
-g the </xs:documentation>
-                        </xs:annotation>
-                </xs:attribute>
+                <xs:attribute name="ID" type="xs:string"/>
+        </xs:complexType>
+        <xs:complexType name="mixedType_t" mixed="true"/>
+        <xs:complexType name="argumentsType_t">
+                <xs:annotation>
+                        <xs:documentation>input and output arguments of the pro
+cessing tool</xs:documentation>
+                </xs:annotation>
+                <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                                <xs:attribute name="inputs" type="xs:string"/>
+                                <xs:attribute name="outputs" type="xs:string"/>
+                        </xs:extension>
+                </xs:simpleContent>
+        </xs:complexType>
+        <xs:complexType name="versionedEntity_t">
+                <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                                <xs:attribute name="version" type="xs:string"/>
+                        </xs:extension>
+                </xs:simpleContent>
+        </xs:complexType>
+        <xs:complexType name="versionedProgramEntity_t">
+                <xs:annotation>
+                        <xs:documentation>version and build type of the process
+ing tool</xs:documentation>
+                </xs:annotation>
+                <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                                <xs:attribute name="version" type="xs:string"/>
+                                <xs:attribute name="build" type="xs:string"/>
+                        </xs:extension>
+                </xs:simpleContent>
         </xs:complexType>
         <!--*********            Resource types            *********-->
         <xs:complexType name="informationResource_t">

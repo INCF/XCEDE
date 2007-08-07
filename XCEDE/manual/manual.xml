@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <book>
   <title>XCEDE 2.0 - A Manual</title>
+  <subtitle>(work in progress)</subtitle>
 
   <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_intro.xml" />
 

@@ -113,9 +113,10 @@
 
       <figure id="binary_data_resource.matrix">
         <title>Transformation matrix</title>
-        <mediaobject>
-          <imageobject><imagedata fileref="images/binary_data_resource_tmatrix.png" format="png"/> </imageobject>
-        </mediaobject>
+	  <mediaobject>
+	    <imageobject role="fo"><imagedata fileref="images/binary_data_resource_tmatrix.png" format="png" width="4.81in"/> </imageobject>
+	    <imageobject role="html"><imagedata fileref="images/binary_data_resource_tmatrix.png" format="png"/> </imageobject>
+	  </mediaobject>
       </figure>
 
       <figure id="binary_data_resource.map_example">
