@@ -27,7 +27,7 @@ manual_full.pdf: manual_full.fo
 	${FOP} -fo manual_full.fo -pdf manual_full.pdf
 
 manual_full.html: manual_full.xml
-	xsltproc --stringparam root.filename manual_full -stringparam chunk.fast 1 ${DOCBOOKXSL}/html/onechunk.xsl manual_full.xml
+	xsltproc --stringparam generate.toc "book toc  part toc" --stringparam toc.section.depth 1 --stringparam root.filename manual_full -stringparam chunk.fast 1 ${DOCBOOKXSL}/html/onechunk.xsl manual_full.xml
 
 manual_full.txt: manual_full.html
 	perl -e 'local $$/; $$_ = <>; s%<(a|link)(\s+\w+="[^"]*")*(\s+href="([^h]|h[^t]|ht[^t]|htt[^p]|http[^:])[^"]*")(\s+\w+="[^"]*")*\s*>%%g; print $$_' manual_full.html | lynx -dump -stdin > manual_full.txt

@@ -2,8 +2,6 @@
 XCEDE 2.0 - A Manual
      _________________________________________________________________
 
-   Table of Contents
-
    Introduction
 
         Manual structure
@@ -20,23 +18,12 @@ XCEDE 2.0 - A Manual
         2. Experiment Hierarchy
 
               Overview
-
-                    Hierarchy Levels
-                    IDs and Linking
-
               Examples
-
-                    Metadata hierarchy
 
         3. Binary Data Resources
 
               Overview
               Examples
-
-                    Basic data stream
-                    Dimensioned data
-                    Mapped data
-                    Advanced topic: split dimensions and outputSelect
 
         4. Catalogs
 
@@ -66,10 +53,6 @@ XCEDE 2.0 - A Manual
 
               Overview
               Examples
-
-                    Formal Assessment Description
-                    Actual Acquired Assessment Data
-
               Reference
 
         9. Analysis
@@ -107,39 +90,7 @@ XCEDE 2.0 - A Manual
    A. XML Schema for XCEDE 2.0
    Bibliography
 
-   List of Figures
-
-   2.1. XCEDE hierarchy
-   2.2. Metadata hierarchy instance
-   3.1. Simple binaryDataResource_t example
-   3.2. binaryDataResource_t with compression
-   3.3. binaryDataResource_t with implicit compression
-   3.4. dimensionedBinaryDataResource_t example
-   3.5. Transformation matrix
-   3.6. mappedBinaryDataResource_t example
-   3.7. A “tiled”image
-   3.8. Split dimension example
-   3.9. outputSelect example
-   4.1. Catalog instance
-   4.2. catalog_t
-   5.1. provenance_t
-   6.1. An event timeline
-   6.2. XCEDE Events example - stimulus/response data
-   6.3. XCEDE Events example - QA data
-   8.1.
-   8.2.
-   10.1. Terminology String Instance
-   10.2. Terminology String Instance
-   10.3. terminology_ag
-   10.4. terminologyString_t
-
 Introduction
-
-   Table of Contents
-
-   Manual structure
-   Development
-   For More Information
 
    This is a manual for version 2 of XCEDE (XML-based Clinical and Experimental
    Data Exchange). XCEDE 2 is an extensible schema designed to enable the
@@ -227,23 +178,12 @@ Part I. XCEDE 2 Core Specification
    2. Experiment Hierarchy
 
         Overview
-
-              Hierarchy Levels
-              IDs and Linking
-
         Examples
-
-              Metadata hierarchy
 
    3. Binary Data Resources
 
         Overview
         Examples
-
-              Basic data stream
-              Dimensioned data
-              Mapped data
-              Advanced topic: split dimensions and outputSelect
 
    4. Catalogs
 
@@ -273,10 +213,6 @@ Part I. XCEDE 2 Core Specification
 
         Overview
         Examples
-
-              Formal Assessment Description
-              Actual Acquired Assessment Data
-
         Reference
 
    9. Analysis
@@ -292,11 +228,6 @@ Part I. XCEDE 2 Core Specification
         Reference
 
 Chapter 1. Structure and Conventions
-
-   Table of Contents
-
-   The XCEDE 2 Dataset
-   XCEDE 2 Schema conventions
 
 The XCEDE 2 Dataset
 
@@ -443,17 +374,6 @@ XCEDE 2 Schema conventions
        to modify or extend from the XCEDE 2 Core schema itself.
 
 Chapter 2. Experiment Hierarchy
-
-   Table of Contents
-
-   Overview
-
-        Hierarchy Levels
-        IDs and Linking
-
-   Examples
-
-        Metadata hierarchy
 
 Overview
 
@@ -605,16 +525,6 @@ Metadata hierarchy
 </XCEDE>
 
 Chapter 3. Binary Data Resources
-
-   Table of Contents
-
-   Overview
-   Examples
-
-        Basic data stream
-        Dimensioned data
-        Mapped data
-        Advanced topic: split dimensions and outputSelect
 
 Overview
 
@@ -908,12 +818,6 @@ Advanced topic: split dimensions and outputSelect
 
 Chapter 4. Catalogs
 
-   Table of Contents
-
-   Overview
-   Examples
-   Reference
-
 Overview
 
    Catalogs  in  XCEDE  2  are  containers of related resources, resource
@@ -992,13 +896,6 @@ Reference
    catalog_t
 
 Chapter 5. Provenance
-
-   Table of Contents
-
-   Overview
-   Examples
-   Generating provenance XML from applications
-   Reference
 
 Overview
 
@@ -1208,11 +1105,6 @@ Reference
 
 Chapter 6. Events
 
-   Table of Contents
-
-   Overview
-   Examples
-
 Overview
 
    Events in XCEDE are merely time intervals annotated with arbitrary metadata.
@@ -1369,12 +1261,6 @@ Examples
 
 Chapter 7. Protocols
 
-   Table of Contents
-
-   Overview
-   Examples
-   Reference
-
 Overview
 
 Examples
@@ -1382,16 +1268,6 @@ Examples
 Reference
 
 Chapter 8. Assessments
-
-   Table of Contents
-
-   Overview
-   Examples
-
-        Formal Assessment Description
-        Actual Acquired Assessment Data
-
-   Reference
 
 Overview
 
@@ -1510,12 +1386,6 @@ Reference
 
 Chapter 9. Analysis
 
-   Table of Contents
-
-   Overview
-   Examples
-   Reference
-
    This is where the analysis text goes.
 
 Overview
@@ -1525,12 +1395,6 @@ Examples
 Reference
 
 Chapter 10. Terminology
-
-   Table of Contents
-
-   Overview
-   Examples
-   Reference
 
 Overview
 
@@ -1639,12 +1503,6 @@ Part II. Using and Extending XCEDE 2
 
 Chapter 11. A Use Case
 
-   Table of Contents
-
-   Overview
-   Examples
-   Reference
-
 Overview
 
 Examples
@@ -1653,12 +1511,6 @@ Reference
 
 Chapter 12. Extending the Schema
 
-   Table of Contents
-
-   Overview
-   Examples
-   Reference
-
 Overview
 
 Examples
@@ -1666,12 +1518,6 @@ Examples
 Reference
 
 Chapter 13. Integration With Applications and Services
-
-   Table of Contents
-
-   Overview
-   Examples
-   Reference
 
 Overview
 
