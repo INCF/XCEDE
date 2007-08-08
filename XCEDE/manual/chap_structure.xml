@@ -7,7 +7,7 @@
 
     <para>An XCEDE 2 dataset is a data repository (stored in files, databases, or using other storage mechanisms) that can be represented as a collection of one or more XML documents, each of which validates against the XCEDE 2 XML schema (<xref linkend="appendix.schema"/>).  The XCEDE 2 specification does not prescribe any particular mechanism by which these documents are located, stored, grouped, or linked, though XCEDE 2 allows certain XML elements to link to other target elements and to optionally specify URLs as hints as to the location of the documents containing these targets.</para>
     <para>For example, a given XCEDE 2 dataset may be stored as a single XML document, or a collection of files in a single directory on a file system, or may be distributed within a hierarchical directory structure (which may or may not reflect the structure of the data within), or may be stored within a database accessible by query through a web interface.  The semantics of the dataset should be fully reflected in the XML representation, and should not be dependent on how the dataset is stored.</para>
-    <para>A schema-compliant XCEDE 2 document must be a valid XML 1.0 document <citation>XML10</citation>, and must have one root element, <literal>&lt;XCEDE&gt;</literal>, which (like all other XCEDE 2 elements) is in the XML namespace <literal>http://www.xcede.org/xcede-2</literal>.</para>
+    <para>A schema-compliant XCEDE 2 document must be a valid XML 1.0 document <citation>XML10</citation>, and must have one root element, <literal>&lt;XCEDE&gt;</literal>, which (like all other XCEDE 2 elements) is in the <literal>http://www.xcede.org/xcede-2</literal> XML namespace.</para>
     <para>Several major components of the XCEDE 2 dataset are represented as children of the XCEDE root element.  These components include:</para>
     <itemizedlist>
       <listitem>
@@ -103,14 +103,14 @@
             <para>The XCEDE namespace will change for major versions, but not minor versions. So, the namespace is as follows: <literal>http://www.xcede.org/xcede-major_version</literal>. For example: <literal>http://www.xcede.org/xcede-2</literal></para>
           </listitem>
           <listitem>
-            <para>XSD files will be named <literal>xcede-<emphasis>version</emphasis>-<emphasis>domain</emphasis></literal>. For example: <literal>xcede-2.0-core.xsd</literal></para>
+            <para>XSD files will be named <literal>xcede-<emphasis>VERSION</emphasis>-<emphasis>DOMAIN</emphasis></literal>. For example: <literal>xcede-2.0-core.xsd</literal></para>
           </listitem>
           <listitem>
             <para>All elements should have a corresponding named <literal>complexType</literal>. For example: <literal>&lt;project&gt;</literal> is of type <literal>project_t</literal>.</para>
           </listitem>
           <listitem>
             <para>The schema prescribes that some elements precede or follow other elements -- document creators should follow this strictly.  However, applications should be written without expecting a particular element order, in case later versions of the schema change the order of elements.  That is, be conservative in what you write, but liberal in what you accept.</para>
-            <para>This is not to say that element order is not important -- the relative order of multiple elements with the same name should be preserved and can be relied upon by applications.  So, if the schema specifies the content model of an element to have multiple <literal>&lt;A&gt;</literal> children and then multiple <literal>&lt;B&gt;</literal> children, applications should treat a dataset the same whether all the <literal>&lt;B&gt;</literal> children came first or second, but all <literal>&lt;A&gt;</literal> elements should be presented to the application in the same order they appear in the document.  The corollary is that the semantics of any XCEDE element must not depend on the order in which differently-named children are presented in the document.</para>
+            <para>This is not to say that element order is not important -- the relative order of multiple elements with the same name should be preserved and can be relied upon by applications.  So, if the schema specifies the content model of an element to have multiple <literal>&lt;A&gt;</literal> children and then multiple <literal>&lt;B&gt;</literal> children, applications should treat a dataset the same whether all the <literal>&lt;A&gt;</literal> children came before or after (or even interleaved with) the <literal>&lt;B&gt;</literal> elements, but all <literal>&lt;A&gt;</literal> elements should be presented to the application in the same order they appear in the document.  The corollary is that the semantics of any XCEDE 2 element must not depend on the order in which differently-named children are presented in the document.</para>
           </listitem>
         </itemizedlist>
       </listitem>
@@ -121,7 +121,7 @@
     </formalpara>
     <itemizedlist>
       <listitem>
-        <para>The structure of an XCEDE document can be validated using the XCEDE 2 Core schema.  Several XML Schema validators are available to perform this task.  Validating against the schema will ensure that generic XCEDE 2 parsers can read the document.</para>
+        <para>The structure of an XCEDE 2 document can be validated using the XCEDE 2 Core schema.  Several XML Schema validators are available to perform this task.  Validating against the schema will ensure that generic XCEDE 2 parsers can read the document.</para>
         <para>Users may wish to perform <emphasis>content-based</emphasis> validation of an XCEDE document, for example, to make sure that "MR" image metadata stored in an XCEDE document have certain required fields such as TR, TE, magnet field strength, etc., and that their values fall within reasonable ranges.  This kind of validation is not possible using XML Schema.  However, other content-based schema languages exist for this purpose, most notably Schematron <citation>Schematron</citation>.  As long as the XCEDE 2 Core schema is structurally sufficient to represent data for a given project or type of data, using a content-based schema language such as Schematron allows users to restrict or "specialize" the content of XCEDE documents without needing to modify or extend from the XCEDE 2 Core schema itself.</para>
       </listitem>
     </itemizedlist>

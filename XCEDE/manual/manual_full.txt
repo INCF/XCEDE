@@ -251,7 +251,7 @@ The XCEDE 2 Dataset
 
    A schema-compliant XCEDE 2 document must be a valid XML 1.0 document [XML10
    ], and must have one root element, <XCEDE>, which (like all other XCEDE 2
-   elements) is in the XML namespace http://www.xcede.org/xcede-2.
+   elements) is in the http://www.xcede.org/xcede-2 XML namespace.
 
    Several major components of the XCEDE 2 dataset are represented as children
    of the XCEDE root element. These components include:
@@ -333,7 +333,7 @@ XCEDE 2 Schema conventions
             versions.     So,    the    namespace    is    as    follows:
             http://www.xcede.org/xcede-major_version.     For    example:
             http://www.xcede.org/xcede-2
-          + XSD  files  will  be named xcede-version-domain. For example:
+          + XSD  files  will  be named xcede-VERSION-DOMAIN. For example:
             xcede-2.0-core.xsd
           + All elements should have a corresponding named complexType. For
             example: <project> is of type project_t.
@@ -348,15 +348,15 @@ XCEDE 2 Schema conventions
             preserved and can be relied upon by applications. So, if the schema
             specifies the content model of an element to have multiple <A>
             children and then multiple <B> children, applications should treat
-            a dataset the same whether all the <B> children came first or
-            second, but all <A> elements should be presented to the application
-            in the same order they appear in the document. The corollary is
-            that the semantics of any XCEDE element must not depend on the
-            order in which differently-named children are presented in the
-            document.
+            a dataset the same whether all the <A> children came before or
+            after (or even interleaved with) the <B> elements, but all <A>
+            elements should be presented to the application in the same order
+            they appear in the document. The corollary is that the semantics of
+            any  XCEDE  2  element  must not depend on the order in which
+            differently-named children are presented in the document.
 
    Document validation. 
-     * The structure of an XCEDE document can be validated using the XCEDE 2
+     * The structure of an XCEDE 2 document can be validated using the XCEDE 2
        Core schema. Several XML Schema validators are available to perform this
        task. Validating against the schema will ensure that generic XCEDE 2
        parsers can read the document.
@@ -399,33 +399,36 @@ Hierarchy Levels
 
    A visit may represent a subject's appearance at an experiment "site" (for
    collaborative projects, this could be the institution or lab at which the
-   data is being collected or analyzed). A visit, may be further subdivided
-   into  one  or  more studies, each of would consist of one or more data
-   collection episodes.
+   data is being collected or analyzed). A visit may be further subdivided into
+   one or more studies, each of would consist of one or more data collection
+   episodes.
 
    Visit and study are more or less arbitrary divisions of the data that exist
    for convenience, and do not in themselves have any inherent meaning as far
-   as the schema is concerned. However, an episode is intended to represent a
-   unit of data collection over a given time interval, and should contain one
-   or  more  data  acquisitions,  which  should  be  understood  to occur
-   simultaneously over the duration of the episode. So, for example, an episode
-   in an fMRI study may encapsulate the acquisition of a time-series of volume
-   images from an MR scanner, as well as other acquisitions of behavioral or
-   physiological data; all these (simultaneous) acquisitions would be stored as
+   as the schema is concerned. However, an episode does have a meaning, and is
+   intended to represent a unit of data collection by one or more instruments
+   over a given time interval. Each set of data collected (perhaps by different
+   instruments)  over  this  time  interval  should  be represented by an
+   acquisition. Multiple acquisitions within an episode should be understood to
+   occur simultaneously over the time interval represented by the episode. So,
+   for example, an episode in an fMRI study may encapsulate the acquisition of
+   a  time-series  of  volume images from an MR scanner, as well as other
+   acquisitions of behavioral or physiological data; all these (simultaneously
+   collected) data would be stored as individual acquisitions and stored as
    part of the same episode.
 
-   At first thought, it would be natural to represent the experiment hierarchy
-   as described as a traditional XML hierarchy, where higher-level elements
-   encapsulate lower-level elements as child elements. However, in XCEDE, all
-   level elements (<project>, <visit>, etc.) are stored as children of the root
-   <XCEDE> element. Links between levels are implicit in the level IDs assigned
-   to  each element and propagated to elements in lower levels. The great
-   benefit of this approach is that applications are easier to write because
-   all  major elements are stored in the same place (under the XCEDE root
-   element), and that XCEDE documents can be merged by merely concatenating the
-   lists of top-level elements under a single XCEDE root element. Another
-   advantage is to allow users of the schema to omit levels merely by omitting
-   the unnecessary elements and IDs/links.
+   At  first  thought,  it might seem natural to represent the experiment
+   hierarchy as described as a traditional XML hierarchy, where higher-level
+   elements encapsulate lower-level elements as child elements. However, in
+   XCEDE, all level elements (<project>, <visit>, etc.) are stored as children
+   of the root <XCEDE> element. Links between levels are implicit in the level
+   IDs assigned to each element and propagated to elements in lower levels. The
+   great benefit of this approach is that applications are easier to write
+   because all major elements are stored in the same place (under the XCEDE
+   root  element),  and  that  XCEDE  documents  can  be merged by merely
+   concatenating the lists of top-level elements under a single XCEDE root
+   element. Another advantage is to allow users of the schema to omit levels
+   merely by omitting the unnecessary elements and IDs/links.
 
 IDs and Linking
 
