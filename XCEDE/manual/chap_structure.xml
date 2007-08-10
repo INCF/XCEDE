@@ -82,10 +82,10 @@
     </formalpara>
     <itemizedlist>
       <listitem>
-        <para>Element and attribute names are alphanumeric (<literal>&lt;project&gt;</literal>).  All letters are lowercase, with the exception of acronyms, which are uppercase (<literal>&lt;XCEDE&gt;</literal>, <literal>projectID</literal>), and, in multi-word names, the initial letters of the second and following words which are capitalized (<literal>&lt;dataResourceRef&gt;</literal>).  For the purposes of this rule, <literal>ID</literal> (for "identifier") is considered an acronym.</para>
+        <para>Element and attribute names are alphanumeric (<literal>&lt;project&gt;</literal>).  All letters are lowercase, with the exception of acronyms, which are uppercase (<literal>&lt;XCEDE&gt;</literal>, <literal>projectID</literal>), and, in multi-word names, the initial letters of the second and following words which are capitalized (<literal>&lt;dataResourceRef&gt;</literal>).  For the purposes of this rule, <literal>ID</literal> (for <quote>identifier</quote>) is considered an acronym.</para>
       </listitem>
       <listitem>
-        <para>Schema type names (which do not appear in XML instance documents except in <literal>xsi:type</literal> attributes) follow the same naming conventions as element and attribute names, but have the <literal>_t</literal> suffix (<literal>analysis_t</literal>).  If the type is "abstract", then it has an <literal>abstract_</literal> prefix (<literal>abstract_container_t</literal>).</para>
+        <para>Schema type names (which do not appear in XML instance documents except in <literal>xsi:type</literal> attributes) follow the same naming conventions as element and attribute names, but have the <literal>_t</literal> suffix (<literal>analysis_t</literal>).  If the type is <quote>abstract</quote>, then it has an <literal>abstract_</literal> prefix (<literal>abstract_container_t</literal>).</para>
       </listitem>
       <listitem>
         <para>Attribute group names (which do not appear in XML instance documents) follow the same naming conventions as element and attribute names, but have the <literal>_ag</literal> suffix (<literal>allLevelExternalIDs_ag</literal>).</para>
@@ -122,7 +122,7 @@
     <itemizedlist>
       <listitem>
         <para>The structure of an XCEDE 2 document can be validated using the XCEDE 2 Core schema.  Several XML Schema validators are available to perform this task.  Validating against the schema will ensure that generic XCEDE 2 parsers can read the document.</para>
-        <para>Users may wish to perform <emphasis>content-based</emphasis> validation of an XCEDE document, for example, to make sure that "MR" image metadata stored in an XCEDE document have certain required fields such as TR, TE, magnet field strength, etc., and that their values fall within reasonable ranges.  This kind of validation is not possible using XML Schema.  However, other content-based schema languages exist for this purpose, most notably Schematron <citation>Schematron</citation>.  As long as the XCEDE 2 Core schema is structurally sufficient to represent data for a given project or type of data, using a content-based schema language such as Schematron allows users to restrict or "specialize" the content of XCEDE documents without needing to modify or extend from the XCEDE 2 Core schema itself.</para>
+        <para>Users may wish to perform <emphasis>content-based</emphasis> validation of an XCEDE document, for example, to make sure that <quote>MR</quote> image metadata stored in an XCEDE document have certain required fields such as TR, TE, magnet field strength, etc., and that their values fall within reasonable ranges.  This kind of validation is not possible using XML Schema.  However, other content-based schema languages exist for this purpose, most notably Schematron <citation>Schematron</citation>.  As long as the XCEDE 2 Core schema is structurally sufficient to represent data for a given project or type of data, using a content-based schema language such as Schematron allows users to restrict or <quote>specialize</quote> the content of XCEDE documents without needing to modify or extend from the XCEDE 2 Core schema itself.</para>
       </listitem>
     </itemizedlist>
   </section>

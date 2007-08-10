@@ -12,7 +12,7 @@
 
   <section>
     <title>Development</title>
-    <para>XCEDE 2 development started as an effort to "harmonize" the uses of XML within the testbeds of the Biomedical Informatics Research Network <citation>BIRN</citation> and their collaborators within the neuroscientific community.  The feedback from these discussion sessions led to an initial prototype (based on XCEDE 1.0) of a next-generation schema.  Over the course of four months of daily teleconferences, the first public release of XCEDE 2 took form.</para>
+    <para>XCEDE 2 development started as an effort to <quote>harmonize</quote> the uses of XML within the testbeds of the Biomedical Informatics Research Network <citation>BIRN</citation> and their collaborators within the neuroscientific community.  The feedback from these discussion sessions led to an initial prototype (based on XCEDE 1.0) of a next-generation schema.  Over the course of four months of daily teleconferences, the first public release of XCEDE 2 took form.</para>
     <para>XCEDE 2 has its origins in various XML schemas developed for collaborative neuroinformatics projects, including:</para>
     <variablelist>
       <varlistentry>
