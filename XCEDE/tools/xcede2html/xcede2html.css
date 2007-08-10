@@ -1,0 +1,48 @@
+div.project
+{
+  margin-left: 0.0in;
+  background-color: #FFDDDD;
+}
+
+div.visit
+{
+  margin-left: 0.25in;
+  background-color: #DDFFDD;
+}
+
+div.study
+{
+  margin-left: 0.5in;
+  background-color: #DDDDFF;
+}
+
+div.episode
+{
+  margin-left: 0.75in;
+  background-color: #BBFFFF;
+}
+
+div.acquisition
+{
+  margin-left: 1in;
+  background-color: #FFBBFF;
+}
+
+div.project,
+div.visit,
+div.study,
+div.episode,
+div.acquisition
+{
+  display: block;
+  border: 1px solid;
+  border-color: gray;
+}
+
+
+span.projectTitle, span.visitTitle, span.studyTitle, span.episodeTitle, span.acquisitionTitle
+{
+  display: block;
+  font-weight: bold;
+  font-size: larger;
+}

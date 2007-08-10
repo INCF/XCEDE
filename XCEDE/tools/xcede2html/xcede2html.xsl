@@ -82,7 +82,7 @@
   <xsl:template match="/xcede:XCEDE">
     <html>
       <head>
-        <link rel="stylesheet" href="xcede_html.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="xcede2html.css" type="text/css" media="screen"/>
         <title>XCEDE dataset</title>
       </head>
       <body bgcolor="#FFFFFF">
