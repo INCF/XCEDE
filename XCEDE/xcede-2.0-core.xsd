@@ -544,7 +544,7 @@
 	</xs:complexType>
 	<xs:complexType name="dcResource_t">
 		<xs:complexContent>
-			<xs:extension base="resource_t">
+			<xs:extension base="informationResource_t">
 				<xs:sequence>
 					<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="creator" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
