@@ -29,41 +29,150 @@ the authors of the tools, is collected at run time by the processing scripts, an
     <formalpara>
       <title><literal>processStep_t</literal></title>
       <para>This type contains two attributes, ID and parent, indicating a unique ID for the step and its 
-parent step, respectively. It include a number of child elements that describe the conditions
+parent step, respectively. It includes a number of child elements that describe the conditions
 under which an executable was run. All of the child elements are formally optional. The following are strongly
-recommended:
-  	<literal>program</literal> The name of the executable. The version attribute is required, build number is optional. 
-See instructions below for inserting versino control content. Alternately, you can define it as a user string.
-	<literal>programArguments</literal> The arguments passed into the executable. The attributes are optional, they are used to break 
-down the full list of arguments into input and output arguments.
-	<literal>timeStamp</literal> The time at which the program started to run, milliseconds are optional until 
-cross platform code can be found.
-	<literal>user</literal> Who was logged in and running this executable?
-	<literal>hostName</literal> The unique id of the computer running this executable. Replaces Machine from old schema.
-	<literal>architecture</literal> This is the type of hardware that the processing step is run on, sun, x86, etc. 	
-platform: This is the operating system under which the processing step is being run.
+recommended:</para>
+    </formalpara>
+
+	<variablelist>
+	<varlistentry>
+  	<term>program</term> 
+	<listitem>
+		<para>The name of the executable. The version attribute is required, build number is optional. 
+See instructions below for inserting version control content. Alternately, you can define it as a user string. </para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>programArguments</term>
+	<listitem>
+		<para> The arguments passed into the executable. The attributes are optional, they are used to break 
+down the full list of arguments into input and output arguments.</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>timeStamp</term>
+	<listitem>
+		<para> The time at which the program started to run, milliseconds are optional until 
+cross platform code can be found.</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>user</term>
+	<listitem>
+		<para> Who was logged in and running this executable?</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>hostName</term>
+	<listitem>
+		<para> The unique id of the computer running this executable. Replaces Machine from old schema.</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>architecture</term>
+	<listitem>
+		<para> This is the type of hardware that the processing step is run on, sun, x86, etc. 	
+platform: This is the operating system under which the processing step is being run. </para>
+	</listitem>
+	</varlistentry>
+
+	</variablelist>
 
 	These are optional:
-	<literal>cvs</literal>		Revision control repository information. Use the CVS keyword Id, inserted into your source code
- file as $Id: chap_provenance.xml,v 1.6 2007-08-06 21:07:32 gadde Exp $ and it will be replaced with the file name, version, date of change and who changed it. 
-Also works with SVN, but see SVN notes for enabling it.
-	<literal>compiler</literal>	What was used to compile this executable? Name and version.
-	<literal>library</literal>	The name and version of a linked library. Can be repeated as many times as necessary. 
-This is dependent on the library in question, examples are given for VTK and Tcl and Tk.
-	<literal>buildTimeStamp</literal>	The time stamp showing when the executable was built
-	<literal>package</literal>	This tag gives the overall package version, if the executable is part of a larger unit, for example, 
-mri_convert is part of FreeSurfer, and the whole FreeSurfer package may have a different version number than the
- mri_convert executable that might change at a different rate.
-	<literal>repository</literal>	Where can the software be found? Link to a code repository or a web page. Can be extracted automatically 
-if using SVN, via the HeadURL keyword.
+	<variablelist>
+	<varlistentry>
+	<term>cvs</term>
+	<listitem>
+		<para>Revision control repository information. Use the CVS keyword Id, inserted into your source code
+ file as $Id: chap_provenance.xml,v 1.7 2007-08-13 19:22:38 dmarcus Exp $ and it will be replaced with the file name, version, date of change and who changed it. 
+Also works with SVN, but see SVN notes for enabling it.</para>
+	</listitem>
+	</varlistentry>
 
-</para>
-    </formalpara>
+	<varlistentry>
+	<term>compiler</term>
+	<listitem>
+		<para>What was used to compile this executable? Name and version.</para>
+	</listitem>
+
+	<varlistentry>
+	<term>library</term>
+	<listitem>
+		<para>The name and version of a linked library. Can be repeated as many times as necessary. 
+This is dependent on the library in question, examples are given for VTK and Tcl and Tk.</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>buildTimeStamp</term>
+	<listitem>
+		<para>The time stamp showing when the executable was built.</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>package</term>
+	<listitem>
+		<para>This tag gives the overall package version, if the executable is part of a larger unit, for example, 
+mri_convert is part of FreeSurfer, and the whole FreeSurfer package may have a different version number than the
+ mri_convert executable that might change at a different rate.</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>repository</term>
+	<listitem>
+		<para>Where can the software be found? Link to a code repository or a web page. Can be extracted automatically 
+if using SVN, via the HeadURL keyword.</para>
+	</listitem>
+	</varlistentry>
+
+	</variablelist>
   </section>
 
   <section>
     <title>Examples</title>
   </section>
+
+     <para>Provenance elements are optional children of dataReource and analysis types and describe the sequence of processing steps that were executed to generate the data represented by the parent element.
+In the example below, </para>
+
+      <figure id="binary_data_resource.simple_example">
+        <title>Simple provenance example</title>
+        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
+  <uri offset="0" size="8192">random_generated_data_file.bin</uri>
+  <provenance ID="1">
+	<processStep parent="1" ID="1">
+		<program build="1.0" version="1.0">filter1</program>
+		<programArguments inputs="-in analyze" outputs="-out minc">-size 10 -reps 100 -v -in minc -out nifti</programArguments>
+		<timeStamp>11:20:37</timestamp>
+		<user>xnatmaster</xnat>
+		<hostName>lablin1</hostname>
+		<architecture/>
+		<platform version="String">String</platform>
+	</processStep>
+	<processStep parent="1" ID="2">
+		<program build="String" version="1.2">filter2</program>
+		<programArguments inputs="-in minc" outputs="-out nifti">-size 20 -reps 200 -v -in minc -out nifti</programArguments>
+		<timeStamp>11:50:21</timestamp>
+		<user>xnatmaster</user>
+		<hostName>lablin1</hostname>
+		<architecture>x86</architecture>
+		<platform version="6">fedora</platform>
+	</processStep>
+  </provenance>
+  <elementType>float32</elementType>
+  <byteOrder>lsbfirst</byteOrder>
+
+</dataResource>]]></programlisting>
+      </figure>
+
+
 
   <section>
 	<title>Generating provenance XML from applications</title>
@@ -82,14 +191,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.6 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.7 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.6 2007-08-06 21:07:32 gadde Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.7 2007-08-13 19:22:38 dmarcus Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
