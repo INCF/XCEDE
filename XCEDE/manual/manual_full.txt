@@ -829,12 +829,6 @@ Overview
    references, and data references. They are recursive in that catalogs can
    contain a list of catalogs and catalog references.
 
-   Catalogs  are  represented by the catalog_t complex type, derived from
-   abstract_tagged_entity_t.  The catalog child element of the root XCEDE
-   element is of type catalog_t. The resources included in the catalog can be
-   pointed to from by resource references in a number of places in XCEDE,
-   including analysis_t and acquisition_t.
-
    Catalogs are useful in a number of contexts. A catalog could be created, for
    example, to represent all of the acquisition resources associated with an
    episode. These catalogs could be contained within a parent catalog that
@@ -843,8 +837,26 @@ Overview
    uploaded and tagged by users.
 
    A benefit of using catalogs, as opposed to linking resources directly in
-   analysis and acquisition elements, is that the catalogs can be sent to
-   client applications that choose not to support the full XCEDE specification.
+   analysis  and  acquisition  elements, is that the catalogs can be sent
+   independent of the parent content to client applications that choose not to
+   support the full XCEDE specification. Additionally, catalog documents can be
+   quite  large when they contain thousands of entries (for example, when
+   pointing to individual DICOM files for an acquisition), so separating the
+   catalogs from their parents can be more efficient.
+
+   Catalogs  are  represented by the catalog_t complex type, derived from
+   abstract_tagged_entity_t.  The catalog child element of the root XCEDE
+   element is of type catalog_t. The resources included in the catalog can be
+   pointed to from by resource references in a number of places in XCEDE,
+   including analysis_t and acquisition_t.
+
+   The abstract base type abstract_tagged_entity_t provides an unbounded set of
+   tags that users and applications can populate to attach ad-hoc documentation
+   and labels to the catalog and its contents. catalog_t also includes an
+   unbounded list of child subcatalogs (or references to child catalogs) and an
+   unbounded list of entries. Each entry is either a resource, a refernce to a
+   resource,  or  a  reference to an XCEDE data element (an analysis, for
+   example).
 
 Examples
 
@@ -927,38 +939,103 @@ Overview
    contained within, which can be dataResource_t or an analysis_t.
 
    processStep_t. This type contains two attributes, ID and parent, indicating
-   a unique ID for the step and its parent step, respectively. It include a
+   a unique ID for the step and its parent step, respectively. It includes a
    number  of  child elements that describe the conditions under which an
    executable was run. All of the child elements are formally optional. The
-   following are strongly recommended: program The name of the executable. The
-   version attribute is required, build number is optional. See instructions
-   below for inserting versino control content. Alternately, you can define it
-   as a user string. programArguments The arguments passed into the executable.
-   The attributes are optional, they are used to break down the full list of
-   arguments into input and output arguments. timeStamp The time at which the
-   program started to run, milliseconds are optional until cross platform code
-   can be found. user Who was logged in and running this executable? hostName
-   The unique id of the computer running this executable. Replaces Machine from
-   old schema. architecture This is the type of hardware that the processing
-   step is run on, sun, x86, etc. platform: This is the operating system under
-   which the processing step is being run. These are optional: cvs Revision
-   control repository information. Use the CVS keyword Id, inserted into your
-   source code file as $Id: chap_provenance.xml,v 1.6 2007/08/06 21:07:32 gadde
-   Exp $ and it will be replaced with the file name, version, date of change
-   and who changed it. Also works with SVN, but see SVN notes for enabling it.
-   compiler What was used to compile this executable? Name and version. library
-   The name and version of a linked library. Can be repeated as many times as
-   necessary. This is dependent on the library in question, examples are given
-   for VTK and Tcl and Tk. buildTimeStamp The time stamp showing when the
-   executable was built package This tag gives the overall package version, if
-   the executable is part of a larger unit, for example, mri_convert is part of
-   FreeSurfer, and the whole FreeSurfer package may have a different version
-   number than the mri_convert executable that might change at a different
-   rate. repository Where can the software be found? Link to a code repository
-   or a web page. Can be extracted automatically if using SVN, via the HeadURL
-   keyword.
+   following are strongly recommended:
+
+   program
+          The name of the executable. The version attribute is required, build
+          number is optional. See instructions below for inserting version
+          control content. Alternately, you can define it as a user string.
+
+   programArguments
+          The  arguments  passed  into the executable. The attributes are
+          optional, they are used to break down the full list of arguments into
+          input and output arguments.
+
+   timeStamp
+          The  time at which the program started to run, milliseconds are
+          optional until cross platform code can be found.
+
+   user
+          Who was logged in and running this executable?
+
+   hostName
+          The unique id of the computer running this executable. Replaces
+          Machine from old schema.
+
+   architecture
+          This is the type of hardware that the processing step is run on, sun,
+          x86, etc. platform: This is the operating system under which the
+          processing step is being run.
+
+   These are optional:
+
+   cvs
+          Revision control repository information. Use the CVS keyword Id,
+          inserted into your source code file as $Id: chap_provenance.xml,v 1.7
+          2007/08/13 19:22:38 dmarcus Exp $ and it will be replaced with the
+          file name, version, date of change and who changed it. Also works
+          with SVN, but see SVN notes for enabling it.
+
+   compiler
+          What was used to compile this executable? Name and version.
+
+   library
+          The name and version of a linked library. Can be repeated as many
+          times as necessary. This is dependent on the library in question,
+          examples are given for VTK and Tcl and Tk.
+
+   buildTimeStamp
+          The time stamp showing when the executable was built.
+
+   package
+          This tag gives the overall package version, if the executable is part
+          of a larger unit, for example, mri_convert is part of FreeSurfer, and
+          the whole FreeSurfer package may have a different version number than
+          the mri_convert executable that might change at a different rate.
+
+   repository
+          Where can the software be found? Link to a code repository or a web
+          page. Can be extracted automatically if using SVN, via the HeadURL
+          keyword.
 
 Examples
+
+   Provenance elements are optional children of dataReource and analysis types
+   and describe the sequence of processing steps that were executed to generate
+   the data represented by the parent element. In the example below,
+
+   Figure 5.1. Simple provenance example
+<dataResource xsi:type="binaryDataResource_t">
+  <uri offset="0" size="8192">random_generated_data_file.bin</uri>
+  <provenance ID="1">
+        <processStep parent="1" ID="1">
+                <program build="1.0" version="1.0">filter1</program>
+                <programArguments inputs="-in analyze" outputs="-out minc">-siz
+e 10 -reps 100 -v -in minc -out nifti</programArguments>
+                <timeStamp>11:20:37</timestamp>
+                <user>xnatmaster</xnat>
+                <hostName>lablin1</hostname>
+                <architecture/>
+                <platform version="String">String</platform>
+        </processStep>
+        <processStep parent="1" ID="2">
+                <program build="String" version="1.2">filter2</program>
+                <programArguments inputs="-in minc" outputs="-out nifti">-size
+20 -reps 200 -v -in minc -out nifti</programArguments>
+                <timeStamp>11:50:21</timestamp>
+                <user>xnatmaster</user>
+                <hostName>lablin1</hostname>
+                <architecture>x86</architecture>
+                <platform version="6">fedora</platform>
+        </processStep>
+  </provenance>
+  <elementType>float32</elementType>
+  <byteOrder>lsbfirst</byteOrder>
+
+</dataResource>
 
 Generating provenance XML from applications
 
@@ -975,7 +1052,7 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.6 $\">%s</ProgramName>\n", a
+  fprintf(stdout, "<Program version=\"$Revision: 1.7 $\">%s</ProgramName>\n", a
 rgv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
@@ -983,8 +1060,8 @@ rgv[0]);
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.6 2007/08/06 21:07:32 gadd
-e Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.7 2007/08/13 19:22:38 dmar
+cus Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
@@ -1105,7 +1182,7 @@ svn propset svn:keywords "Revision Id Date HeadURL" [filename.ext]
 
 Reference
 
-   Figure 5.1. provenance_t
+   Figure 5.2. provenance_t
    provenance_t
 
 Chapter 6. Events
@@ -1268,6 +1345,22 @@ Chapter 7. Protocols
 
 Overview
 
+   Specifications of experimental protocols are stored in XCEDE using the
+   protocol_t tag structures.
+
+   Protocols in XCEDE consists of a hierarchial organization of steps defining
+   the protocol and items within the steps defining particular
+
+   protocol_t. The  protocol_t tag extends the abstract_protocol_t tag to
+   include steps and items making up a protocol description.
+
+   abstract_protocol_t. The abstract_protocol_t abstract tag provides basis
+   information related to a protocol such as protocol time offset, min and max
+   occurences, concept linkages, and more described belowThe protocol_offset_t
+   tag is used to specify timing of this particular protocol relative to other
+   protocols  or  steps  within  an  experiment.  The protocolTimeRef and
+   preferrredTimeOffset tags are used to describe the offset
+
 Examples
 
 Reference
@@ -1280,9 +1373,12 @@ Overview
    stored  in  XCEDE  using the assessment_t and assessmentDescItem_t tag
    structures.
 
-   The description of the assessment questions and possible answer choices are
-   specified  in  the  protocol  section of the schema whereas the actual
-   assessment data for an acquisition are stored in the assessment_t tags
+   In XCEDE the formal definition of an assessment and the cataloging of the
+   actual data values collected for that assessment are specified in different
+   parts of the schema. The formal description of the assessment questions and
+   possible answer choices are specified in the protocol section protocol_t of
+   the schema whereas the actual assessment data for an acquisition are stored
+   in the assessment_t tags
 
    assessment_t. The  assessment_t tag extends the abstract_data_t tag to
    include information about the acquired assessment.The name element contains

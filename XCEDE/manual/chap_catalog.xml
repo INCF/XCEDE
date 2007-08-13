@@ -12,11 +12,10 @@ large when they contain thousands of entries (for example, when pointing to indi
 	<para>Catalogs are represented by the <literal>catalog_t</literal> complex type, derived from <literal>abstract_tagged_entity_t</literal>. 
  The catalog child element of the root XCEDE element is of type catalog_t.  
 The resources included in the catalog can be pointed to from by resource references in a number of places in XCEDE, including analysis_t and acquisition_t.</para>
-      <para>The abstract base type <literal>abstract_tagged_entity_t</literal> provides an unbounded set of <literal>tags<literal> that users
+      <para>The abstract base type <literal>abstract_tagged_entity_t</literal> provides an unbounded set of <literal>tags</literal> that users
  and applications can populate to attach ad-hoc documentation and labels to the catalog and its contents.  catalog_t also includes an unbounded list of
 child subcatalogs (or references to child catalogs) and an unbounded list of entries.  Each entry is either a resource, a refernce to a resource, or
 a reference to an XCEDE data element (an analysis, for example).</para>
-      </formalpara>
   </section>
 
   <section>

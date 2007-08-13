@@ -89,7 +89,7 @@ platform: This is the operating system under which the processing step is being 
 	<term>cvs</term>
 	<listitem>
 		<para>Revision control repository information. Use the CVS keyword Id, inserted into your source code
- file as $Id: chap_provenance.xml,v 1.7 2007-08-13 19:22:38 dmarcus Exp $ and it will be replaced with the file name, version, date of change and who changed it. 
+ file as $Id: chap_provenance.xml,v 1.8 2007-08-13 19:53:05 gadde Exp $ and it will be replaced with the file name, version, date of change and who changed it. 
 Also works with SVN, but see SVN notes for enabling it.</para>
 	</listitem>
 	</varlistentry>
@@ -99,6 +99,7 @@ Also works with SVN, but see SVN notes for enabling it.</para>
 	<listitem>
 		<para>What was used to compile this executable? Name and version.</para>
 	</listitem>
+	</varlistentry>
 
 	<varlistentry>
 	<term>library</term>
@@ -142,7 +143,7 @@ if using SVN, via the HeadURL keyword.</para>
      <para>Provenance elements are optional children of dataReource and analysis types and describe the sequence of processing steps that were executed to generate the data represented by the parent element.
 In the example below, </para>
 
-      <figure id="binary_data_resource.simple_example">
+      <figure id="provenance.simple_example">
         <title>Simple provenance example</title>
         <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
   <uri offset="0" size="8192">random_generated_data_file.bin</uri>
@@ -191,14 +192,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.7 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.8 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.7 2007-08-13 19:22:38 dmarcus Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.8 2007-08-13 19:53:05 gadde Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
