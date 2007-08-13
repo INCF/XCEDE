@@ -150,25 +150,13 @@
 							<xs:documentation>The record of the origin and transformations applied to source data that produced this analysis</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="inputRef" type="analysisRef_t" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="outputRef" type="analysisRef_t" minOccurs="0"/>
+					<xs:element name="inputRef" type="ref_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="outputRef" type="ref_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="measurementGroup" type="measurementGroup_t" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>A measurementGroup contains information and data related to the outcome of an analysis.  For example, this could be a statistic (e.g. from a Statistical Parametric Map) or a measurement (e.g. the volume of the hippocmapus).</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:choice minOccurs="0" maxOccurs="unbounded">
-						<xs:element name="dataResourceRef" type="ref_t">
-							<xs:annotation>
-								<xs:documentation>A reference to a resource as described above. The resource could be part of a catalog, a root level resource, etc.</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-						<xs:element name="dataRef" type="ref_t">
-							<xs:annotation>
-								<xs:documentation>A refrence to a container that the actual acquisition data goes into (as opposed to being in an external non-XCEDE format)</xs:documentation>
-							</xs:annotation>
-						</xs:element>
-					</xs:choice>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -794,16 +782,6 @@
 			</xs:element>
 		</xs:sequence>
 		<xs:attribute name="name"/>
-	</xs:complexType>
-	<xs:annotation>
-		<xs:documentation>*********            Catalog types            *********</xs:documentation>
-	</xs:annotation>
-	<xs:complexType name="catalogEntry_t">
-		<xs:sequence>
-			<xs:element name="metadataList" type="metadataList_t" minOccurs="0"/>
-		</xs:sequence>
-		<xs:attributeGroup ref="levelRef_ag"/>
-		<xs:attributeGroup ref="ID_name_description"/>
 	</xs:complexType>
 	<!--*********            Provenance types            *********-->
 	<xs:complexType name="processStep_t">
