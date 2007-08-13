@@ -60,6 +60,7 @@
         <term><varname>Atlas Entity</varname></term>
         <listitem><para>Defines an atlas based region through the definition of geometries.  These are defined on the <type>abstract_geometry_t</type> type.</para></listitem>
       </varlistentry>
+    </variablelist>
   </section>
  
   <section>

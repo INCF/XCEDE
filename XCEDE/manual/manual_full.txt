@@ -58,6 +58,7 @@ XCEDE 2.0 - A Manual
         9. Analysis
 
               Overview
+              Measurement Group
               Examples
               Reference
 
@@ -218,6 +219,7 @@ Part I. XCEDE 2 Core Specification
    9. Analysis
 
         Overview
+        Measurement Group
         Examples
         Reference
 
@@ -1389,13 +1391,91 @@ Reference
 
 Chapter 9. Analysis
 
-   This is where the analysis text goes.
+   The analysis_t type and its corresponding elements are used to document the
+   collected output and/or results from an analysis or processing of data.
 
 Overview
+
+   An analysis is composed of the "inputs" (i.e. the files and paramenters used
+   in an analysis or processing of data), the application(s) or method(s) used
+   and the resultant data (i.e. values and output files):
+
+   Analysis Constituents
+
+   provenance
+          The record of the origin and transformations applied to source data
+          that produced this analysis. More information on this element can be
+          found in the provenance chapter.
+
+   inputRef
+          ???
+
+   outputRef
+          ???
+
+   measurementGroup
+          A measurementGroup contains information and data related to the
+          outcome of an analysis. For example, this could be a statistic (e.g.
+          from a Statistical Parametric Map) or a measurement (e.g. the volume
+          of the hippocmapus).
+
+Measurement Group
+
+   A measurementGroup contains information and data related to the outcome of
+   an analysis and is based on the measurementGroup_t type. Extending abstract
+   container,  this  allows  for  the annotation and documentation of the
+   measurements  being described. The measurement being described by this
+   element are described by two specific elements:
+
+   Measurement Group Constituents
+
+   entity
+          In the context of a measurement Group, is the entity being measured.
+          For example, the hippocampus. In more complicated instances this
+          could be an entity described by multiple entries, for example, when
+          doing  a region of interest analysis where multiple or multiple
+          partial regions are involved.
+
+   observation
+          In the context of a measurement Group, are the observations that are
+          made concerning the entity. For example, following hte hippocmapus
+          example, might be the total volume, surface area, etc.
+
+   The entity element is based on the abstract_entity_t type that allows for
+   the definition of specific entity classes. Currently two such classes are
+   defined:
+
+   Entity Classes
+
+   Anatomical Entity
+          Defines an anatomical entity through a set of terms that name this
+          entity. This set can contain a collection of synonymous terms. In
+          addition to the anatomical region itself a laterality and tissue type
+          can be specified to narrow the focus (e.g. left hippocampal grey
+          metter).
+
+   Atlas Entity
+          Defines an atlas based region through the definition of geometries.
+          These are defined on the abstract_geometry_t type.
 
 Examples
 
 Reference
+
+   Figure 9.1. terminology_ag
+   terminology_ag
+
+   Figure 9.2. terminology_ag
+   terminology_ag
+
+   Figure 9.3. terminology_ag
+   terminology_ag
+
+   Figure 9.4. terminology_ag
+   terminology_ag
+
+   Figure 9.5. terminology_ag
+   terminology_ag
 
 Chapter 10. Terminology
 
