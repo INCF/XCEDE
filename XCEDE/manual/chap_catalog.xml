@@ -6,13 +6,18 @@
     <title>Overview</title>
 
 	<para>Catalogs in XCEDE 2 are containers of related resources, resource references, and data references.  They are recursive in that catalogs can contain a list of catalogs and catalog references.</para>
-
-	<para>Catalogs are represented by the catalog_t complex type, derived from abstract_tagged_entity_t.  The catalog child element of the root XCEDE element is of type catalog_t.  The resources included in the catalog can be pointed to from by resource references in a number of places in XCEDE, including analysis_t and acquisition_t.</para>
-  </section>
-	
 	<para>Catalogs are useful in a number of contexts.  A catalog could be created, for example, to represent all of the acquisition resources associated with an episode.  These catalogs could be contained within a parent catalog that represents each of the episodes in an MR study.  Catalogs could also be used to represent the various resources generated as part of an analysis or uploaded and tagged by users.</para>
-
-	<para>A benefit of using catalogs, as opposed to linking resources directly in analysis and acquisition elements, is that the catalogs can be sent to client applications that choose not to support the full XCEDE specification.</para>
+	<para>A benefit of using catalogs, as opposed to linking resources directly in analysis and acquisition elements, is that the catalogs can be sent independent of the parent content to client applications that choose not to support the full XCEDE specification.  Additionally, catalog documents can be quite
+large when they contain thousands of entries (for example, when pointing to individual DICOM files for an acquisition), so separating the catalogs from their parents can be more efficient.</para>
+	<para>Catalogs are represented by the <literal>catalog_t</literal> complex type, derived from <literal>abstract_tagged_entity_t</literal>. 
+ The catalog child element of the root XCEDE element is of type catalog_t.  
+The resources included in the catalog can be pointed to from by resource references in a number of places in XCEDE, including analysis_t and acquisition_t.</para>
+      <para>The abstract base type <literal>abstract_tagged_entity_t</literal> provides an unbounded set of <literal>tags<literal> that users
+ and applications can populate to attach ad-hoc documentation and labels to the catalog and its contents.  catalog_t also includes an unbounded list of
+child subcatalogs (or references to child catalogs) and an unbounded list of entries.  Each entry is either a resource, a refernce to a resource, or
+a reference to an XCEDE data element (an analysis, for example).</para>
+      </formalpara>
+  </section>
 
   <section>
     <title>Examples</title>
