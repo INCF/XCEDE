@@ -2,18 +2,108 @@
 <chapter id="chapter.analysis">
   <title>Analysis</title>
 
-  <para>This is where the analysis text goes.</para>
+  <para>The analysis_t type and its corresponding elements are used to document the collected output and/or results from an analysis or processing of data.</para>
 
   <section>
     <title>Overview</title>
+    
+    <para>An analysis is composed of the "inputs" (i.e. the files and paramenters used in an analysis or processing of data), the application(s) or method(s) used and the resultant data (i.e. values and output files):</para>
+    <variablelist><title>Analysis Constituents</title>
+      <varlistentry>
+        <term><varname>provenance</varname></term>
+        <listitem><para>The record of the origin and transformations applied to source data that produced this analysis.  More information on this element can be found in the provenance chapter.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term><varname>inputRef</varname></term>
+        <listitem><para>???</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term><varname>outputRef</varname></term>
+        <listitem><para>???</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term><varname>measurementGroup</varname></term>
+        <listitem><para>A measurementGroup contains information and data related to the outcome of an analysis.  For example, this could be a statistic (e.g. from a Statistical Parametric Map) or a measurement (e.g. the volume of the hippocmapus).</para></listitem>
+      </varlistentry>
+      
+    </variablelist>
   </section>
 
+  <section>
+    <title>Measurement Group</title> 
+    
+    <para>A measurementGroup contains information and data related to the outcome of an analysis and is based on the measurementGroup_t type.  Extending abstract container, this allows for the annotation and documentation of the measurements being described. The measurement being described by this element are described by two specific elements: </para>
+    <variablelist><title>Measurement Group Constituents</title>
+      <varlistentry>
+        <term><varname>entity</varname></term>
+        <listitem><para>In the context of a measurement Group, is the entity being measured.  For example, the hippocampus. In more complicated instances this could be an entity described by multiple entries, for example, when doing a region of interest analysis where multiple or multiple partial regions are involved.</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term><varname>observation</varname></term>
+        <listitem><para>In the context of a measurement Group, are the observations that are made concerning the entity.  For example, following hte hippocmapus example, might be the total volume, surface area, etc.</para></listitem>
+      </varlistentry>
+      
+    </variablelist>
+    
+    <para>The <varname>entity</varname> element is based on the <type>abstract_entity_t</type> type that allows for the definition of specific entity classes. Currently two such classes are defined:</para>
+    <variablelist><title>Entity Classes</title>
+      <varlistentry>
+        <term><varname>Anatomical Entity</varname></term>
+        <listitem><para>Defines an anatomical entity through a set of terms that name this entity.  This set can contain a collection of synonymous terms. In addition to the anatomical region itself a laterality and tissue type can be specified to narrow the focus (e.g. left hippocampal grey metter).</para></listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term><varname>Atlas Entity</varname></term>
+        <listitem><para>Defines an atlas based region through the definition of geometries.  These are defined on the <type>abstract_geometry_t</type> type.</para></listitem>
+      </varlistentry>
+  </section>
+ 
   <section>
     <title>Examples</title>
   </section>
 
   <section>
     <title>Reference</title>
+    
+    <figure id="analysis_t.ref_diagram ">
+      <title>terminology_ag</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/analysis_t.png" format="png" width="6in"/> </imageobject>
+      </mediaobject>
+    </figure>
+    
+    <figure id="measurementGroup_t.ref_diagram ">
+      <title>terminology_ag</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/measurementGroup_t.png" format="png" width="6in"/> </imageobject>
+      </mediaobject>
+    </figure>
+    
+    <figure id="atlatEntity_t.ref_diagram ">
+      <title>terminology_ag</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/atlasEntity_t.png" format="png" width="6in"/> </imageobject>
+      </mediaobject>
+    </figure>
+    
+    <figure id="anatomicalEntity_t.ref_diagram ">
+      <title>terminology_ag</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/anatomicalEntity_t.png" format="png" width="6in"/> </imageobject>
+      </mediaobject>
+    </figure>
+    
+    <figure id="provenance_t_analysis.ref_diagram ">
+      <title>terminology_ag</title>
+      <mediaobject>
+        <imageobject><imagedata fileref="images/provenance_t_analysis.png" format="png" width="6in"/> </imageobject>
+      </mediaobject>
+    </figure>
+    
   </section>
 
 </chapter>
