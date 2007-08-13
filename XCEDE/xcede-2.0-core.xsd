@@ -788,17 +788,17 @@
 		<xs:sequence>
 			<xs:element name="program" type="versionedProgramEntity_t" minOccurs="0"/>
 			<xs:element name="programArguments" type="argumentsType_t" minOccurs="0"/>
-			<xs:element name="timeStamp" type="mixedType_t" minOccurs="0"/>
-			<xs:element name="user" type="mixedType_t" minOccurs="0"/>
-			<xs:element name="hostName" type="mixedType_t" minOccurs="0"/>
-			<xs:element name="architecture" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="user" type="xs:string" minOccurs="0"/>
+			<xs:element name="hostName" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="architecture" type="xs:string" minOccurs="0"/>
 			<xs:element name="platform" type="versionedEntity_t" minOccurs="0"/>
-			<xs:element name="cvs" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="cvs" type="xs:string" minOccurs="0"/>
 			<xs:element name="compiler" type="versionedEntity_t" minOccurs="0"/>
 			<xs:element name="library" type="versionedEntity_t" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="buildTimeStamp" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="buildTimeStamp" type="xs:dateTime" minOccurs="0"/>
 			<xs:element name="package" type="versionedEntity_t" minOccurs="0"/>
-			<xs:element name="repository" type="mixedType_t" minOccurs="0"/>
+			<xs:element name="repository" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
 		<xs:attribute name="parent" type="xs:string"/>
@@ -809,7 +809,6 @@
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
 	</xs:complexType>
-	<xs:complexType name="mixedType_t" mixed="true"/>
 	<xs:complexType name="argumentsType_t">
 		<xs:annotation>
 			<xs:documentation>input and output arguments of the processing tool</xs:documentation>
@@ -1159,7 +1158,7 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType name="abstract_geometry_t"/>
+	<xs:complexType name="abstract_geometry_t" abstract="true"/>
 	<xs:complexType name="anatomicalEntity_t">
 		<xs:annotation>
 			<xs:documentation>Entity elements are used to describe the resultant scope of an analysis</xs:documentation>
@@ -1209,11 +1208,6 @@
 				<xs:attribute name="URI" type="xs:string"/>
 			</xs:extension>
 		</xs:simpleContent>
-	</xs:complexType>
-	<xs:complexType name="investigator_t">
-		<xs:complexContent>
-			<xs:extension base="person_t"/>
-		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="authoredText_t">
 		<xs:simpleContent>
