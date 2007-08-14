@@ -10,5 +10,8 @@
     <xsl:attribute name="hyphenation-character">\</xsl:attribute>
   </xsl:attribute-set>
 
+<xsl:template match="type">
+  <xsl:call-template name="inline.monoseq"/>
+</xsl:template>
 
 </xsl:stylesheet>

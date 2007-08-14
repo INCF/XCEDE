@@ -46,7 +46,7 @@
       <listitem>
         <formalpara>
           <title>Data provenance</title>
-          <para>The <literal>&lt;provenance&gt;</literal> element appears in the types <literal>analysis_t</literal> (on which the <literal>&lt;analysis&gt;</literal> element is based) and <literal>dataResource_t</literal> (one of the available data models for the top-level <literal>&lt;resource&gt;</literal> element).  See <xref linkend="chapter.provenance"/>.</para>
+          <para>The <literal>&lt;provenance&gt;</literal> element appears in the types <type>analysis_t</type> (on which the <literal>&lt;analysis&gt;</literal> element is based) and <type>dataResource_t</type> (one of the available data models for the top-level <literal>&lt;resource&gt;</literal> element).  See <xref linkend="chapter.provenance"/>.</para>
         </formalpara>
       </listitem>
     </itemizedlist>
@@ -54,19 +54,19 @@
       <listitem>
         <formalpara>
           <title>Comments and annotations</title>
-          <para>The <literal>&lt;commentList&gt;</literal> and <literal>&lt;annotationList&gt;</literal> elements provide mechanisms to store, respectively, descriptive text regarding the real-world entities or concepts represented by the associated XML element, or about the stored XML element itself.  These are available in all elements based on <literal>abstract_container_t</literal>, which includes all the hierarchy elements and <literal>&lt;analysis&gt;</literal>.</para>
+          <para>The <literal>&lt;commentList&gt;</literal> and <literal>&lt;annotationList&gt;</literal> elements provide mechanisms to store, respectively, descriptive text regarding the real-world entities or concepts represented by the associated XML element, or about the stored XML element itself.  These are available in all elements based on <type>abstract_container_t</type>, which includes all the hierarchy elements and <literal>&lt;analysis&gt;</literal>.</para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title>Informational resources</title>
-          <para>These point to documentation that may illuminate aspects of the data, data collection, protocol, etc. -- these might include peer-reviewed publications, equipment manuals, and others.  Informational resources are represented in the type <literal>informationResource_t</literal> which is used in the <literal>&lt;resourceList&gt;</literal> element in <literal>abstract_container_t</literal> (as with the comments and annotations).</para>
+          <para>These point to documentation that may illuminate aspects of the data, data collection, protocol, etc. -- these might include peer-reviewed publications, equipment manuals, and others.  Informational resources are represented in the type <type>informationResource_t</type> which is used in the <literal>&lt;resourceList&gt;</literal> element in <type>abstract_container_t</type> (as with the comments and annotations).</para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title>Terminology</title>
-          <para>Various elements in XCEDE 2 include the attribute group <literal>terminology_ag</literal> or use the type <literal>terminologyString</literal>, which allow the user to associate them with terms from particular nomenclatures/ontologies.  For example, a subject's <literal>&lt;species&gt;</literal> may refer to a standard term listed in a well-known public nomenclature.  See <xref linkend="chapter.terminology"/>.</para>
+          <para>Various elements in XCEDE 2 include the attribute group <type>terminology_ag</type> or use the type <literal>terminologyString</literal>, which allow the user to associate them with terms from particular nomenclatures/ontologies.  For example, a subject's <literal>&lt;species&gt;</literal> may refer to a standard term listed in a well-known public nomenclature.  See <xref linkend="chapter.terminology"/>.</para>
         </formalpara>
       </listitem>
     </itemizedlist>
@@ -85,10 +85,10 @@
         <para>Element and attribute names are alphanumeric (<literal>&lt;project&gt;</literal>).  All letters are lowercase, with the exception of acronyms, which are uppercase (<literal>&lt;XCEDE&gt;</literal>, <literal>projectID</literal>), and, in multi-word names, the initial letters of the second and following words which are capitalized (<literal>&lt;dataResourceRef&gt;</literal>).  For the purposes of this rule, <literal>ID</literal> (for <quote>identifier</quote>) is considered an acronym.</para>
       </listitem>
       <listitem>
-        <para>Schema type names (which do not appear in XML instance documents except in <literal>xsi:type</literal> attributes) follow the same naming conventions as element and attribute names, but have the <literal>_t</literal> suffix (<literal>analysis_t</literal>).  If the type is <quote>abstract</quote>, then it has an <literal>abstract_</literal> prefix (<literal>abstract_container_t</literal>).</para>
+        <para>Schema type names (which do not appear in XML instance documents except in <literal>xsi:type</literal> attributes) follow the same naming conventions as element and attribute names, but have the <literal>_t</literal> suffix (<type>analysis_t</type>).  If the type is <quote>abstract</quote>, then it has an <literal>abstract_</literal> prefix (<type>abstract_container_t</type>).</para>
       </listitem>
       <listitem>
-        <para>Attribute group names (which do not appear in XML instance documents) follow the same naming conventions as element and attribute names, but have the <literal>_ag</literal> suffix (<literal>allLevelExternalIDs_ag</literal>).</para>
+        <para>Attribute group names (which do not appear in XML instance documents) follow the same naming conventions as element and attribute names, but have the <literal>_ag</literal> suffix (<type>allLevelExternalIDs_ag</type>).</para>
       </listitem>
     </itemizedlist>
 
@@ -106,7 +106,7 @@
             <para>XSD files will be named <literal>xcede-<emphasis>VERSION</emphasis>-<emphasis>DOMAIN</emphasis></literal>. For example: <literal>xcede-2.0-core.xsd</literal></para>
           </listitem>
           <listitem>
-            <para>All elements should have a corresponding named <literal>complexType</literal>. For example: <literal>&lt;project&gt;</literal> is of type <literal>project_t</literal>.</para>
+            <para>All elements should have a corresponding named <literal>complexType</literal>. For example: <literal>&lt;project&gt;</literal> is of type <type>project_t</type>.</para>
           </listitem>
           <listitem>
             <para>The schema prescribes that some elements precede or follow other elements -- document creators should follow this strictly.  However, applications should be written without expecting a particular element order, in case later versions of the schema change the order of elements.  That is, be conservative in what you write, but liberal in what you accept.</para>

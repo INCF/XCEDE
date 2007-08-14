@@ -51,7 +51,7 @@
   <value name="shape">square</value>
   <value name="shapecolor">red</value>
 </event>]]></programlisting>
-    <para>Event elements are stored within the <literal>&lt;data&gt;</literal> element of an <literal>&lt;acquisition&gt;</literal>.  The <literal>&lt;data&gt;</literal> element should be of type <literal>events_t</literal> (using <literal>xsi:type</literal> &#x2014; see examples below).</para>
+    <para>Event elements are stored within the <literal>&lt;data&gt;</literal> element of an <literal>&lt;acquisition&gt;</literal>.  The <literal>&lt;data&gt;</literal> element should be of type <type>events_t</type> (using <literal>xsi:type</literal> &#x2014; see examples below).</para>
     <para>All onsets are relative to an arbitrary time reference.  Typically, time 0 (zero) could mean the start of data acquisition.  An event list may be interpreted as concurrent with data in other <literal>&lt;acquisition&gt;</literal> elements (which could be other event lists).  If so, the same time reference should be used in all concurrent acquisition data.</para>
     <para>There is no ordering constraint on events in a list.  Applications should depend on using the <literal>&lt;onset&gt;</literal> elements to order the events chronologically if they so desire.</para>
     <para>An optional <literal>&lt;params&gt;</literal> element may precede the first event in a list, and this element stores arbitrary metadata (using the same <literal>&lt;value&gt;</literal> element used above) that apply to all events in the list.</para>

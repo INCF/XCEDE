@@ -974,10 +974,10 @@ Overview
 
    cvs
           Revision control repository information. Use the CVS keyword Id,
-          inserted into your source code file as $Id: chap_provenance.xml,v 1.7
-          2007/08/13 19:22:38 dmarcus Exp $ and it will be replaced with the
-          file name, version, date of change and who changed it. Also works
-          with SVN, but see SVN notes for enabling it.
+          inserted into your source code file as $Id: chap_provenance.xml,v 1.8
+          2007/08/13 19:53:05 gadde Exp $ and it will be replaced with the file
+          name, version, date of change and who changed it. Also works with
+          SVN, but see SVN notes for enabling it.
 
    compiler
           What was used to compile this executable? Name and version.
@@ -1052,7 +1052,7 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.7 $\">%s</ProgramName>\n", a
+  fprintf(stdout, "<Program version=\"$Revision: 1.8 $\">%s</ProgramName>\n", a
 rgv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
@@ -1060,8 +1060,8 @@ rgv[0]);
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.7 2007/08/13 19:22:38 dmar
-cus Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.8 2007/08/13 19:53:05 gadd
+e Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
@@ -1931,10 +1931,10 @@ ecord of the origin and transformations applied to source data that produced th
 is analysis</xs:documentation>
                                                 </xs:annotation>
                                         </xs:element>
-                                        <xs:element name="inputRef" type="analy
-sisRef_t" minOccurs="0" maxOccurs="unbounded"/>
-                                        <xs:element name="outputRef" type="anal
-ysisRef_t" minOccurs="0"/>
+                                        <xs:element name="inputRef" type="ref_t
+" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xs:element name="outputRef" type="ref_
+t" minOccurs="0" maxOccurs="unbounded"/>
                                         <xs:element name="measurementGroup" typ
 e="measurementGroup_t" maxOccurs="unbounded">
                                                 <xs:annotation>
@@ -1944,25 +1944,6 @@ is.  For example, this could be a statistic (e.g. from a Statistical Parametric
  Map) or a measurement (e.g. the volume of the hippocmapus).</xs:documentation>
                                                 </xs:annotation>
                                         </xs:element>
-                                        <xs:choice minOccurs="0" maxOccurs="unb
-ounded">
-                                                <xs:element name="dataResourceR
-ef" type="ref_t">
-                                                        <xs:annotation>
-                                                                <xs:documentati
-on>A reference to a resource as described above. The resource could be part of
-a catalog, a root level resource, etc.</xs:documentation>
-                                                        </xs:annotation>
-                                                </xs:element>
-                                                <xs:element name="dataRef" type
-="ref_t">
-                                                        <xs:annotation>
-                                                                <xs:documentati
-on>A refrence to a container that the actual acquisition data goes into (as opp
-osed to being in an external non-XCEDE format)</xs:documentation>
-                                                        </xs:annotation>
-                                                </xs:element>
-                                        </xs:choice>
                                 </xs:sequence>
                         </xs:extension>
                 </xs:complexContent>
@@ -2464,7 +2445,7 @@ ateTime" minOccurs="0"/>
         </xs:complexType>
         <xs:complexType name="dcResource_t">
                 <xs:complexContent>
-                        <xs:extension base="resource_t">
+                        <xs:extension base="informationResource_t">
                                 <xs:sequence>
                                         <xs:element name="title" type="xs:strin
 g" minOccurs="0" maxOccurs="unbounded"/>
@@ -2871,18 +2852,6 @@ pe="xs:string" minOccurs="0" maxOccurs="unbounded"/>
                 </xs:sequence>
                 <xs:attribute name="name"/>
         </xs:complexType>
-        <xs:annotation>
-                <xs:documentation>*********            Catalog types
- *********</xs:documentation>
-        </xs:annotation>
-        <xs:complexType name="catalogEntry_t">
-                <xs:sequence>
-                        <xs:element name="metadataList" type="metadataList_t" m
-inOccurs="0"/>
-                </xs:sequence>
-                <xs:attributeGroup ref="levelRef_ag"/>
-                <xs:attributeGroup ref="ID_name_description"/>
-        </xs:complexType>
         <!--*********            Provenance types            *********-->
         <xs:complexType name="processStep_t">
                 <xs:sequence>
@@ -2890,28 +2859,27 @@ inOccurs="0"/>
 _t" minOccurs="0"/>
                         <xs:element name="programArguments" type="argumentsType
 _t" minOccurs="0"/>
-                        <xs:element name="timeStamp" type="mixedType_t" minOccu
+                        <xs:element name="timeStamp" type="xs:dateTime" minOccu
 rs="0"/>
-                        <xs:element name="user" type="mixedType_t" minOccurs="0
-"/>
-                        <xs:element name="hostName" type="mixedType_t" minOccur
+                        <xs:element name="user" type="xs:string" minOccurs="0"/
+>
+                        <xs:element name="hostName" type="xs:dateTime" minOccur
 s="0"/>
-                        <xs:element name="architecture" type="mixedType_t" minO
-ccurs="0"/>
+                        <xs:element name="architecture" type="xs:string" minOcc
+urs="0"/>
                         <xs:element name="platform" type="versionedEntity_t" mi
 nOccurs="0"/>
-                        <xs:element name="cvs" type="mixedType_t" minOccurs="0"
-/>
+                        <xs:element name="cvs" type="xs:string" minOccurs="0"/>
                         <xs:element name="compiler" type="versionedEntity_t" mi
 nOccurs="0"/>
                         <xs:element name="library" type="versionedEntity_t" min
 Occurs="0" maxOccurs="unbounded"/>
-                        <xs:element name="buildTimeStamp" type="mixedType_t" mi
+                        <xs:element name="buildTimeStamp" type="xs:dateTime" mi
 nOccurs="0"/>
                         <xs:element name="package" type="versionedEntity_t" min
 Occurs="0"/>
-                        <xs:element name="repository" type="mixedType_t" minOcc
-urs="0"/>
+                        <xs:element name="repository" type="xs:string" minOccur
+s="0"/>
                 </xs:sequence>
                 <xs:attribute name="ID" type="xs:string"/>
                 <xs:attribute name="parent" type="xs:string"/>
@@ -2923,7 +2891,6 @@ Occurs="unbounded"/>
                 </xs:sequence>
                 <xs:attribute name="ID" type="xs:string"/>
         </xs:complexType>
-        <xs:complexType name="mixedType_t" mixed="true"/>
         <xs:complexType name="argumentsType_t">
                 <xs:annotation>
                         <xs:documentation>input and output arguments of the pro
@@ -3368,7 +3335,7 @@ act_geometry_t">
                         </xs:extension>
                 </xs:complexContent>
         </xs:complexType>
-        <xs:complexType name="abstract_geometry_t"/>
+        <xs:complexType name="abstract_geometry_t" abstract="true"/>
         <xs:complexType name="anatomicalEntity_t">
                 <xs:annotation>
                         <xs:documentation>Entity elements are used to describe
@@ -3428,11 +3395,6 @@ f region (or none) </xs:documentation>
                                 <xs:attribute name="URI" type="xs:string"/>
                         </xs:extension>
                 </xs:simpleContent>
-        </xs:complexType>
-        <xs:complexType name="investigator_t">
-                <xs:complexContent>
-                        <xs:extension base="person_t"/>
-                </xs:complexContent>
         </xs:complexType>
         <xs:complexType name="authoredText_t">
                 <xs:simpleContent>

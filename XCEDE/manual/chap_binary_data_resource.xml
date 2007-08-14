@@ -6,31 +6,31 @@
 
   <section>
     <title>Overview</title>
-    <para>The XCEDE 2 <emphasis>Binary Data Resource</emphasis> component is used to provide a generic interface to a binary data stream stored in one or more external files.  Any of the binary data resource types described in this chapter can be used anywhere an <literal>abstract_resource_t</literal> is called for (with the appropriate <literal>xsi:type</literal> attribute); in the current XCEDE schema, these locations are the top-level <literal>&lt;resource&gt;</literal> element and the <literal>&lt;dataResource&gt;</literal> child element of <literal>&lt;acquisition&gt;</literal>.</para>
+    <para>The XCEDE 2 <emphasis>Binary Data Resource</emphasis> component is used to provide a generic interface to a binary data stream stored in one or more external files.  Any of the binary data resource types described in this chapter can be used anywhere an <type>abstract_resource_t</type> is called for (with the appropriate <literal>xsi:type</literal> attribute); in the current XCEDE schema, these locations are the top-level <literal>&lt;resource&gt;</literal> element and the <literal>&lt;dataResource&gt;</literal> child element of <literal>&lt;acquisition&gt;</literal>.</para>
     <para>XCEDE provides multiple layers of derived types to store more specialized information about the binary data.  The base type and each of the derived types are described in turn.</para>
 
     <formalpara>
-      <title><literal>abstract_resource_t</literal></title>
+      <title><type>abstract_resource_t</type></title>
       
-      <para>The abstract base type <literal>abstract_resource_t</literal> provides a few elements and attributes that are especially important for binary data resources.  In particular, the <literal>&lt;uri&gt;</literal> element and its <literal>offset</literal> and <literal>size</literal> attributes point to a <quote>chunk</quote> of data stored in an external file.  A series of <literal>&lt;uri&gt;</literal> elements define a stream of data that may be described in greater detail by the data types described below.</para>
+      <para>The abstract base type <type>abstract_resource_t</type> provides a few elements and attributes that are especially important for binary data resources.  In particular, the <literal>&lt;uri&gt;</literal> element and its <literal>offset</literal> and <literal>size</literal> attributes point to a <quote>chunk</quote> of data stored in an external file.  A series of <literal>&lt;uri&gt;</literal> elements define a stream of data that may be described in greater detail by the data types described below.</para>
     </formalpara>
 
     <formalpara>
-      <title><literal>binaryDataResource_t</literal></title>
+      <title><type>binaryDataResource_t</type></title>
       
-      <para>This type derives from <literal>abstract_resource_t</literal> and allows an application to interpret the data stream as a sequence of data items with a given data type (<literal>&lt;elementType&gt;</literal>) and byte order (<literal>&lt;byteOrder&gt;</literal>).</para>
+      <para>This type derives from <type>abstract_resource_t</type> and allows an application to interpret the data stream as a sequence of data items with a given data type (<literal>&lt;elementType&gt;</literal>) and byte order (<literal>&lt;byteOrder&gt;</literal>).</para>
     </formalpara>
 
     <formalpara>
-      <title><literal>dimensionedBinaryDataResource_t</literal></title>
+      <title><type>dimensionedBinaryDataResource_t</type></title>
       
       <para>The data stream, until now, could only be interpreted as a one-dimensional sequence.  This type provides <literal>&lt;dimension&gt;</literal> elements that allow the data stream to be interpreted as a multi-dimensional array of data items.  Each dimension has a <literal>&lt;size&gt;</literal> and a <literal>&lt;label&gt;</literal>, as well as the ability to discard subsets of the data in the data stream (using the <literal>outputSelect</literal> attribute).</para>
     </formalpara>
 
     <formalpara>
-      <title><literal>mappedBinaryDataResource_t</literal></title>
+      <title><type>mappedBinaryDataResource_t</type></title>
       
-      <para>This type places the multi-dimensional array of data items represented by <literal>dimensionedBinaryDataResource_t</literal> into an arbitrary coordinate system.</para>
+      <para>This type places the multi-dimensional array of data items represented by <type>dimensionedBinaryDataResource_t</type> into an arbitrary coordinate system.</para>
     </formalpara>
   </section>
 
@@ -45,7 +45,7 @@
       <para>The basic binary data resource type describes a sequence of data items.  For example, consider a data file (<literal>random_data_file.bin</literal>) containing 2048 random 32-bit floating point numbers, stored in little-endian (least-significant-byte first) order.  The <literal>&lt;dataResource&gt;</literal> describing this data is shown in <xref linkend='binary_data_resource.simple_example'/>.</para>
 
       <figure id="binary_data_resource.simple_example">
-        <title>Simple <literal>binaryDataResource_t</literal> example</title>
+        <title>Simple <type>binaryDataResource_t</type> example</title>
         <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
   <uri offset="0" size="8192">random_data_file.bin</uri>
   <elementType>float32</elementType>
@@ -53,14 +53,14 @@
 </dataResource>]]></programlisting>
       </figure>
 
-      <para>Note the <literal>xsi:type</literal> specifying that this <literal>&lt;dataResource&gt;</literal> element is of type <literal>binaryDataResource_t</literal>.  (The <literal>xsi:</literal> prefix should have already been declared previously in the XML file using something similar to <literal>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</literal>)</para>
+      <para>Note the <literal>xsi:type</literal> specifying that this <literal>&lt;dataResource&gt;</literal> element is of type <type>binaryDataResource_t</type>.  (The <literal>xsi:</literal> prefix should have already been declared previously in the XML file using something similar to <literal>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</literal>)</para>
 
       <para>The <literal>&lt;elementType&gt;</literal> element is restricted to one of several pre-defined strings (see the schema for details).  The <literal>&lt;byteOrder&gt;</literal> element must be <literal>lsbfirst</literal> for little-endian data or <literal>msbfirst</literal> for big-endian data.</para>
 
       <para>If the <literal>&lt;compression&gt;</literal> element is specified, it specifies that the file(s) pointed to by the <literal>&lt;uri&gt;</literal> elements are compressed.  The content of the element should specify which type of compression (the only compression method specifically recognized by this specification is <literal>gzip</literal>).  The <literal>size</literal> and <literal>offset</literal> attributes in the <literal>&lt;uri&gt;</literal> element always refer to the <emphasis>uncompressed</emphasis> data.  An example of this is shown in <xref linkend='binary_data_resource.gzip_example'/>.</para>
 
       <figure id="binary_data_resource.gzip_example">
-        <title><literal>binaryDataResource_t</literal> with compression</title>
+        <title><type>binaryDataResource_t</type> with compression</title>
         <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
   <uri offset="0" size="8192">random_data_file.bin.gz</uri>
   <elementType>float32</elementType>
@@ -69,10 +69,10 @@
 </dataResource>]]></programlisting>
       </figure>
 
-      <para>As a special case, if the application does not find the file pointed to by a URI, and the <literal>&lt;compression&gt;</literal> element is <emphasis>not</emphasis> present, it may search for the same file with an appended <literal>.gz</literal> suffix, and if it exists, treat it as implicitly gzip-compressed data.  <xref linkend='binary_data_resource.implicit_gzip_example'/> shows how the same data in <xref linkend='binary_data_resource.gzip_example'/> could be expressed using this alternative method.  Pointing to the uncompressed version of the file (even when only the compressed version exists) allows the user to decompress or compress the data file at will, without affecting the ability of the application to read the data using the same <literal>binaryDataResource_t</literal>.  Note that the <literal>&lt;uri&gt;</literal> and <literal>&lt;compression&gt;</literal> elements must be internally consistent.  It would be an error to reference the uncompressed file <literal>random_data_file.bin</literal> and yet say that it was compressed using <literal>&lt;compression&gt;gzip&lt;/compression&gt;</literal>.  Likewise, explicit references to the compressed file (especially files that do not have the <literal>.gz</literal> suffix) must specify the compression method explicitly using the <literal>compression</literal> element.</para>
+      <para>As a special case, if the application does not find the file pointed to by a URI, and the <literal>&lt;compression&gt;</literal> element is <emphasis>not</emphasis> present, it may search for the same file with an appended <literal>.gz</literal> suffix, and if it exists, treat it as implicitly gzip-compressed data.  <xref linkend='binary_data_resource.implicit_gzip_example'/> shows how the same data in <xref linkend='binary_data_resource.gzip_example'/> could be expressed using this alternative method.  Pointing to the uncompressed version of the file (even when only the compressed version exists) allows the user to decompress or compress the data file at will, without affecting the ability of the application to read the data using the same <type>binaryDataResource_t</type>.  Note that the <literal>&lt;uri&gt;</literal> and <literal>&lt;compression&gt;</literal> elements must be internally consistent.  It would be an error to reference the uncompressed file <literal>random_data_file.bin</literal> and yet say that it was compressed using <literal>&lt;compression&gt;gzip&lt;/compression&gt;</literal>.  Likewise, explicit references to the compressed file (especially files that do not have the <literal>.gz</literal> suffix) must specify the compression method explicitly using the <literal>compression</literal> element.</para>
 
       <figure id="binary_data_resource.implicit_gzip_example">
-        <title><literal>binaryDataResource_t</literal> with implicit compression</title>
+        <title><type>binaryDataResource_t</type> with implicit compression</title>
         <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
   <uri offset="0" size="8192">random_data_file.bin</uri>
   <elementType>float32</elementType>
@@ -88,7 +88,7 @@
       <para>Consider a camera that acquires an image using a 256x256 matrix of big-endian 32-bit signed integer voxels.  This data has two spatial dimensions, which, by convention, we label <inlineequation>x</inlineequation>, and <inlineequation>y</inlineequation> (and <inlineequation>z</inlineequation> if a third spatial dimension is needed, and <inlineequation>t</inlineequation> if there is a time dimension).  <xref linkend='binary_data_resource.dimension_example'/> shows how this data might be represented.</para>
 
       <figure id="binary_data_resource.dimension_example">
-        <title><literal>dimensionedBinaryDataResource_t</literal> example</title>
+        <title><type>dimensionedBinaryDataResource_t</type> example</title>
         <programlisting><![CDATA[<dataResource xsi:type="dimensionedBinaryDataResource_t">
   <uri offset="0" size="262144">rawdata.img</uri>
   <elementType>int32</elementType>
@@ -109,7 +109,7 @@
     <section>
       <title>Mapped data</title>
       
-      <para>A <quote>mapped</quote> binary data resource is a (perhaps multidimensional) array of values, the matrix indices of which can be converted into a location in a given coordinate system.  The location of the bounding box of the data in this space is given by specifying a location (in target-space coordinates) for the the first data item, and two things for each dimension: a unit-length direction vector (in the target-space coordinate system) and the spacing between successive data items in that dimension.  The transformation matrix for a three-dimensional coordinate system has the form shown in <xref linkend="binary_data_resource.matrix"/>.  This transformation matrix converts from matrix indices <literal>(x,y,z)</literal> to a coordinate location <literal>(a,b,c)</literal>.  <xref linkend="binary_data_resource.map_example"/> shows how the components of a transformation of MR image data into scanner RAS (Right/Anterior/Superior) coordinates are represented in a <literal>mappedBinaryDataResource_t</literal>.  The unit vectors for each dimension are <inlineequation>(X<subscript>A</subscript> X<subscript>B</subscript> X<subscript>C</subscript>) = (1 0 0)</inlineequation>, <inlineequation>(Y<subscript>A</subscript> Y<subscript>B</subscript> Y<subscript>C</subscript>) = ( 0 1 0 )</inlineequation>, and <inlineequation>(Z<subscript>A</subscript> Z<subscript>B</subscript> Z<subscript>C</subscript>) = ( 0 0 1 )</inlineequation>, and are placed in the <literal>&lt;direction&gt;</literal> elements in each <literal>&lt;dimension&gt;</literal> element.  The spacing values <inlineequation>(S<subscript>X</subscript> S<subscript>Y</subscript> S<subscript>Z</subscript>) = ( 3.75mm 3.75mm 4mm )</inlineequation> are put in the <literal>&lt;spacing&gt;</literal> element in each <literal>&lt;dimension&gt;</literal>.  The coordinates of the first voxel in the data are given by <inlineequation>(O<subscript>A</subscript> O<subscript>B</subscript> O<subscript>C</subscript>) = ( -120 -120 -52 )</inlineequation>.</para>
+      <para>A <quote>mapped</quote> binary data resource is a (perhaps multidimensional) array of values, the matrix indices of which can be converted into a location in a given coordinate system.  The location of the bounding box of the data in this space is given by specifying a location (in target-space coordinates) for the the first data item, and two things for each dimension: a unit-length direction vector (in the target-space coordinate system) and the spacing between successive data items in that dimension.  The transformation matrix for a three-dimensional coordinate system has the form shown in <xref linkend="binary_data_resource.matrix"/>.  This transformation matrix converts from matrix indices <literal>(x,y,z)</literal> to a coordinate location <literal>(a,b,c)</literal>.  <xref linkend="binary_data_resource.map_example"/> shows how the components of a transformation of MR image data into scanner RAS (Right/Anterior/Superior) coordinates are represented in a <type>mappedBinaryDataResource_t</type>.  The unit vectors for each dimension are <inlineequation>(X<subscript>A</subscript> X<subscript>B</subscript> X<subscript>C</subscript>) = (1 0 0)</inlineequation>, <inlineequation>(Y<subscript>A</subscript> Y<subscript>B</subscript> Y<subscript>C</subscript>) = ( 0 1 0 )</inlineequation>, and <inlineequation>(Z<subscript>A</subscript> Z<subscript>B</subscript> Z<subscript>C</subscript>) = ( 0 0 1 )</inlineequation>, and are placed in the <literal>&lt;direction&gt;</literal> elements in each <literal>&lt;dimension&gt;</literal> element.  The spacing values <inlineequation>(S<subscript>X</subscript> S<subscript>Y</subscript> S<subscript>Z</subscript>) = ( 3.75mm 3.75mm 4mm )</inlineequation> are put in the <literal>&lt;spacing&gt;</literal> element in each <literal>&lt;dimension&gt;</literal>.  The coordinates of the first voxel in the data are given by <inlineequation>(O<subscript>A</subscript> O<subscript>B</subscript> O<subscript>C</subscript>) = ( -120 -120 -52 )</inlineequation>.</para>
 
       <figure id="binary_data_resource.matrix">
         <title>Transformation matrix</title>
@@ -122,7 +122,7 @@
       </figure>
 
       <figure id="binary_data_resource.map_example">
-        <title><literal>mappedBinaryDataResource_t</literal> example</title>
+        <title><type>mappedBinaryDataResource_t</type> example</title>
         <programlisting><![CDATA[<dataResource xsi:type="mappedBinaryDataResource_t">
   <uri offset="0" size="442368">V0001.img</uri>
   <uri offset="0" size="442368">V0002.img</uri>
