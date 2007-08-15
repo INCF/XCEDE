@@ -9,25 +9,23 @@ steps that have been executed to create a derived image and/or measures.
 These details include the name and type of machine on which the executable was run, 
 the name of the executable, and input parameters to the exectuable.</para>
 
-  <para>XCEDE-represented studies will be populated with large numbers of medical image volumes which 
-researchers will wish to access and run various processing tools on in order to obtain 
+  <para>MR studies represented in XCEDE 2 will be populated with large numbers of medical image volumes which 
+researchers will wish to access and run through various processing tools in order to obtain 
 derived data. This derived data, such as volumes of various brain structures, cortical thickness etc., 
 will then be placed back into the database, linked to the original volume from which it was produced.
  If a researcher would like to recreate the processing steps, in order to apply it to a new data set,
  they will be able to obtain the information needed to download or reconstruct the tools that were 
-used on the original data set. Information about the processing tools needs to be made available by 
-the authors of the tools, is collected at run time by the processing scripts, and written into XCEDE.
+used on the original data set.  In typical usage, information about the processing tools will be made available by 
+the authors of the tools, collected at run time by processing scripts, and written into XCEDE documents.
 </para>
 
     <formalpara>
-      <title><literal>provenance_t</literal></title>
-      <para>This type contains an ordered sequence of processing steps (<literal>processStep_t</literal>) that 
-	were executed to create the data that this element is contained within, which can be
-	<literal>dataResource_t</literal> or an <literal>analysis_t.</literal></para>
+      <title><type>provenance_t</type></title>
+      <para>Data represented by an instance of <type>dataResource_t</type> or <literal>analysis_t</literal> may contain a <literal>&lt;provenance&gt;</literal> element of this type, which represents an ordered sequence of processing steps (<type>processStep_t</type>) that were executed to create the data.</para>
     </formalpara>
 
     <formalpara>
-      <title><literal>processStep_t</literal></title>
+      <title><type>processStep_t</type></title>
       <para>This type contains two attributes, ID and parent, indicating a unique ID for the step and its 
 parent step, respectively. It includes a number of child elements that describe the conditions
 under which an executable was run. All of the child elements are formally optional. The following are strongly
@@ -38,7 +36,7 @@ recommended:</para>
 	<varlistentry>
   	<term>program</term> 
 	<listitem>
-		<para>The name of the executable. The version attribute is required, build number is optional. 
+		<para>The name of the executable.  Version and build numbers may be specified using the attributes <literal>version</literal> and <literal>build</literal>. 
 See instructions below for inserting version control content. Alternately, you can define it as a user string. </para>
 	</listitem>
 	</varlistentry>
@@ -46,7 +44,7 @@ See instructions below for inserting version control content. Alternately, you c
 	<varlistentry>
 	<term>programArguments</term>
 	<listitem>
-		<para> The arguments passed into the executable. The attributes are optional, they are used to break 
+		<para> The arguments passed into the executable.  Optional attributes <literal>inputs</literal> and <literal>outputs</literal> are used to break 
 down the full list of arguments into input and output arguments.</para>
 	</listitem>
 	</varlistentry>
@@ -54,8 +52,7 @@ down the full list of arguments into input and output arguments.</para>
 	<varlistentry>
 	<term>timeStamp</term>
 	<listitem>
-		<para> The time at which the program started to run, milliseconds are optional until 
-cross platform code can be found.</para>
+		<para> The time at which the program started to run.</para>
 	</listitem>
 	</varlistentry>
 
@@ -76,20 +73,26 @@ cross platform code can be found.</para>
 	<varlistentry>
 	<term>architecture</term>
 	<listitem>
-		<para> This is the type of hardware that the processing step is run on, sun, x86, etc. 	
-platform: This is the operating system under which the processing step is being run. </para>
+		<para> The type of hardware that the processing step is run on, <literal>sun</literal>, <literal>x86</literal>, etc.</para>
+	</listitem>
+	</varlistentry>
+
+	<varlistentry>
+	<term>platform</term>
+	<listitem>
+		<para> The operating system under which the processing step is being run.</para>
 	</listitem>
 	</varlistentry>
 
 	</variablelist>
 
-	These are optional:
+	<para>These are optional:</para>
 	<variablelist>
 	<varlistentry>
 	<term>cvs</term>
 	<listitem>
-		<para>Revision control repository information. Use the CVS keyword Id, inserted into your source code
- file as $Id: chap_provenance.xml,v 1.8 2007-08-13 19:53:05 gadde Exp $ and it will be replaced with the file name, version, date of change and who changed it. 
+		<para>Revision control repository information.  Use the CVS keyword Id, inserted into your source code
+ file as <literal>$Id: chap_provenance.xml,v 1.9 2007-08-15 21:12:32 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
 Also works with SVN, but see SVN notes for enabling it.</para>
 	</listitem>
 	</varlistentry>
@@ -112,16 +115,16 @@ This is dependent on the library in question, examples are given for VTK and Tcl
 	<varlistentry>
 	<term>buildTimeStamp</term>
 	<listitem>
-		<para>The time stamp showing when the executable was built.</para>
+		<para>The time stamp indicating when the executable was built.</para>
 	</listitem>
 	</varlistentry>
 
 	<varlistentry>
 	<term>package</term>
 	<listitem>
-		<para>This tag gives the overall package version, if the executable is part of a larger unit, for example, 
+		<para>This tag gives the overall package version, if the executable is part of a larger unit.  For example, 
 mri_convert is part of FreeSurfer, and the whole FreeSurfer package may have a different version number than the
- mri_convert executable that might change at a different rate.</para>
+ mri_convert executable.</para>
 	</listitem>
 	</varlistentry>
 
@@ -140,7 +143,7 @@ if using SVN, via the HeadURL keyword.</para>
     <title>Examples</title>
   </section>
 
-     <para>Provenance elements are optional children of dataReource and analysis types and describe the sequence of processing steps that were executed to generate the data represented by the parent element.
+     <para>Provenance elements are children of dataReource and analysis types and describe the sequence of processing steps that were executed to generate the data represented by the parent element.
 In the example below, </para>
 
       <figure id="provenance.simple_example">
@@ -192,14 +195,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.8 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.9 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.8 2007-08-13 19:53:05 gadde Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.9 2007-08-15 21:12:32 gadde Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
