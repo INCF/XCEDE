@@ -2,7 +2,7 @@
 <chapter id="chapter.analysis">
   <title>Analysis</title>
 
-  <para>The analysis_t type and its corresponding elements are used to document the collected output and/or results from an analysis or processing of data.</para>
+  <para>The <type>analysis_t</type> type and its corresponding elements are used to document the collected output and/or results from an analysis or processing of data.</para>
 
   <section>
     <title>Overview</title>
@@ -35,7 +35,7 @@
   <section>
     <title>Measurement Group</title> 
     
-    <para>A measurementGroup contains information and data related to the outcome of an analysis and is based on the measurementGroup_t type.  Extending abstract container, this allows for the annotation and documentation of the measurements being described. The measurement being described by this element are described by two specific elements: </para>
+    <para>A measurementGroup contains information and data related to the outcome of an analysis and is based on the <type>measurementGroup_t</type> type.  Extending abstract container, this allows for the annotation and documentation of the measurements being described. The measurement being described by this element are described by two specific elements: </para>
     <variablelist><title>Measurement Group Constituents</title>
       <varlistentry>
         <term><varname>entity</varname></term>
@@ -71,37 +71,42 @@
     <title>Reference</title>
     
     <figure id="analysis_t.ref_diagram ">
-      <title>terminology_ag</title>
+      <title><type>analysis_t</type></title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/analysis_t.png" format="png" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/analysis_t.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/analysis_t.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
     
     <figure id="measurementGroup_t.ref_diagram ">
-      <title>terminology_ag</title>
+      <title><type>measurementGroup_t</type></title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/measurementGroup_t.png" format="png" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/measurementGroup_t.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/measurementGroup_t.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
     
-    <figure id="atlatEntity_t.ref_diagram ">
-      <title>terminology_ag</title>
+    <figure id="atlasEntity_t.ref_diagram ">
+      <title><type>atlasEntity_t</type></title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/atlasEntity_t.png" format="png" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/atlasEntity_t.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/atlasEntity_t.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
     
     <figure id="anatomicalEntity_t.ref_diagram ">
-      <title>terminology_ag</title>
+      <title><type>anatomicalEntity_t</type></title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/anatomicalEntity_t.png" format="png" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/anatomicalEntity_t.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/anatomicalEntity_t.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
     
     <figure id="provenance_t_analysis.ref_diagram ">
-      <title>terminology_ag</title>
+      <title><type>provenance_t</type></title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/provenance_t_analysis.png" format="png" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/provenance_t_analysis.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/provenance_t_analysis.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
     

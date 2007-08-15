@@ -68,21 +68,26 @@ XCEDE 2.0 - A Manual
               Examples
               Reference
 
+        11. Comments and Annotations
+
+              Overview
+              Examples
+
    II. Using and Extending XCEDE 2
 
-        11. A Use Case
+        12. A Use Case
 
               Overview
               Examples
               Reference
 
-        12. Extending the Schema
+        13. Extending the Schema
 
               Overview
               Examples
               Reference
 
-        13. Integration With Applications and Services
+        14. Integration With Applications and Services
 
               Overview
               Examples
@@ -139,7 +144,7 @@ Development
 
    BIRN Data Provenance schema
           records the history of processing steps and is the basis for the
-          <provenance> element in the schema.
+          <provenance> element in the schema
 
    XCEDE (1.0) SPM Toolbox
           provides a general framework (and MATLAB interface) for storage and
@@ -150,7 +155,8 @@ Development
    (Duke University), Jeff Grethe (University of California, San Diego), Dave
    Keator  (University of California, Irvine), and Dan Marcus (Washington
    University, St. Louis), all of whom have received support for this project
-   through various BIRN testbeds.
+   through various BIRN testbeds. Nicole Aucoin (Brigham & Women's Hospital,
+   Harvard University) led the development of the Data Provenance schema.
 
 For More Information
 
@@ -228,6 +234,11 @@ Part I. XCEDE 2 Core Specification
         Overview
         Examples
         Reference
+
+   11. Comments and Annotations
+
+        Overview
+        Examples
 
 Chapter 1. Structure and Conventions
 
@@ -854,7 +865,7 @@ Overview
    tags that users and applications can populate to attach ad-hoc documentation
    and labels to the catalog and its contents. catalog_t also includes an
    unbounded list of child subcatalogs (or references to child catalogs) and an
-   unbounded list of entries. Each entry is either a resource, a refernce to a
+   unbounded list of entries. Each entry is either a resource, a reference to a
    resource,  or  a  reference to an XCEDE data element (an analysis, for
    example).
 
@@ -922,21 +933,22 @@ Overview
    executable was run, the name of the executable, and input parameters to the
    exectuable.
 
-   XCEDE-represented studies will be populated with large numbers of medical
-   image  volumes  which  researchers will wish to access and run various
-   processing tools on in order to obtain derived data. This derived data, such
-   as volumes of various brain structures, cortical thickness etc., will then
-   be placed back into the database, linked to the original volume from which
-   it was produced. If a researcher would like to recreate the processing
+   MR studies represented in XCEDE 2 will be populated with large numbers of
+   medical image volumes which researchers will wish to access and run through
+   various processing tools in order to obtain derived data. This derived data,
+   such as volumes of various brain structures, cortical thickness etc., will
+   then be placed back into the database, linked to the original volume from
+   which it was produced. If a researcher would like to recreate the processing
    steps, in order to apply it to a new data set, they will be able to obtain
    the information needed to download or reconstruct the tools that were used
-   on the original data set. Information about the processing tools needs to be
-   made available by the authors of the tools, is collected at run time by the
-   processing scripts, and written into XCEDE.
+   on the original data set. In typical usage, information about the processing
+   tools will be made available by the authors of the tools, collected at run
+   time by processing scripts, and written into XCEDE documents.
 
-   provenance_t. This type contains an ordered sequence of processing steps
-   (processStep_t) that were executed to create the data that this element is
-   contained within, which can be dataResource_t or an analysis_t.
+   provenance_t. Data  represented  by  an  instance of dataResource_t or
+   analysis_t may contain a <provenance> element of this type, which represents
+   an ordered sequence of processing steps (processStep_t) that were executed
+   to create the data.
 
    processStep_t. This type contains two attributes, ID and parent, indicating
    a unique ID for the step and its parent step, respectively. It includes a
@@ -945,18 +957,18 @@ Overview
    following are strongly recommended:
 
    program
-          The name of the executable. The version attribute is required, build
-          number is optional. See instructions below for inserting version
-          control content. Alternately, you can define it as a user string.
+          The  name  of  the executable. Version and build numbers may be
+          specified using the attributes version and build. See instructions
+          below for inserting version control content. Alternately, you can
+          define it as a user string.
 
    programArguments
-          The  arguments  passed  into the executable. The attributes are
-          optional, they are used to break down the full list of arguments into
+          The arguments passed into the executable. Optional attributes inputs
+          and outputs are used to break down the full list of arguments into
           input and output arguments.
 
    timeStamp
-          The  time at which the program started to run, milliseconds are
-          optional until cross platform code can be found.
+          The time at which the program started to run.
 
    user
           Who was logged in and running this executable?
@@ -966,9 +978,11 @@ Overview
           Machine from old schema.
 
    architecture
-          This is the type of hardware that the processing step is run on, sun,
-          x86, etc. platform: This is the operating system under which the
-          processing step is being run.
+          The type of hardware that the processing step is run on, sun, x86,
+          etc.
+
+   platform
+          The operating system under which the processing step is being run.
 
    These are optional:
 
@@ -988,13 +1002,13 @@ Overview
           examples are given for VTK and Tcl and Tk.
 
    buildTimeStamp
-          The time stamp showing when the executable was built.
+          The time stamp indicating when the executable was built.
 
    package
           This tag gives the overall package version, if the executable is part
-          of a larger unit, for example, mri_convert is part of FreeSurfer, and
+          of a larger unit. For example, mri_convert is part of FreeSurfer, and
           the whole FreeSurfer package may have a different version number than
-          the mri_convert executable that might change at a different rate.
+          the mri_convert executable.
 
    repository
           Where can the software be found? Link to a code repository or a web
@@ -1003,9 +1017,9 @@ Overview
 
 Examples
 
-   Provenance elements are optional children of dataReource and analysis types
-   and describe the sequence of processing steps that were executed to generate
-   the data represented by the parent element. In the example below,
+   Provenance elements are children of dataReource and analysis types and
+   describe the sequence of processing steps that were executed to generate the
+   data represented by the parent element. In the example below,
 
    Figure 5.1. Simple provenance example
 <dataResource xsi:type="binaryDataResource_t">
@@ -1504,10 +1518,12 @@ Overview
           found in the provenance chapter.
 
    inputRef
-          ???
+          References to the data file(s) that were used in the analysis.
 
    outputRef
-          ???
+          Reference to the data file(s) generated by the analysis. Summary data
+          or statistics may be generated from these files and noted inthe
+          measurementGroup element.
 
    measurementGroup
           A measurementGroup contains information and data related to the
@@ -1558,20 +1574,20 @@ Examples
 
 Reference
 
-   Figure 9.1. terminology_ag
-   terminology_ag
+   Figure 9.1. analysis_t
+   analysis_t
 
-   Figure 9.2. terminology_ag
-   terminology_ag
+   Figure 9.2. measurementGroup_t
+   measurementGroup_t
 
-   Figure 9.3. terminology_ag
-   terminology_ag
+   Figure 9.3. atlasEntity_t
+   atlasEntity_t
 
-   Figure 9.4. terminology_ag
-   terminology_ag
+   Figure 9.4. anatomicalEntity_t
+   anatomicalEntity_t
 
-   Figure 9.5. terminology_ag
-   terminology_ag
+   Figure 9.5. provenance_t
+   provenance_t
 
 Chapter 10. Terminology
 
@@ -1651,6 +1667,12 @@ Reference
    Figure 10.4. terminologyString_t
    terminologyString_t
 
+Chapter 11. Comments and Annotations
+
+Overview
+
+Examples
+
 Part II. Using and Extending XCEDE 2
 
    This section of the XCEDE 2.0 manual provides practical lessons on using the
@@ -1662,25 +1684,25 @@ Part II. Using and Extending XCEDE 2
 
    Table of Contents
 
-   11. A Use Case
+   12. A Use Case
 
         Overview
         Examples
         Reference
 
-   12. Extending the Schema
+   13. Extending the Schema
 
         Overview
         Examples
         Reference
 
-   13. Integration With Applications and Services
+   14. Integration With Applications and Services
 
         Overview
         Examples
         Reference
 
-Chapter 11. A Use Case
+Chapter 12. A Use Case
 
 Overview
 
@@ -1688,7 +1710,7 @@ Examples
 
 Reference
 
-Chapter 12. Extending the Schema
+Chapter 13. Extending the Schema
 
 Overview
 
@@ -1696,7 +1718,7 @@ Examples
 
 Reference
 
-Chapter 13. Integration With Applications and Services
+Chapter 14. Integration With Applications and Services
 
 Overview
 
@@ -2566,12 +2588,12 @@ data files. The only compression method specifically named by this specificatio
 n is "gzip". As a special case for binaryDataResource_t and derived types, file
 s compressed with gzip and containing a .gz suffix can be referenced in the uri
  element without the suffix. If a file pointed to by the URI does not exist, th
-e application should search for the same file with the .gz suffix appended -- i
-f it exists, use that file and act as if the compression element had been speci
-fied with the value "gzip". This allows the referenced files to be compressed o
-r uncompressed at will (as long as the .gz suffix is appropriately added/remove
-d from the filename), without needing to change the URI's in this element.</xs:
-documentation>
+e application should search for the same file with the .gz suffix appended &#x2
+014; if it exists, use that file and act as if the compression element had been
+ specified with the value "gzip". This allows the referenced files to be compre
+ssed or uncompressed at will (as long as the .gz suffix is appropriately added/
+removed from the filename), without needing to change the URI's in this element
+.</xs:documentation>
                                                 </xs:annotation>
                                         </xs:element>
                                 </xs:sequence>

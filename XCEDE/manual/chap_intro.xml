@@ -36,7 +36,7 @@
       <varlistentry>
         <term>BIRN Data Provenance schema</term>
         <listitem>
-          <para>records the history of processing steps and is the basis for the <literal>&lt;provenance&gt;</literal> element in the schema.</para>
+          <para>records the history of processing steps and is the basis for the <literal>&lt;provenance&gt;</literal> element in the schema</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -46,7 +46,7 @@
         </listitem>
       </varlistentry>
     </variablelist>
-    <para>The primary developers of XCEDE 2 are (in alphabetical order): Syam Gadde (Duke University), Jeff Grethe (University of California, San Diego), Dave Keator (University of California, Irvine), and Dan Marcus (Washington University, St. Louis), all of whom have received support for this project through various BIRN testbeds.</para>
+    <para>The primary developers of XCEDE 2 are (in alphabetical order): Syam Gadde (Duke University), Jeff Grethe (University of California, San Diego), Dave Keator (University of California, Irvine), and Dan Marcus (Washington University, St. Louis), all of whom have received support for this project through various BIRN testbeds.  Nicole Aucoin (Brigham &amp; Women's Hospital, Harvard University) led the development of the Data Provenance schema.</para>
   </section>
 
   <section>

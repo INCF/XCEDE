@@ -20,6 +20,7 @@
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_assessment.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_analysis.xml" />
     <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_terminology.xml" />
+    <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="chap_annotation.xml" />
   </part>
 
   <part id="part.use">

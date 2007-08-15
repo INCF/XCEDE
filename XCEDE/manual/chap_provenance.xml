@@ -92,7 +92,7 @@ down the full list of arguments into input and output arguments.</para>
 	<term>cvs</term>
 	<listitem>
 		<para>Revision control repository information.  Use the CVS keyword Id, inserted into your source code
- file as <literal>$Id: chap_provenance.xml,v 1.9 2007-08-15 21:12:32 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
+ file as <literal>$Id: chap_provenance.xml,v 1.10 2007-08-15 21:15:11 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
 Also works with SVN, but see SVN notes for enabling it.</para>
 	</listitem>
 	</varlistentry>
@@ -149,7 +149,7 @@ In the example below, </para>
       <figure id="provenance.simple_example">
         <title>Simple provenance example</title>
         <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
-  <uri offset="0" size="8192">random_generated_data_file.bin</uri>
+  <uri offset="354" size="8192">random_generated_data_file.nii</uri>
   <provenance ID="1">
 	<processStep parent="1" ID="1">
 		<program build="1.0" version="1.0">filter1</program>
@@ -195,14 +195,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.9 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.10 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.9 2007-08-15 21:12:32 gadde Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.10 2007-08-15 21:15:11 gadde Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
