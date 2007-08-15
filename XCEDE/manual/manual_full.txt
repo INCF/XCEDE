@@ -988,8 +988,8 @@ Overview
 
    cvs
           Revision control repository information. Use the CVS keyword Id,
-          inserted into your source code file as $Id: chap_provenance.xml,v 1.8
-          2007/08/13 19:53:05 gadde Exp $ and it will be replaced with the file
+          inserted into your source code file as $Id: chap_provenance.xml,v 1.9
+          2007/08/15 21:12:32 gadde Exp $ and it will be replaced with the file
           name, version, date of change and who changed it. Also works with
           SVN, but see SVN notes for enabling it.
 
@@ -1023,7 +1023,7 @@ Examples
 
    Figure 5.1. Simple provenance example
 <dataResource xsi:type="binaryDataResource_t">
-  <uri offset="0" size="8192">random_generated_data_file.bin</uri>
+  <uri offset="354" size="8192">random_generated_data_file.nii</uri>
   <provenance ID="1">
         <processStep parent="1" ID="1">
                 <program build="1.0" version="1.0">filter1</program>
@@ -1066,7 +1066,7 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.8 $\">%s</ProgramName>\n", a
+  fprintf(stdout, "<Program version=\"$Revision: 1.9 $\">%s</ProgramName>\n", a
 rgv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
@@ -1074,7 +1074,7 @@ rgv[0]);
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.8 2007/08/13 19:53:05 gadd
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.9 2007/08/15 21:12:32 gadd
 e Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
