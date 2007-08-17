@@ -33,8 +33,9 @@
     <para>The assessment example below shows both a formal assessment description stored in the <literal>&lt;protocol&gt;</literal> block and also the actual acquired assessment data</para>
     <section>
       <title>Formal Assessment Description</title>
-      <para>The formal description of each question for the assessment and possible answer choices</para>
+      <para>The formal description of each question for the assessment and possible answer choices:</para>
       <figure id="assessment_description.simple_example">
+        <title>Assessment description</title>
         <programlisting><![CDATA[ <xcede:step ID="SES" name="Socio-Economic Scale" minOccurences="1" maxOccurences="1"
                 required="true">
                    <xcede:items>
@@ -67,14 +68,14 @@
     </section>
     <section>
       <title>Actual Acquired Assessment Data</title>
-      <para>An instance of actual assessment data acquired on a subject during a protocol collection</para>
+      <para>An instance of actual assessment data acquired on a subject during a protocol collection:</para>
       <figure id="acquired_assessment.simple_example">
+        <title>Acquired assessment data</title>
         <programlisting><![CDATA[<xcede:data xsi:type="xcede:assessment_t" subjectID="00301882920">
         <xcede:name>Socio-Economic Status</xcede:name>
         <xcede:dataInstance validated="true">
             <xcede:assessmentInfo>
-                <xcede:description>This is the socio-economic scale. I'm sure there is more
-                    intersting things to say about it but I have no idea what</xcede:description>
+                <xcede:description>This is the socio-economic scale.</xcede:description>
             </xcede:assessmentInfo>
             <xcede:assessmentItem ID="ses_education_subject">
                 <xcede:value>1</xcede:value>
