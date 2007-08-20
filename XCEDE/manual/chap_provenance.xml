@@ -92,7 +92,7 @@ down the full list of arguments into input and output arguments.</para>
 	<term>cvs</term>
 	<listitem>
 		<para>Revision control repository information.  Use the CVS keyword Id, inserted into your source code
- file as <literal>$Id: chap_provenance.xml,v 1.11 2007-08-17 22:00:26 dmarcus Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
+ file as <literal>$Id: chap_provenance.xml,v 1.12 2007-08-20 16:51:31 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
 Also works with SVN, but see SVN notes for enabling it.</para>
 	</listitem>
 	</varlistentry>
@@ -144,14 +144,14 @@ if using SVN, via the HeadURL keyword.</para>
   </section>
 
      <para>Provenance elements are children of dataReource and analysis types and describe the sequence of processing steps that were executed to generate the data represented by the parent element.
-In the example below, the provenance of the nifti data file (represented as a binaryDataResource) indicates that it 
+In the example below, the provenance of the NIfTI data file (represented as a binaryDataResource) indicates that it 
 was generated in two processing steps (filter1 and filter2) on the same machine (lablin1) about 30 mintues apart.</para>
 
       <figure id="provenance.simple_example">
         <title>Simple provenance example</title>
         <programlisting><![CDATA[
 		<dataResource xsi:type="binaryDataResource_t">
-  		<uri offset="354" size="8192">random_generated_data_file.nii</uri>
+  		<uri offset="352" size="8192">random_generated_data_file.nii</uri>
   		<provenance ID="1">
 			<processStep parent="1" ID="1">
 				<program build="1.0" version="1.0">filter1</program>
@@ -196,14 +196,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.11 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.12 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.11 2007-08-17 22:00:26 dmarcus Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.12 2007-08-20 16:51:31 gadde Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);

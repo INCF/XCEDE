@@ -5,11 +5,11 @@
   <section>
     <title>Overview</title>
     
-    <para>The use of terminologies (and ontologies) are critical in the sharing of data.  Ontologies specify the terms used to describe and represent areas of knowledge. They are commonly used by people, databases, and applications that have a requirement to share information about a subject. For example, the subject areas of medicine, real estate, and automobile repair all have specific ways of representing and communicating knowledge. Ontologies include computer-usable definitions of the basic terms describing the domain and the relationships between concepts. They encode knowledge within a domain and also knowledge that spans multiple domains. In this way, they make that knowledge reusable.  For comprehensive information on ontologies and their use in biomedical science, please visit the National Center for Biomedical Ontology (NCBiO; http://www.bioontology.org/).</para>
+    <para>Ontologies specify the terms used to describe and represent areas of knowledge. They are commonly used by people, databases, and applications that have a requirement to share information about a subject. For example, the subject areas of medicine, real estate, and automobile repair all have specific ways of representing and communicating knowledge. Ontologies include computer-usable definitions of the basic terms describing the domain and the relationships between concepts. They encode knowledge within a domain and also knowledge that spans multiple domains. In this way, they make that knowledge reusable.  For comprehensive information on ontologies and their use in biomedical science, please visit the National Center for Biomedical Ontology (NCBiO; http://www.bioontology.org/).</para>
     
-    <para>In the context of XCEDE, the use of terminologies is critical for data exchange.  By specifying the exact terminological correspondences for data within XCEDE a user of the data is clear about what the data represents.</para>
+    <para>In the context of XCEDE, the use of terminologies (and ontologies) is critical for data exchange.  By specifying the exact terminological correspondences for data within XCEDE a user of the data is clear about what the data represents.</para>
   
-    <para>In order to accomplish this within XCEDE, two constructs are primarily used: terminology_ag and terminologyString_t.  The terminology_ag attribute group defines the necessary information required to annotate a data item with its terminology correspondence.  The terminologyString_t utilizes this attribute group and provides a basic type that can be utilized in the schema for data items that should have an associated terminology reference.</para>
+    <para>In order to accomplish this within XCEDE, two constructs are primarily used: <type>terminology_ag</type> and <type>terminologyString_t</type>.  The <type>terminology_ag</type> attribute group defines the necessary information required to annotate a data item with its terminology correspondence.  The <type>terminologyString_t</type> utilizes this attribute group and provides a basic type that can be utilized in the schema for data items that should have an associated terminology reference.</para>
    </section>
   
   <section>
@@ -51,14 +51,14 @@
     <title>Reference</title>
     
     <figure id="terminology_ag.ref_diagram ">
-      <title>terminology_ag</title>
+      <title><type>terminology_ag</type></title>
       <mediaobject>
         <imageobject><imagedata fileref="images/terminology_ag.png" format="png" width="6in"/> </imageobject>
       </mediaobject>
     </figure>
     
     <figure id="terminologyString_t.ref_diagram ">
-      <title>terminologyString_t</title>
+      <title><type>terminologyString_t</type></title>
       <mediaobject>
         <imageobject><imagedata fileref="images/terminologyString_t.png" format="png" width="6in"/> </imageobject>
       </mediaobject>

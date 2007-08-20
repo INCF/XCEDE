@@ -989,8 +989,8 @@ Overview
    cvs
           Revision control repository information. Use the CVS keyword Id,
           inserted into your source code file as $Id: chap_provenance.xml,v
-          1.10 2007/08/15 21:15:11 gadde Exp $ and it will be replaced with the
-          file name, version, date of change and who changed it. Also works
+          1.11 2007/08/17 22:00:26 dmarcus Exp $ and it will be replaced with
+          the file name, version, date of change and who changed it. Also works
           with SVN, but see SVN notes for enabling it.
 
    compiler
@@ -1019,37 +1019,42 @@ Examples
 
    Provenance elements are children of dataReource and analysis types and
    describe the sequence of processing steps that were executed to generate the
-   data represented by the parent element. In the example below,
+   data represented by the parent element. In the example below, the provenance
+   of the NIfTI data file (represented as a binaryDataResource) indicates that
+   it was generated in two processing steps (filter1 and filter2) on the same
+   machine (lablin1) about 30 mintues apart.
 
    Figure 5.1. Simple provenance example
-<dataResource xsi:type="binaryDataResource_t">
-  <uri offset="354" size="8192">random_generated_data_file.nii</uri>
-  <provenance ID="1">
-        <processStep parent="1" ID="1">
-                <program build="1.0" version="1.0">filter1</program>
-                <programArguments inputs="-in analyze" outputs="-out minc">-siz
-e 10 -reps 100 -v -in minc -out nifti</programArguments>
-                <timeStamp>11:20:37</timestamp>
-                <user>xnatmaster</xnat>
-                <hostName>lablin1</hostname>
-                <architecture/>
-                <platform version="String">String</platform>
-        </processStep>
-        <processStep parent="1" ID="2">
-                <program build="String" version="1.2">filter2</program>
-                <programArguments inputs="-in minc" outputs="-out nifti">-size
-20 -reps 200 -v -in minc -out nifti</programArguments>
-                <timeStamp>11:50:21</timestamp>
-                <user>xnatmaster</user>
-                <hostName>lablin1</hostname>
-                <architecture>x86</architecture>
-                <platform version="6">fedora</platform>
-        </processStep>
-  </provenance>
-  <elementType>float32</elementType>
-  <byteOrder>lsbfirst</byteOrder>
-
-</dataResource>
+                <dataResource xsi:type="binaryDataResource_t">
+                <uri offset="352" size="8192">random_generated_data_file.nii</u
+ri>
+                <provenance ID="1">
+                        <processStep parent="1" ID="1">
+                                <program build="1.0" version="1.0">filter1</pro
+gram>
+                                <programArguments inputs="-in analyze" outputs=
+"-out minc">-size 10 -reps 100 -v -in minc -out nifti</programArguments>
+                                <timeStamp>11:20:37</timestamp>
+                                <user>xnatmaster</xnat>
+                                <hostName>lablin1</hostname>
+                                <architecture>x86</architecture>
+                                <platform version="6">fedora</platform>
+                        </processStep>
+                        <processStep parent="1" ID="2">
+                                <program build="String" version="1.2">filter2</
+program>
+                                <programArguments inputs="-in minc" outputs="-o
+ut nifti">-size 20 -reps 200 -v -in minc -out nifti</programArguments>
+                                <timeStamp>11:50:21</timestamp>
+                                <user>xnatmaster</user>
+                                <hostName>lablin1</hostname>
+                                <architecture>x86</architecture>
+                                <platform version="6">fedora</platform>
+                        </processStep>
+                </provenance>
+                <elementType>float32</elementType>
+                <byteOrder>lsbfirst</byteOrder>
+                </dataResource>
 
 Generating provenance XML from applications
 
@@ -1066,7 +1071,7 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.10 $\">%s</ProgramName>\n",
+  fprintf(stdout, "<Program version=\"$Revision: 1.11 $\">%s</ProgramName>\n",
 argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
@@ -1074,8 +1079,8 @@ argv[0]);
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.10 2007/08/15 21:15:11 gad
-de Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.11 2007/08/17 22:00:26 dma
+rcus Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
@@ -1390,9 +1395,10 @@ Overview
    In XCEDE the formal definition of an assessment and the cataloging of the
    actual data values collected for that assessment are specified in different
    parts of the schema. The formal description of the assessment questions and
-   possible answer choices are specified in the protocol section protocol_t of
-   the schema whereas the actual assessment data for an acquisition are stored
-   in the assessment_t tags
+   possible answer choices are specified in the protocol section of the schema
+   using the type protocol_t (described at a high level in Chapter 7, Protocols
+   ) whereas the actual assessment data for an acquisition are stored in the
+   assessment_t tags
 
    assessment_t. The  assessment_t tag extends the abstract_data_t tag to
    include information about the acquired assessment.The name element contains
@@ -1513,7 +1519,9 @@ Overview
    provenance
           The record of the origin and transformations applied to source data
           that produced this analysis. More information on this element can be
-          found in the provenance chapter.
+          found in Chapter 5, Provenance
+
+          .
 
    inputRef
           References to the data file(s) that were used in the analysis.
@@ -1524,32 +1532,33 @@ Overview
           measurementGroup element.
 
    measurementGroup
-          A measurementGroup contains information and data related to the
+          A measurement group contains information and data related to the
           outcome of an analysis. For example, this could be a statistic (e.g.
           from a Statistical Parametric Map) or a measurement (e.g. the volume
           of the hippocmapus).
 
 Measurement Group
 
-   A measurementGroup contains information and data related to the outcome of
-   an analysis and is based on the measurementGroup_t type. Extending abstract
-   container,  this  allows  for  the annotation and documentation of the
-   measurements  being described. The measurement being described by this
+   measurementGroup contains information and data related to the outcome of an
+   analysis  and  is  based  on  the  measurementGroup_t  type. Extending
+   abstract_container_t, this allows for the annotation and documentation of
+   the measurements being described. The measurements being described by this
    element are described by two specific elements:
 
    Measurement Group Constituents
 
    entity
-          In the context of a measurement Group, is the entity being measured.
-          For example, the hippocampus. In more complicated instances this
-          could be an entity described by multiple entries, for example, when
-          doing  a region of interest analysis where multiple or multiple
-          partial regions are involved.
+          In the context of a measurement group, this is the entity being
+          measured. For example, the hippocampus. In more complicated instances
+          this could be an entity described by multiple entries, for example,
+          in a region of interest analysis where multiple or multiple partial
+          regions are involved.
 
    observation
-          In the context of a measurement Group, are the observations that are
-          made concerning the entity. For example, following hte hippocmapus
-          example, might be the total volume, surface area, etc.
+          In the context of a measurement group, these are the observations
+          that are made concerning the entity. For example, following the
+          hippocmapus example, this might store the total volume, surface area,
+          etc.
 
    The entity element is based on the abstract_entity_t type that allows for
    the definition of specific entity classes. Currently two such classes are
@@ -1557,16 +1566,16 @@ Measurement Group
 
    Entity Classes
 
-   Anatomical Entity
+   anatomicalEntity_t
           Defines an anatomical entity through a set of terms that name this
           entity. This set can contain a collection of synonymous terms. In
           addition to the anatomical region itself a laterality and tissue type
-          can be specified to narrow the focus (e.g. left hippocampal grey
+          can be specified to narrow the focus (e.g. left hippocampal gray
           metter).
 
-   Atlas Entity
-          Defines an atlas based region through the definition of geometries.
-          These are defined on the abstract_geometry_t type.
+   atalsEntity_t
+          Defines an atlas-based region through the definition of geometries.
+          These are defined using the abstract_geometry_t type.
 
 Examples
 
@@ -1591,8 +1600,7 @@ Chapter 10. Terminology
 
 Overview
 
-   The use of terminologies (and ontologies) are critical in the sharing of
-   data. Ontologies specify the terms used to describe and represent areas of
+   Ontologies  specify  the terms used to describe and represent areas of
    knowledge. They are commonly used by people, databases, and applications
    that have a requirement to share information about a subject. For example,
    the subject areas of medicine, real estate, and automobile repair all have
@@ -1604,9 +1612,10 @@ Overview
    and their use in biomedical science, please visit the National Center for
    Biomedical Ontology (NCBiO; http://www.bioontology.org/).
 
-   In the context of XCEDE, the use of terminologies is critical for data
-   exchange. By specifying the exact terminological correspondences for data
-   within XCEDE a user of the data is clear about what the data represents.
+   In  the context of XCEDE, the use of terminologies (and ontologies) is
+   critical  for  data  exchange.  By specifying the exact terminological
+   correspondences for data within XCEDE a user of the data is clear about what
+   the data represents.
 
    In order to accomplish this within XCEDE, two constructs are primarily used:
    terminology_ag and terminologyString_t. The terminology_ag attribute group

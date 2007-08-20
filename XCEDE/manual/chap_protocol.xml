@@ -4,16 +4,16 @@
 
   <section>
     <title>Overview</title>
-    <para>Specifications of experimental protocols are stored in XCEDE using the <literal>protocol_t</literal> tag structures.</para>
+    <para>Specifications of experimental protocols are stored in XCEDE using the <type>protocol_t</type> tag structures.</para>
     <para>Protocols in XCEDE consists of a hierarchial organization of steps defining the protocol and items within the steps defining particular </para>
     <formalpara>
-      <title><literal>protocol_t</literal></title>
-      <para>The <literal>protocol_t</literal> tag extends the <literal>abstract_protocol_t</literal> tag to include steps and items making up a protocol description.</para>  
+      <title><type>protocol_t</type></title>
+      <para>The <type>protocol_t</type> tag extends the <type>abstract_protocol_t</type> tag to include steps and items making up a protocol description.</para>  
     </formalpara>
     <formalpara>
-      <title><literal>abstract_protocol_t</literal></title>  
-      <para>The <literal>abstract_protocol_t</literal> abstract tag provides basis information related to a protocol such as protocol time offset, min and max occurences, concept linkages, and more described below</para>
-      <para>The <literal>protocol_offset_t</literal> tag is used to specify timing of this particular protocol relative to other protocols or steps within an experiment. The <literal>protocolTimeRef</literal> and <literal>preferrredTimeOffset</literal> tags are used to describe the offset </para>
+      <title><type>abstract_protocol_t</type></title>  
+      <para>The <type>abstract_protocol_t</type> abstract tag provides basis information related to a protocol such as protocol time offset, min and max occurences, concept linkages, and more described below</para>
+      <para>The <type>protocol_offset_t</type> tag is used to specify timing of this particular protocol relative to other protocols or steps within an experiment. The <literal>protocolTimeRef</literal> and <literal>preferrredTimeOffset</literal> tags are used to describe the offset </para>
     </formalpara>
     
   </section>
