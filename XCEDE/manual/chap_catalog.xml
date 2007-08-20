@@ -54,7 +54,8 @@ a reference to an XCEDE data element (an analysis, for example).</para>
     <figure id="catalog.ref_diagram ">
       <title>catalog_t</title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/catalog_t.png" format="asvg" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/catalog_t.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/catalog_t.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
 

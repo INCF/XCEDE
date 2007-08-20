@@ -92,7 +92,7 @@ down the full list of arguments into input and output arguments.</para>
 	<term>cvs</term>
 	<listitem>
 		<para>Revision control repository information.  Use the CVS keyword Id, inserted into your source code
- file as <literal>$Id: chap_provenance.xml,v 1.12 2007-08-20 16:51:31 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
+ file as <literal>$Id: chap_provenance.xml,v 1.13 2007-08-20 20:34:36 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
 Also works with SVN, but see SVN notes for enabling it.</para>
 	</listitem>
 	</varlistentry>
@@ -196,14 +196,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.12 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.13 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.12 2007-08-20 16:51:31 gadde Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.13 2007-08-20 20:34:36 gadde Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);
@@ -326,7 +326,8 @@ basis by issuing the following command:</para>
     <figure id="provenance.ref_diagram ">
       <title>provenance_t</title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/provenance_t.png" format="asvg" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/provenance_t.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/provenance_t.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
 

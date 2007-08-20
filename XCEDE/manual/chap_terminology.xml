@@ -53,14 +53,16 @@
     <figure id="terminology_ag.ref_diagram ">
       <title><type>terminology_ag</type></title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/terminology_ag.png" format="png" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/terminology_ag.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/terminology_ag.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
     
     <figure id="terminologyString_t.ref_diagram ">
       <title><type>terminologyString_t</type></title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/terminologyString_t.png" format="png" width="6in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/terminologyString_t.png" format="png" width="5.5in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/terminologyString_t.png" format="png"/> </imageobject>
       </mediaobject>
     </figure>
     
