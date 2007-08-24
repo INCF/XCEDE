@@ -989,7 +989,7 @@ Overview
    cvs
           Revision control repository information. Use the CVS keyword Id,
           inserted into your source code file as $Id: chap_provenance.xml,v
-          1.12 2007/08/20 16:51:31 gadde Exp $ and it will be replaced with the
+          1.13 2007/08/20 20:34:36 gadde Exp $ and it will be replaced with the
           file name, version, date of change and who changed it. Also works
           with SVN, but see SVN notes for enabling it.
 
@@ -1071,7 +1071,7 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.12 $\">%s</ProgramName>\n",
+  fprintf(stdout, "<Program version=\"$Revision: 1.13 $\">%s</ProgramName>\n",
 argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
@@ -1079,7 +1079,7 @@ argv[0]);
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.12 2007/08/20 16:51:31 gad
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.13 2007/08/20 20:34:36 gad
 de Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
@@ -1368,17 +1368,56 @@ Overview
    protocol_t tag structures.
 
    Protocols in XCEDE consists of a hierarchial organization of steps defining
-   the protocol and items within the steps defining particular
+   the protocol and items within the steps defining the particular parameters
+   of the protocol step. Formal protocols are built either from top down or
+   bottom up using these building blocks
 
    protocol_t. The  protocol_t tag extends the abstract_protocol_t tag to
    include steps and items making up a protocol description.
 
-   abstract_protocol_t. The abstract_protocol_t abstract tag provides basis
+   An XCEDE protocol consists of the following tag groups. Each protocol block
+   can be specified
+
+   steps
+          Steps  are  used to specify an ordered list of step blocks that
+          comprise the protocol. Each step block can be another protocol_t
+          block or a reference to a step usign the stepRef tag.
+
+   items
+          Items are the smallest building blocks of a protocol. They are made
+          up of any number of item tags which contain a specification of the
+          parameters for the particular protocol step..
+
+   abstract_protocol_t. The abstract_protocol_t abstract tag provides basic
    information related to a protocol such as protocol time offset, min and max
    occurences, concept linkages, and more described belowThe protocol_offset_t
    tag is used to specify timing of this particular protocol relative to other
    protocols  or  steps  within  an  experiment.  The protocolTimeRef and
-   preferrredTimeOffset tags are used to describe the offset
+   preferrredTimeOffset   tags  are  used  to  describe  the  offset  The
+   ID_name_description tag is used to specify an ID, name, and description for
+   the protocolThe terminology_ag reference is used to give contextual meaning
+   to the question and link it with known ontologies and concepts.The level
+   attribute is used to specify the level hierarchically that the protocol
+   refers to. For example, if the protocol is specifying scanner specific
+   parameters then the level would point to the "study level" of the XCEDE
+   hierarchy.The minOccurences and maxOccurences attributes are set to specify
+   the  min  and  max occurrences of the protocolThe minTimeFromStart and
+   maxTimeFromStart attributes are set to specify a timing window from the
+   start of the parent protocol. If this protocol block is at the top of the
+   protcol hierarchy then "TimeFromStart" is the start of the study
+
+   steps. The steps group and enclosing step and/or stepRef tags are used to
+   embed or reference other parts of a protocol.
+
+   items. The protocolItem_t tag is used to specify the smallest building
+   blocks of the protocolThe itemText group and enclosing textLabel groups are
+   used to specify one or more text labels. These labels are most often used
+   when specifying the formal description of an assessment where each question
+   on an assessment has some text most often asking a question. The location
+   specifies where the text occurs. For example, the text could occur before or
+   after some data entry field of an assessment questionaire. The value tag is
+   used  to  specify the actual text.The itemRange group derived from the
+   protocolItemRange_t is used The itemChoice group is used
 
 Examples
 

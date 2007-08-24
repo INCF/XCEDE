@@ -26,6 +26,7 @@
           <para>Items are the smallest building blocks of a protocol.  They are made up of any number of <type>item</type> tags which contain a specification of the parameters for the particular protocol step..</para>
         </listitem>
       </varlistentry>
+    </variablelist>
     </formalpara>
     <formalpara>
       <title><type>abstract_protocol_t</type></title>  
