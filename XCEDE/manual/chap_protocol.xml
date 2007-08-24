@@ -5,21 +5,54 @@
   <section>
     <title>Overview</title>
     <para>Specifications of experimental protocols are stored in XCEDE using the <type>protocol_t</type> tag structures.</para>
-    <para>Protocols in XCEDE consists of a hierarchial organization of steps defining the protocol and items within the steps defining particular </para>
+    <para>Protocols in XCEDE consists of a hierarchial organization of steps defining the protocol and items within the steps defining the particular parameters of the protocol step.  Formal protocols are built either from top down or bottom up using these building blocks </para>
     <formalpara>
       <title><type>protocol_t</type></title>
       <para>The <type>protocol_t</type> tag extends the <type>abstract_protocol_t</type> tag to include steps and items making up a protocol description.</para>  
     </formalpara>
+    
+    <formalpara>
+      <para>An XCEDE protocol consists of the following tag groups.  Each protocol block can be specified </para>
+    <variablelist>
+      <varlistentry>
+        <term>steps</term>
+        <listitem>
+          <para>Steps are used to specify an ordered list of <literal>step</literal> blocks that comprise the protocol.  Each <literal>step</literal> block can be another <type>protocol_t</type> block or a reference to a step usign the <type>stepRef</type> tag.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>items</term>
+        <listitem>
+          <para>Items are the smallest building blocks of a protocol.  They are made up of any number of <type>item</type> tags which contain a specification of the parameters for the particular protocol step..</para>
+        </listitem>
+      </varlistentry>
+    </formalpara>
     <formalpara>
       <title><type>abstract_protocol_t</type></title>  
-      <para>The <type>abstract_protocol_t</type> abstract tag provides basis information related to a protocol such as protocol time offset, min and max occurences, concept linkages, and more described below</para>
+      <para>The <type>abstract_protocol_t</type> abstract tag provides basic information related to a protocol such as protocol time offset, min and max occurences, concept linkages, and more described below</para>
       <para>The <type>protocol_offset_t</type> tag is used to specify timing of this particular protocol relative to other protocols or steps within an experiment. The <literal>protocolTimeRef</literal> and <literal>preferrredTimeOffset</literal> tags are used to describe the offset </para>
+      <para>The <type>ID_name_description</type> tag is used to specify an ID, name, and description for the protocol</para>
+      <para>The <type>terminology_ag</type> reference is used to give contextual meaning to the question and link it with known ontologies and concepts.</para>
+      <para>The <type>level</type> attribute is used to specify the level hierarchically that the protocol refers to.  For example, if the protocol is specifying scanner specific parameters then the level would point to the "study level" of the XCEDE hierarchy.</para>
+      <para>The <type>minOccurences</type> and <type>maxOccurences</type> attributes are set to specify the min and max occurrences of the protocol</para>
+      <para>The <type>minTimeFromStart</type> and <type>maxTimeFromStart</type> attributes are set to specify a timing window from the start of the parent protocol. If this protocol block is at the top of the protcol hierarchy then "TimeFromStart" is the start of the study</para>
+     </formalpara>
+    <formalpara>
+      <title><type>steps</type></title>
+      <para>The <type>steps</type> group and enclosing <type>step</type> and/or <type>stepRef</type> tags are used to embed or reference other parts of a protocol.</para>
     </formalpara>
-    
+    <formalpara>
+      <title>items</title>
+      <para>The <type>protocolItem_t</type> tag is used to specify the smallest building blocks of the protocol</para>
+      <para>The <type>itemText</type> group and enclosing <type>textLabel</type> groups are used to specify one or more text labels.  These labels are most often used when specifying the formal description of an assessment where each question on an assessment has some text most often asking a question.  The <type>location</type> specifies where the text occurs.  For example, the text could occur before or after some data entry field of an assessment questionaire.  The <type>value</type> tag is used to specify the actual text.</para>
+      <para>The <type>itemRange</type> group derived from the <type>protocolItemRange_t</type> is used </para>
+      <para>The <type>itemChoice</type> group is used </para>
+    </formalpara>
   </section>
 
   <section>
     <title>Examples</title>
+    
   </section>
 
   <section>
