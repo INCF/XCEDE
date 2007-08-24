@@ -462,12 +462,6 @@
 				<xs:documentation>Are these occurences within a step (i.e. during a single time point)? How to refer to repeats across steps?</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="minTimeFromStart" type="xs:string">
-			<xs:annotation>
-				<xs:documentation>Absolute time from start of overall protocol</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="maxTimeFromStart" type="xs:string"/>
 	</xs:complexType>
 	<!--*********            Level information types            *********-->
 	<xs:complexType name="projectInfo_t">
@@ -946,8 +940,8 @@
 	</xs:complexType>
 	<xs:complexType name="protocolOffset_t">
 		<xs:sequence>
-			<xs:element name="protocolTimeRef" type="unitString_t" minOccurs="0"/>
-			<xs:element name="preferedTimeOffset" type="unitString_t" minOccurs="0"/>
+			<xs:element name="protocolTimeRef" type="xs:string" minOccurs="0"/>
+			<xs:element name="preferredTimeOffset" type="unitString_t" minOccurs="0"/>
 			<xs:element name="minTimeOffset" type="unitString_t" minOccurs="0"/>
 			<xs:element name="maxTimeOffset" type="unitString_t" minOccurs="0"/>
 		</xs:sequence>
