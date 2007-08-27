@@ -1,4 +1,6 @@
 
+   #[1]XCEDE 2.0 - A Manual [2]Introduction
+
 XCEDE 2.0 - A Manual
      _________________________________________________________________
 
@@ -162,7 +164,7 @@ For More Information
 
    XCEDE is an evolving format -- later versions will be informed by feedback
    from users and developers. The latest schema and related information can be
-   found on the project's web page at [1]http://www.xcede.org/.
+   found on the project's web page at [3]http://www.xcede.org/.
 
 Part I. XCEDE 2 Core Specification
 
@@ -2412,13 +2414,6 @@ s:documentation>
 /xs:documentation>
                         </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="minTimeFromStart" type="xs:string">
-                        <xs:annotation>
-                                <xs:documentation>Absolute time from start of o
-verall protocol</xs:documentation>
-                        </xs:annotation>
-                </xs:attribute>
-                <xs:attribute name="maxTimeFromStart" type="xs:string"/>
         </xs:complexType>
         <!--*********            Level information types            *********--
 >
@@ -3129,10 +3124,10 @@ s:string"/>
         </xs:complexType>
         <xs:complexType name="protocolOffset_t">
                 <xs:sequence>
-                        <xs:element name="protocolTimeRef" type="unitString_t"
-minOccurs="0"/>
-                        <xs:element name="preferedTimeOffset" type="unitString_
-t" minOccurs="0"/>
+                        <xs:element name="protocolTimeRef" type="xs:string" min
+Occurs="0"/>
+                        <xs:element name="preferredTimeOffset" type="unitString
+_t" minOccurs="0"/>
                         <xs:element name="minTimeOffset" type="unitString_t" mi
 nOccurs="0"/>
                         <xs:element name="maxTimeOffset" type="unitString_t" mi
@@ -3615,31 +3610,33 @@ inOccurs="0"/>
 Bibliography
 
    [BIRN]       Biomedical       Informatics       Research      Network.
-   URL:<[2]http://www.nbirn.net/>.
+   URL:<[4]http://www.nbirn.net/>.
 
    [CostelloSchemaVersioning] Impact of XML Schema Versioning on System Design.
-   URL:<[3]http://www.xfront.com/SchemaVersioning.html>.
+   URL:<[5]http://www.xfront.com/SchemaVersioning.html>.
 
-   [Schematron]  Rick  Jelliffe. URL:<[4]http://www.schematron.com/>. ISO
+   [Schematron]  Rick  Jelliffe. URL:<[6]http://www.schematron.com/>. ISO
    specification for Schematron available as ISO/IEC 19757-3:2006.
 
    [XML10] Extensible Markup Language (XML) 1.0 (Fourth Edition). Tim Bray,
    Jean Paoli, C. M. Sperberg-McQueen, Eve Maler, and François Yergeau. W3C.
-   URL:<[5]http://www.w3.org/TR/xml/>.
+   URL:<[7]http://www.w3.org/TR/xml/>.
 
    [XMLSchema10]  XML  Schema 1.0. Henry S. Thompson, David Beech, Murray
    Maloney, and Noah Mendelsohn. W3C. Primer:
-   <[6]http://www.w3.org/TR/xmlschema-0/>,                    Structures:
-   <[7]http://www.w3.org/TR/xmlschema-1/>,                     Datatypes:
-   <[8]http://www.w3.org/TR/xmlschema-2/>.
+   <[8]http://www.w3.org/TR/xmlschema-0/>,                    Structures:
+   <[9]http://www.w3.org/TR/xmlschema-1/>,                     Datatypes:
+   <[10]http://www.w3.org/TR/xmlschema-2/>.
 
 References
 
-   1. http://www.xcede.org/
-   2. http://www.nbirn.net/
-   3. http://www.xfront.com/SchemaVersioning.html
-   4. http://www.schematron.com/
-   5. http://www.w3.org/TR/xml/
-   6. http://www.w3.org/TR/xmlschema-0/
-   7. http://www.w3.org/TR/xmlschema-1/
-   8. http://www.w3.org/TR/xmlschema-2/
+   1. file://localhost/home/gadde/L2817-170TMP.html#id2799158
+   2. file://localhost/home/gadde/L2817-170TMP.html#chapter.intro
+   3. http://www.xcede.org/
+   4. http://www.nbirn.net/
+   5. http://www.xfront.com/SchemaVersioning.html
+   6. http://www.schematron.com/
+   7. http://www.w3.org/TR/xml/
+   8. http://www.w3.org/TR/xmlschema-0/
+   9. http://www.w3.org/TR/xmlschema-1/
+  10. http://www.w3.org/TR/xmlschema-2/
