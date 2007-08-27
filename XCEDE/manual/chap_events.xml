@@ -61,7 +61,8 @@
     <figure id="events.timeline">
       <title>An event timeline</title>
       <mediaobject>
-        <imageobject><imagedata fileref="images/events_timeline.gif" format="gif" width="2in"/> </imageobject>
+        <imageobject role="fo"><imagedata fileref="images/events_timeline.gif" format="gif" width="2in"/> </imageobject>
+        <imageobject role="html"><imagedata fileref="images/events_timeline.gif" format="gif"/> </imageobject>
       </mediaobject>
     </figure>
     <para>Consider the timeline shown in <xref linkend='events.timeline'/>, representing stimuli and responses in a neuroimaging study.  We show in <xref linkend='events.stimuli_example'/> how the first 5 seconds' worth of the events might be represented in XCEDE.</para>

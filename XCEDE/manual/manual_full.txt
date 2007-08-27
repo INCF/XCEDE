@@ -3630,8 +3630,8 @@ Bibliography
 
 References
 
-   1. file://localhost/home/gadde/L2817-170TMP.html#id2799158
-   2. file://localhost/home/gadde/L2817-170TMP.html#chapter.intro
+   1. file://localhost/home/gadde/L3215-798TMP.html#id2799143
+   2. file://localhost/home/gadde/L3215-798TMP.html#chapter.intro
    3. http://www.xcede.org/
    4. http://www.nbirn.net/
    5. http://www.xfront.com/SchemaVersioning.html
