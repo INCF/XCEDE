@@ -1,2 +1,17 @@
-scp -p xcede-2.0-core.xsd www.neuroinformatics.org:/var/www/xcede/xcede-2/
-scp -p xcede-2.0-mr.xsd www.neuroinformatics.org:/var/www/xcede/xcede-2/
+cp -p xcede-2.0-core.xsd ~/Sites/XCEDE/xcede-2/
+cp -p xcede-1.0-core.xsd ~/Sites/XCEDE/xcede-1/
+cp -p xlink.xsd ~/Sites/XCEDE/xcede-2/
+
+cp -p ./manual/manual_full.html ~/Sites/XCEDE/xcede-2/manual
+cp -p ./manual/manual_full.pdf ~/Sites/XCEDE/xcede-2/manual
+cp -rp ./manual/images ~/Sites/XCEDE/xcede-2/manual
+cp -p ./manual/docbook.css ~/Sites/XCEDE/xcede-2/manual
+cp -rp ./documentation ~/Sites/XCEDE/xcede-2
+
+#scp -p xcede-2.0-core.xsd www.neuroinformatics.org:/var/www/xcede/xcede-2/
+#scp -p xcede-1.0-core.xsd www.neuroinformatics.org:/var/www/xcede/xcede-1/
+#scp -p xlink.xsd www.neuroinformatics.org:/var/www/xcede/xcede-2/
+
+#scp -p ./manual/manual_full.html www.neuroinformatics.org:/var/www/xcede/xcede-2/manual
+#scp -p ./manual/manual_full.pdf www.neuroinformatics.org:/var/www/xcede/xcede-2/manual
+#scp -rp ./manual/images www.neuroinformatics.org:/var/www/xcede/xcede-2/manual
