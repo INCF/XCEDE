@@ -1,0 +1,26 @@
+<map xmlns='http://www.w3.org/1999/xhtml' name='type_abstract_protocol_t_httpwww.xcede.orgxcede2'>
+ <area
+  shape='rect'
+  alt='type_protocolOffset_t'
+  coords='299,0,453,42'
+  href='xcede-2.0-core.xsd.html_type_protocolOffset_t.html#type_protocolOffset_t'/>
+
+ <area
+  shape='rect'
+  alt='attributeGroup_ID_name_description'
+  coords='213,52,426,78'
+  href='xcede-2.0-core.xsd.html_attributeGroup_ID_name_description.html#attributeGroup_ID_name_description'/>
+
+ <area
+  shape='rect'
+  alt='attributeGroup_terminology_ag'
+  coords='213,88,391,114'
+  href='xcede-2.0-core.xsd.html_attributeGroup_terminology_ag.html#attributeGroup_terminology_ag'/>
+
+ <area
+  shape='rect'
+  alt='type_levelDescriptor_t'
+  coords='213,124,322,150'
+  href='xcede-2.0-core.xsd.html_type_levelDescriptor_t.html#type_levelDescriptor_t'/>
+
+</map>

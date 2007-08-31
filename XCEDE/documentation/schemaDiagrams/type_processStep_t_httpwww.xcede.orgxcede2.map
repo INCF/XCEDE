@@ -1,0 +1,38 @@
+<map xmlns='http://www.w3.org/1999/xhtml' name='type_processStep_t_httpwww.xcede.orgxcede2'>
+ <area
+  shape='rect'
+  alt='type_versionedProgramEntity_t'
+  coords='257,0,362,42'
+  href='xcede-2.0-core.xsd.html_type_versionedProgramEntity_t.html#type_versionedProgramEntity_t'/>
+
+ <area
+  shape='rect'
+  alt='type_argumentsType_t'
+  coords='257,52,425,94'
+  href='xcede-2.0-core.xsd.html_type_argumentsType_t.html#type_argumentsType_t'/>
+
+ <area
+  shape='rect'
+  alt='type_versionedEntity_t'
+  coords='257,312,369,354'
+  href='xcede-2.0-core.xsd.html_type_versionedEntity_t.html#type_versionedEntity_t'/>
+
+ <area
+  shape='rect'
+  alt='type_versionedEntity_t'
+  coords='257,416,369,458'
+  href='xcede-2.0-core.xsd.html_type_versionedEntity_t.html#type_versionedEntity_t'/>
+
+ <area
+  shape='rect'
+  alt='type_versionedEntity_t'
+  coords='257,468,362,510'
+  href='xcede-2.0-core.xsd.html_type_versionedEntity_t.html#type_versionedEntity_t'/>
+
+ <area
+  shape='rect'
+  alt='type_versionedEntity_t'
+  coords='257,572,362,614'
+  href='xcede-2.0-core.xsd.html_type_versionedEntity_t.html#type_versionedEntity_t'/>
+
+</map>

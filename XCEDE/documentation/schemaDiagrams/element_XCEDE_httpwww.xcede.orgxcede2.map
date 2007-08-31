@@ -1,0 +1,80 @@
+<map xmlns='http://www.w3.org/1999/xhtml' name='element_XCEDE_httpwww.xcede.orgxcede2'>
+ <area
+  shape='rect'
+  alt='type_textAnnotation_t'
+  coords='547,0,673,42'
+  href='xcede-2.0-core.xsd.html_type_textAnnotation_t.html#type_textAnnotation_t'/>
+
+ <area
+  shape='rect'
+  alt='type_revision_t'
+  coords='533,52,645,94'
+  href='xcede-2.0-core.xsd.html_type_revision_t.html#type_revision_t'/>
+
+ <area
+  shape='rect'
+  alt='type_project_t'
+  coords='235,104,340,146'
+  href='xcede-2.0-core.xsd.html_type_project_t.html#type_project_t'/>
+
+ <area
+  shape='rect'
+  alt='type_subject_t'
+  coords='235,156,340,198'
+  href='xcede-2.0-core.xsd.html_type_subject_t.html#type_subject_t'/>
+
+ <area
+  shape='rect'
+  alt='type_visit_t'
+  coords='235,208,326,250'
+  href='xcede-2.0-core.xsd.html_type_visit_t.html#type_visit_t'/>
+
+ <area
+  shape='rect'
+  alt='type_study_t'
+  coords='235,260,326,302'
+  href='xcede-2.0-core.xsd.html_type_study_t.html#type_study_t'/>
+
+ <area
+  shape='rect'
+  alt='type_episode_t'
+  coords='235,312,340,354'
+  href='xcede-2.0-core.xsd.html_type_episode_t.html#type_episode_t'/>
+
+ <area
+  shape='rect'
+  alt='type_acquisition_t'
+  coords='235,364,368,406'
+  href='xcede-2.0-core.xsd.html_type_acquisition_t.html#type_acquisition_t'/>
+
+ <area
+  shape='rect'
+  alt='type_catalog_t'
+  coords='235,416,340,458'
+  href='xcede-2.0-core.xsd.html_type_catalog_t.html#type_catalog_t'/>
+
+ <area
+  shape='rect'
+  alt='type_analysis_t'
+  coords='235,468,347,510'
+  href='xcede-2.0-core.xsd.html_type_analysis_t.html#type_analysis_t'/>
+
+ <area
+  shape='rect'
+  alt='type_resource_t'
+  coords='235,520,347,562'
+  href='xcede-2.0-core.xsd.html_type_resource_t.html#type_resource_t'/>
+
+ <area
+  shape='rect'
+  alt='type_protocol_t'
+  coords='235,572,347,614'
+  href='xcede-2.0-core.xsd.html_type_protocol_t.html#type_protocol_t'/>
+
+ <area
+  shape='rect'
+  alt='type_abstract_data_t'
+  coords='235,624,319,666'
+  href='xcede-2.0-core.xsd.html_type_abstract_data_t.html#type_abstract_data_t'/>
+
+</map>

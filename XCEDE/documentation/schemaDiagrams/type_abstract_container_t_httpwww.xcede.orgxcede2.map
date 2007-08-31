@@ -1,0 +1,26 @@
+<map xmlns='http://www.w3.org/1999/xhtml' name='type_abstract_container_t_httpwww.xcede.orgxcede2'>
+ <area
+  shape='rect'
+  alt='type_authoredText_t'
+  coords='597,0,702,42'
+  href='xcede-2.0-core.xsd.html_type_authoredText_t.html#type_authoredText_t'/>
+
+ <area
+  shape='rect'
+  alt='type_textAnnotation_t'
+  coords='618,52,744,94'
+  href='xcede-2.0-core.xsd.html_type_textAnnotation_t.html#type_textAnnotation_t'/>
+
+ <area
+  shape='rect'
+  alt='type_informationResource_t'
+  coords='604,104,716,146'
+  href='xcede-2.0-core.xsd.html_type_informationResource_t.html#type_informationResource_t'/>
+
+ <area
+  shape='rect'
+  alt='attributeGroup_terminology_ag'
+  coords='220,264,398,290'
+  href='xcede-2.0-core.xsd.html_attributeGroup_terminology_ag.html#attributeGroup_terminology_ag'/>
+
+</map>
