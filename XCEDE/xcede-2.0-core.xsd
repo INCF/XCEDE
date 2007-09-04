@@ -248,10 +248,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="resource_t">
-		<xs:annotation>
-			<xs:documentation>A resource is something that we haven't agreed on
-			yet.</xs:documentation>
-		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="abstract_tagged_entity_t">
 				<xs:sequence>
