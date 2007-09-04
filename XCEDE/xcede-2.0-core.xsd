@@ -1076,29 +1076,29 @@
 		<xs:documentation>*********            Terminology types            *********</xs:documentation>
 	</xs:annotation>
 	<xs:attributeGroup name="terminology_ag">
-		<xs:attribute name="preferredLabel" type="xs:string" use="required">
+		<xs:attribute name="preferredLabel" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The preferred label of this term. This can be different than the term used by the applications (e.g. CBLM versus cerebellum)</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="abbreviation" type="xs:string" use="optional">
+		<xs:attribute name="abbreviation" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The preferred abbreviation for the term</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="nomenclature" type="xs:string" use="required">
+		<xs:attribute name="nomenclature" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>The source ontology of this terminology/ontology term</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="termID" type="xs:string" use="required">
+		<xs:attribute name="termID" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>Applications will likely want to constrain what are valid IDs
 					within the context of their application (for example, allowing only
 				LSID's)</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
-		<xs:attribute name="termPath" type="xs:string" use="optional"/>
+		<xs:attribute name="termPath" type="xs:string"/>
 	</xs:attributeGroup>
 	<xs:complexType name="terminologyString_t">
 		<xs:annotation>
