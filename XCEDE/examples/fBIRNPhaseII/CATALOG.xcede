@@ -7,9 +7,9 @@
         <entryList>
           <!-- these entries could store application-specific data if the application derives from catalogEntry_t -->
 	  <!-- can't point to events? -->
-<!--          <entryRef level="acquisition" acquisitionID="AudOdd1_events" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectID="000301882920" projectID="fBIRNPhaseII__0010" /> -->
-          <entryRef ID="XXXX" />
-          <entryRef ID="YYYY" />
+<!--          <entryDataRef level="acquisition" acquisitionID="AudOdd1_events" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectID="000301882920" projectID="fBIRNPhaseII__0010" /> -->
+          <entryDataRef ID="XXXX" />
+          <entryDataRef ID="YYYY" />
         </entryList>
       </catalog>
       <catalog ID="WS/0001/0002" name="000399999999" description="000399999999's first oddball run images and events">

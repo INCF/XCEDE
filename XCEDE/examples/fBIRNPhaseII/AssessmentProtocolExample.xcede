@@ -9,7 +9,7 @@
                 required="true">
                 <xcede:protocolOffset>
                     <xcede:protocolTimeRef>MRIV1</xcede:protocolTimeRef>
-                    <xcede:preferedTimeOffset units="days">0</xcede:preferedTimeOffset>
+                    <xcede:preferredTimeOffset units="days">0</xcede:preferredTimeOffset>
                     <xcede:minTimeOffset units="days">0</xcede:minTimeOffset>
                     <xcede:maxTimeOffset units="days">0</xcede:maxTimeOffset>
                 </xcede:protocolOffset>
@@ -44,7 +44,7 @@
                 maxOccurences="1" required="true">
                 <xcede:protocolOffset>
                     <xcede:protocolTimeRef>SES</xcede:protocolTimeRef>
-                    <xcede:preferedTimeOffset units="hours">1</xcede:preferedTimeOffset>
+                    <xcede:preferredTimeOffset units="hours">1</xcede:preferredTimeOffset>
                     <xcede:minTimeOffset units="hours">1</xcede:minTimeOffset>
                     <xcede:maxTimeOffset units="hours">8</xcede:maxTimeOffset>
                 </xcede:protocolOffset>
