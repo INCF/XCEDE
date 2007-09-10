@@ -33,7 +33,7 @@ XCEDE 2.0 - A Manual
               Examples
               Reference
 
-        5. Provenance
+        5. Data Provenance
 
               Overview
               Examples
@@ -200,7 +200,7 @@ Part I. XCEDE 2 Core Specification
         Examples
         Reference
 
-   5. Provenance
+   5. Data Provenance
 
         Overview
         Examples
@@ -296,7 +296,7 @@ The XCEDE 2 Dataset
      * Data  provenance. The  <provenance>  element  appears in the types
        analysis_t (on which the <analysis> element is based) and dataResource_t
        (one of the available data models for the top-level <resource> element).
-       See Chapter 5, Provenance
+       See Chapter 5, Data Provenance
        .
 
      * Comments  and  annotations. The <commentList> and <annotationList>
@@ -925,32 +925,28 @@ Reference
    Figure 4.2. catalog_t
    catalog_t
 
-Chapter 5. Provenance
+Chapter 5. Data Provenance
 
 Overview
 
-   Provenance  is used to record in detail the sequence of processing and
-   analysis steps that have been executed to create a derived image and/or
-   measures. These details include the name and type of machine on which the
-   executable was run, the name of the executable, and input parameters to the
-   exectuable.
+   Various  elements in XCEDE 2 refer to data or data resources that were
+   generated from other input data by processing tools. Data provenance refers
+   to the art of tracking the origins of the derived data and the processing
+   steps  that  resulted  in  the output data. Besides being informative,
+   provenance information could allow a user to recreate the processing stream
+   and replicate the output data using the same tools and inputs. Provenance
+   information could either be written by the software tools themselves, or
+   could be extracted by wrapper scripts that write the provenance information
+   on  the  tool's  behalf  (the  likely  scenario for external or legacy
+   applications).
 
-   MR studies represented in XCEDE 2 will be populated with large numbers of
-   medical image volumes which researchers will wish to access and run through
-   various processing tools in order to obtain derived data. This derived data,
-   such as volumes of various brain structures, cortical thickness etc., will
-   then be placed back into the database, linked to the original volume from
-   which it was produced. If a researcher would like to recreate the processing
-   steps, in order to apply it to a new data set, they will be able to obtain
-   the information needed to download or reconstruct the tools that were used
-   on the original data set. In typical usage, information about the processing
-   tools will be made available by the authors of the tools, collected at run
-   time by processing scripts, and written into XCEDE documents.
+   Some of the following documentation comes from Nicole Aucoin who is leading
+   the Data Provenance effort for the MBIRN.
 
    provenance_t. Data  represented  by  an  instance of dataResource_t or
-   analysis_t may contain a <provenance> element of this type, which represents
-   an ordered sequence of processing steps (processStep_t) that were executed
-   to create the data.
+   analysis_t may contain a <provenance> element of this type, which contains
+   an ordered sequence of processing steps (processStep_t) representing the
+   processing steps used to generate this data.
 
    processStep_t. This type contains two attributes, ID and parent, indicating
    a unique ID for the step and its parent step, respectively. It includes a
@@ -1213,8 +1209,8 @@ Overview
    Events in XCEDE are merely time intervals annotated with arbitrary metadata.
    This component can be used to represent several types of behavioral data,
    statistics calculated on time series data, or any other metadata whose
-   proper interpretation requires that it be associated with a particular time
-   interval.
+   proper interpretation requires that it be associated with a particular
+   interval in time.
 
    An XCEDE event consists of the following:
 
@@ -1419,9 +1415,146 @@ Overview
    specifies where the text occurs. For example, the text could occur before or
    after some data entry field of an assessment questionaire. The value tag is
    used  to  specify the actual text.The itemRange group derived from the
-   protocolItemRange_t is used The itemChoice group is used
+   protocolItemRange_t is used define a valid range of values for a particular
+   item via the attributes min, max, and unitsThe itemChoice group is used to
+   specify valid entries for a particular protocol item. This is most often
+   used  when specifying assessment questions that have a fixed number of
+   choices. The two attributes, itemCode and itemValue together specify the
+   numeric code that correlates to the actual value (presumably string of text)
+   of the choice as shown in the example below:
+ <xcede:itemChoice itemCode="1"
+                            itemValue="professional or graduate training (recei
+ved degree)"/>
+                        <xcede:itemChoice itemCode="2" itemValue="college gradu
+ate"/>
+                        <xcede:itemChoice itemCode="3" itemValue="some college
+(at least one year)"/>
 
 Examples
+
+   The protocol example below shows a formal protocol definition for an MRI
+   visit that consists of an Socio-Economic scale assessment, followed by an
+   MRI  scanning  session  consisting  of  a  T1 and a Sensory Motor fMRI
+   acquisition.
+
+MRI visit protocol example
+
+   Figure 7.1. 
+ <xcede:protocol ID="MRIV1" name="MRI Visit 1" minOccurences="1" maxOccurences=
+"1"
+        required="true" level="visit" description="MRI scanning visit 1">
+        <xcede:steps>
+            <xcede:step ID="SES" name="Socio-Economic Scale" minOccurences="1"
+maxOccurences="1"
+                required="true">
+                <xcede:protocolOffset>
+                    <xcede:protocolTimeRef>MRIV1</xcede:protocolTimeRef>
+                    <xcede:preferredTimeOffset units="days">0</xcede:preferredT
+imeOffset>
+                    <xcede:minTimeOffset units="days">0</xcede:minTimeOffset>
+                    <xcede:maxTimeOffset units="days">0</xcede:maxTimeOffset>
+                </xcede:protocolOffset>
+                <xcede:items>
+                    <xcede:item ID="ses_education_subject">
+                        <xcede:itemText>
+                            <xcede:textLabel location="leadText"
+                                value="What is the highest level of education o
+r professional training
+                                that you have achieved?"/>
+                            <xcede:textLabel location="trailText"
+                                value="Any trailing text might go here"/>
+                        </xcede:itemText>
+                        <xcede:itemChoice itemCode="1"
+                            itemValue="professional or graduate training (recei
+ved degree)"/>
+                        <xcede:itemChoice itemCode="2" itemValue="college gradu
+ate"/>
+                        <xcede:itemChoice itemCode="3" itemValue="some college
+(at least one year)"/>
+
+                    </xcede:item>
+                    <xcede:item ID="ses_education_p_caretaker_prior_18">
+                        <xcede:itemText>
+                            <xcede:textLabel location="leadText"
+                                value="What is the highest level of education o
+r professional training that your primary caretaker until you were 18 years old
+ has achieved?"/>
+                        </xcede:itemText>
+                        <xcede:itemChoice itemCode="1"
+                            itemValue="professional or graduate training (recei
+ved degree)"/>
+                        <xcede:itemChoice itemCode="2" itemValue="college gradu
+ate"/>
+                        <xcede:itemChoice itemCode="3" itemValue="some college
+(at least one year)"/>
+                    </xcede:item>
+                </xcede:items>
+            </xcede:step>
+            <xcede:step ID="MRISCN1" name="MRI Scan Protocol, Visit 1" minOccur
+ences="1"
+                maxOccurences="1" required="true">
+                <xcede:protocolOffset>
+                    <xcede:protocolTimeRef>SES</xcede:protocolTimeRef>
+                    <xcede:preferredTimeOffset units="hours">1</xcede:preferred
+TimeOffset>
+                    <xcede:minTimeOffset units="hours">1</xcede:minTimeOffset>
+                    <xcede:maxTimeOffset units="hours">8</xcede:maxTimeOffset>
+                </xcede:protocolOffset>
+                <xcede:steps>
+                    <xcede:step name="T1" required="true" minOccurences="1">
+                        <xcede:items>
+                            <xcede:item xsi:type="xcede:protocolItem_t" name="F
+OV">
+                                <xcede:itemRange min="24" max="24" units="mm"/>
+                            </xcede:item>
+                            <xcede:item xsi:type="xcede:protocolItem_t" name="S
+equence">
+                                <xcede:itemChoice itemValue="FSPGR"/>
+                                <xcede:itemChoice itemValue="MP-RAGE"/>
+                            </xcede:item>
+                            <xcede:item xsi:type="xcede:protocolItem_t" name="S
+lice Thickness">
+                                <xcede:itemRange min="1.2" max="1.5" units="mm"
+/>
+                            </xcede:item>
+                            <xcede:item xsi:type="xcede:protocolItem_t" name="S
+lices">
+                                <xcede:itemRange min="160" max="170"/>
+                            </xcede:item>
+                        </xcede:items>
+                    </xcede:step>
+                    <xcede:step name="Sensory Motor" required="true" minOccuren
+ces="1"
+                        maxOccurences="4" ID="SM">
+                        <xcede:items>
+                            <xcede:item name="weighting" xsi:type="xcede:protoc
+olItem_t">
+                                <xcede:itemChoice itemValue="t2"/>
+                            </xcede:item>
+                            <xcede:item name="TR" xsi:type="xcede:protocolItem_
+t">
+                                <xcede:itemRange min="2" max="2" units="s"/>
+                            </xcede:item>
+                            <xcede:item name="NumberTRs" xsi:type="xcede:protoc
+olItem_t">
+                                <xcede:itemRange min="123" max="123" units="TR"
+/>
+                            </xcede:item>
+                            <xcede:item name="TE" xsi:type="xcede:protocolItem_
+t">
+                                <xcede:itemRange min="30" max="30" units="ms"/>
+                            </xcede:item>
+                            <xcede:item name="FlipAngle" xsi:type="xcede:protoc
+olItem_t">
+                                <xcede:itemRange min="90" max="90" units="degre
+es"/>
+                            </xcede:item>
+                        </xcede:items>
+                    </xcede:step>
+                </xcede:steps>
+            </xcede:step>
+        </xcede:steps>
+    </xcede:protocol>
 
 Reference
 
@@ -1551,16 +1684,17 @@ Chapter 9. Analysis
 
 Overview
 
-   An analysis is composed of the "inputs" (i.e. the files and paramenters used
-   in an analysis or processing of data), the application(s) or method(s) used
-   and the resultant data (i.e. values and output files):
+   An analysis is composed of the "inputs" (i.e. the files and parameters used
+   in an analysis or processing of data), a list of the application(s) or
+   method(s) used in the analysis, and the resultant data (i.e. values and
+   output files):
 
    Analysis Constituents
 
    provenance
           The record of the origin and transformations applied to source data
           that produced this analysis. More information on this element can be
-          found in Chapter 5, Provenance
+          found in Chapter 5, Data Provenance
 
           .
 
@@ -2137,11 +2271,6 @@ notation>
                 </xs:complexContent>
         </xs:complexType>
         <xs:complexType name="resource_t">
-                <xs:annotation>
-                        <xs:documentation>A resource is something that we haven
-'t agreed on
-                        yet.</xs:documentation>
-                </xs:annotation>
                 <xs:complexContent>
                         <xs:extension base="abstract_tagged_entity_t">
                                 <xs:sequence>
@@ -3305,29 +3434,26 @@ l volume, surface area, etc.</xs:documentation>
      *********</xs:documentation>
         </xs:annotation>
         <xs:attributeGroup name="terminology_ag">
-                <xs:attribute name="preferredLabel" type="xs:string" use="requi
-red">
+                <xs:attribute name="preferredLabel" type="xs:string">
                         <xs:annotation>
                                 <xs:documentation>The preferred label of this t
 erm. This can be different than the term used by the applications (e.g. CBLM ve
 rsus cerebellum)</xs:documentation>
                         </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="abbreviation" type="xs:string" use="optiona
-l">
+                <xs:attribute name="abbreviation" type="xs:string">
                         <xs:annotation>
                                 <xs:documentation>The preferred abbreviation fo
 r the term</xs:documentation>
                         </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="nomenclature" type="xs:string" use="require
-d">
+                <xs:attribute name="nomenclature" type="xs:string">
                         <xs:annotation>
                                 <xs:documentation>The source ontology of this t
 erminology/ontology term</xs:documentation>
                         </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="termID" type="xs:string" use="required">
+                <xs:attribute name="termID" type="xs:string">
                         <xs:annotation>
                                 <xs:documentation>Applications will likely want
  to constrain what are valid IDs
@@ -3336,7 +3462,7 @@ erminology/ontology term</xs:documentation>
                                 LSID's)</xs:documentation>
                         </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="termPath" type="xs:string" use="optional"/>
+                <xs:attribute name="termPath" type="xs:string"/>
         </xs:attributeGroup>
         <xs:complexType name="terminologyString_t">
                 <xs:annotation>
@@ -3630,8 +3756,8 @@ Bibliography
 
 References
 
-   1. file://localhost/home/gadde/L3215-798TMP.html#id2799143
-   2. file://localhost/home/gadde/L3215-798TMP.html#chapter.intro
+   1. file://localhost/home/gadde/L1643-493TMP.html#id2691698
+   2. file://localhost/home/gadde/L1643-493TMP.html#chapter.intro
    3. http://www.xcede.org/
    4. http://www.nbirn.net/
    5. http://www.xfront.com/SchemaVersioning.html

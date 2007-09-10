@@ -7,7 +7,7 @@
   <section>
     <title>Overview</title>
     
-    <para>An analysis is composed of the "inputs" (i.e. the files and paramenters used in an analysis or processing of data), the application(s) or method(s) used and the resultant data (i.e. values and output files):</para>
+    <para>An analysis is composed of the "inputs" (i.e. the files and parameters used in an analysis or processing of data), a list of the application(s) or method(s) used in the analysis, and the resultant data (i.e. values and output files):</para>
     <variablelist><title>Analysis Constituents</title>
       <varlistentry>
         <term><varname>provenance</varname></term>

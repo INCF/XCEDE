@@ -1,51 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter id="chapter.provenance">
-  <title>Provenance</title>
+  <title>Data Provenance</title>
 
   <section>
     <title>Overview</title>
-  <para>Provenance is used to record in detail the sequence of processing and analysis 
-steps that have been executed to create a derived image and/or measures. 
-These details include the name and type of machine on which the executable was run, 
-the name of the executable, and input parameters to the exectuable.</para>
+    <para>Various elements in XCEDE 2 refer to data or data resources that were generated from other input data by processing tools.  <emphasis>Data provenance</emphasis> refers to the art of tracking the origins of the derived data and the processing steps that resulted in the output data.  Besides being informative, provenance information could allow a user to recreate the processing stream and replicate the output data using the same tools and inputs.  Provenance information could either be written by the software tools themselves, or could be extracted by wrapper scripts that write the provenance information on the tool's behalf (the likely scenario for external or legacy applications).</para>
 
-  <para>MR studies represented in XCEDE 2 will be populated with large numbers of medical image volumes which 
-researchers will wish to access and run through various processing tools in order to obtain 
-derived data. This derived data, such as volumes of various brain structures, cortical thickness etc., 
-will then be placed back into the database, linked to the original volume from which it was produced.
- If a researcher would like to recreate the processing steps, in order to apply it to a new data set,
- they will be able to obtain the information needed to download or reconstruct the tools that were 
-used on the original data set.  In typical usage, information about the processing tools will be made available by 
-the authors of the tools, collected at run time by processing scripts, and written into XCEDE documents.
-</para>
+    <para>Some of the following documentation comes from Nicole Aucoin who is leading the Data Provenance effort for the MBIRN.</para>
 
     <formalpara>
       <title><type>provenance_t</type></title>
-      <para>Data represented by an instance of <type>dataResource_t</type> or <literal>analysis_t</literal> may contain a <literal>&lt;provenance&gt;</literal> element of this type, which represents an ordered sequence of processing steps (<type>processStep_t</type>) that were executed to create the data.</para>
+      <para>Data represented by an instance of <type>dataResource_t</type> or <literal>analysis_t</literal> may contain a <literal>&lt;provenance&gt;</literal> element of this type, which contains an ordered sequence of processing steps (<type>processStep_t</type>) representing the processing steps used to generate this data.</para>
     </formalpara>
 
     <formalpara>
       <title><type>processStep_t</type></title>
-      <para>This type contains two attributes, ID and parent, indicating a unique ID for the step and its 
-parent step, respectively. It includes a number of child elements that describe the conditions
-under which an executable was run. All of the child elements are formally optional. The following are strongly
-recommended:</para>
+      <para>This type contains two attributes, ID and parent, indicating a unique ID for the step and its parent step, respectively. It includes a number of child elements that describe the conditions under which an executable was run. All of the child elements are formally optional. The following are strongly recommended:</para>
     </formalpara>
 
 	<variablelist>
 	<varlistentry>
   	<term>program</term> 
 	<listitem>
-		<para>The name of the executable.  Version and build numbers may be specified using the attributes <literal>version</literal> and <literal>build</literal>. 
-See instructions below for inserting version control content. Alternately, you can define it as a user string. </para>
+		<para>The name of the executable.  Version and build numbers may be specified using the attributes <literal>version</literal> and <literal>build</literal>.  See instructions below for inserting version control content. Alternately, you can define it as a user string. </para>
 	</listitem>
 	</varlistentry>
 
 	<varlistentry>
 	<term>programArguments</term>
 	<listitem>
-		<para> The arguments passed into the executable.  Optional attributes <literal>inputs</literal> and <literal>outputs</literal> are used to break 
-down the full list of arguments into input and output arguments.</para>
+		<para> The arguments passed into the executable.  Optional attributes <literal>inputs</literal> and <literal>outputs</literal> are used to break down the full list of arguments into input and output arguments.</para>
 	</listitem>
 	</varlistentry>
 
@@ -91,8 +75,7 @@ down the full list of arguments into input and output arguments.</para>
 	<varlistentry>
 	<term>cvs</term>
 	<listitem>
-		<para>Revision control repository information.  Use the CVS keyword Id, inserted into your source code
- file as <literal>$Id: chap_provenance.xml,v 1.13 2007-08-20 20:34:36 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
+		<para>Revision control repository information.  Use the CVS keyword Id, inserted into your source code file as <literal>$Id: chap_provenance.xml,v 1.14 2007-09-10 17:01:14 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
 Also works with SVN, but see SVN notes for enabling it.</para>
 	</listitem>
 	</varlistentry>
@@ -107,8 +90,7 @@ Also works with SVN, but see SVN notes for enabling it.</para>
 	<varlistentry>
 	<term>library</term>
 	<listitem>
-		<para>The name and version of a linked library. Can be repeated as many times as necessary. 
-This is dependent on the library in question, examples are given for VTK and Tcl and Tk.</para>
+		<para>The name and version of a linked library. Can be repeated as many times as necessary.  This is dependent on the library in question, examples are given for VTK and Tcl and Tk.</para>
 	</listitem>
 	</varlistentry>
 
@@ -122,17 +104,14 @@ This is dependent on the library in question, examples are given for VTK and Tcl
 	<varlistentry>
 	<term>package</term>
 	<listitem>
-		<para>This tag gives the overall package version, if the executable is part of a larger unit.  For example, 
-mri_convert is part of FreeSurfer, and the whole FreeSurfer package may have a different version number than the
- mri_convert executable.</para>
+		<para>This tag gives the overall package version, if the executable is part of a larger unit.  For example, mri_convert is part of FreeSurfer, and the whole FreeSurfer package may have a different version number than the mri_convert executable.</para>
 	</listitem>
 	</varlistentry>
 
 	<varlistentry>
 	<term>repository</term>
 	<listitem>
-		<para>Where can the software be found? Link to a code repository or a web page. Can be extracted automatically 
-if using SVN, via the HeadURL keyword.</para>
+		<para>Where can the software be found? Link to a code repository or a web page. Can be extracted automatically if using SVN, via the HeadURL keyword.</para>
 	</listitem>
 	</varlistentry>
 
@@ -143,9 +122,7 @@ if using SVN, via the HeadURL keyword.</para>
     <title>Examples</title>
   </section>
 
-     <para>Provenance elements are children of dataReource and analysis types and describe the sequence of processing steps that were executed to generate the data represented by the parent element.
-In the example below, the provenance of the NIfTI data file (represented as a binaryDataResource) indicates that it 
-was generated in two processing steps (filter1 and filter2) on the same machine (lablin1) about 30 mintues apart.</para>
+     <para>Provenance elements are children of dataReource and analysis types and describe the sequence of processing steps that were executed to generate the data represented by the parent element.  In the example below, the provenance of the NIfTI data file (represented as a binaryDataResource) indicates that it was generated in two processing steps (filter1 and filter2) on the same machine (lablin1) about 30 mintues apart.</para>
 
       <figure id="provenance.simple_example">
         <title>Simple provenance example</title>
@@ -196,14 +173,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.13 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.14 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.13 2007-08-20 20:34:36 gadde Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.14 2007-09-10 17:01:14 gadde Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);

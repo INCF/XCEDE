@@ -4,7 +4,7 @@
 
   <section>
     <title>Overview</title>
-    <para><emphasis>Events</emphasis> in XCEDE are merely time intervals annotated with arbitrary metadata.  This component can be used to represent several types of behavioral data, statistics calculated on time series data, or any other metadata whose proper interpretation requires that it be associated with a particular time interval.</para>
+    <para><emphasis>Events</emphasis> in XCEDE are merely time intervals annotated with arbitrary metadata.  This component can be used to represent several types of behavioral data, statistics calculated on time series data, or any other metadata whose proper interpretation requires that it be associated with a particular interval in time.</para>
     <para>An XCEDE event consists of the following:</para>
     <variablelist>
       <varlistentry>
