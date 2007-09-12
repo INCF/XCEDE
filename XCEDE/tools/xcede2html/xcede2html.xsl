@@ -4,7 +4,6 @@
   xmlns:xcede="http://www.xcede.org/xcede-2"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:dyn="http://exslt.org/dynamic"
-  exclude-result-prefixes="xsl xcede"
   version="1.0">
 
   <xsl:output method="html"/>
@@ -233,9 +232,14 @@
         <xsl:attribute name="class">
           <xsl:value-of select="concat($levelname,'Title')" />
         </xsl:attribute>
-        <xsl:value-of select="$LevelName" />
+        <span class='levelName'>
+          <xsl:value-of select="$LevelName" />
+          <xsl:value-of select="':'" />
+        </span>
         <xsl:if test="local-name()=$levelname">
-          <xsl:value-of select="concat(' ',@ID)" />
+          <span class='levelID'>
+            <xsl:value-of select="concat(' ',@ID)" />
+          </span>
         </xsl:if>
       </span>
 
@@ -275,13 +279,6 @@
   <xsl:template name="calllevel">
     <xsl:param name="levelname" />
     <xsl:param name="UID" />
-    <xsl:if test="xcede:annotationList">
-      <ul>
-        <xsl:for-each select="xcede:annotationList/xcede:annotation">
-          <li><xsl:value-of select="string(xcede:text)" /></li>
-        </xsl:for-each>
-      </ul>
-    </xsl:if>
     <xsl:choose>
       <xsl:when test="$levelname='project'">
         <xsl:call-template name="project">
@@ -312,18 +309,66 @@
   </xsl:template>
 
   <xsl:template name="project">
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template name="visit">
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template name="study">
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template name="episode">
+    <xsl:apply-templates />
   </xsl:template>
 
   <xsl:template name="acquisition">
+    <xsl:apply-templates />
+  </xsl:template>
+
+
+  <xsl:template match="xcede:projectInfo">
+    <xsl:for-each select="xcede:subjectGroupList">
+      <xsl:element name="div">
+        <xsl:attribute name="class">subjectGroupList</xsl:attribute>
+        <xsl:if test="count(xcede:subjectGroup) > 0">
+          <xsl:element name="div">
+            <xsl:text>Subject groups:</xsl:text>
+          </xsl:element>
+          <xsl:for-each select="xcede:subjectGroup">
+            <div class='subjectGroup'>
+              <div class='subjectGroupTitle'><xsl:value-of select="@ID" /></div>
+              <ul>
+                <xsl:for-each select="xcede:subjectID">
+                  <li><xsl:value-of select="string(.)" /></li>
+                </xsl:for-each>
+              </ul>
+            </div>
+          </xsl:for-each>
+        </xsl:if>
+        
+      </xsl:element>
+    </xsl:for-each>
+  </xsl:template>
+
+  <xsl:template match="xcede:annotationList">
+    <xsl:element name="div">
+      <xsl:attribute name="class">annotationList</xsl:attribute>
+      <xsl:for-each select="xcede:annotation">
+        <xsl:element name="div">
+          <xsl:attribute name="class">annotation</xsl:attribute>
+          <xsl:for-each select="xcede:text">
+            <xsl:value-of select="."/>
+          </xsl:for-each>
+        </xsl:element>
+      </xsl:for-each>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="*">
+    <!-- no-op -->
   </xsl:template>
 
 </xsl:stylesheet>
