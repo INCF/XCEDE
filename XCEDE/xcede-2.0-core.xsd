@@ -1213,11 +1213,15 @@
 	<xs:complexType name="abstract_annotation_t" abstract="true">
 		<xs:attributeGroup ref="authoredText_ag"/>
 	</xs:complexType>
+	<xs:simpleType name="comment_t">
+		<xs:restriction base="xs:string"> 
+		</xs:restriction>
+	</xs:simpleType> 
 	<xs:complexType name="textAnnotation_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_annotation_t">
 				<xs:sequence>
-					<xs:element name="text" type="xs:string" minOccurs="0"/>
+					<xs:element name="comment" type="comment_t" minOccurs="1" maxOccurs="1"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
