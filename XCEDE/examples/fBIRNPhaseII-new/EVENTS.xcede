@@ -1,0 +1,3161 @@
+<?xml version="1.0"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <acquisition ID="AudOdd1_events" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
+    <dataRef ID="ZZZZ" />
+  </acquisition>
+  <data ID="ZZZZ" xsi:type="events_t">
+    <event type='sound' units='sec'>
+      <onset>0</onset>
+      <duration>15</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\silence.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>15.028</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>15.526</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>16.024</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>16.522</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>17.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>17.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>18.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>18.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>19.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>19.528</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>20.026</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>20.524</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>21.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>21.326</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>21.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>22.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>22.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>23.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>23.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>24.028</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>24.526</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>25.024</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>25.522</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>26.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>26.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>27.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>27.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>27.849</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>28.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>28.527</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>29.026</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>29.524</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>30.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>30.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>31.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>31.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>32.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>32.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>33.027</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>33.526</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>34.024</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>34.522</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>35.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>35.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>36.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>36.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>37.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>37.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>37.862</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>38.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>38.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>39.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>39.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>40.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>40.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>41.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>41.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>42.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>42.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>43.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>43.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>44.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>44.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>45.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>45.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>46.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>46.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>47.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>47.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>48.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>48.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>49.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>49.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>50.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>50.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>51.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>51.38</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>51.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>52.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>52.522</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>53.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>53.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>54.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>54.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>55.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>55.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>56.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>56.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>57.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>57.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>58.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>58.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>59.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>59.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>60.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>60.508</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>60.827</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>61.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>61.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>62.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>62.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>63.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>63.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>64.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>64.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>65.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>65.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>66.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>66.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>67.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>67.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>68.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>68.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>69.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>69.508</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>70.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>70.327</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>70.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>71.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>71.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>72.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>72.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>73.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>73.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>74.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>74.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>75.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>75.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>76.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>76.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>77.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>77.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>78.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>78.361</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>78.508</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>79.023</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>79.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>80.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>80.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>81.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>81.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>82.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>82.527</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>83.025</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>83.523</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>84.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>84.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>84.847</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>85.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>85.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>86.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>86.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>87.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>87.525</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>88.023</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>88.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>89.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>89.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>90.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>90.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>91.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>91.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>92.025</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>92.523</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>93.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>93.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>94.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>94.341</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>94.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>95.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>95.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>96.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>96.524</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>97.023</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>97.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>98.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>98.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>99.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>99.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>100.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>100.341</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>100.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>101.024</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>101.523</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>102.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>102.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>103.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>103.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>104.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>104.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>105.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>105.524</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>106.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>106.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>107.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>107.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>107.85</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>108.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>108.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>109.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>109.526</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>110.024</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>110.522</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>111.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>111.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>112.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>112.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>113.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>113.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>114.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>114.524</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>115.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>115.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>116.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>116.306</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>116.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>117.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>117.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>118.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>118.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>119.024</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>119.522</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>120.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>120.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>121.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>121.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>122.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>122.313</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>122.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>123.026</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>123.524</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>124.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>124.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>125.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>125.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>126.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>126.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>127.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>127.526</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>128.024</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>128.522</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>129.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>129.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>130.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>130.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>131.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>131.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>132.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>132.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>133.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>133.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>134.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>134.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>135.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>135.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>136.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>136.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>136.82</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>137.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>137.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>138.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>138.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>139.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>139.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>140.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>140.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>141.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>141.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>142.005</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>142.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>143.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>143.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>143.834</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>144.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>144.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>145.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>145.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>146.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>146.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>147.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>147.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>148.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>148.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>149.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>149.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>150.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>150.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>151.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>151.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>152.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>152.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>153.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>153.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>153.807</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>154.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>154.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>155.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>155.522</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>156.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>156.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>157.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>157.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>158.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>158.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>159.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>159.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>160.005</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>160.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>160.856</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>161.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>161.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>162.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>162.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>163.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>163.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>164.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>164.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>165.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>165.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>166.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>166.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>167.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>167.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>167.806</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>168.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>168.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>169.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>169.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>170.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>170.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>171.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>171.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>172.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>172.508</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>173.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>173.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>173.854</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>174.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>174.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>175.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>175.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>176.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>176.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>177.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>177.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>178.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>178.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>179.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>179.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>180.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>180.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>181.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>181.508</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>182.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>182.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>183.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>183.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>184.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>184.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>185.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>185.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>186.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>186.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>187.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>187.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>188.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>188.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>189.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>189.528</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>189.818</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>190.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>190.508</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>191.023</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>191.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>192.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>192.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>193.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>193.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>194.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>194.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>195.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>195.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>196.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>196.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>197.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>197.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>198.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>198.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>199.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>199.525</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>200.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>200.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>201.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>201.314</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>201.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>202.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>202.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>203.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>203.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>204.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>204.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>205.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>205.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>206.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>206.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>207.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>207.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>208.01</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>208.508</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>209.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>209.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>210.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>210.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>211.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>211.334</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>211.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>212.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>212.51</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>213.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>213.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>214.021</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>214.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>215.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>215.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>216.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>216.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>217.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>217.508</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>218.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>218.521</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>219.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>219.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>220.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>220.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>221.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>221.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>221.851</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>222.008</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>222.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>223.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>223.519</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>224.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>224.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>225.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>225.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>226.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>226.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>227.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>227.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>228.019</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>228.334</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>228.517</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>229.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>229.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>230.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>230.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>231.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>231.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>232.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>232.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>233.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>233.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>234.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>234.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>234.821</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>235.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>235.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>236.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>236.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>237.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>237.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>238.015</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>238.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>239.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>239.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>240.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>240.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>241.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>241.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>242.017</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>242.515</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>243.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>243.339</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>243.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>244.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>244.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>245.006</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>245.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>246.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>246.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>247.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>247.513</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>248.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>248.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>249.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>249.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>250.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>250.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>251.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>251.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>252.013</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>252.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>253.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>253.29</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>253.524</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>254.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>254.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>255.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>255.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>256.014</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>256.512</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>257.011</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>257.509</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>258.007</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>258.506</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>259.02</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1200.wav</value>
+    </event>
+    <event type='response' units='sec'>
+      <onset>259.335</onset>
+      <value name='correct_response'>2</value>
+      <value name='response_button'>2</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>259.518</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>2</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>260.016</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>260.514</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>261.012</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>261.511</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>262.009</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>262.507</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>263.022</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>263.52</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>264.018</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>264.516</onset>
+      <duration>0.5</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\1000.wav</value>
+    </event>
+    <event type='sound' units='sec'>
+      <onset>265.014</onset>
+      <duration>15</duration>
+      <value name='tonebin'>1</value>
+      <value name="audiofile">stimuli\silence.wav</value>
+    </event>
+  </data>
+</XCEDE>

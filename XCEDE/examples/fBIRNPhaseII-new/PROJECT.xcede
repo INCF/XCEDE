@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <project ID="fBIRNPhaseII__0010">
+    <projectInfo>
+      <subjectGroupList>
+        <subjectGroup ID="healthy">
+          <subjectID>SUBJ00000001</subjectID>
+          <subjectID>SUBJ00000003</subjectID>
+          <subjectID>SUBJ00000007</subjectID>
+          <subjectID>SUBJ00000008</subjectID>
+          <subjectID>SUBJ00000010</subjectID>
+        </subjectGroup>
+        <subjectGroup ID="schizophrenic">
+          <subjectID>SUBJ00000002</subjectID>
+          <subjectID>SUBJ00000004</subjectID>
+          <subjectID>SUBJ00000005</subjectID>
+          <subjectID>SUBJ00000006</subjectID>
+          <subjectID>SUBJ00000009</subjectID>
+        </subjectGroup>
+      </subjectGroupList>
+    </projectInfo>
+    <contributorList>
+      <contributor ID="00001" role="Principal Investigator">
+        <salutation>Dr.</salutation>
+        <givenName>Zaphod</givenName>
+        <middleName>Q.</middleName>
+        <surname>Beeblebrox</surname>
+        <academicTitles>M.D., Ph.D</academicTitles>
+        <institution>Betelgeuse Academy</institution>
+        <department>Department of Psychiatry</department>
+      </contributor>
+    </contributorList>
+  </project>
+</XCEDE>
