@@ -70,7 +70,7 @@ XCEDE 2.0 - A Manual
               Examples
               Reference
 
-        11.
+        11. Comments and Annotations
 
               Overview
               Examples
@@ -238,7 +238,7 @@ Part I. XCEDE 2 Core Specification
         Examples
         Reference
 
-   11.
+   11. Comments and Annotations
 
         Overview
         Examples
@@ -1390,27 +1390,27 @@ Overview
 
    abstract_protocol_t. The abstract_protocol_t abstract tag provides basic
    information related to a protocol such as protocol time offset, min and max
-   occurences, concept linkages, and more described belowThe protocol_offset_t
+   occurences, concept linkages, and more described below.The protocol_offset_t
    tag is used to specify timing of this particular protocol relative to other
    protocols  or  steps  within  an  experiment.  The protocolTimeRef and
-   preferrredTimeOffset   tags  are  used  to  describe  the  offset  The
+   preferrredTimeOffset   tags   are  used  to  describe  the  offset.The
    ID_name_description tag is used to specify an ID, name, and description for
-   the protocolThe terminology_ag reference is used to give contextual meaning
+   the protocol.The terminology_ag reference is used to give contextual meaning
    to the question and link it with known ontologies and concepts.The level
    attribute is used to specify the level hierarchically that the protocol
    refers to. For example, if the protocol is specifying scanner specific
    parameters then the level would point to the "study level" of the XCEDE
    hierarchy.The minOccurences and maxOccurences attributes are set to specify
-   the  min  and  max occurrences of the protocolThe minTimeFromStart and
+   the  min  and max occurrences of the protocol.The minTimeFromStart and
    maxTimeFromStart attributes are set to specify a timing window from the
    start of the parent protocol. If this protocol block is at the top of the
-   protcol hierarchy then "TimeFromStart" is the start of the study
+   protcol hierarchy then "TimeFromStart" is the start of the study.
 
    steps. The steps group and enclosing step and/or stepRef tags are used to
    embed or reference other parts of a protocol.
 
-   items. The protocolItem_t tag is used to specify the smallest building
-   blocks of the protocolThe itemText group and enclosing textLabel groups are
+   item. The protocolItem_t type is used to specify the smallest building
+   blocks of the protocol.The itemText group and enclosing textLabel groups are
    used to specify one or more text labels. These labels are most often used
    when specifying the formal description of an assessment where each question
    on an assessment has some text most often asking a question. The location
@@ -1424,13 +1424,10 @@ Overview
    choices. The two attributes, itemCode and itemValue together specify the
    numeric code that correlates to the actual value (presumably string of text)
    of the choice as shown in the example below:
- <xcede:itemChoice itemCode="1"
-                            itemValue="professional or graduate training (recei
-ved degree)"/>
-                        <xcede:itemChoice itemCode="2" itemValue="college gradu
-ate"/>
-                        <xcede:itemChoice itemCode="3" itemValue="some college
-(at least one year)"/>
+ <xcede:itemChoice itemCode="1" itemValue="professional or graduate training (r
+eceived degree)"/>
+ <xcede:itemChoice itemCode="2" itemValue="college graduate"/>
+ <xcede:itemChoice itemCode="3" itemValue="some college (at least one year)"/>
 
 Examples
 
@@ -1441,7 +1438,6 @@ Examples
 
 MRI visit protocol example
 
-   Figure 7.1. 
  <xcede:protocol ID="MRIV1" name="MRI Visit 1" minOccurences="1" maxOccurences=
 "1"
         required="true" level="visit" description="MRI scanning visit 1">
@@ -1838,9 +1834,9 @@ D="C0015780" termPath="SNOMED CT Concept:Observable entity:General clinical sta
 te:Gender:Female">f</sex>
         <species preferredLabel="Human" abbreviation="human" nomenclature="BIRN
 Lex" termID="birn_org_anat:birnOrgAnatomy_366" termPath="Thing:entity:continuan
-t:independent_continuant:object:Biomaterial_object:Organismal_object:Organism:M
-ammal:Eutheria:Euarchontoglires:Primate:Haplorrhini:Simiiformes:Catarrhini:Homi
-noidea:Hominidae:Homo_Pan_Gorilla_group:Homo:Human">human</species
+t:independent_continuant:object:Biomaterial_object:Organismal_object:Organism:-
+Mammal:Eutheria:Euarchontoglires:Primate:Haplorrhini:Simiiformes:Catarrhini:Hom
+inoidea:Hominidae:Homo_Pan_Gorilla_group:Homo:Human">human</species>
 
 
 Reference
@@ -1850,6 +1846,8 @@ Reference
 
    Figure 10.4. terminologyString_t
    terminologyString_t
+
+Chapter 11. Comments and Annotations
 
 Overview
 
@@ -3824,8 +3822,8 @@ Bibliography
 
 References
 
-   1. file://localhost/home/gadde/L8019-119TMP.html#id2974868
-   2. file://localhost/home/gadde/L8019-119TMP.html#chapter.intro
+   1. file://localhost/home/gadde/L7530-890TMP.html#id2546904
+   2. file://localhost/home/gadde/L7530-890TMP.html#chapter.intro
    3. http://www.xcede.org/
    4. http://www.nbirn.net/
    5. http://www.xfront.com/SchemaVersioning.html

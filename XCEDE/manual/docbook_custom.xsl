@@ -7,7 +7,7 @@
   <xsl:attribute-set name="monospace.verbatim.properties">
     <xsl:attribute name="font-size">8pt</xsl:attribute>
     <xsl:attribute name="wrap-option">wrap</xsl:attribute>
-    <xsl:attribute name="hyphenation-character">\</xsl:attribute>
+    <xsl:attribute name="hyphenation-character">&#x25BA;</xsl:attribute>
   </xsl:attribute-set>
 
 <xsl:template match="type">

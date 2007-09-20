@@ -5,7 +5,7 @@ XALANJAR=${XALANPATH}/xalan.jar
 XERCESIMPLJAR=${XALANPATH}/xercesImpl.jar
 XMLAPISJAR=${XALANPATH}/xml-apis.jar
 DOCBOOKXALANEXT=xalan27.jar
-FOP=${HOME}/xml/fop-0.93/fop
+FOP=${HOME}/xml/fop-0.94/fop
 
 all: manual_full.pdf manual_full.html manual_full.txt
 

@@ -30,28 +30,27 @@
     </formalpara>
     <formalpara>
       <title><type>abstract_protocol_t</type></title>  
-      <para>The <type>abstract_protocol_t</type> abstract tag provides basic information related to a protocol such as protocol time offset, min and max occurences, concept linkages, and more described below</para>
-      <para>The <type>protocol_offset_t</type> tag is used to specify timing of this particular protocol relative to other protocols or steps within an experiment. The <literal>protocolTimeRef</literal> and <literal>preferrredTimeOffset</literal> tags are used to describe the offset </para>
-      <para>The <type>ID_name_description</type> tag is used to specify an ID, name, and description for the protocol</para>
+      <para>The <type>abstract_protocol_t</type> abstract tag provides basic information related to a protocol such as protocol time offset, min and max occurences, concept linkages, and more described below.</para>
+      <para>The <type>protocol_offset_t</type> tag is used to specify timing of this particular protocol relative to other protocols or steps within an experiment. The <literal>protocolTimeRef</literal> and <literal>preferrredTimeOffset</literal> tags are used to describe the offset.</para>
+      <para>The <type>ID_name_description</type> tag is used to specify an ID, name, and description for the protocol.</para>
       <para>The <type>terminology_ag</type> reference is used to give contextual meaning to the question and link it with known ontologies and concepts.</para>
       <para>The <type>level</type> attribute is used to specify the level hierarchically that the protocol refers to.  For example, if the protocol is specifying scanner specific parameters then the level would point to the "study level" of the XCEDE hierarchy.</para>
-      <para>The <type>minOccurences</type> and <type>maxOccurences</type> attributes are set to specify the min and max occurrences of the protocol</para>
-      <para>The <type>minTimeFromStart</type> and <type>maxTimeFromStart</type> attributes are set to specify a timing window from the start of the parent protocol. If this protocol block is at the top of the protcol hierarchy then "TimeFromStart" is the start of the study</para>
+      <para>The <type>minOccurences</type> and <type>maxOccurences</type> attributes are set to specify the min and max occurrences of the protocol.</para>
+      <para>The <type>minTimeFromStart</type> and <type>maxTimeFromStart</type> attributes are set to specify a timing window from the start of the parent protocol. If this protocol block is at the top of the protcol hierarchy then "TimeFromStart" is the start of the study.</para>
      </formalpara>
     <formalpara>
       <title><type>steps</type></title>
       <para>The <type>steps</type> group and enclosing <type>step</type> and/or <type>stepRef</type> tags are used to embed or reference other parts of a protocol.</para>
     </formalpara>
     <formalpara>
-      <title>items</title>
-      <para>The <type>protocolItem_t</type> tag is used to specify the smallest building blocks of the protocol</para>
+      <title><type>item</type></title>
+      <para>The <type>protocolItem_t</type> type is used to specify the smallest building blocks of the protocol.</para>
       <para>The <type>itemText</type> group and enclosing <type>textLabel</type> groups are used to specify one or more text labels.  These labels are most often used when specifying the formal description of an assessment where each question on an assessment has some text most often asking a question.  The <type>location</type> specifies where the text occurs.  For example, the text could occur before or after some data entry field of an assessment questionaire.  The <type>value</type> tag is used to specify the actual text.</para>
       <para>The <type>itemRange</type> group derived from the <type>protocolItemRange_t</type> is used define a valid range of values for a particular item via the attributes <type>min</type>, <type>max</type>, and <type>units</type></para>
       <para>The <type>itemChoice</type> group is used to specify valid entries for a particular protocol item.  This is most often used when specifying assessment questions that have a fixed number of choices. The two attributes, <type>itemCode</type> and <type>itemValue</type> together specify the numeric code that correlates to the actual value (presumably string of text) of the choice as shown in the example below:</para>
-      <programlisting><![CDATA[ <xcede:itemChoice itemCode="1"
-                            itemValue="professional or graduate training (received degree)"/>
-                        <xcede:itemChoice itemCode="2" itemValue="college graduate"/>
-                        <xcede:itemChoice itemCode="3" itemValue="some college (at least one year)"/>]]></programlisting>
+      <programlisting><![CDATA[ <xcede:itemChoice itemCode="1" itemValue="professional or graduate training (received degree)"/>
+ <xcede:itemChoice itemCode="2" itemValue="college graduate"/>
+ <xcede:itemChoice itemCode="3" itemValue="some college (at least one year)"/>]]></programlisting>
     </formalpara>
   </section>
 
@@ -60,7 +59,7 @@
     <para>The protocol example below shows a formal protocol definition for an MRI visit that consists of an Socio-Economic scale assessment, followed by an MRI scanning session consisting of a T1 and a Sensory Motor fMRI acquisition.</para>
     <section>
       <title>MRI visit protocol example</title>
-      <figure id="protocol_description.simple_example">
+      <informalexample id="protocol_description.simple_example">
         <programlisting><![CDATA[ <xcede:protocol ID="MRIV1" name="MRI Visit 1" minOccurences="1" maxOccurences="1"
         required="true" level="visit" description="MRI scanning visit 1">
         <xcede:steps>
@@ -149,7 +148,7 @@
             </xcede:step>
         </xcede:steps>
     </xcede:protocol>]]></programlisting>
-      </figure>
+      </informalexample>
     </section>
     
   </section>

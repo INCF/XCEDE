@@ -42,7 +42,7 @@
       <title>Terminology String Instance</title>
       <programlisting><![CDATA[
 	<sex preferredLabel="Female" abbreviation="F" nomenclature="UMLS" termID="C0015780" termPath="SNOMED CT Concept:Observable entity:General clinical state:Gender:Female">f</sex>
-	<species preferredLabel="Human" abbreviation="human" nomenclature="BIRNLex" termID="birn_org_anat:birnOrgAnatomy_366" termPath="Thing:entity:continuant:independent_continuant:object:Biomaterial_object:Organismal_object:Organism:Mammal:Eutheria:Euarchontoglires:Primate:Haplorrhini:Simiiformes:Catarrhini:Hominoidea:Hominidae:Homo_Pan_Gorilla_group:Homo:Human">human</species
+	<species preferredLabel="Human" abbreviation="human" nomenclature="BIRNLex" termID="birn_org_anat:birnOrgAnatomy_366" ]]>termPath="Thing:&#x00AD;entity:&#x00AD;continuant:&#x00AD;independent_continuant:&#x00AD;object:&#x00AD;Biomaterial_object:&#x00AD;Organismal_object:&#x00AD;Organism:&#x00AD;Mammal:&#x00AD;Eutheria:&#x00AD;Euarchontoglires:&#x00AD;Primate:&#x00AD;Haplorrhini:&#x00AD;Simiiformes:&#x00AD;Catarrhini:&#x00AD;Hominoidea:&#x00AD;Hominidae:&#x00AD;Homo_Pan_Gorilla_group:&#x00AD;Homo:&#x00AD;Human"<![CDATA[>human</species>
  ]]></programlisting>
     </figure>
   </section>
