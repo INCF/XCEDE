@@ -17,7 +17,7 @@
   <xsl:template match="/xcede:XCEDE">
     <xsl:variable name="mergerootnode" select="document($mergedoc)/xcede:XCEDE"/>
     <xsl:copy>
-      <xsl:for-each select="@*|$mergerootnode/@*">
+      <xsl:for-each select="@*|$mergerootnode/@*|$mergerootnode/namespace::*">
         <xsl:copy>
           <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>

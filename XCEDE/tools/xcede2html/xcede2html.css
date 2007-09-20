@@ -1,48 +1,198 @@
-div.project
+body
 {
-  margin-left: 0.0in;
-  background-color: #FFDDDD;
+  font-family: George, Garamond, serif;
 }
 
-div.visit
+.project
 {
-  margin-left: 0.25in;
-  background-color: #DDFFDD;
+  background-color: #EFEFF8;
 }
 
-div.study
+.visit
 {
-  margin-left: 0.5in;
-  background-color: #DDDDFF;
+  background-color: #DFDFE8;
 }
 
-div.episode
+.study
 {
-  margin-left: 0.75in;
-  background-color: #BBFFFF;
+  background-color: #E8E8EF;
 }
 
-div.acquisition
+.episode
 {
-  margin-left: 1in;
-  background-color: #FFBBFF;
+  background-color: #D8D8DF;
 }
 
-div.project,
-div.visit,
-div.study,
-div.episode,
-div.acquisition
+.acquisition
+{
+  background-color: #E4E4E8;
+}
+
+.project,
+.visit,
+.study,
+.episode,
+.acquisition
 {
   display: block;
-  border: 1px solid;
-  border-color: gray;
+  border: 1px solid #AAA;
+  clear: left;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  padding-left: 1em;
 }
 
+.visit,
+.study,
+.episode,
+.acquisition
+{
+  margin-left: 3em;
+}
 
-span.projectTitle, span.visitTitle, span.studyTitle, span.episodeTitle, span.acquisitionTitle
+.projectTitle, .visitTitle, .studyTitle, .episodeTitle, .acquisitionTitle
 {
   display: block;
   font-weight: bold;
+  font-style: italic;
   font-size: larger;
+  background-color: #444;
+  color: #FFF;
+  margin-left: -1em;
+  margin-bottom: 0.5em;
+  padding: 0.25em;
 }
+
+.block, .leftBlock, .inlineBlock, .floatingBlock, .fieldGroup, .overflowBlock
+{
+  margin: 0.5em;
+  margin-left: 1em;
+  padding: 1em;
+  border: 1px solid #AAA;
+  background-color: #F2FFFF;
+}
+
+.floatingBlock
+{
+  float: left;
+  display: inline-table;
+}
+
+.afterFloatBlock
+{
+  clear: both;
+}
+
+.overflowBlock
+{
+  max-height: 20em;
+  overflow: auto;
+}
+
+.sideBar
+{
+  color: #888;
+  float: right;
+}
+
+.blockTitle
+{
+  font-weight: bold;
+  width: 100%;
+}
+
+.blockHeader
+{
+  font-weight: bold;
+  width: 100%;
+  background-color: D0E0FF;
+}
+.levelName
+{
+  color: #EEE;
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.levelID
+{
+}
+
+.annotationList
+{
+  padding: 0.5em;
+}
+
+.annotation
+{
+  background-color: #FFF2F2;
+  border: 1px solid #BBB;
+  font-style: italic;
+  color: #244;
+  padding: 0.5em;
+  margin: 0.25em;
+  text-align: right;
+}
+
+.description
+{
+  background-color: #FFF2F2;
+  border: 1px solid #BBB;
+  font-style: italic;
+  color: #244;
+  padding: 0.5em;
+  margin: 0.25em;
+}
+
+.fieldGroup
+{
+}
+
+.fieldGroupTitle
+{
+  color: #888;
+  display: inline;
+  float: right;
+  font-weight: bold;
+  width: 100%;
+}
+
+.field
+{
+}
+
+.fieldName
+{
+  font-style: italic;
+}
+
+.fieldParam
+{
+  font-style: italic;
+  color: #244;
+}
+
+.fieldValue
+{
+}
+
+.attr
+{
+}
+
+.attrName
+{
+  color: #000;
+}
+
+.attrValue
+{
+  color: #444;
+}
+
+.elementList
+{
+  display: none;
+}
+
