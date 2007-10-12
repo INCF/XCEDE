@@ -1043,6 +1043,36 @@
     </xsl:element>
   </xsl:template>
 
+  <xsl:template match="xcede:processStep">
+    <xsl:element name="div">
+      <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:element name="div">
+        <xsl:attribute name="class">blockTitle</xsl:attribute>
+        <xsl:text>Process step</xsl:text>
+        <xsl:if test="@ID">
+          <xsl:text> (</xsl:text>
+          <xsl:value-of select="concat('ID=', @ID)" />
+          <xsl:text>)</xsl:text>
+        </xsl:if>
+      </xsl:element>
+      <xsl:call-template name="genericElement" />
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="xcede:provenance">
+    <xsl:element name="div">
+      <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:element name="div">
+        <xsl:attribute name="class">blockTitle</xsl:attribute>
+        <xsl:text>Provenance</xsl:text>
+        <xsl:if test="@ID">
+          <xsl:value-of select="concat(' (ID=', @ID, ')')" />
+        </xsl:if>
+      </xsl:element>
+      <xsl:apply-templates />
+    </xsl:element>
+  </xsl:template>
+
   <xsl:template match="*|text()">
     <!-- no-op -->
   </xsl:template>

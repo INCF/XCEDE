@@ -147,6 +147,7 @@ body
 
 .fieldGroup
 {
+  display: block;
 }
 
 .fieldGroupTitle
@@ -160,6 +161,7 @@ body
 
 .field
 {
+  text-indent: -3em; margin-left: 3em;
 }
 
 .fieldName
