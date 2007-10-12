@@ -566,7 +566,7 @@
 	</xs:complexType>
 	<xs:complexType name="binaryDataResource_t">
 		<xs:annotation>
-			<xs:documentation>The parent type (abstract_resource_t) can describe a stream of data. The extensions in this derived type (binaryDataResource_t) tell you that this data stream is composed of a (one-dimensional) sequence of data items of a given data type and byte order.</xs:documentation>
+			<xs:documentation>The ancestor type (resource_t) can describe a stream of data. The extensions in this derived type (binaryDataResource_t) tell you that this data stream is composed of a (one-dimensional) sequence of data items of a given data type and byte order.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="dataResource_t">
