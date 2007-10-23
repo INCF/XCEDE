@@ -780,7 +780,7 @@
 			<xs:element name="programArguments" type="argumentsType_t" minOccurs="0"/>
 			<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
 			<xs:element name="user" type="xs:string" minOccurs="0"/>
-			<xs:element name="hostName" type="xs:dateTime" minOccurs="0"/>
+			<xs:element name="hostName" type="xs:string" minOccurs="0"/>
 			<xs:element name="architecture" type="xs:string" minOccurs="0"/>
 			<xs:element name="platform" type="versionedEntity_t" minOccurs="0"/>
 			<xs:element name="cvs" type="xs:string" minOccurs="0"/>
