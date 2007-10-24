@@ -424,7 +424,7 @@
 			<xs:element name="description" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="ID" type="xs:string"/>
-		<xs:attribute name="preferredEntityLabel" type="xs:string" use="required">
+		<xs:attribute name="preferredEntityLabel" type="xs:string">
 			<xs:annotation>
 				<xs:documentation>Preferred Name for the Entity</xs:documentation>
 			</xs:annotation>
@@ -710,7 +710,7 @@
 								temporal dimension 't'.</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="measurementframe" minOccurs="0">
+					<xs:element name="measurementFrame" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation xml:lang="en">The mapping (if any) between the values expressed in &lt;datapoints&gt; and the coordinate system used by this datarec. For example, in DTI data, this is useful for mapping gradient direction vectors to the RAS coordinate space used in the &lt;direction&gt; vectors.</xs:documentation>
 						</xs:annotation>
