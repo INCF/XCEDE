@@ -158,6 +158,7 @@
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
+				<xs:attributeGroup ref="allLevelExternalIDs_ag" />
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
