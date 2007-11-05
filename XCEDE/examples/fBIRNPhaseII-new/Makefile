@@ -1,7 +1,7 @@
 XCEDESCHEMA=/home/gadde/birn-cvs/BIRN/XCEDE/xcede-2.0-mr.xsd
 FBIRNSCHEMA=/home/gadde/birn-cvs/BIRN/XCEDE/extensions/fbirn/xcede-fbirn-base.xsd
 
-INPUTS=ACQUISITIONlist.xcede ACQUISITION.xcede AssessmentProtocolExample.xcede CATALOG.xcede EPISODE.xcede EVENTS.xcede PROJECT.xcede STUDY.xcede SUBJECT.xcede VISIT.xcede
+INPUTS=ACQUISITIONlist.xcede ACQUISITION.xcede ANALYSIS.xml AssessmentProtocolExample.xcede CATALOG.xcede EPISODE.xcede EVENTS.xcede PROJECT.xcede STUDY.xcede SUBJECT.xcede VISIT.xcede
 
 all: merged.xml merged.html xcede2html.css
 

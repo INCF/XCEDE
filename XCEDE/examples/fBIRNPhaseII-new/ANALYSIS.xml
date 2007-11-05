@@ -1,0 +1,1987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  <analysis level="study" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
+    <provenance>
+      <processStep>
+        <program>mri_segstats</program>
+        <programArguments>mri_segstats --seg mri/aseg.mgz --sum stats/aseg.stats --pv mri/norm.mgz --ctab-default --excludeid 0 --brain-vol-from-seg --brainmask mri/brainmask.mgz --in mri/norm.mgz --in-intensity-name norm --in-intensity-units MR --etiv --subject karl</programArguments>
+        <user>voyvodic</user>
+        <hostName>golgi</hostName>
+        <platform>AIX</platform>
+        <cvs>$Id: ANALYSIS.xml,v 1.1 2007-11-05 18:17:58 gadde Exp $</cvs>
+        <package>FreeSurfer</package>
+      </processStep>
+    </provenance>
+
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="1">Left-Cerebral-Exterior</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="2">Left-Cerebral-White-Matter</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">346721</observation>
+      <observation name="Volume_mm3" units="mm^3">346721.0</observation>
+      <observation name="normMean">102.9873</observation>
+      <observation name="normStdDev">8.5554</observation>
+      <observation name="normMin">52.0000</observation>
+      <observation name="normMax">119.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="3">Left-Cerebral-Cortex</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">328159</observation>
+      <observation name="Volume_mm3" units="mm^3">328159.0</observation>
+      <observation name="normMean">77.9667</observation>
+      <observation name="normStdDev">9.9390</observation>
+      <observation name="normMin">32.0000</observation>
+      <observation name="normMax">109.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="4">Left-Lateral-Ventricle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">11669</observation>
+      <observation name="Volume_mm3" units="mm^3">11669.0</observation>
+      <observation name="normMean">41.7256</observation>
+      <observation name="normStdDev">11.5045</observation>
+      <observation name="normMin">26.0000</observation>
+      <observation name="normMax">83.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="5">Left-Inf-Lat-Vent</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">713</observation>
+      <observation name="Volume_mm3" units="mm^3">713.0</observation>
+      <observation name="normMean">62.2376</observation>
+      <observation name="normStdDev">13.0075</observation>
+      <observation name="normMin">33.0000</observation>
+      <observation name="normMax">102.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="6">Left-Cerebellum-Exterior</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="7">Left-Cerebellum-White-Matter</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">16642</observation>
+      <observation name="Volume_mm3" units="mm^3">16642.0</observation>
+      <observation name="normMean">91.7097</observation>
+      <observation name="normStdDev">5.1719</observation>
+      <observation name="normMin">45.0000</observation>
+      <observation name="normMax">102.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="8">Left-Cerebellum-Cortex</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">64826</observation>
+      <observation name="Volume_mm3" units="mm^3">64826.0</observation>
+      <observation name="normMean">72.5562</observation>
+      <observation name="normStdDev">8.8687</observation>
+      <observation name="normMin">22.0000</observation>
+      <observation name="normMax">96.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="9">Left-Thalamus</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="10">Left-Thalamus-Proper</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">10350</observation>
+      <observation name="Volume_mm3" units="mm^3">10350.0</observation>
+      <observation name="normMean">93.2992</observation>
+      <observation name="normStdDev">9.7037</observation>
+      <observation name="normMin">47.0000</observation>
+      <observation name="normMax">110.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="11">Left-Caudate</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">4393</observation>
+      <observation name="Volume_mm3" units="mm^3">4393.0</observation>
+      <observation name="normMean">88.4001</observation>
+      <observation name="normStdDev">9.2939</observation>
+      <observation name="normMin">55.0000</observation>
+      <observation name="normMax">111.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="12">Left-Putamen</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">7204</observation>
+      <observation name="Volume_mm3" units="mm^3">7204.0</observation>
+      <observation name="normMean">93.8957</observation>
+      <observation name="normStdDev">5.6560</observation>
+      <observation name="normMin">74.0000</observation>
+      <observation name="normMax">110.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="13">Left-Pallidum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">2246</observation>
+      <observation name="Volume_mm3" units="mm^3">2246.0</observation>
+      <observation name="normMean">100.5892</observation>
+      <observation name="normStdDev">3.3440</observation>
+      <observation name="normMin">87.0000</observation>
+      <observation name="normMax">112.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="14">3rd-Ventricle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">1229</observation>
+      <observation name="Volume_mm3" units="mm^3">1229.0</observation>
+      <observation name="normMean">43.5556</observation>
+      <observation name="normStdDev">9.0343</observation>
+      <observation name="normMin">27.0000</observation>
+      <observation name="normMax">73.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="15">4th-Ventricle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">3316</observation>
+      <observation name="Volume_mm3" units="mm^3">3316.0</observation>
+      <observation name="normMean">39.9970</observation>
+      <observation name="normStdDev">9.6310</observation>
+      <observation name="normMin">25.0000</observation>
+      <observation name="normMax">71.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="16">Brain-Stem</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">23992</observation>
+      <observation name="Volume_mm3" units="mm^3">23992.0</observation>
+      <observation name="normMean">86.8925</observation>
+      <observation name="normStdDev">10.0571</observation>
+      <observation name="normMin">6.0000</observation>
+      <observation name="normMax">107.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="17">Left-Hippocampus</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">5889</observation>
+      <observation name="Volume_mm3" units="mm^3">5889.0</observation>
+      <observation name="normMean">79.7306</observation>
+      <observation name="normStdDev">6.9220</observation>
+      <observation name="normMin">53.0000</observation>
+      <observation name="normMax">101.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="18">Left-Amygdala</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">1985</observation>
+      <observation name="Volume_mm3" units="mm^3">1985.0</observation>
+      <observation name="normMean">78.0923</observation>
+      <observation name="normStdDev">5.7246</observation>
+      <observation name="normMin">56.0000</observation>
+      <observation name="normMax">99.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="19">Left-Insula</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="20">Left-Operculum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="21">Line-1</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="22">Line-2</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="23">Line-3</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="24">CSF</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">2180</observation>
+      <observation name="Volume_mm3" units="mm^3">2180.0</observation>
+      <observation name="normMean">53.3863</observation>
+      <observation name="normStdDev">10.9428</observation>
+      <observation name="normMin">29.0000</observation>
+      <observation name="normMax">83.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="25">Left-Lesion</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="26">Left-Accumbens-area</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">1015</observation>
+      <observation name="Volume_mm3" units="mm^3">1015.0</observation>
+      <observation name="normMean">81.7967</observation>
+      <observation name="normStdDev">5.3648</observation>
+      <observation name="normMin">59.0000</observation>
+      <observation name="normMax">98.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="27">Left-Substancia-Nigra</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="28">Left-VentralDC</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">5339</observation>
+      <observation name="Volume_mm3" units="mm^3">5339.0</observation>
+      <observation name="normMean">91.6301</observation>
+      <observation name="normStdDev">10.3517</observation>
+      <observation name="normMin">48.0000</observation>
+      <observation name="normMax">106.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="29">Left-undetermined</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="30">Left-vessel</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">59</observation>
+      <observation name="Volume_mm3" units="mm^3">59.0</observation>
+      <observation name="normMean">75.9333</observation>
+      <observation name="normStdDev">3.3930</observation>
+      <observation name="normMin">68.0000</observation>
+      <observation name="normMax">83.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="31">Left-choroid-plexus</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="32">Left-F3orb</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="33">Left-lOg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="34">Left-aOg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="35">Left-mOg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="36">Left-pOg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="37">Left-Stellate</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="38">Left-Porg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="39">Left-Aorg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="40">Right-Cerebral-Exterior</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="41">Right-Cerebral-White-Matter</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">334982</observation>
+      <observation name="Volume_mm3" units="mm^3">334982.0</observation>
+      <observation name="normMean">103.4231</observation>
+      <observation name="normStdDev">8.4202</observation>
+      <observation name="normMin">50.0000</observation>
+      <observation name="normMax">121.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="42">Right-Cerebral-Cortex</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">325241</observation>
+      <observation name="Volume_mm3" units="mm^3">325241.0</observation>
+      <observation name="normMean">77.9451</observation>
+      <observation name="normStdDev">9.8912</observation>
+      <observation name="normMin">29.0000</observation>
+      <observation name="normMax">109.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="43">Right-Lateral-Ventricle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">9797</observation>
+      <observation name="Volume_mm3" units="mm^3">9797.0</observation>
+      <observation name="normMean">43.0072</observation>
+      <observation name="normStdDev">12.4007</observation>
+      <observation name="normMin">26.0000</observation>
+      <observation name="normMax">88.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="44">Right-Inf-Lat-Vent</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">722</observation>
+      <observation name="Volume_mm3" units="mm^3">722.0</observation>
+      <observation name="normMean">52.2723</observation>
+      <observation name="normStdDev">13.9658</observation>
+      <observation name="normMin">28.0000</observation>
+      <observation name="normMax">89.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="45">Right-Cerebellum-Exterior</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="46">Right-Cerebellum-White-Matter</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">17156</observation>
+      <observation name="Volume_mm3" units="mm^3">17156.0</observation>
+      <observation name="normMean">92.6832</observation>
+      <observation name="normStdDev">5.1203</observation>
+      <observation name="normMin">56.0000</observation>
+      <observation name="normMax">102.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="47">Right-Cerebellum-Cortex</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">65222</observation>
+      <observation name="Volume_mm3" units="mm^3">65222.0</observation>
+      <observation name="normMean">73.0962</observation>
+      <observation name="normStdDev">9.1568</observation>
+      <observation name="normMin">35.0000</observation>
+      <observation name="normMax">99.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="48">Right-Thalamus</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="49">Right-Thalamus-Proper</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">9100</observation>
+      <observation name="Volume_mm3" units="mm^3">9100.0</observation>
+      <observation name="normMean">93.3494</observation>
+      <observation name="normStdDev">9.9767</observation>
+      <observation name="normMin">46.0000</observation>
+      <observation name="normMax">110.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="50">Right-Caudate</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">4609</observation>
+      <observation name="Volume_mm3" units="mm^3">4609.0</observation>
+      <observation name="normMean">83.4736</observation>
+      <observation name="normStdDev">9.3619</observation>
+      <observation name="normMin">52.0000</observation>
+      <observation name="normMax">103.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="51">Right-Putamen</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">6623</observation>
+      <observation name="Volume_mm3" units="mm^3">6623.0</observation>
+      <observation name="normMean">93.3647</observation>
+      <observation name="normStdDev">5.4501</observation>
+      <observation name="normMin">72.0000</observation>
+      <observation name="normMax">111.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="52">Right-Pallidum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">2049</observation>
+      <observation name="Volume_mm3" units="mm^3">2049.0</observation>
+      <observation name="normMean">100.6984</observation>
+      <observation name="normStdDev">3.0567</observation>
+      <observation name="normMin">87.0000</observation>
+      <observation name="normMax">110.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="53">Right-Hippocampus</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">5773</observation>
+      <observation name="Volume_mm3" units="mm^3">5773.0</observation>
+      <observation name="normMean">79.0128</observation>
+      <observation name="normStdDev">7.5353</observation>
+      <observation name="normMin">55.0000</observation>
+      <observation name="normMax">108.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="54">Right-Amygdala</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">2214</observation>
+      <observation name="Volume_mm3" units="mm^3">2214.0</observation>
+      <observation name="normMean">76.4953</observation>
+      <observation name="normStdDev">5.7089</observation>
+      <observation name="normMin">46.0000</observation>
+      <observation name="normMax">96.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="55">Right-Insula</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="56">Right-Operculum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="57">Right-Lesion</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="58">Right-Accumbens-area</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">860</observation>
+      <observation name="Volume_mm3" units="mm^3">860.0</observation>
+      <observation name="normMean">82.3146</observation>
+      <observation name="normStdDev">5.4049</observation>
+      <observation name="normMin">54.0000</observation>
+      <observation name="normMax">98.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="59">Right-Substancia-Nigra</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="60">Right-VentralDC</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">5551</observation>
+      <observation name="Volume_mm3" units="mm^3">5551.0</observation>
+      <observation name="normMean">90.0666</observation>
+      <observation name="normStdDev">11.0414</observation>
+      <observation name="normMin">41.0000</observation>
+      <observation name="normMax">105.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="61">Right-undetermined</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="62">Right-vessel</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">48</observation>
+      <observation name="Volume_mm3" units="mm^3">48.0</observation>
+      <observation name="normMean">74.0000</observation>
+      <observation name="normStdDev">2.9542</observation>
+      <observation name="normMin">66.0000</observation>
+      <observation name="normMax">78.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="63">Right-choroid-plexus</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="64">Right-F3orb</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="65">Right-lOg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="66">Right-aOg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="67">Right-mOg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="68">Right-pOg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="69">Right-Stellate</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="70">Right-Porg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="71">Right-Aorg</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="72">5th-Ventricle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">85</observation>
+      <observation name="Volume_mm3" units="mm^3">85.0</observation>
+      <observation name="normMean">59.8649</observation>
+      <observation name="normStdDev">11.9523</observation>
+      <observation name="normMin">31.0000</observation>
+      <observation name="normMax">84.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="73">Left-Interior</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="74">Right-Interior</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="75">Left-Lateral-Ventricles</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="76">Right-Lateral-Ventricles</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="77">WM-hypointensities</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="78">Left-WM-hypointensities</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">3275</observation>
+      <observation name="Volume_mm3" units="mm^3">3275.0</observation>
+      <observation name="normMean">79.5763</observation>
+      <observation name="normStdDev">13.0257</observation>
+      <observation name="normMin">41.0000</observation>
+      <observation name="normMax">106.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="79">Right-WM-hypointensities</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">2926</observation>
+      <observation name="Volume_mm3" units="mm^3">2926.0</observation>
+      <observation name="normMean">77.7475</observation>
+      <observation name="normStdDev">13.9775</observation>
+      <observation name="normMin">33.0000</observation>
+      <observation name="normMax">109.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="80">non-WM-hypointensities</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="81">Left-non-WM-hypointensities</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">12</observation>
+      <observation name="Volume_mm3" units="mm^3">12.0</observation>
+      <observation name="normMean">68.6875</observation>
+      <observation name="normStdDev">9.1631</observation>
+      <observation name="normMin">49.0000</observation>
+      <observation name="normMax">80.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="82">Right-non-WM-hypointensities</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">5</observation>
+      <observation name="Volume_mm3" units="mm^3">5.0</observation>
+      <observation name="normMean">58.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">58.0000</observation>
+      <observation name="normMax">58.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="83">Left-F1</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="84">Right-F1</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="85">Optic-Chiasm</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">247</observation>
+      <observation name="Volume_mm3" units="mm^3">247.0</observation>
+      <observation name="normMean">72.2009</observation>
+      <observation name="normStdDev">10.8122</observation>
+      <observation name="normMin">46.0000</observation>
+      <observation name="normMax">91.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="86">Corpus_Callosum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="96">Left-Amygdala-Anterior</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="97">Right-Amygdala-Anterior</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="98">Dura</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="100">Left-wm-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="101">Left-caudate-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="102">Left-putamen-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="103">Left-accumbens-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="104">Left-pallidum-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="105">Left-amygdala-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="106">Left-hippocampus-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="107">Left-thalamus-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="108">Left-VDC-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="109">Right-wm-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="110">Right-caudate-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="111">Right-putamen-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="112">Right-accumbens-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="113">Right-pallidum-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="114">Right-amygdala-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="115">Right-hippocampus-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="116">Right-thalamus-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="117">Right-VDC-intensity-abnormality</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="118">Epidermis</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="119">Conn-Tissue</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="120">SC-Fat/Muscle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="121">Cranium</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="122">CSF-SA</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="123">Muscle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="124">Ear</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="125">Adipose</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="126">Spinal-Cord</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="127">Soft-Tissue</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="128">Nerve</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="129">Bone</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="130">Air</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="131">Orbital-Fat</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="132">Tongue</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="133">Nasal-Structures</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="134">Globe</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="135">Teeth</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="136">Left-Caudate/Putamen</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="137">Right-Caudate/Putamen</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="138">Left-Claustrum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="139">Right-Claustrum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="140">Cornea</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="142">Diploe</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="143">Vitreous-Humor</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="144">Lens</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="145">Aqueous-Humor</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="146">Outer-Table</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="147">Inner-Table</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="148">Periosteum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="149">Endosteum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="150">R/C/S</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="151">Iris</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="152">SC-Adipose/Muscle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="153">SC-Tissue</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="154">Orbital-Adipose</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="201">alveus</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="202">perforant_pathway</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="203">parasubiculum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="204">presubiculum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="205">subiculum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="206">CA1</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="207">CA2</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="208">CA3</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="209">CA4</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="210">GC-DG</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="211">HATA</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="212">molecular_layer_subiculum</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="213">lateral_ventricle</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="214">molecular_layer_HP</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="215">hippocampal_fissure</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="216">entorhinal_cortex</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="217">nothing_yet</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="218">Amygdala</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="219">Cerebral_White_Matter</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="220">Cerebral_Cortex</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="221">Inf_Lat_Vent</label>
+        <!-- a second label referencing a UMLS ID could be inserted here -->
+      </entity>
+      <observation name="NVoxels">0</observation>
+      <observation name="Volume_mm3" units="mm^3">0.0</observation>
+      <observation name="normMean">0.0000</observation>
+      <observation name="normStdDev">0.0000</observation>
+      <observation name="normMin">0.0000</observation>
+      <observation name="normMax">0.0000</observation>
+    </measurementGroup>
+
+  </analysis>
+</XCEDE>
