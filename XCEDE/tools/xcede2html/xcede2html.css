@@ -76,7 +76,7 @@ body
 .floatingBlock
 {
   float: left;
-  display: inline-table;
+  display: inline-block;
 }
 
 .afterFloatBlock
@@ -156,7 +156,6 @@ body
   display: inline;
   float: right;
   font-weight: bold;
-  width: 100%;
 }
 
 .field
