@@ -140,11 +140,13 @@
 	</xs:complexType>
 	<xs:complexType name="levelDataRefs_t">
 		<xs:annotation>
-			<xs:documentation>Points out to a level element (using level and {project|subject|subjectGroup|visit|study|episode|acquisition}{ID|URI} attributes) and/or a data element (using data{ID|URI} attributes).</xs:documentation>
+			<xs:documentation>Points out to a level element (using level and {project|subject|subjectGroup|visit|study|episode|acquisition}{ID|URI} attributes) and/or a data/analysis element (using {data|analysis}{ID|URI} attributes).</xs:documentation>
 		</xs:annotation>
 		<xs:attributeGroup ref="levelRef_ag" />
 		<xs:attribute name="dataID" />
 		<xs:attribute name="dataURI" />
+		<xs:attribute name="analysisID" />
+		<xs:attribute name="analysisURI" />
 	</xs:complexType>
 	<xs:complexType name="analysis_t">
 		<xs:annotation>
