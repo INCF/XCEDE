@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://purl.oclc.org/dsdl/schematron" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:annotation>
 		<xs:documentation>The XCEDE schema provides an extensive metadata hierarchy for describing and documenting research and clinical studies. The schema organizes information into five general hierarchical levels: a complete project; studies within a project; subjects involved in the studies; visits for each of the subjects; the full description of the subject's participation during each visit</xs:documentation>
 		<xs:documentation>Each of these sub-schemas is composed of information relevant to that aspect of an experiment and can be stored in separate XML files or spliced into one large file allowing for the XML data to be stored in a hierarchical directory structure along with the primary data. Each sub-schema also allows for the storage of data provenance information allowing for a traceable record of processing and/or changes to the underlying data. Additionally, the sub-schemas contain support for derived statistical data in the form of human imaging activation maps and simple statistical value lists.</xs:documentation>
@@ -138,9 +138,17 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="levelDataRefs_t">
+		<xs:annotation>
+			<xs:documentation>Points out to a level element (using level and {project|subject|subjectGroup|visit|study|episode|acquisition}{ID|URI} attributes) and/or a data element (using data{ID|URI} attributes).</xs:documentation>
+		</xs:annotation>
+		<xs:attributeGroup ref="levelRef_ag" />
+		<xs:attribute name="dataID" />
+		<xs:attribute name="dataURI" />
+	</xs:complexType>
 	<xs:complexType name="analysis_t">
 		<xs:annotation>
-			<xs:documentation>A collection of output from ana analysis of data.</xs:documentation>
+			<xs:documentation>A collection of output from an analysis of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
@@ -150,8 +158,8 @@
 							<xs:documentation>The record of the origin and transformations applied to source data that produced this analysis</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="inputRef" type="ref_t" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="outputRef" type="ref_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="input" type="levelDataRefs_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="output" type="levelDataRefs_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="measurementGroup" type="measurementGroup_t" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>A measurementGroup contains information and data related to the outcome of an analysis.  For example, this could be a statistic (e.g. from a Statistical Parametric Map) or a measurement (e.g. the volume of the hippocmapus).</xs:documentation>
@@ -675,7 +683,7 @@
 				<xs:sequence>
 					<xs:element name="origin" type="xs:float" minOccurs="0">
 						<xs:annotation>
-							<xs:documentation xml:lang="en">A value assigned to the first data element along this dimension. For example, if this dimension	corresponds to "time", this element could store the time corresponding to the first data element. If this is a two-dimensional projection of the surface of the Earth, and this dimension takes you around the Earth parallel to the equator, this value could be the degrees longitude. For MRI data, this is the single coordinate on the Left-to-Right, Posterior-to-Anterior, or Inferior-to-Superior axis to which this dimension most closely	matches (see 'direction' element and 'rasOrigin' element in 'mrImageDataResource_t').</xs:documentation>
+							<xs:documentation xml:lang="en">A value assigned to the first data element along this dimension. For example, if this dimension	corresponds to "time", this element could store the time corresponding to the first data element. If this is a two-dimensional projection of the surface of the Earth, and this dimension takes you around the Earth parallel to the equator, this value could be the degrees longitude. For MRI data, this is the single coordinate on the Left-to-Right, Posterior-to-Anterior, or Inferior-to-Superior axis to which this dimension most closely	matches (see 'direction' element in mappedBinaryDataDimension_t and 'originCoords' element in mappedBinaryDataResource_t).</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 					<xs:element name="spacing" type="xs:float" minOccurs="0">
