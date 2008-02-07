@@ -162,7 +162,7 @@
 					</xs:element>
 					<xs:element name="input" type="levelDataRefs_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="output" type="levelDataRefs_t" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="measurementGroup" type="measurementGroup_t" maxOccurs="unbounded">
+					<xs:element name="measurementGroup" type="measurementGroup_t" minOccurs="0" maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>A measurementGroup contains information and data related to the outcome of an analysis.  For example, this could be a statistic (e.g. from a Statistical Parametric Map) or a measurement (e.g. the volume of the hippocmapus).</xs:documentation>
 						</xs:annotation>
