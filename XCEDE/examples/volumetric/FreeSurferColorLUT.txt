@@ -1,4 +1,4 @@
-#$Id: FreeSurferColorLUT.txt,v 1.1 2008-01-25 22:25:53 gadde Exp $
+#$Id: FreeSurferColorLUT.txt,v 1.2 2008-02-25 21:35:04 gadde Exp $
   0  Unknown                            	   0    0    0     0
   1  Left-Cerebral-Exterior             	 205   62   78     0 
   2  Left-Cerebral-White-Matter         	 245  245  245     0 

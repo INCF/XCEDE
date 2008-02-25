@@ -32,7 +32,7 @@
     </acquisitionInfo>
     <dataResourceRef ID="XXXX" />
   </acquisition>
-  <resource ID="XXXX" xsi:type="mappedBinaryDataResource_t" format="NIfTI-1" level="acquisition" acquisitionID='AudOdd1_MR_list' episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="000301882920" projectID="fBIRNPhaseII__0010">
+  <resource ID="XXXX" xsi:type="mappedBinaryDataResource_t" format="NIfTI-1" level="acquisition" acquisitionID='AudOdd1_MR_list' episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
     <uri offset="0" size="221184">f0001.img</uri>
     <uri offset="0" size="221184">f0002.img</uri>
     <uri offset="0" size="221184">f0003.img</uri>

@@ -3350,18 +3350,21 @@
         </xcede:dataInstance>
     </xcede:data>
 
-  <analysis level="study" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
+  <analysis level="acquisition" acquisitionID="MR" episodeID="T1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
     <provenance>
       <processStep>
         <program>mri_segstats</program>
         <programArguments>mri_segstats --seg mri/aseg.mgz --sum stats/aseg.stats --pv mri/norm.mgz --ctab-default --excludeid 0 --brain-vol-from-seg --brainmask mri/brainmask.mgz --in mri/norm.mgz --in-intensity-name norm --in-intensity-units MR --etiv --subject karl</programArguments>
-        <user>voyvodic</user>
+        <user>gadde</user>
         <hostName>golgi</hostName>
         <platform>AIX</platform>
-        <cvs>$Id: merged.xml,v 1.2 2007-11-05 18:17:58 gadde Exp $</cvs>
+        <cvs>$Id: merged.xml,v 1.3 2008-02-25 21:35:03 gadde Exp $</cvs>
         <package>FreeSurfer</package>
       </processStep>
     </provenance>
+
+    <input level="acquisition" acquisitionID="MR" episodeID="T1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010" dataID="AAAA"/>
+    <output level="acquisition" acquisitionID="MR" episodeID="T1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010" dataID="BBBB"/>
 
     <measurementGroup>
       <entity xsi:type="anatomicalEntity_t">
@@ -5365,7 +5368,7 @@
     </acquisitionInfo>
     <dataResourceRef ID="XXXX"/>
   </acquisition>
-  <resource ID="XXXX" xsi:type="mappedBinaryDataResource_t" format="NIfTI-1" level="acquisition" acquisitionID="AudOdd1_MR_list" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="000301882920" projectID="fBIRNPhaseII__0010">
+  <resource ID="XXXX" xsi:type="mappedBinaryDataResource_t" format="NIfTI-1" level="acquisition" acquisitionID="AudOdd1_MR_list" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
     <uri offset="0" size="221184">f0001.img</uri>
     <uri offset="0" size="221184">f0002.img</uri>
     <uri offset="0" size="221184">f0003.img</uri>
