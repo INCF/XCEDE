@@ -132,29 +132,23 @@ for my $colnum (1..$#tablecols) {
 my $nomenclature = undef;
 my $fileHemi = undef;
 my $anatomytype = $metafields{'anatomy_type'};
-my $analysistype = undef;
+my $analysistype = "FreeSurfer ${anatomytype} $STATSfilename";
 if ($STATSfilename eq 'aseg.stats') {
   $nomenclature = 'FreeSurferColorLUT';
-  $analysistype = "FreeSurfer-${anatomytype}-aseg";
 } elsif ($STATSfilename eq 'wmparc.stats') {
   $nomenclature = 'FreeSurferColorLUT';
-  $analysistype = "FreeSurfer-${anatomytype}-wmparc";
 } elsif ($STATSfilename eq 'lh.aparc.stats') {
   $nomenclature = 'lh.aparc.annot';
   $fileHemi = 'left';
-  $analysistype = "FreeSurfer-${anatomytype}-aparc";
 } elsif ($STATSfilename eq 'rh.aparc.stats') {
   $nomenclature = 'rh.aparc.annot';
   $fileHemi = 'right';
-  $analysistype = "FreeSurfer-${anatomytype}-aparc";
 } elsif ($STATSfilename eq 'lh.aparc.a2005s.stats') {
   $nomenclature = 'lh.aparc.a2005s.annot';
   $fileHemi = 'left';
-  $analysistype = "FreeSurfer-${anatomytype}-aparc";
 } elsif ($STATSfilename eq 'rh.aparc.a2005s.stats') {
   $nomenclature = 'rh.aparc.a2005s.annot';
   $fileHemi = 'right';
-  $analysistype = "FreeSurfer-${anatomytype}-aparc";
 }
 
 my $subject = <<EOM;
@@ -284,6 +278,9 @@ EOM
 
 
 # $Log: not supported by cvs2svn $
+# Revision 1.2  2008/02/12 21:33:23  gadde
+# Remove UMLS mappings until we get a BIRNLex list.
+#
 # Revision 1.1  2008/02/12 21:30:38  gadde
 # Initial import.
 #
