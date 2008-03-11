@@ -224,6 +224,10 @@ for my $rowref (@tabledata) {
 	     $colheader eq 'SegId');
     my $fieldname = $tablecolref->{'FieldName'};
     my $units = $tablecolref->{'Units'};
+    if ($colheader eq 'GrayVol') {
+      # fix a bug in FreeSurfer labeling (may be labeled as mm
+      $units = 'mm^3';
+    }
     my $unitsattr = '';
     if ($units ne 'NA' && $units ne 'unitless' && $units ne 'MR') {
       $unitsattr = " units=\"$units\"";
@@ -253,7 +257,7 @@ if (defined($visitid)) {
 }
 if (defined($studyid)) {
   $analysisID .= (length($analysisID) ? ' ' : '') . $studyid;
-  $hierID .= (length($hierID) ? ' ' : '') . "visitID=\"${visitid}\"";
+  $hierID .= (length($hierID) ? ' ' : '') . "studyID=\"${studyid}\"";
 }
 if (defined($episodeid)) {
   $analysisID .= (length($analysisID) ? ' ' : '') . $episodeid;
@@ -278,6 +282,9 @@ EOM
 
 
 # $Log: not supported by cvs2svn $
+# Revision 1.3  2008/02/25 21:13:01  gadde
+# Use more consistent analysistype
+#
 # Revision 1.2  2008/02/12 21:33:23  gadde
 # Remove UMLS mappings until we get a BIRNLex list.
 #
