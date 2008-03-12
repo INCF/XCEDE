@@ -154,11 +154,24 @@ if ($STATSfilename eq 'aseg.stats') {
 my $subject = <<EOM;
 EOM
 
+my $timestamp = '';
+if (exists $metafields{'CreationTime'}) {
+  my $timestr = $metafields{'CreationTime'};
+  if ($timestr =~ m%^(\d\d\d\d)/(\d\d)/(\d\d)-(\d\d?):(\d\d):(\d\d)-(...)$%) {
+    my ($year, $mon, $day, $hour, $min, $sec, $tz) =
+      ($1, $2, $3 ,$4, $5, $6, $7);
+    $timestr = "${year}-${mon}-${day}T${hour}:${min}:${sec}";
+    if ($tz eq 'GMT') {
+      $timestr .= 'Z';
+    }
+    $timestamp = "\n        <timeStamp>$timestr</timeStamp>";
+  }
+}
 my $provenance = <<EOM;
     <provenance>
       <processStep>
         <program>$metafields{'generating_program'}</program>
-        <programArguments>$metafields{'cmdline'}</programArguments>
+        <programArguments>$metafields{'cmdline'}</programArguments>$timestamp
         <user>$metafields{'user'}</user>
         <hostName>$metafields{'hostname'}</hostName>
         <platform>$metafields{'sysname'}</platform>
@@ -282,6 +295,9 @@ EOM
 
 
 # $Log: not supported by cvs2svn $
+# Revision 1.4  2008/03/11 18:28:26  gadde
+# Fix studyID bug and fix FreeSurfer's units for GrayVol.
+#
 # Revision 1.3  2008/02/25 21:13:01  gadde
 # Use more consistent analysistype
 #
