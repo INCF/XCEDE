@@ -3,21 +3,21 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <catalog ID="WS/0001" name="My workspace" description="Written by a GUI-based tool that saves the current workspace.  I currently had open images and event data from two subject's first oddball runs.">
     <catalogList>
-      <catalog ID="WS/0001/0001" name="SUBJ00000001" description="SUBJ00000001's first oddball run images and events">
+      <catalog ID="WS/1/1" name="Subject 1 visit 1" description="Subject 1's oddball run images and events from visit 1">
         <entryList>
           <!-- these entries could store application-specific data if the application derives from catalogEntry_t -->
 	  <!-- can't point to events? -->
-<!--          <entryDataRef level="acquisition" acquisitionID="AudOdd1_events" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010" /> -->
+<!--          <entryDataRef level="acquisition" acquisitionID="events" episodeID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A" /> -->
           <entryDataRef ID="XXXX" />
           <entryDataRef ID="YYYY" />
         </entryList>
       </catalog>
-      <catalog ID="WS/0001/0002" name="000399999999" description="000399999999's first oddball run images and events">
+      <catalog ID="WS/1/2" name="Subject 1 visit 2" description="Subject 1's oddball run images and events from visit 2">
         <entryList>
           <!-- these entries could store application-specific data if the application derives from catalogEntry_t -->
-<!--          <entry level="acquisition" acquisitionID="AudOdd1_events" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectID="000399999999" projectID="fBIRNPhaseII__0010" /> -->
-<!--          <entry level="acquisition" acquisitionID="AudOdd1_MR" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectID="000399999999" projectID="fBIRNPhaseII__0010" /> -->
-<!--          <entry level="acquisition" acquisitionID="AudOdd1_MR_list" episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectID="000399999999" projectID="fBIRNPhaseII__0010" /> -->
+<!--          <entry level="acquisition" acquisitionID="events" episodeID="task run 1" studyID="MR" visitID="2" subjectID="1" projectID="A" /> -->
+<!--          <entry level="acquisition" acquisitionID="MR" episodeID="task run 1" studyID="MR" visitID="2" subjectID="1" projectID="A" /> -->
+<!--          <entry level="acquisition" acquisitionID="MR_list" episodeID="task run 1" studyID="MR" visitID="2" subjectID="1" projectID="A" /> -->
         </entryList>
       </catalog>
     </catalogList>

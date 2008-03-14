@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
-  <analysis level="acquisition" acquisitionID="MR" episodeID="T1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
+  <analysis level="acquisition" acquisitionID="MR" episodeID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
     <provenance>
       <processStep>
         <program>mri_segstats</program>
@@ -9,11 +9,339 @@
         <user>gadde</user>
         <hostName>golgi</hostName>
         <platform>AIX</platform>
-        <cvs>$Id: ANALYSIS.xml,v 1.2 2008-02-25 21:35:03 gadde Exp $</cvs>
+        <cvs>$Id: ANALYSIS.xml,v 1.3 2008-03-14 17:26:36 gadde Exp $</cvs>
         <package>FreeSurfer</package>
       </processStep>
     </provenance>
 
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="1">Left-Cerebral-Exterior</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="2">Left-Cerebral-White-Matter</label>
+      </entity>
+      <observation name="NVoxels" type="integer">346721</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">346721.0</observation>
+      <observation name="normMean" type="float">102.9873</observation>
+      <observation name="normStdDev" type="float">8.5554</observation>
+      <observation name="normMin" type="float">52.0000</observation>
+      <observation name="normMax" type="float">119.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="3">Left-Cerebral-Cortex</label>
+      </entity>
+      <observation name="NVoxels" type="integer">328159</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">328159.0</observation>
+      <observation name="normMean" type="float">77.9667</observation>
+      <observation name="normStdDev" type="float">9.9390</observation>
+      <observation name="normMin" type="float">32.0000</observation>
+      <observation name="normMax" type="float">109.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="4">Left-Lateral-Ventricle</label>
+      </entity>
+      <observation name="NVoxels" type="integer">11669</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">11669.0</observation>
+      <observation name="normMean" type="float">41.7256</observation>
+      <observation name="normStdDev" type="float">11.5045</observation>
+      <observation name="normMin" type="float">26.0000</observation>
+      <observation name="normMax" type="float">83.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="5">Left-Inf-Lat-Vent</label>
+      </entity>
+      <observation name="NVoxels" type="integer">713</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">713.0</observation>
+      <observation name="normMean" type="float">62.2376</observation>
+      <observation name="normStdDev" type="float">13.0075</observation>
+      <observation name="normMin" type="float">33.0000</observation>
+      <observation name="normMax" type="float">102.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="6">Left-Cerebellum-Exterior</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="7">Left-Cerebellum-White-Matter</label>
+      </entity>
+      <observation name="NVoxels" type="integer">16642</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">16642.0</observation>
+      <observation name="normMean" type="float">91.7097</observation>
+      <observation name="normStdDev" type="float">5.1719</observation>
+      <observation name="normMin" type="float">45.0000</observation>
+      <observation name="normMax" type="float">102.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="8">Left-Cerebellum-Cortex</label>
+      </entity>
+      <observation name="NVoxels" type="integer">64826</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">64826.0</observation>
+      <observation name="normMean" type="float">72.5562</observation>
+      <observation name="normStdDev" type="float">8.8687</observation>
+      <observation name="normMin" type="float">22.0000</observation>
+      <observation name="normMax" type="float">96.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="9">Left-Thalamus</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="10">Left-Thalamus-Proper</label>
+      </entity>
+      <observation name="NVoxels" type="integer">10350</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">10350.0</observation>
+      <observation name="normMean" type="float">93.2992</observation>
+      <observation name="normStdDev" type="float">9.7037</observation>
+      <observation name="normMin" type="float">47.0000</observation>
+      <observation name="normMax" type="float">110.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="11">Left-Caudate</label>
+      </entity>
+      <observation name="NVoxels" type="integer">4393</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">4393.0</observation>
+      <observation name="normMean" type="float">88.4001</observation>
+      <observation name="normStdDev" type="float">9.2939</observation>
+      <observation name="normMin" type="float">55.0000</observation>
+      <observation name="normMax" type="float">111.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="12">Left-Putamen</label>
+      </entity>
+      <observation name="NVoxels" type="integer">7204</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">7204.0</observation>
+      <observation name="normMean" type="float">93.8957</observation>
+      <observation name="normStdDev" type="float">5.6560</observation>
+      <observation name="normMin" type="float">74.0000</observation>
+      <observation name="normMax" type="float">110.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="13">Left-Pallidum</label>
+      </entity>
+      <observation name="NVoxels" type="integer">2246</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">2246.0</observation>
+      <observation name="normMean" type="float">100.5892</observation>
+      <observation name="normStdDev" type="float">3.3440</observation>
+      <observation name="normMin" type="float">87.0000</observation>
+      <observation name="normMax" type="float">112.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="14">3rd-Ventricle</label>
+      </entity>
+      <observation name="NVoxels" type="integer">1229</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">1229.0</observation>
+      <observation name="normMean" type="float">43.5556</observation>
+      <observation name="normStdDev" type="float">9.0343</observation>
+      <observation name="normMin" type="float">27.0000</observation>
+      <observation name="normMax" type="float">73.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="15">4th-Ventricle</label>
+      </entity>
+      <observation name="NVoxels" type="integer">3316</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">3316.0</observation>
+      <observation name="normMean" type="float">39.9970</observation>
+      <observation name="normStdDev" type="float">9.6310</observation>
+      <observation name="normMin" type="float">25.0000</observation>
+      <observation name="normMax" type="float">71.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="16">Brain-Stem</label>
+      </entity>
+      <observation name="NVoxels" type="integer">23992</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">23992.0</observation>
+      <observation name="normMean" type="float">86.8925</observation>
+      <observation name="normStdDev" type="float">10.0571</observation>
+      <observation name="normMin" type="float">6.0000</observation>
+      <observation name="normMax" type="float">107.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="17">Left-Hippocampus</label>
+      </entity>
+      <observation name="NVoxels" type="integer">5889</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">5889.0</observation>
+      <observation name="normMean" type="float">79.7306</observation>
+      <observation name="normStdDev" type="float">6.9220</observation>
+      <observation name="normMin" type="float">53.0000</observation>
+      <observation name="normMax" type="float">101.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="18">Left-Amygdala</label>
+      </entity>
+      <observation name="NVoxels" type="integer">1985</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">1985.0</observation>
+      <observation name="normMean" type="float">78.0923</observation>
+      <observation name="normStdDev" type="float">5.7246</observation>
+      <observation name="normMin" type="float">56.0000</observation>
+      <observation name="normMax" type="float">99.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="19">Left-Insula</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="20">Left-Operculum</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="21">Line-1</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="22">Line-2</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="23">Line-3</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t">
+        <label nomenclature="FreeSurferColorLUT" termID="24">CSF</label>
+      </entity>
+      <observation name="NVoxels" type="integer">2180</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">2180.0</observation>
+      <observation name="normMean" type="float">53.3863</observation>
+      <observation name="normStdDev" type="float">10.9428</observation>
+      <observation name="normMin" type="float">29.0000</observation>
+      <observation name="normMax" type="float">83.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="25">Left-Lesion</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="26">Left-Accumbens-area</label>
+      </entity>
+      <observation name="NVoxels" type="integer">1015</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">1015.0</observation>
+      <observation name="normMean" type="float">81.7967</observation>
+      <observation name="normStdDev" type="float">5.3648</observation>
+      <observation name="normMin" type="float">59.0000</observation>
+      <observation name="normMax" type="float">98.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="27">Left-Substancia-Nigra</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="28">Left-VentralDC</label>
+      </entity>
+      <observation name="NVoxels" type="integer">5339</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">5339.0</observation>
+      <observation name="normMean" type="float">91.6301</observation>
+      <observation name="normStdDev" type="float">10.3517</observation>
+      <observation name="normMin" type="float">48.0000</observation>
+      <observation name="normMax" type="float">106.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="29">Left-undetermined</label>
+      </entity>
+      <observation name="NVoxels" type="integer">0</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">0.0</observation>
+      <observation name="normMean" type="float">0.0000</observation>
+      <observation name="normStdDev" type="float">0.0000</observation>
+      <observation name="normMin" type="float">0.0000</observation>
+      <observation name="normMax" type="float">0.0000</observation>
+    </measurementGroup>
+    <measurementGroup>
+      <entity xsi:type="anatomicalEntity_t" laterality="left">
+        <label nomenclature="FreeSurferColorLUT" termID="30">Left-vessel</label>
+      </entity>
+      <observation name="NVoxels" type="integer">59</observation>
+      <observation name="Volume_mm3" type="float" units="mm^3">59.0</observation>
+      <observation name="normMean" type="float">75.9333</observation>
+      <observation name="normStdDev" type="float">3.3930</observation>
+      <observation name="normMin" type="float">68.0000</observation>
       <observation name="normMax" type="float">83.0000</observation>
     </measurementGroup>
     <measurementGroup>

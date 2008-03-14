@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XCEDE xmlns="http://www.xcede.org/xcede-2"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <project ID="fBIRNPhaseII__0010">
+<XCEDE xmlns="http://www.xcede.org/xcede-2">
+  <project ID="A">
     <projectInfo>
       <subjectGroupList>
-        <subjectGroup ID="healthy">
-          <subjectID>SUBJ00000001</subjectID>
-          <subjectID>SUBJ00000003</subjectID>
-          <subjectID>SUBJ00000007</subjectID>
-          <subjectID>SUBJ00000008</subjectID>
-          <subjectID>SUBJ00000010</subjectID>
+        <subjectGroup ID="X">
+          <subjectID>1</subjectID>
+          <subjectID>2</subjectID>
         </subjectGroup>
-        <subjectGroup ID="schizophrenic">
-          <subjectID>SUBJ00000002</subjectID>
-          <subjectID>SUBJ00000004</subjectID>
-          <subjectID>SUBJ00000005</subjectID>
-          <subjectID>SUBJ00000006</subjectID>
-          <subjectID>SUBJ00000009</subjectID>
+      </subjectGroupList>
+    </projectInfo>
+  </project>
+  <project ID="B">
+    <projectInfo>
+      <subjectGroupList>
+        <subjectGroup ID="Z">
+          <subjectID>3</subjectID>
         </subjectGroup>
       </subjectGroupList>
     </projectInfo>

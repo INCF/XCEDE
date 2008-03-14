@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <XCEDE xmlns='http://www.xcede.org/xcede-2'
        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <acquisition ID='AudOdd1_MR' episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
+  <acquisition ID='MR' episodeID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
     <acquisitionInfo xsi:type="mrAcquisitionInfo_t">
       <scanner>
         <manufacturer>GE</manufacturer>
@@ -32,7 +32,7 @@
     </acquisitionInfo>
     <dataResourceRef ID="XXXX" />
   </acquisition>
-  <resource ID="XXXX" xsi:type="mappedBinaryDataResource_t" format="NIfTI-1" level="acquisition" acquisitionID='AudOdd1_MR_list' episodeID="AudOdd1" studyID="MRI__0001" visitID="scanVisit__0003__0002" subjectGroupID="healthy" subjectID="SUBJ00000001" projectID="fBIRNPhaseII__0010">
+  <resource ID="XXXX" xsi:type="mappedBinaryDataResource_t" format="NIfTI-1" level="acquisition" acquisitionID="MR" episodeID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
     <uri offset="0" size="221184">f0001.img</uri>
     <uri offset="0" size="221184">f0002.img</uri>
     <uri offset="0" size="221184">f0003.img</uri>
