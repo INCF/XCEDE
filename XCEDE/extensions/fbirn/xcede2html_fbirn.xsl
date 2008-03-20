@@ -13,12 +13,14 @@
   <xsl:include href="../../tools/xcede2html/xcede2html.xsl" />
 
   <xsl:template match="xcede:episodeInfo[xcede:checkTypeMatch(@xsi:type, 'http://www.xcede.org/xcede-2/extensions/fbirn', 'fipsEpisodeInfo_t')]">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">block</xsl:attribute>
       <xsl:element name="div">
         <xsl:attribute name="class">blocktitle</xsl:attribute>
         <xsl:text>FIPS Info</xsl:text>
       </xsl:element>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockcontent</xsl:attribute>
         <xsl:call-template name="genericElement" />
@@ -27,12 +29,14 @@
   </xsl:template>
 
   <xsl:template match="xcede:acquisitionInfo[xcede:checkTypeMatch(@xsi:type, 'http://www.xcede.org/xcede-2', 'mrAcquisitionInfo_t')]">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">block</xsl:attribute>
       <xsl:element name="div">
         <xsl:attribute name="class">blocktitle</xsl:attribute>
         <xsl:text>MR Acquisition</xsl:text>
       </xsl:element>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockcontent</xsl:attribute>
         <xsl:call-template name="genericElement" />

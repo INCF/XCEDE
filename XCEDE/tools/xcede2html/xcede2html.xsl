@@ -348,6 +348,10 @@
   <!-- ======================================= -->
   <!--                TEMPLATES                -->
   <!-- ======================================= -->
+  <xsl:template name="newline">
+    <xsl:text>
+</xsl:text>
+  </xsl:template>
 
   <xsl:template match="/xcede:XCEDE">
     <html>
@@ -398,6 +402,7 @@ function showhide_cbid_hide(cbid, id)
         </script>
       </head>
       <body bgcolor="#FFFFFF">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">elementList</xsl:attribute>
           <p><b>Element list:</b></p>
@@ -569,9 +574,11 @@ function showhide_cbid_hide(cbid, id)
 
     <xsl:variable name="ID" select="xcede:xcedeID()" />
 
-    <xsl:text>
-</xsl:text>
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
+      <xsl:attribute name="id">
+        <xsl:value-of select="$ID" />
+      </xsl:attribute>
       <xsl:attribute name="class">
         <xsl:value-of select="$levelname"/>
       </xsl:attribute>
@@ -600,11 +607,9 @@ function showhide_cbid_hide(cbid, id)
         </xsl:if>
       </xsl:element>
 
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">levelBody</xsl:attribute>
-        <xsl:attribute name="id">
-          <xsl:value-of select="$ID" />
-        </xsl:attribute>
         <!-- Match the node (should be at most one) that describes this level for this UID -->
         <xsl:variable name="exprstr" select="concat('/xcede:XCEDE/*[local-name()=$levelname][', $UIDTopexpr, '=$UID]')" />
         <xsl:for-each select="dyn:evaluate($exprstr)">
@@ -768,8 +773,10 @@ function showhide_cbid_hide(cbid, id)
         </xsl:apply-templates>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">block</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">blockTitle</xsl:attribute>
             <xsl:text>Data [</xsl:text>
@@ -796,8 +803,10 @@ function showhide_cbid_hide(cbid, id)
         </xsl:apply-templates>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">block</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">blockTitle</xsl:attribute>
             <xsl:text>Resource [</xsl:text>
@@ -815,6 +824,7 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:description">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">description</xsl:attribute>
       <xsl:for-each select="xcede:text">
@@ -824,8 +834,10 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:subjectGroup">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">floatingBlock</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle</xsl:attribute>
         <xsl:value-of select="@ID" />
@@ -842,14 +854,17 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:subjectGroupList">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">leftBlock</xsl:attribute>
       <xsl:if test="count(xcede:subjectGroup) > 0">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name='class'>blockTitle</xsl:attribute>
           <xsl:text>Subject groups:</xsl:text>
         </xsl:element>
         <xsl:apply-templates />
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">afterFloatBlock</xsl:attribute>
         </xsl:element>
@@ -858,6 +873,7 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:projectInfo">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">levelInfo</xsl:attribute>
       <xsl:apply-templates />
@@ -906,8 +922,10 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:contributorList">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">leftBlock</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle</xsl:attribute>
         <xsl:text>Contributors:</xsl:text>
@@ -919,9 +937,11 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:subjectInfo">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">levelInfo</xsl:attribute>
       <xsl:for-each select="xcede:sex">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">sex</xsl:attribute>
           <xsl:text>Sex: </xsl:text>
@@ -929,6 +949,7 @@ function showhide_cbid_hide(cbid, id)
         </xsl:element>
       </xsl:for-each>
       <xsl:for-each select="xcede:species">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">species</xsl:attribute>
           <xsl:text>Species: </xsl:text>
@@ -936,6 +957,7 @@ function showhide_cbid_hide(cbid, id)
         </xsl:element>
       </xsl:for-each>
       <xsl:for-each select="xcede:birthdate">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">birthdate</xsl:attribute>
           <xsl:text>Birth Date: </xsl:text>
@@ -947,9 +969,11 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:visitInfo">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">levelInfo</xsl:attribute>
       <xsl:for-each select="xcede:timeStamp">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">timeStamp</xsl:attribute>
           <xsl:text>Date/Time: </xsl:text>
@@ -965,6 +989,7 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:episodeInfo">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">levelInfo</xsl:attribute>
       <xsl:apply-templates />
@@ -972,6 +997,7 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:annotation">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">annotation</xsl:attribute>
       <xsl:for-each select="xcede:comment">
@@ -981,6 +1007,7 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:annotationList">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">annotationList</xsl:attribute>
       <xsl:apply-templates />
@@ -1030,8 +1057,10 @@ function showhide_cbid_hide(cbid, id)
   <xsl:template name="elementContent" >
     <xsl:choose>
       <xsl:when test="*">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">field</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">fieldName</xsl:attribute>
             <xsl:value-of select="local-name()" />
@@ -1041,6 +1070,7 @@ function showhide_cbid_hide(cbid, id)
         </xsl:element>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">field</xsl:attribute>
           <xsl:element name="span">
@@ -1067,9 +1097,11 @@ function showhide_cbid_hide(cbid, id)
   
   <xsl:template name="genericElement">
     <xsl:param name="title" />
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">fieldGroup</xsl:attribute>
       <xsl:if test="$title != ''">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
           <xsl:value-of select="$title" />
@@ -1087,8 +1119,13 @@ function showhide_cbid_hide(cbid, id)
     <xsl:variable name="newID" select="xcede:xcedeID()" />
     <xsl:variable name="FirstRef" select="//xcede:dataRef[@ID=$ID][1]" />
     <xsl:if test="count($linkedfrom|$FirstRef) = 1">
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
+        <xsl:attribute name="id">
+          <xsl:value-of select="$newID" />
+        </xsl:attribute>
         <xsl:attribute name="class">block</xsl:attribute>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle</xsl:attribute>
           <xsl:call-template name="showhide_checkbox">
@@ -1106,10 +1143,8 @@ function showhide_cbid_hide(cbid, id)
             <xsl:value-of select="@ID" />
           </xsl:attribute>
         </xsl:element>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
-          <xsl:attribute name="id">
-            <xsl:value-of select="$newID" />
-          </xsl:attribute>
           <xsl:apply-templates />
         </xsl:element>
       </xsl:element>
@@ -1118,8 +1153,10 @@ function showhide_cbid_hide(cbid, id)
 
   <xsl:template match="xcede:event">
     <xsl:param name="units" />
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockHeader</xsl:attribute>
         <xsl:if test="@type">
@@ -1155,9 +1192,11 @@ function showhide_cbid_hide(cbid, id)
           </xsl:element>
         </xsl:if>
       </xsl:element>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">fieldGroup</xsl:attribute>
         <xsl:for-each select="xcede:value">
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">field</xsl:attribute>
             <xsl:element name="span">
@@ -1188,8 +1227,13 @@ function showhide_cbid_hide(cbid, id)
           </xsl:attribute>
         </xsl:element>
       </xsl:if>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
+        <xsl:attribute name="id">
+          <xsl:value-of select="$newID" />
+        </xsl:attribute>
         <xsl:attribute name="class">overflowBlock</xsl:attribute>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle</xsl:attribute>
           <xsl:call-template name="showhide_checkbox">
@@ -1201,10 +1245,8 @@ function showhide_cbid_hide(cbid, id)
             <xsl:value-of select="concat(' (ID=', @ID, ')')" />
           </xsl:if>
         </xsl:element>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
-          <xsl:attribute name="id">
-            <xsl:value-of select="$newID" />
-          </xsl:attribute>
           <xsl:apply-templates />
         </xsl:element>
       </xsl:element>
@@ -1225,8 +1267,13 @@ function showhide_cbid_hide(cbid, id)
             </xsl:attribute>
           </xsl:element>
         </xsl:if>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
+          <xsl:attribute name="id">
+            <xsl:value-of select="$newID" />
+          </xsl:attribute>
           <xsl:attribute name="class">overflowBlock</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">blockTitle</xsl:attribute>
             <xsl:call-template name="showhide_checkbox">
@@ -1235,10 +1282,8 @@ function showhide_cbid_hide(cbid, id)
             </xsl:call-template>
             <xsl:text>Resource</xsl:text>
           </xsl:element>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
-            </xsl:attribute>
             <xsl:for-each select="@ID|@name|@description|@level|@projectID|@subjectID|@subjectGroupID|@visitID|@studyID|@episodeID|@acquisitionID">
               <xsl:call-template name="attrAsString">
                 <xsl:with-param name="paren" select="1" />
@@ -1261,8 +1306,13 @@ function showhide_cbid_hide(cbid, id)
     <xsl:variable name="FirstRef" select="//xcede:dataResourceRef[@ID=$ID][1]" />
     <xsl:choose>
       <xsl:when test="count(linkedfrom|$FirstRef) = 1">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
+          <xsl:attribute name="id">
+            <xsl:value-of select="$newID" />
+          </xsl:attribute>
           <xsl:attribute name="class">block</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">blockTitle</xsl:attribute>
             <xsl:call-template name="showhide_checkbox">
@@ -1271,10 +1321,8 @@ function showhide_cbid_hide(cbid, id)
             </xsl:call-template>
             <xsl:text>Data Resource</xsl:text>
           </xsl:element>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
-            </xsl:attribute>
             <xsl:apply-templates select="xcede:provenance" />
             <xsl:call-template name="resource_t">
               <xsl:with-param name="linkedfrom" select="$linkedfrom" />
@@ -1292,8 +1340,13 @@ function showhide_cbid_hide(cbid, id)
     <xsl:variable name="FirstRef" select="//xcede:dataResourceRef[@ID=$ID][1]" />
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
+          <xsl:attribute name="id">
+            <xsl:value-of select="$newID" />
+          </xsl:attribute>
           <xsl:attribute name="class">block</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">blockTitle</xsl:attribute>
             <xsl:call-template name="showhide_checkbox">
@@ -1302,10 +1355,8 @@ function showhide_cbid_hide(cbid, id)
             </xsl:call-template>
             <xsl:text>Binary Data Resource</xsl:text>
           </xsl:element>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
-            </xsl:attribute>
             <xsl:for-each select="xcede:elementType|xcede:byteOrder|xcede:compression">
               <xsl:call-template name="elementContent" />
             </xsl:for-each>
@@ -1319,8 +1370,10 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template name="binaryDataDimension_t">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">fieldGroup</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
         <xsl:text>binaryDataDimension</xsl:text>
@@ -1339,8 +1392,13 @@ function showhide_cbid_hide(cbid, id)
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
         <xsl:param name="nodims" select="0" />
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
+          <xsl:attribute name="id">
+            <xsl:value-of select="$newID" />
+          </xsl:attribute>
           <xsl:attribute name="class">block</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">blockTitle</xsl:attribute>
             <xsl:call-template name="showhide_checkbox">
@@ -1349,10 +1407,8 @@ function showhide_cbid_hide(cbid, id)
             </xsl:call-template>
             <xsl:text>Dimensioned Binary Data Resource</xsl:text>
           </xsl:element>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
-            </xsl:attribute>
             <xsl:for-each select="xcede:dimension">
               <xsl:text>Dimension </xsl:text>
               <xsl:value-of select="@label"/>
@@ -1369,8 +1425,10 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template name="mappedBinaryDataDimension_t">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">fieldGroup</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
         <xsl:text>mappedBinaryDataDimension</xsl:text>
@@ -1392,8 +1450,13 @@ function showhide_cbid_hide(cbid, id)
     <xsl:variable name="FirstRef" select="//xcede:dataResourceRef[@ID=$ID][1]" />
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
+          <xsl:attribute name="id">
+            <xsl:value-of select="$newID" />
+          </xsl:attribute>
           <xsl:attribute name="class">block</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">blockTitle</xsl:attribute>
             <xsl:call-template name="showhide_checkbox">
@@ -1402,10 +1465,8 @@ function showhide_cbid_hide(cbid, id)
             </xsl:call-template>
             <xsl:text>Mapped Binary Data Resource</xsl:text>
           </xsl:element>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
-            </xsl:attribute>
             <xsl:for-each select="xcede:originCoords">
               <xsl:call-template name="elementContent" />
             </xsl:for-each>
@@ -1425,8 +1486,10 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:processStep">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle</xsl:attribute>
         <xsl:text>Process step</xsl:text>
@@ -1450,8 +1513,13 @@ function showhide_cbid_hide(cbid, id)
         </xsl:attribute>
       </xsl:element>
     </xsl:if>
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
+      <xsl:attribute name="id">
+        <xsl:value-of select="$newID" />
+      </xsl:attribute>
       <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle</xsl:attribute>
         <xsl:call-template name="showhide_checkbox">
@@ -1481,10 +1549,8 @@ function showhide_cbid_hide(cbid, id)
           <xsl:text>)</xsl:text>
         </xsl:if>
       </xsl:element>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
-        <xsl:attribute name="id">
-          <xsl:value-of select="$newID" />
-        </xsl:attribute>
         <xsl:apply-templates />
       </xsl:element>
     </xsl:element>
@@ -1502,8 +1568,10 @@ function showhide_cbid_hide(cbid, id)
         <xsl:apply-templates select="//xcede:step[@ID=$ID]" />
       </xsl:when>
       <xsl:otherwise>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">block</xsl:attribute>
+          <xsl:call-template name="newline" />
           <xsl:element name="div">
             <xsl:attribute name="class">blockTitle</xsl:attribute>
             <xsl:text>Step [</xsl:text>
@@ -1521,8 +1589,10 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:steps">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle</xsl:attribute>
         <xsl:text>Steps</xsl:text>
@@ -1532,8 +1602,10 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:item">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle</xsl:attribute>
         <xsl:text>Item</xsl:text>
@@ -1543,8 +1615,10 @@ function showhide_cbid_hide(cbid, id)
   </xsl:template>
 
   <xsl:template match="xcede:items">
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle</xsl:attribute>
         <xsl:text>Items</xsl:text>
@@ -1555,8 +1629,10 @@ function showhide_cbid_hide(cbid, id)
 
   <xsl:template name="ID_name_description">
     <xsl:if test="@ID|@name|@description">
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">fieldGroup</xsl:attribute>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
           <xsl:text>ID_name_description</xsl:text>
@@ -1572,8 +1648,10 @@ function showhide_cbid_hide(cbid, id)
 
   <xsl:template name="terminology_ag">
     <xsl:if test="@preferredLabel|@abbreviation|@nomenclature|@termID|@termPath">
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">fieldGroup</xsl:attribute>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
           <xsl:text>terminology_ag</xsl:text>
@@ -1589,8 +1667,13 @@ function showhide_cbid_hide(cbid, id)
 
   <xsl:template match="xcede:protocol" name="protocol_t">
     <xsl:variable name="newID" select="xcede:xcedeID()" />
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
+      <xsl:attribute name="id">
+        <xsl:value-of select="$newID" />
+      </xsl:attribute>
       <xsl:attribute name="class">block</xsl:attribute>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle</xsl:attribute>
         <xsl:call-template name="showhide_checkbox">
@@ -1602,6 +1685,7 @@ function showhide_cbid_hide(cbid, id)
           <xsl:value-of select="concat(' ', @ID)" />
         </xsl:if>
       </xsl:element>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">fieldGroup</xsl:attribute>
         <xsl:for-each select="@level|@required|@minOccurences|@maxOccurences">
@@ -1621,10 +1705,8 @@ function showhide_cbid_hide(cbid, id)
           </xsl:attribute>
         </xsl:element>
       </xsl:if>
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
-        <xsl:attribute name="id">
-          <xsl:value-of select="$newID" />
-        </xsl:attribute>
         <xsl:apply-templates />
       </xsl:element>
     </xsl:element>
@@ -1635,8 +1717,13 @@ function showhide_cbid_hide(cbid, id)
     <xsl:variable name="newID" select="xcede:xcedeID()" />
     <xsl:variable name="targetNode" select="xcede:findLevelElement(.)" />
     <xsl:if test="count($linkedfrom|$targetNode) = 1">
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
+        <xsl:attribute name="id">
+          <xsl:value-of select="$newID" />
+        </xsl:attribute>
         <xsl:attribute name="class">block</xsl:attribute>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle</xsl:attribute>
           <xsl:call-template name="showhide_checkbox">
@@ -1645,17 +1732,17 @@ function showhide_cbid_hide(cbid, id)
           </xsl:call-template>
           <xsl:text>Analysis</xsl:text>
         </xsl:element>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
-          <xsl:attribute name="id">
-            <xsl:value-of select="$newID" />
-          </xsl:attribute>
           <!--        <xsl:call-template name="abstract_container_t" /> -->
           <xsl:for-each select="xcede:provenance">
             <xsl:apply-templates select="."/>
           </xsl:for-each>
           <xsl:if test="xcede:measurementGroup">
+            <xsl:call-template name="newline" />
             <xsl:element name="div">
               <xsl:attribute name="class">overflowBlock</xsl:attribute>
+              <xsl:call-template name="newline" />
               <xsl:element name="div">
                 <xsl:attribute name="class">blockTitle</xsl:attribute>
                 <xsl:text>Measurement groups</xsl:text>

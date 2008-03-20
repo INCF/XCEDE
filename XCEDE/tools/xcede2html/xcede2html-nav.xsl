@@ -353,6 +353,10 @@
   <!-- ======================================= -->
   <!--                TEMPLATES                -->
   <!-- ======================================= -->
+  <xsl:template name="newline">
+    <xsl:text>
+</xsl:text>
+  </xsl:template>
 
   <xsl:template match="/xcede:XCEDE">
     <html>
@@ -415,8 +419,7 @@ function showhide_sw_close(id)
   <xsl:template name="showhide_checkbox">
     <xsl:param name="ID" />
     <xsl:param name="checked" />
-    <xsl:text>
-</xsl:text>
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">switchContainer</xsl:attribute>
       <xsl:element name="span">
@@ -431,8 +434,7 @@ function showhide_sw_close(id)
         </xsl:attribute>
         <xsl:text>collapse</xsl:text>
       </xsl:element>
-      <xsl:text>
-      </xsl:text>
+      <xsl:call-template name="newline" />
       <xsl:element name="span">
         <xsl:attribute name="class">switchClosed</xsl:attribute>
         <xsl:if test="$checked">
@@ -448,8 +450,6 @@ function showhide_sw_close(id)
         </xsl:attribute>
         <xsl:text>expand</xsl:text>
       </xsl:element>
-      <xsl:text>
-</xsl:text>
     </xsl:element>
   </xsl:template>
 
@@ -545,8 +545,6 @@ function showhide_sw_close(id)
 
     <xsl:variable name="ID" select="xcede:xcedeID()" />
 
-    <xsl:text>
-</xsl:text>
     <xsl:element name="li">
       <xsl:attribute name="class">
         <xsl:value-of select="concat($levelname, '-nav')"/>
@@ -585,6 +583,7 @@ function showhide_sw_close(id)
         <xsl:with-param name="checked" select="1" />
       </xsl:call-template>
 
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">levelBody</xsl:attribute>
         <xsl:attribute name="id">
@@ -753,6 +752,7 @@ function showhide_sw_close(id)
         </xsl:apply-templates>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
           <xsl:element name="a">
@@ -779,6 +779,7 @@ function showhide_sw_close(id)
         </xsl:apply-templates>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
           <xsl:element name="a">
@@ -801,6 +802,7 @@ function showhide_sw_close(id)
     <xsl:variable name="newID" select="xcede:xcedeID()" />
     <xsl:variable name="FirstRef" select="//xcede:dataRef[@ID=$ID][1]" />
     <xsl:if test="count($linkedfrom|$FirstRef) = 1">
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
         <xsl:element name="a">
@@ -822,6 +824,7 @@ function showhide_sw_close(id)
     <xsl:variable name="newID" select="xcede:xcedeID()" />
     <xsl:variable name="FirstRef" select="//xcede:dataRef[@ID=$ID][1]" />
     <xsl:if test="count($linkedfrom|$FirstRef) = 1">
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
         <xsl:element name="a">
@@ -844,6 +847,7 @@ function showhide_sw_close(id)
     <xsl:variable name="FirstRef" select="//xcede:dataResourceRef[@ID=$ID][1]" />
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
           <xsl:element name="a">
@@ -867,6 +871,7 @@ function showhide_sw_close(id)
     <xsl:variable name="FirstRef" select="//xcede:dataResourceRef[@ID=$ID][1]" />
     <xsl:choose>
       <xsl:when test="count(linkedfrom|$FirstRef) = 1">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
           <xsl:element name="a">
@@ -890,6 +895,7 @@ function showhide_sw_close(id)
     <xsl:variable name="FirstRef" select="//xcede:dataResourceRef[@ID=$ID][1]" />
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
           <xsl:element name="a">
@@ -914,6 +920,7 @@ function showhide_sw_close(id)
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
         <xsl:param name="nodims" select="0" />
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
           <xsl:element name="a">
@@ -937,6 +944,7 @@ function showhide_sw_close(id)
     <xsl:variable name="FirstRef" select="//xcede:dataResourceRef[@ID=$ID][1]" />
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
+        <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
           <xsl:element name="a">
@@ -955,6 +963,7 @@ function showhide_sw_close(id)
 
   <xsl:template match="xcede:provenance">
     <xsl:variable name="newID" select="xcede:xcedeID()" />
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
       <xsl:call-template name="showhide_checkbox">
@@ -975,6 +984,7 @@ function showhide_sw_close(id)
 
   <xsl:template match="xcede:protocol" name="protocol_t">
     <xsl:variable name="newID" select="xcede:xcedeID()" />
+    <xsl:call-template name="newline" />
     <xsl:element name="div">
       <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
       <xsl:element name="a">
@@ -997,6 +1007,7 @@ function showhide_sw_close(id)
     <xsl:variable name="newID" select="xcede:xcedeID()" />
     <xsl:variable name="targetNode" select="xcede:findLevelElement(.)" />
     <xsl:if test="count($linkedfrom|$targetNode) = 1">
+      <xsl:call-template name="newline" />
       <xsl:element name="div">
         <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
         <xsl:element name="a">
