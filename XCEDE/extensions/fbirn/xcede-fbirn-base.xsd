@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.xcede.org/xcede-2/extensions/fbirn" targetNamespace="http://www.xcede.org/xcede-2/extensions/fbirn" xmlns:fbirn="http://www.xcede.org/xcede-2/extensions/fbirn" xmlns:xcede="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://purl.oclc.org/dsdl/schematron" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:import schemaLocation="../../xcede-2.0-mr.xsd" namespace="http://www.xcede.org/xcede-2"/>
+  <xs:complexType name="fipsEpisodeInfo_t">
+    <xs:complexContent>
+      <xs:extension base="xcede:episodeInfo_t">
+        <xs:sequence>
+          <xs:element name="nameLocal" type="xs:string" minOccurs="0" />
+          <xs:element name="nameStandard" type="xs:string" minOccurs="0" />
+          <xs:element name="segmentID" type="xs:string" minOccurs="0" />
+          <xs:element name="seriesTime" type="xs:string" minOccurs="0" />
+          <xs:element name="comment" type="xs:string" minOccurs="0" />
+          <xs:element name="type" type="xs:string" minOccurs="0" />
+          <xs:element name="paradigm" type="xs:string" minOccurs="0" />
+          <xs:element name="paradigmVersion" type="xs:string" minOccurs="0" />
+          <xs:element name="number" type="xs:string" minOccurs="0" />
+          <xs:element name="sliceOrder" type="xs:string" minOccurs="0" />
+          <xs:element name="skipInitialVols" type="xs:string" minOccurs="0" />
+          <xs:element name="analysisLevel" minOccurs="0">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="level" type="xs:string" minOccurs="0" />
+                <xs:element name="name" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

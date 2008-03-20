@@ -48,7 +48,7 @@ body
 .episode,
 .acquisition
 {
-  margin-left: 3em;
+  margin-left: 2em;
 }
 
 .projectTitle, .visitTitle, .studyTitle, .episodeTitle, .acquisitionTitle
@@ -64,12 +64,22 @@ body
   padding: 0.25em;
 }
 
-.block, .leftBlock, .inlineBlock, .floatingBlock, .fieldGroup, .overflowBlock
+.block, .leftBlock, .inlineBlock, .floatingBlock, .overflowBlock
 {
-  margin: 0.5em;
-  margin-left: 1em;
+  margin-top: 0.25em;
   padding: 1em;
+  padding-top: 0.5em;
   border: 1px solid #AAA;
+  background-color: #F2FFFF;
+}
+
+.fieldGroup
+{
+  margin: 0em;
+  padding: 0.5em;
+  padding-top: 0.25em;
+  border-top: 1px solid #AAA;
+  border-left: 2px solid #AAA;
   background-color: #F2FFFF;
 }
 

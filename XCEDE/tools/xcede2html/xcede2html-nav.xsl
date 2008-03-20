@@ -11,6 +11,8 @@
 
   <xsl:output method="html"/>
 
+  <xsl:param name="basefile" select="''"/>
+  <xsl:param name="targetframe" select="''"/>
   <xsl:param name="IDsep" select="':'"/>
 
   <!-- ======================================= -->
@@ -262,6 +264,9 @@
     </xsl:choose>
   </xsl:template>
 
+  <!-- This function takes one parameter, a node that links to a level element
+       using a "level" attribute and ID attributes for the desired level and
+       its existing parents -->
   <func:function name="xcede:findLevelElement">
     <xsl:param name="levelRefElement" />
     <xsl:variable name="levelname" select="@level"/>
@@ -352,8 +357,9 @@
   <xsl:template match="/xcede:XCEDE">
     <html>
       <head>
-        <link rel="stylesheet" href="xcede2html.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="xcede2html-nav.css" type="text/css" media="screen"/>
         <title>XCEDE dataset</title>
+        <p id="debug"></p>
         <script type="text/javascript">
           <xsl:comment>
             <xsl:text><![CDATA[
@@ -361,74 +367,25 @@ function debuglog(text) {
   var debugelem = document.getElementById('debug');
   debug.appendChild(document.createTextNode(text));
   debug.appendChild(document.createElement('br'));
-  debug.appendChild(document.createTextNode('\\n'));
+  debug.appendChild(document.createTextNode('\n'));
 }
-function showhide_show(id)
+function showhide_sw_open(id)
 {
   document.getElementById(id).style.display='';
-  document.getElementById('hide' + id).style.display='';
-  document.getElementById('show' + id).style.display='none';
+  document.getElementById('sw_closed_'+id).style.display='none';
+  document.getElementById('sw_open_'+id).style.display='';
 }
-function showhide_hide(id)
+function showhide_sw_close(id)
 {
   document.getElementById(id).style.display='none';
-  document.getElementById('show' + id).style.display='';
-  document.getElementById('hide' + id).style.display='none';
-}
-function showhide_cb_toggle(cbobj, id)
-{
-  if (cbobj.checked) {
-    document.getElementById(id).style.display='';
-  } else {
-    document.getElementById(id).style.display='none';
-  }
-}
-function showhide_cbid_show(cbid, id)
-{
-  document.getElementById(cbid).checked = true;
-  document.getElementById(id).style.display='';
-}
-function showhide_cbid_hide(cbid, id)
-{
-  document.getElementById(cbid).checked = false;
-  document.getElementById(id).style.display='none';
+  document.getElementById('sw_open_'+id).style.display='none';
+  document.getElementById('sw_closed_'+id).style.display='';
 }
 ]]></xsl:text>
           </xsl:comment>
         </script>
       </head>
       <body bgcolor="#FFFFFF">
-        <xsl:element name="div">
-          <xsl:attribute name="class">elementList</xsl:attribute>
-          <p><b>Element list:</b></p>
-          <ul>
-            <xsl:for-each select="xcede:project|xcede:subject|xcede:visit|xcede:study|xcede:episode|xcede:acquisition">
-              <li>
-                <xsl:value-of select="concat(local-name(), ' ')" />
-                <xsl:choose>
-                  <xsl:when test="local-name()='project'">
-                    <xsl:value-of select="dyn:evaluate($projectUIDTopexpr)" />
-                  </xsl:when>
-                  <xsl:when test="local-name()='subject'">
-                    <xsl:value-of select="dyn:evaluate($subjectUIDTopexpr)" />
-                  </xsl:when>
-                  <xsl:when test="local-name()='visit'">
-                    <xsl:value-of select="dyn:evaluate($visitUIDTopexpr)" />
-                  </xsl:when>
-                  <xsl:when test="local-name()='study'">
-                    <xsl:value-of select="dyn:evaluate($studyUIDTopexpr)" />
-                  </xsl:when>
-                  <xsl:when test="local-name()='episode'">
-                    <xsl:value-of select="dyn:evaluate($episodeUIDTopexpr)" />
-                  </xsl:when>
-                  <xsl:when test="local-name()='acquisition'">
-                    <xsl:value-of select="dyn:evaluate($acquisitionUIDTopexpr)" />
-                  </xsl:when>
-                </xsl:choose>
-              </li>
-            </xsl:for-each>
-          </ul>
-        </xsl:element>
         <xsl:for-each select="dyn:evaluate($projectSearch)">
           <xsl:choose>
             <xsl:when test="local-name()='project'">
@@ -458,22 +415,41 @@ function showhide_cbid_hide(cbid, id)
   <xsl:template name="showhide_checkbox">
     <xsl:param name="ID" />
     <xsl:param name="checked" />
-    <xsl:element name="input">
-      <xsl:attribute name="type">checkbox</xsl:attribute>
-      <xsl:if test="$checked">
-        <xsl:attribute name="checked">checked</xsl:attribute>
-      </xsl:if>
-      <xsl:attribute name="value">
-        <xsl:value-of select="$ID" />
-      </xsl:attribute>
-      <xsl:attribute name="id">
-        <xsl:value-of select="concat('cb_',$ID)" />
-      </xsl:attribute>
-      <xsl:attribute name="onclick">
-        <xsl:text>showhide_cb_toggle(this,'</xsl:text>
-        <xsl:value-of select="$ID"/>
-        <xsl:text>');</xsl:text>
-      </xsl:attribute>
+    <xsl:text>
+</xsl:text>
+    <xsl:element name="div">
+      <xsl:attribute name="class">switchContainer</xsl:attribute>
+      <xsl:element name="span">
+        <xsl:attribute name="class">switchOpen</xsl:attribute>
+        <xsl:attribute name="id">
+          <xsl:value-of select="concat('sw_open_',$ID)" />
+        </xsl:attribute>
+        <xsl:attribute name="onclick">
+          <xsl:text>showhide_sw_close('</xsl:text>
+          <xsl:value-of select="$ID"/>
+          <xsl:text>');</xsl:text>
+        </xsl:attribute>
+        <xsl:text>collapse</xsl:text>
+      </xsl:element>
+      <xsl:text>
+      </xsl:text>
+      <xsl:element name="span">
+        <xsl:attribute name="class">switchClosed</xsl:attribute>
+        <xsl:if test="$checked">
+          <xsl:attribute name="style">display: none</xsl:attribute>
+        </xsl:if>
+        <xsl:attribute name="id">
+          <xsl:value-of select="concat('sw_closed_',$ID)" />
+        </xsl:attribute>
+        <xsl:attribute name="onclick">
+          <xsl:text>showhide_sw_open('</xsl:text>
+          <xsl:value-of select="$ID"/>
+          <xsl:text>');</xsl:text>
+        </xsl:attribute>
+        <xsl:text>expand</xsl:text>
+      </xsl:element>
+      <xsl:text>
+</xsl:text>
     </xsl:element>
   </xsl:template>
 
@@ -571,39 +547,48 @@ function showhide_cbid_hide(cbid, id)
 
     <xsl:text>
 </xsl:text>
-    <xsl:element name="div">
+    <xsl:element name="li">
       <xsl:attribute name="class">
-        <xsl:value-of select="$levelname"/>
+        <xsl:value-of select="concat($levelname, '-nav')"/>
       </xsl:attribute>
       <xsl:element name="span">
         <xsl:attribute name="class">
-          <xsl:value-of select="concat($levelname,'Title')" />
+          <xsl:value-of select="concat($levelname,'Title','-nav')" />
         </xsl:attribute>
-        <xsl:call-template name="showhide_checkbox">
-          <xsl:with-param name="ID" select="$ID" />
-          <xsl:with-param name="checked" select="1" />
-        </xsl:call-template>
-        <xsl:element name="span">
-          <xsl:attribute name="class">levelName</xsl:attribute>
-          <xsl:value-of select="$LevelName" />
-          <xsl:value-of select="':'" />
+        <xsl:element name="a">
+          <xsl:attribute name="target">
+            <xsl:value-of select="$targetframe"/>
+          </xsl:attribute>
+          <xsl:attribute name="href">
+            <xsl:value-of select="concat($basefile, '#', $ID)" />
+          </xsl:attribute>
+          <xsl:element name="span">
+            <xsl:attribute name="class">levelName</xsl:attribute>
+            <xsl:value-of select="$LevelName" />
+            <xsl:value-of select="':'" />
+          </xsl:element>
+          <xsl:if test="$levelname='visit' and @subjectID">
+            <xsl:value-of select="' Subject '" />
+            <xsl:value-of select="@subjectID" />
+            <xsl:value-of select="','" />
+          </xsl:if>
+          <xsl:if test="local-name()=$levelname">
+            <span class='levelID'>
+              <xsl:value-of select="concat(' ',@ID)" />
+            </span>
+          </xsl:if>
         </xsl:element>
-        <xsl:if test="$levelname='visit' and @subjectID">
-          <xsl:value-of select="' Subject '" />
-          <xsl:value-of select="@subjectID" />
-          <xsl:value-of select="','" />
-        </xsl:if>
-        <xsl:if test="local-name()=$levelname">
-          <span class='levelID'>
-            <xsl:value-of select="concat(' ',@ID)" />
-          </span>
-        </xsl:if>
       </xsl:element>
+
+      <xsl:call-template name="showhide_checkbox">
+        <xsl:with-param name="ID" select="concat($ID, '_nav')" />
+        <xsl:with-param name="checked" select="1" />
+      </xsl:call-template>
 
       <xsl:element name="div">
         <xsl:attribute name="class">levelBody</xsl:attribute>
         <xsl:attribute name="id">
-          <xsl:value-of select="$ID" />
+          <xsl:value-of select="concat($ID, '_nav')" />
         </xsl:attribute>
         <!-- Match the node (should be at most one) that describes this level for this UID -->
         <xsl:variable name="exprstr" select="concat('/xcede:XCEDE/*[local-name()=$levelname][', $UIDTopexpr, '=$UID]')" />
@@ -769,17 +754,15 @@ function showhide_cbid_hide(cbid, id)
       </xsl:when>
       <xsl:otherwise>
         <xsl:element name="div">
-          <xsl:attribute name="class">block</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">blockTitle</xsl:attribute>
-            <xsl:text>Data [</xsl:text>
-            <xsl:element name="a">
-              <xsl:attribute name="href">
-                <xsl:value-of select="concat('#data', $ID)" />
-              </xsl:attribute>
-              <xsl:text>link</xsl:text>
-            </xsl:element>
-            <xsl:text>]</xsl:text>
+          <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+          <xsl:element name="a">
+            <xsl:attribute name="target">
+              <xsl:value-of select="$targetframe"/>
+            </xsl:attribute>
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat($basefile, '#data', $ID)" />
+            </xsl:attribute>
+            <xsl:text>Data</xsl:text>
           </xsl:element>
         </xsl:element>
       </xsl:otherwise>
@@ -797,288 +780,19 @@ function showhide_cbid_hide(cbid, id)
       </xsl:when>
       <xsl:otherwise>
         <xsl:element name="div">
-          <xsl:attribute name="class">block</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">blockTitle</xsl:attribute>
-            <xsl:text>Resource [</xsl:text>
-            <xsl:element name="a">
-              <xsl:attribute name="href">
-                <xsl:value-of select="concat('#data', $ID)" />
-              </xsl:attribute>
-              <xsl:text>link</xsl:text>
-            </xsl:element>
-            <xsl:text>]</xsl:text>
+          <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+          <xsl:element name="a">
+            <xsl:attribute name="target">
+              <xsl:value-of select="$targetframe"/>
+            </xsl:attribute>
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat($basefile, '#data', $ID)" />
+            </xsl:attribute>
+            <xsl:text>Resource</xsl:text>
           </xsl:element>
         </xsl:element>
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template match="xcede:description">
-    <xsl:element name="div">
-      <xsl:attribute name="class">description</xsl:attribute>
-      <xsl:for-each select="xcede:text">
-        <xsl:value-of select="."/>
-      </xsl:for-each>
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:subjectGroup">
-    <xsl:element name="div">
-      <xsl:attribute name="class">floatingBlock</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockTitle</xsl:attribute>
-        <xsl:value-of select="@ID" />
-      </xsl:element>
-      <xsl:element name="ul">
-        <xsl:for-each select="xcede:subjectID">
-          <xsl:element name="li">
-            <xsl:attribute name="class">subjectID</xsl:attribute>
-            <xsl:value-of select="string(.)" />
-          </xsl:element>
-        </xsl:for-each>
-      </xsl:element>
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:subjectGroupList">
-    <xsl:element name="div">
-      <xsl:attribute name="class">leftBlock</xsl:attribute>
-      <xsl:if test="count(xcede:subjectGroup) > 0">
-        <xsl:element name="div">
-          <xsl:attribute name='class'>blockTitle</xsl:attribute>
-          <xsl:text>Subject groups:</xsl:text>
-        </xsl:element>
-        <xsl:apply-templates />
-        <xsl:element name="div">
-          <xsl:attribute name="class">afterFloatBlock</xsl:attribute>
-        </xsl:element>
-      </xsl:if>
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:projectInfo">
-    <xsl:element name="div">
-      <xsl:attribute name="class">levelInfo</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:contributor">
-    <xsl:element name="li">
-      <xsl:attribute name="class">contributor</xsl:attribute>
-      <xsl:element name="span">
-        <xsl:attribute name="class">contributorName</xsl:attribute>
-        <xsl:value-of select="xcede:salutation" />
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="xcede:givenName" />
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="xcede:middleName" />
-        <xsl:text> </xsl:text>
-        <xsl:value-of select="xcede:surname" />
-      </xsl:element>
-      <xsl:text> </xsl:text>
-      <xsl:element name="span">
-        <xsl:attribute name="class">academicTitles</xsl:attribute>
-        <xsl:value-of select="xcede:academicTitles" />
-      </xsl:element>
-      <xsl:text> </xsl:text>
-      <xsl:if test="xcede:institution or xcede:department">
-        <xsl:text>(</xsl:text>
-        <xsl:if test="xcede:institution">
-          <xsl:element name="span">
-            <xsl:attribute name="class">institution</xsl:attribute>
-            <xsl:value-of select="xcede:institution" />
-          </xsl:element>
-          <xsl:if test="xcede:department">
-            <xsl:text>, </xsl:text>
-          </xsl:if>
-        </xsl:if>
-        <xsl:text> </xsl:text>
-        <xsl:element name="span">
-          <xsl:attribute name="class">department</xsl:attribute>
-          <xsl:value-of select="xcede:department" />
-        </xsl:element>
-        <xsl:text>)</xsl:text>
-      </xsl:if>
-      <xsl:apply-templates />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:contributorList">
-    <xsl:element name="div">
-      <xsl:attribute name="class">leftBlock</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockTitle</xsl:attribute>
-        <xsl:text>Contributors:</xsl:text>
-      </xsl:element>
-      <xsl:element name="ul">
-        <xsl:apply-templates />
-      </xsl:element>
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:subjectInfo">
-    <xsl:element name="div">
-      <xsl:attribute name="class">levelInfo</xsl:attribute>
-      <xsl:for-each select="xcede:sex">
-        <xsl:element name="div">
-          <xsl:attribute name="class">sex</xsl:attribute>
-          <xsl:text>Sex: </xsl:text>
-          <xsl:value-of select="." />
-        </xsl:element>
-      </xsl:for-each>
-      <xsl:for-each select="xcede:species">
-        <xsl:element name="div">
-          <xsl:attribute name="class">species</xsl:attribute>
-          <xsl:text>Species: </xsl:text>
-          <xsl:value-of select="." />
-        </xsl:element>
-      </xsl:for-each>
-      <xsl:for-each select="xcede:birthdate">
-        <xsl:element name="div">
-          <xsl:attribute name="class">birthdate</xsl:attribute>
-          <xsl:text>Birth Date: </xsl:text>
-          <xsl:value-of select="." />
-        </xsl:element>
-      </xsl:for-each>
-      <xsl:apply-templates />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:visitInfo">
-    <xsl:element name="div">
-      <xsl:attribute name="class">levelInfo</xsl:attribute>
-      <xsl:for-each select="xcede:timeStamp">
-        <xsl:element name="div">
-          <xsl:attribute name="class">timeStamp</xsl:attribute>
-          <xsl:text>Date/Time: </xsl:text>
-          <xsl:call-template name="formatDateTime">
-            <xsl:with-param name="datetimestr">
-              <xsl:value-of select="string(.)" />
-            </xsl:with-param>
-          </xsl:call-template>
-        </xsl:element>
-      </xsl:for-each>
-      <xsl:apply-templates />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:episodeInfo">
-    <xsl:element name="div">
-      <xsl:attribute name="class">levelInfo</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:annotation">
-    <xsl:element name="div">
-      <xsl:attribute name="class">annotation</xsl:attribute>
-      <xsl:for-each select="xcede:comment">
-        <xsl:value-of select="."/>
-      </xsl:for-each>
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:annotationList">
-    <xsl:element name="div">
-      <xsl:attribute name="class">annotationList</xsl:attribute>
-      <xsl:apply-templates />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template name="attrAsString">
-    <xsl:param name="paren" select="0" />
-    <xsl:param name="separator" select="''" />
-    <xsl:if test="position() = 1">
-      <xsl:if test="$paren">
-        <xsl:text>(</xsl:text>
-      </xsl:if>
-    </xsl:if>
-    <xsl:if test="position() != 1">
-      <xsl:value-of select="$separator" />
-    </xsl:if>
-    <xsl:element name="span">
-      <xsl:attribute name="class">attr</xsl:attribute>
-      <xsl:element name="span">
-        <xsl:attribute name="class">attrName</xsl:attribute>
-        <xsl:value-of select="local-name()"/>
-      </xsl:element>
-      <xsl:text>=</xsl:text>
-      <xsl:element name="span">
-        <xsl:attribute name="class">attrValue</xsl:attribute>
-        <xsl:value-of select="string(.)"/>
-      </xsl:element>
-      <xsl:if test="$paren">
-        <xsl:if test="position() = last()">
-          <xsl:text>)</xsl:text>
-        </xsl:if>
-      </xsl:if>
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template name="attrsAsString">
-    <xsl:param name="paren" select="0" />
-    <xsl:for-each select="@*">
-      <xsl:call-template name="attrAsString">
-        <xsl:with-param name="paren" select="$paren" />
-        <xsl:with-param name="separator" select="', '" />
-      </xsl:call-template>
-    </xsl:for-each>
-  </xsl:template>
-
-  <xsl:template name="elementContent" >
-    <xsl:choose>
-      <xsl:when test="*">
-        <xsl:element name="div">
-          <xsl:attribute name="class">field</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">fieldName</xsl:attribute>
-            <xsl:value-of select="local-name()" />
-            <xsl:text>:</xsl:text>
-          </xsl:element>
-          <xsl:call-template name="genericElement" />
-        </xsl:element>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:element name="div">
-          <xsl:attribute name="class">field</xsl:attribute>
-          <xsl:element name="span">
-            <xsl:attribute name="class">fieldName</xsl:attribute>
-            <xsl:value-of select="local-name()" />
-          </xsl:element>
-          <xsl:if test="@*">
-            <xsl:element name="span">
-              <xsl:attribute name="class">fieldParam</xsl:attribute>
-              <xsl:text> (</xsl:text>
-              <xsl:call-template name="attrsAsString" />
-              <xsl:text>)</xsl:text>
-            </xsl:element>
-          </xsl:if>
-          <xsl:text>: </xsl:text>
-          <xsl:element name="span">
-            <xsl:attribute name="class">fieldValue</xsl:attribute>
-            <xsl:value-of select="string(.)" />
-          </xsl:element>
-        </xsl:element>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-  
-  <xsl:template name="genericElement">
-    <xsl:param name="title" />
-    <xsl:element name="div">
-      <xsl:attribute name="class">fieldGroup</xsl:attribute>
-      <xsl:if test="$title != ''">
-        <xsl:element name="div">
-          <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
-          <xsl:value-of select="$title" />
-        </xsl:element>
-      </xsl:if>
-      <xsl:for-each select="*">
-        <xsl:call-template name="elementContent" />
-      </xsl:for-each>
-    </xsl:element>
   </xsl:template>
 
   <xsl:template match="xcede:data[not(@xsi:type)]">
@@ -1088,124 +802,36 @@ function showhide_cbid_hide(cbid, id)
     <xsl:variable name="FirstRef" select="//xcede:dataRef[@ID=$ID][1]" />
     <xsl:if test="count($linkedfrom|$FirstRef) = 1">
       <xsl:element name="div">
-        <xsl:attribute name="class">block</xsl:attribute>
-        <xsl:element name="div">
-          <xsl:attribute name="class">blockTitle</xsl:attribute>
-          <xsl:call-template name="showhide_checkbox">
-            <xsl:with-param name="ID" select="$newID" />
-            <xsl:with-param name="checked" select="1" />
-          </xsl:call-template>
-          <xsl:text>Data</xsl:text>
-          <xsl:if test="@ID">
-            <xsl:value-of select="concat(' (ID=', @ID, ')')" />
-          </xsl:if>
-        </xsl:element>
+        <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
         <xsl:element name="a">
-          <xsl:attribute name="name">
-            <xsl:text>data</xsl:text>
-            <xsl:value-of select="@ID" />
+          <xsl:attribute name="target">
+            <xsl:value-of select="$targetframe"/>
           </xsl:attribute>
-        </xsl:element>
-        <xsl:element name="div">
-          <xsl:attribute name="id">
-            <xsl:value-of select="$newID" />
+          <xsl:attribute name="href">
+            <xsl:value-of select="concat($basefile, '#', $newID)" />
           </xsl:attribute>
-          <xsl:apply-templates />
+          <xsl:text>Data</xsl:text>
         </xsl:element>
       </xsl:element>
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="xcede:event">
-    <xsl:param name="units" />
-    <xsl:element name="div">
-      <xsl:attribute name="class">block</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockHeader</xsl:attribute>
-        <xsl:if test="@type">
-          <xsl:element name="span">
-            <xsl:attribute name="class">sideBar</xsl:attribute>
-            <xsl:value-of select="@type" />
-          </xsl:element>
-        </xsl:if>
-        <xsl:if test="xcede:onset">
-          <xsl:element name="span">
-            <xsl:text>[</xsl:text>
-            <xsl:value-of select="xcede:onset" />
-            <xsl:choose>
-              <xsl:when test="xcede:duration">
-                <xsl:text>,</xsl:text>
-                <xsl:value-of select="xcede:onset + xcede:duration" />
-                <xsl:text>)</xsl:text>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:text>]</xsl:text>
-              </xsl:otherwise>
-            </xsl:choose>
-            <xsl:choose>
-              <xsl:when test="$units != ''">
-                <xsl:text> </xsl:text>
-                <xsl:value-of select="$units" />
-              </xsl:when>
-              <xsl:when test="units">
-                <xsl:text> </xsl:text>
-                <xsl:value-of select="units" />
-              </xsl:when>
-            </xsl:choose>
-          </xsl:element>
-        </xsl:if>
-      </xsl:element>
-      <xsl:element name="div">
-        <xsl:attribute name="class">fieldGroup</xsl:attribute>
-        <xsl:for-each select="xcede:value">
-          <xsl:element name="div">
-            <xsl:attribute name="class">field</xsl:attribute>
-            <xsl:element name="span">
-              <xsl:attribute name="class">fieldName</xsl:attribute>
-              <xsl:value-of select="@name" />
-            </xsl:element>
-            <xsl:text>: </xsl:text>
-            <xsl:element name="span">
-              <xsl:attribute name="class">fieldValue</xsl:attribute>
-              <xsl:value-of select="string(.)" />
-            </xsl:element>
-          </xsl:element>
-        </xsl:for-each>
-      </xsl:element>
-    </xsl:element>
-  </xsl:template>
-  
   <xsl:template match="xcede:data[xcede:checkTypeMatch(@xsi:type, 'http://www.xcede.org/xcede-2', 'events_t')]">
     <xsl:param name="linkedfrom" select="."/>
     <xsl:variable name="ID" select="string(@ID)" />
     <xsl:variable name="newID" select="xcede:xcedeID()" />
     <xsl:variable name="FirstRef" select="//xcede:dataRef[@ID=$ID][1]" />
     <xsl:if test="count($linkedfrom|$FirstRef) = 1">
-      <xsl:if test="@ID">
-        <xsl:element name="a">
-          <xsl:attribute name="name">
-            <xsl:value-of select="@ID" />
-          </xsl:attribute>
-        </xsl:element>
-      </xsl:if>
       <xsl:element name="div">
-        <xsl:attribute name="class">overflowBlock</xsl:attribute>
-        <xsl:element name="div">
-          <xsl:attribute name="class">blockTitle</xsl:attribute>
-          <xsl:call-template name="showhide_checkbox">
-            <xsl:with-param name="ID" select="$newID" />
-            <xsl:with-param name="checked" select="1" />
-          </xsl:call-template>
-          <xsl:text>Events</xsl:text>
-          <xsl:if test="@ID">
-            <xsl:value-of select="concat(' (ID=', @ID, ')')" />
-          </xsl:if>
-        </xsl:element>
-        <xsl:element name="div">
-          <xsl:attribute name="id">
-            <xsl:value-of select="$newID" />
+        <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+        <xsl:element name="a">
+          <xsl:attribute name="target">
+            <xsl:value-of select="$targetframe"/>
           </xsl:attribute>
-          <xsl:apply-templates />
+          <xsl:attribute name="href">
+            <xsl:value-of select="concat($basefile, '#', $newID)" />
+          </xsl:attribute>
+          <xsl:text>Events</xsl:text>
         </xsl:element>
       </xsl:element>
     </xsl:if>
@@ -1218,36 +844,16 @@ function showhide_cbid_hide(cbid, id)
     <xsl:variable name="FirstRef" select="//xcede:dataResourceRef[@ID=$ID][1]" />
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
-        <xsl:if test="@ID">
-          <xsl:element name="a">
-            <xsl:attribute name="name">
-              <xsl:value-of select="@ID" />
-            </xsl:attribute>
-          </xsl:element>
-        </xsl:if>
         <xsl:element name="div">
-          <xsl:attribute name="class">overflowBlock</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">blockTitle</xsl:attribute>
-            <xsl:call-template name="showhide_checkbox">
-              <xsl:with-param name="ID" select="$newID" />
-              <xsl:with-param name="checked" select="1" />
-            </xsl:call-template>
-            <xsl:text>Resource</xsl:text>
-          </xsl:element>
-          <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
+          <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+          <xsl:element name="a">
+            <xsl:attribute name="target">
+              <xsl:value-of select="$targetframe"/>
             </xsl:attribute>
-            <xsl:for-each select="@ID|@name|@description|@level|@projectID|@subjectID|@subjectGroupID|@visitID|@studyID|@episodeID|@acquisitionID">
-              <xsl:call-template name="attrAsString">
-                <xsl:with-param name="paren" select="1" />
-                <xsl:with-param name="separator" select="', '" />
-              </xsl:call-template>
-            </xsl:for-each>
-            <xsl:for-each select="xcede:uri">
-              <xsl:call-template name="elementContent" />
-            </xsl:for-each>
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat($basefile, '#', $newID)" />
+            </xsl:attribute>
+            <xsl:text>Resource</xsl:text>
           </xsl:element>
         </xsl:element>
       </xsl:when>
@@ -1262,23 +868,15 @@ function showhide_cbid_hide(cbid, id)
     <xsl:choose>
       <xsl:when test="count(linkedfrom|$FirstRef) = 1">
         <xsl:element name="div">
-          <xsl:attribute name="class">block</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">blockTitle</xsl:attribute>
-            <xsl:call-template name="showhide_checkbox">
-              <xsl:with-param name="ID" select="$newID" />
-              <xsl:with-param name="checked" select="1" />
-            </xsl:call-template>
-            <xsl:text>Data Resource</xsl:text>
-          </xsl:element>
-          <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
+          <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+          <xsl:element name="a">
+            <xsl:attribute name="target">
+              <xsl:value-of select="$targetframe"/>
             </xsl:attribute>
-            <xsl:apply-templates select="xcede:provenance" />
-            <xsl:call-template name="resource_t">
-              <xsl:with-param name="linkedfrom" select="$linkedfrom" />
-            </xsl:call-template>
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat($basefile, '#', $newID)" />
+            </xsl:attribute>
+            <xsl:text>Data Resource</xsl:text>
           </xsl:element>
         </xsl:element>
       </xsl:when>
@@ -1293,42 +891,19 @@ function showhide_cbid_hide(cbid, id)
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
         <xsl:element name="div">
-          <xsl:attribute name="class">block</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">blockTitle</xsl:attribute>
-            <xsl:call-template name="showhide_checkbox">
-              <xsl:with-param name="ID" select="$newID" />
-              <xsl:with-param name="checked" select="1" />
-            </xsl:call-template>
-            <xsl:text>Binary Data Resource</xsl:text>
-          </xsl:element>
-          <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
+          <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+          <xsl:element name="a">
+            <xsl:attribute name="target">
+              <xsl:value-of select="$targetframe"/>
             </xsl:attribute>
-            <xsl:for-each select="xcede:elementType|xcede:byteOrder|xcede:compression">
-              <xsl:call-template name="elementContent" />
-            </xsl:for-each>
-            <xsl:call-template name="dataResource_t">
-              <xsl:with-param name="linkedfrom" select="$linkedfrom" />
-            </xsl:call-template>
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat($basefile, '#', $newID)" />
+            </xsl:attribute>
+            <xsl:text>Binary Data Resource</xsl:text>
           </xsl:element>
         </xsl:element>
       </xsl:when>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template name="binaryDataDimension_t">
-    <xsl:element name="div">
-      <xsl:attribute name="class">fieldGroup</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
-        <xsl:text>binaryDataDimension</xsl:text>
-      </xsl:element>
-      <xsl:for-each select="xcede:size|@splitRank|@outputSelect">
-        <xsl:call-template name="elementContent" />
-      </xsl:for-each>
-    </xsl:element>
   </xsl:template>
 
   <xsl:template name="dimensionedBinaryDataResource_t" match="xcede:resource[xcede:checkTypeMatch(@xsi:type, 'http://www.xcede.org/xcede-2', 'dimensionedBinaryDataResource_t')]">
@@ -1340,49 +915,19 @@ function showhide_cbid_hide(cbid, id)
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
         <xsl:param name="nodims" select="0" />
         <xsl:element name="div">
-          <xsl:attribute name="class">block</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">blockTitle</xsl:attribute>
-            <xsl:call-template name="showhide_checkbox">
-              <xsl:with-param name="ID" select="$newID" />
-              <xsl:with-param name="checked" select="1" />
-            </xsl:call-template>
-            <xsl:text>Dimensioned Binary Data Resource</xsl:text>
-          </xsl:element>
-          <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
+          <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+          <xsl:element name="a">
+            <xsl:attribute name="target">
+              <xsl:value-of select="$targetframe"/>
             </xsl:attribute>
-            <xsl:for-each select="xcede:dimension">
-              <xsl:text>Dimension </xsl:text>
-              <xsl:value-of select="@label"/>
-              <xsl:text>:</xsl:text>
-              <xsl:call-template name="binaryDataDimension_t"/>
-            </xsl:for-each>
-            <xsl:call-template name="binaryDataResource_t">
-              <xsl:with-param name="linkedfrom" select="$linkedfrom" />
-            </xsl:call-template>
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat($basefile, '#', $newID)" />
+            </xsl:attribute>
+            <xsl:text>Dimensioned Binary Data Resource</xsl:text>
           </xsl:element>
         </xsl:element>
       </xsl:when>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template name="mappedBinaryDataDimension_t">
-    <xsl:element name="div">
-      <xsl:attribute name="class">fieldGroup</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
-        <xsl:text>mappedBinaryDataDimension</xsl:text>
-      </xsl:element>
-      <xsl:for-each select="xcede:origin|xcede:spacing|xcede:gap|xcede:direction|xcede:units">
-        <xsl:call-template name="elementContent" />
-      </xsl:for-each>
-      <xsl:for-each select="xcede:datapoints|xcede:measurementFrame">
-        <xsl:call-template name="genericElement" />
-      </xsl:for-each>
-      <xsl:call-template name="binaryDataDimension_t"/>
-    </xsl:element>
   </xsl:template>
 
   <xsl:template name="mappedBinaryDataResource_t" match="xcede:resource[xcede:checkTypeMatch(@xsi:type, 'http://www.xcede.org/xcede-2', 'mappedBinaryDataResource_t')]">
@@ -1393,239 +938,56 @@ function showhide_cbid_hide(cbid, id)
     <xsl:choose>
       <xsl:when test="count($linkedfrom|$FirstRef) = 1">
         <xsl:element name="div">
-          <xsl:attribute name="class">block</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">blockTitle</xsl:attribute>
-            <xsl:call-template name="showhide_checkbox">
-              <xsl:with-param name="ID" select="$newID" />
-              <xsl:with-param name="checked" select="1" />
-            </xsl:call-template>
-            <xsl:text>Mapped Binary Data Resource</xsl:text>
-          </xsl:element>
-          <xsl:element name="div">
-            <xsl:attribute name="id">
-              <xsl:value-of select="$newID" />
+          <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+          <xsl:element name="a">
+            <xsl:attribute name="target">
+              <xsl:value-of select="$targetframe"/>
             </xsl:attribute>
-            <xsl:for-each select="xcede:originCoords">
-              <xsl:call-template name="elementContent" />
-            </xsl:for-each>
-            <xsl:for-each select="xcede:dimension">
-              <xsl:text>Dimension </xsl:text>
-              <xsl:value-of select="@label"/>
-              <xsl:text>:</xsl:text>
-              <xsl:call-template name="mappedBinaryDataDimension_t"/>
-            </xsl:for-each>
-            <xsl:call-template name="binaryDataResource_t">
-              <xsl:with-param name="linkedfrom" select="$linkedfrom" />
-            </xsl:call-template>
+            <xsl:attribute name="href">
+              <xsl:value-of select="concat($basefile, '#', $newID)" />
+            </xsl:attribute>
+            <xsl:text>Mapped Binary Data Resource</xsl:text>
           </xsl:element>
         </xsl:element>
       </xsl:when>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template match="xcede:processStep">
-    <xsl:element name="div">
-      <xsl:attribute name="class">block</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockTitle</xsl:attribute>
-        <xsl:text>Process step</xsl:text>
-        <xsl:if test="@ID">
-          <xsl:text> (</xsl:text>
-          <xsl:value-of select="concat('ID=', @ID)" />
-          <xsl:text>)</xsl:text>
-        </xsl:if>
-      </xsl:element>
-      <xsl:call-template name="genericElement" />
-    </xsl:element>
   </xsl:template>
 
   <xsl:template match="xcede:provenance">
     <xsl:variable name="newID" select="xcede:xcedeID()" />
-    <xsl:if test="@ID">
+    <xsl:element name="div">
+      <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+      <xsl:call-template name="showhide_checkbox">
+        <xsl:with-param name="ID" select="$newID" />
+        <xsl:with-param name="checked" select="1" />
+      </xsl:call-template>
       <xsl:element name="a">
-        <xsl:attribute name="name">
-          <xsl:text>provenance</xsl:text>
-          <xsl:value-of select="@ID" />
+        <xsl:attribute name="target">
+          <xsl:value-of select="$targetframe"/>
         </xsl:attribute>
-      </xsl:element>
-    </xsl:if>
-    <xsl:element name="div">
-      <xsl:attribute name="class">block</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockTitle</xsl:attribute>
-        <xsl:call-template name="showhide_checkbox">
-          <xsl:with-param name="ID" select="$newID" />
-          <xsl:with-param name="checked" select="1" />
-        </xsl:call-template>
+        <xsl:attribute name="href">
+          <xsl:value-of select="concat($basefile, '#', $newID)" />
+        </xsl:attribute>
         <xsl:text>Provenance</xsl:text>
-        <xsl:if test="@ID|@parent">
-          <xsl:text> (</xsl:text>
-          <xsl:if test="@ID">
-            <xsl:text>ID=</xsl:text>
-            <xsl:value-of select="@ID" />
-          </xsl:if>
-          <xsl:if test="@ID and @parent">
-            <xsl:text> </xsl:text>
-          </xsl:if>
-          <xsl:if test="@parent">
-            <xsl:text>parent=</xsl:text>
-            <xsl:element name="a">
-              <xsl:attribute name="href">
-                <xsl:text>#provenance</xsl:text>
-                <xsl:value-of select="@parent" />
-              </xsl:attribute>
-              <xsl:value-of select="@parent" />
-            </xsl:element>
-          </xsl:if>
-          <xsl:text>)</xsl:text>
-        </xsl:if>
-      </xsl:element>
-      <xsl:element name="div">
-        <xsl:attribute name="id">
-          <xsl:value-of select="$newID" />
-        </xsl:attribute>
-        <xsl:apply-templates />
       </xsl:element>
     </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:step">
-    <xsl:call-template name="protocol_t" />
-  </xsl:template>
-
-  <xsl:template match="xcede:stepRef">
-    <xsl:variable name="ID" select="string(@ID)" />
-    <xsl:variable name="FirstRef" select="//xcede:stepRef[@ID=$ID][1]" />
-    <xsl:choose>
-      <xsl:when test="count($FirstRef|.)=1">
-        <xsl:apply-templates select="//xcede:step[@ID=$ID]" />
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:element name="div">
-          <xsl:attribute name="class">block</xsl:attribute>
-          <xsl:element name="div">
-            <xsl:attribute name="class">blockTitle</xsl:attribute>
-            <xsl:text>Step [</xsl:text>
-            <xsl:element name="a">
-              <xsl:attribute name="href">
-                <xsl:value-of select="concat('#data', $ID)" />
-              </xsl:attribute>
-              <xsl:text>link</xsl:text>
-            </xsl:element>
-            <xsl:text>]</xsl:text>
-          </xsl:element>
-        </xsl:element>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-  <xsl:template match="xcede:steps">
-    <xsl:element name="div">
-      <xsl:attribute name="class">block</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockTitle</xsl:attribute>
-        <xsl:text>Steps</xsl:text>
-      </xsl:element>
-      <xsl:apply-templates />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:item">
-    <xsl:element name="div">
-      <xsl:attribute name="class">block</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockTitle</xsl:attribute>
-        <xsl:text>Item</xsl:text>
-      </xsl:element>
-      <xsl:call-template name="genericElement" />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template match="xcede:items">
-    <xsl:element name="div">
-      <xsl:attribute name="class">block</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockTitle</xsl:attribute>
-        <xsl:text>Items</xsl:text>
-      </xsl:element>
-      <xsl:apply-templates />
-    </xsl:element>
-  </xsl:template>
-
-  <xsl:template name="ID_name_description">
-    <xsl:if test="@ID|@name|@description">
-      <xsl:element name="div">
-        <xsl:attribute name="class">fieldGroup</xsl:attribute>
-        <xsl:element name="div">
-          <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
-          <xsl:text>ID_name_description</xsl:text>
-        </xsl:element>
-        <xsl:for-each select="@ID|@name|@description">
-          <xsl:call-template name="attrAsString">
-            <xsl:with-param name="separator" select="', '" />
-          </xsl:call-template>
-        </xsl:for-each>
-      </xsl:element>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template name="terminology_ag">
-    <xsl:if test="@preferredLabel|@abbreviation|@nomenclature|@termID|@termPath">
-      <xsl:element name="div">
-        <xsl:attribute name="class">fieldGroup</xsl:attribute>
-        <xsl:element name="div">
-          <xsl:attribute name="class">fieldGroupTitle</xsl:attribute>
-          <xsl:text>terminology_ag</xsl:text>
-        </xsl:element>
-        <xsl:for-each select="@preferredLabel|@abbreviation|@nomenclature|@termID|@termPath">
-          <xsl:call-template name="attrAsString">
-            <xsl:with-param name="separator" select="', '" />
-          </xsl:call-template>
-        </xsl:for-each>
-      </xsl:element>
-    </xsl:if>
   </xsl:template>
 
   <xsl:template match="xcede:protocol" name="protocol_t">
     <xsl:variable name="newID" select="xcede:xcedeID()" />
     <xsl:element name="div">
-      <xsl:attribute name="class">block</xsl:attribute>
-      <xsl:element name="div">
-        <xsl:attribute name="class">blockTitle</xsl:attribute>
-        <xsl:call-template name="showhide_checkbox">
-          <xsl:with-param name="ID" select="$newID" />
-          <xsl:with-param name="checked" select="1" />
-        </xsl:call-template>
+      <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+      <xsl:element name="a">
+        <xsl:attribute name="target">
+          <xsl:value-of select="$targetframe"/>
+        </xsl:attribute>
+        <xsl:attribute name="href">
+          <xsl:value-of select="concat($basefile, '#', $newID)" />
+        </xsl:attribute>
         <xsl:text>Protocol</xsl:text>
         <xsl:if test="@ID">
           <xsl:value-of select="concat(' ', @ID)" />
         </xsl:if>
-      </xsl:element>
-      <xsl:element name="div">
-        <xsl:attribute name="class">fieldGroup</xsl:attribute>
-        <xsl:for-each select="@level|@required|@minOccurences|@maxOccurences">
-          <xsl:call-template name="attrAsString">
-            <xsl:with-param name="paren" select="1" />
-            <xsl:with-param name="separator" select="', '" />
-          </xsl:call-template>
-        </xsl:for-each>
-      </xsl:element>
-      <xsl:call-template name="ID_name_description"/>
-      <xsl:call-template name="terminology_ag"/>
-      <xsl:if test="@ID">
-        <xsl:element name="a">
-          <xsl:attribute name="name">
-            <xsl:text>protocol</xsl:text>
-            <xsl:value-of select="@ID" />
-          </xsl:attribute>
-        </xsl:element>
-      </xsl:if>
-      <xsl:element name="div">
-        <xsl:attribute name="id">
-          <xsl:value-of select="$newID" />
-        </xsl:attribute>
-        <xsl:apply-templates />
       </xsl:element>
     </xsl:element>
   </xsl:template>
@@ -1636,35 +998,15 @@ function showhide_cbid_hide(cbid, id)
     <xsl:variable name="targetNode" select="xcede:findLevelElement(.)" />
     <xsl:if test="count($linkedfrom|$targetNode) = 1">
       <xsl:element name="div">
-        <xsl:attribute name="class">block</xsl:attribute>
-        <xsl:element name="div">
-          <xsl:attribute name="class">blockTitle</xsl:attribute>
-          <xsl:call-template name="showhide_checkbox">
-            <xsl:with-param name="ID" select="$newID" />
-            <xsl:with-param name="checked" select="1" />
-          </xsl:call-template>
-          <xsl:text>Analysis</xsl:text>
-        </xsl:element>
-        <xsl:element name="div">
-          <xsl:attribute name="id">
-            <xsl:value-of select="$newID" />
+        <xsl:attribute name="class">blockTitle-nav</xsl:attribute>
+        <xsl:element name="a">
+          <xsl:attribute name="target">
+            <xsl:value-of select="$targetframe"/>
           </xsl:attribute>
-          <!--        <xsl:call-template name="abstract_container_t" /> -->
-          <xsl:for-each select="xcede:provenance">
-            <xsl:apply-templates select="."/>
-          </xsl:for-each>
-          <xsl:if test="xcede:measurementGroup">
-            <xsl:element name="div">
-              <xsl:attribute name="class">overflowBlock</xsl:attribute>
-              <xsl:element name="div">
-                <xsl:attribute name="class">blockTitle</xsl:attribute>
-                <xsl:text>Measurement groups</xsl:text>
-              </xsl:element>
-              <xsl:for-each select="xcede:measurementGroup">
-                <xsl:call-template name="genericElement" />
-              </xsl:for-each>
-            </xsl:element>
-          </xsl:if>
+          <xsl:attribute name="href">
+            <xsl:value-of select="concat($basefile, '#', $newID)" />
+          </xsl:attribute>
+          <xsl:text>Analysis</xsl:text>
         </xsl:element>
       </xsl:element>
     </xsl:if>

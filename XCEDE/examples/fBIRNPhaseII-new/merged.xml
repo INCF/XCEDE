@@ -3357,7 +3357,7 @@
         <user>gadde</user>
         <hostName>golgi</hostName>
         <platform>AIX</platform>
-        <cvs>$Id: merged.xml,v 1.4 2008-03-14 17:26:36 gadde Exp $</cvs>
+        <cvs>$Id: merged.xml,v 1.5 2008-03-20 15:42:43 gadde Exp $</cvs>
         <package>FreeSurfer</package>
       </processStep>
     </provenance>
@@ -5186,7 +5186,6 @@
       <acquisitionMatrix>64</acquisitionMatrix>
       <flipAngle>90</flipAngle>
   
-      <param name="examnumber">45015</param>
       <param name="studyid">BIRN20</param>
       <param name="seriesnumber">4</param>
       <param name="runnumber">2</param>

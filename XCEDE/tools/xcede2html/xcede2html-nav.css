@@ -1,0 +1,386 @@
+body
+{
+  font-family: George, Garamond, serif;
+}
+
+.project-nav,
+.visit-nav,
+.study-nav,
+.episode-nav,
+.acquisition-nav
+{
+  display: block;
+  clear: left;
+  padding-left: 0.5em;
+  margin-left: 1em;
+}
+
+.visit-nav,
+.study-nav,
+.episode-nav,
+.acquisition-nav
+{
+  margin-left: 0.5em;
+}
+
+.projectTitle-nav, .visitTitle-nav, .studyTitle-nav, .episodeTitle-nav, .acquisitionTitle-nav
+{
+  display: block;
+  font-style: italic;
+  margin-left: -1.5em;
+}
+
+.blockTitle-nav
+{
+  width: 100%;
+}
+
+.levelName
+{
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+.levelID
+{
+}
+
+.switchOpen, .switchClosed
+{
+  color: #F00;
+  background-color: #DDD;
+  padding: 0px;
+  margin: 0px;
+  vertical-align: center;
+  text-align: center;
+  font-variant: small-caps;
+  font-size: 50%;
+  font-style: normal;
+}
+
+.switchOpen
+{
+  border-right: 1px solid #888;
+  border-bottom: 1px solid #888;
+}
+
+.switchClosed
+{
+  border-top: 1px solid #888;
+  border-left: 1px solid #888;
+}
+
+.switchContainer
+{
+  margin-left: -1.5em;
+}
+
+
+/* THE FOLLOWING CODE COMES FROM:
+ *   http://www.surfare.net/~toolman/temp/diagram.html
+ */
+/* The main diagram container needs to be positioned relatively, so that
+   it's children can be positioned within it. */
+#diagram {
+  position: relative;
+  margin:   0 auto; /* Sorry, IE5.x/Win. */
+  width:    35em;
+  height:   24em;
+}
+
+/* Turn off this Opera/Mozilla feature. */
+#diagram abbr, #diagram acronym { border-bottom: 0 }
+
+/* The top-level DIVs are the state boxes, which should have a border.
+   We need to use ems, because the border width counts in the box size
+   (except in IE5.x/Win, of course).  It will affect arrow lengths. */
+#diagram div {
+  border: 0.05em solid #000;
+}
+
+/* All DIVs and list items in the diagram are absolutely positioned. */
+#diagram div, #diagram li {
+  position: absolute;
+  margin:   0;
+  padding:  0;
+}
+
+/* State names will be centered within their boxes. */
+#diagram h3 {
+  margin:      0;
+  padding:     0;
+  font-size:   1em;
+  font-weight: normal;
+  line-height: 2;
+  text-align:  center;
+}
+
+/* The "current" state needs to stand out. */
+#current {
+  background-color: #33c;
+  color:            #fff;
+}
+#current h3 { font-weight: bold }
+
+/* "Linked" states are indicated visually as state boxes. */
+#diagram div li a {
+  display:          block;
+  position:         absolute;
+  border:           0.05em dotted #666;
+  background-color: #eee;
+  line-height:      2;
+  text-align:       center;
+}
+#diagram div li a:link    { color: #00f }
+#diagram div li a:visited { color: #906 }
+#diagram div li a:hover, #diagram div li a:focus { color: #f60 }
+#diagram div li a:active  { color: #f00 }
+
+/* SAMPs are samples of the symbols causing a transition. */
+#diagram li samp {
+  background-color: transparent;
+  color:            #069;
+}
+
+/* VARs in SAMPs indicate a symbol _type_. */
+#diagram li samp var {
+  background-color: transparent;
+  color:            #930;
+  font-style:       normal;
+}
+
+/* SPANs are used for hiding explanatory text that shouldn't be used in a
+   CSS-aware environment.  Those SPANs are also used for creating the
+   arrowheads on transition lines (see below). */
+#diagram li span {
+  position:    absolute;
+  width:       0;
+  height:      0;
+  overflow:    hidden;
+}
+
+/* IE5.x/Win is somewhat buggy.  Yes, really! */
+* html #diagram li span {
+  font-size:  0;
+  f\ont-size: 1em;
+}
+
+* html #diagram .circ-top span,
+* html #diagram .down span,
+* html #diagram .up span
+{
+  width:   8px;
+  w\idth:  0;
+  height:  4px;
+  he\ight: 0;
+}
+
+* html #diagram .circ-right span,
+* html #diagram .right span,
+* html #diagram .down-right span,
+* html #diagram .up-right span
+{
+  width:   4px;
+  w\idth:  0;
+  height:  8px;
+  he\ight: 0;
+}
+
+/* We'll use unordered lists for the transitions. */
+#diagram ul {
+  margin:     0;
+  padding:    0;
+  list-style: none inside;
+}
+
+/* IE6/Win completely freaks out without this. */
+* html #diagram ul { width: 0 }
+
+/* Transition lines. */
+#diagram .circ-right { /* Circular transition to the right of a state box. */
+  top:         0.5em;
+  left:        100%;
+  width:       1em;
+  margin-left: 0.05em;
+  height:      1em;
+  border:      0.05em solid #000;
+  border-left: 0;
+}
+#diagram .circ-right samp {
+  position: absolute;
+  left:     100%;
+}
+
+#diagram .circ-top { /* Circular transition above a state box. */
+  bottom:        100%;
+  left:          0.5em;
+  width:         1em;
+  height:        1em;
+  margin-bottom: 0.05em;
+  border:        0.05em solid #000;
+  border-bottom: 0;
+}
+#diagram .circ-top samp {
+  position:  absolute;
+  bottom:    100%;
+}
+
+#diagram .down { /* Straight vertical transition, top to bottom. */
+  top:         100%;
+  left:        50%;
+  margin-top:  0.05em;
+  border-left: 0.05em solid #000;
+}
+#diagram .down a {
+  top:  100%;
+  left: 0;
+}
+
+#diagram .down-right { /* Angled transition, down and right. */
+  top:           100%;
+  left:          100%;
+  margin-bottom: 0.05em;
+  margin-left:   -1em;
+  border-bottom: 0.05em solid #000;
+  border-left:   0.05em solid #000;
+}
+#diagram .down-right a {
+  bottom: -1em;
+  left:   100%;
+}
+
+#diagram .right { /* Straight horizontal transition, left to right. */
+  top:           0;
+  left:          100%;
+  margin-left:   0.05em;
+  border-bottom: 0.05em solid #000;
+}
+#diagram .right a {
+  top:  0;
+  left: 100%;
+}
+
+#diagram .up { /* Straight vertical transition, bottom to top. */
+  bottom:        100%;
+  left:          50%;
+  margin-bottom: 0.05em;
+  border-left:   0.05em solid #000;
+}
+#diagram .up samp, #diagram .up-right samp {
+  position: absolute;
+  bottom:   0;
+}
+
+#diagram .up-right { /* Angled transition, up and right. */
+  bottom:        100%;
+  left:          100%;
+  margin-bottom: 0.05em;
+  margin-left:   -1em;
+  border-top:    0.05em solid #000;
+  border-left:   0.05em solid #000;
+}
+#diagram .up-right a {
+  top:  -1em;
+  left: 100%;
+}
+
+/* Arrowheads */
+#diagram .circ-right span {
+  top:           -0.3em;
+  left:          0;
+  border-top:    0.3em solid #fff;
+  border-right:  0.5em solid #000;
+  border-bottom: 0.3em solid #fff;
+}
+* html #diagram .circ-right span {
+  top:           -4px;
+  t\op:          -0.3em;
+  border-width:  4px 4px 4px 0;
+  b\order-width: 0.3em 0.5em 0.3em 0;
+}
+
+#diagram .circ-top span, #diagram .down span {
+  bottom:       0;
+  left:         -0.3em;
+  border-top:    0.5em solid #000;
+  border-right:  0.3em solid #fff;
+  border-left:   0.3em solid #fff;
+}
+* html #diagram .circ-top span, * html #diagram .down span {
+  left:          -4px;
+  lef\t:         -0.3em;
+  border-width:  4px 4px 0;
+  b\order-width: 0.5em 0.3em 0;
+}
+
+#diagram .down-right span, #diagram .right span {
+  right:         0;
+  bottom:        -0.3em;
+  border-top:    0.3em solid #fff;
+  border-bottom: 0.3em solid #fff;
+  border-left:   0.5em solid #000;
+}
+* html #diagram .down-right span, * html #diagram .right span {
+  bottom:        -4px;
+  b\ottom:       -0.3em;
+  border-width:  4px 0 4px 4px;
+  b\order-width: 0.3em 0 0.3em 0.5em;
+}
+
+#diagram .up span {
+  top:           0;
+  left:          -0.3em;
+  border-right:  0.3em solid #fff;
+  border-bottom: 0.5em solid #000;
+  border-left:   0.3em solid #fff;
+}
+* html #diagram .up span {
+  left:          -4px;
+  lef\t:         -0.3em;
+  border-width:  0 4px 4px 4px;
+  b\order-width: 0 0.3em 0.5em 0.3em;
+}
+
+#diagram .up-right span {
+  top:           -0.3em;
+  right:         0;
+  border-top:    0.3em solid #fff;
+  border-bottom: 0.3em solid #fff;
+  border-left:   0.5em solid #000;
+}
+* html #diagram .up-right span {
+  top:           -4px;
+  t\op:          -0.3em;
+  border-width:  4px 0 4px 4px;
+  b\order-width: 0.3em 0 0.3em 0.5em;
+}
+
+/* Rows, columns, heights, widths, and sizes. */
+.row1 { top: 3em }
+.row2 { top: 9em }
+.row3 { top: 15em }
+
+.col1 { left: 3em }
+.col2 { left: 11em }
+.col3 { left: 12em }
+
+.size1 { width: 4em }
+.size2 { width: 8em }
+
+.size3  { width: 10em }
+a.size3 { margin-left: -5em }
+
+.size4 {
+  width:  6.95em;
+  height: 1.95em;
+}
+
+.size5 {
+  width:  5.95em;
+  height: 1.95em;
+}
+
+.height1 { height: 3.9em }
+
+.width1 { width: 4.9em }
+.width2 { width: 5.9em }

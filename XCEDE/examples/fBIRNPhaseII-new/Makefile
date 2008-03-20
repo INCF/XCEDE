@@ -3,7 +3,7 @@ FBIRNSCHEMA=/home/gadde/birn-cvs/BIRN/XCEDE/extensions/fbirn/xcede-fbirn-base.xs
 
 INPUTS=ACQUISITIONlist.xcede ACQUISITION.xcede ANALYSIS.xml AssessmentProtocolExample.xcede CATALOG.xcede EPISODE.xcede EVENTS.xcede PROJECT.xcede STUDY.xcede SUBJECT.xcede VISIT.xcede
 
-all: merged.xml merged.html xcede2html.css
+all: merged.xml merged.html merged-nav.html xcede2html.css xcede2html-nav.css
 
 merged.xml: ../../tools/xcede_merge/xcede_merge.xsl ${INPUTS}
 	cp ../../tools/xcede_merge/xcede_merge.xsl .
@@ -15,6 +15,14 @@ merged.html: merged.xml ../../tools/xcede2html/xcede2html.xsl ../../extensions/f
 	rm -f merged.html
 	xsltproc ../../extensions/fbirn/xcede2html_fbirn.xsl merged.xml > merged.html
 
+merged-nav.html: merged.xml ../../tools/xcede2html/xcede2html-nav.xsl
+	rm -f merged-nav.html
+	xsltproc --stringparam targetframe data --stringparam basefile merged.html ../../tools/xcede2html/xcede2html-nav.xsl merged.xml > merged-nav.html
+
 xcede2html.css: ../../tools/xcede2html/xcede2html.css
 	cp ../../tools/xcede2html/xcede2html.css .
+
+xcede2html-nav.css: ../../tools/xcede2html/xcede2html-nav.css
+	cp ../../tools/xcede2html/xcede2html-nav.css .
+
 
