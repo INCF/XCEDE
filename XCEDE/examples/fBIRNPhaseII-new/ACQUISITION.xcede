@@ -18,7 +18,6 @@
       <acquisitionMatrix>64</acquisitionMatrix>
       <flipAngle>90</flipAngle>
   
-      <param name="examnumber">45015</param>
       <param name="studyid">BIRN20</param>
       <param name="seriesnumber">4</param>
       <param name="runnumber">2</param>
