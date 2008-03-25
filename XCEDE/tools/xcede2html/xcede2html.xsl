@@ -576,9 +576,6 @@ function showhide_cbid_hide(cbid, id)
 
     <xsl:call-template name="newline" />
     <xsl:element name="div">
-      <xsl:attribute name="id">
-        <xsl:value-of select="$ID" />
-      </xsl:attribute>
       <xsl:attribute name="class">
         <xsl:value-of select="$levelname"/>
       </xsl:attribute>
@@ -609,6 +606,9 @@ function showhide_cbid_hide(cbid, id)
 
       <xsl:call-template name="newline" />
       <xsl:element name="div">
+        <xsl:attribute name="id">
+          <xsl:value-of select="$ID" />
+        </xsl:attribute>
         <xsl:attribute name="class">levelBody</xsl:attribute>
         <!-- Match the node (should be at most one) that describes this level for this UID -->
         <xsl:variable name="exprstr" select="concat('/xcede:XCEDE/*[local-name()=$levelname][', $UIDTopexpr, '=$UID]')" />
@@ -1121,9 +1121,6 @@ function showhide_cbid_hide(cbid, id)
     <xsl:if test="count($linkedfrom|$FirstRef) = 1">
       <xsl:call-template name="newline" />
       <xsl:element name="div">
-        <xsl:attribute name="id">
-          <xsl:value-of select="$newID" />
-        </xsl:attribute>
         <xsl:attribute name="class">block</xsl:attribute>
         <xsl:call-template name="newline" />
         <xsl:element name="div">
@@ -1145,6 +1142,9 @@ function showhide_cbid_hide(cbid, id)
         </xsl:element>
         <xsl:call-template name="newline" />
         <xsl:element name="div">
+          <xsl:attribute name="id">
+            <xsl:value-of select="$newID" />
+          </xsl:attribute>
           <xsl:apply-templates />
         </xsl:element>
       </xsl:element>
@@ -1248,6 +1248,45 @@ function showhide_cbid_hide(cbid, id)
         <xsl:call-template name="newline" />
         <xsl:element name="div">
           <xsl:apply-templates />
+        </xsl:element>
+      </xsl:element>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="xcede:data[xcede:checkTypeMatch(@xsi:type, 'http://www.xcede.org/xcede-2', 'assessment_t')]">
+    <xsl:param name="linkedfrom" select="."/>
+    <xsl:variable name="ID" select="string(@ID)" />
+    <xsl:variable name="newID" select="xcede:xcedeID()" />
+    <xsl:variable name="FirstRef" select="//xcede:dataRef[@ID=$ID][1]" />
+    <xsl:if test="count($linkedfrom|$FirstRef) = 1">
+      <xsl:if test="@ID">
+        <xsl:element name="a">
+          <xsl:attribute name="name">
+            <xsl:value-of select="@ID" />
+          </xsl:attribute>
+        </xsl:element>
+      </xsl:if>
+      <xsl:call-template name="newline" />
+      <xsl:element name="div">
+        <xsl:attribute name="id">
+          <xsl:value-of select="$newID" />
+        </xsl:attribute>
+        <xsl:attribute name="class">overflowBlock</xsl:attribute>
+        <xsl:call-template name="newline" />
+        <xsl:element name="div">
+          <xsl:attribute name="class">blockTitle</xsl:attribute>
+          <xsl:call-template name="showhide_checkbox">
+            <xsl:with-param name="ID" select="$newID" />
+            <xsl:with-param name="checked" select="1" />
+          </xsl:call-template>
+          <xsl:text>Assessment</xsl:text>
+          <xsl:if test="@ID">
+            <xsl:value-of select="concat(' (ID=', @ID, ')')" />
+          </xsl:if>
+        </xsl:element>
+        <xsl:call-template name="newline" />
+        <xsl:element name="div">
+          <xsl:call-template name="genericElement" />
         </xsl:element>
       </xsl:element>
     </xsl:if>
