@@ -37,7 +37,7 @@
 				<xs:element name="protocol" type="protocol_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="data" type="abstract_data_t" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:choice>
-			<xs:attribute name="version" type="xs:string"/>
+			<xs:attribute name="version" type="xs:string" use="required"/>
 		</xs:complexType>
 	</xs:element>
 	<!--*********            Top-level containers            *********-->
@@ -395,7 +395,7 @@
 			</xs:element>
 			<xs:element name="annotationList" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>An annotation is a description related to the xml document and the current element.  Fore example, some processing that ahs edited content in the element itself.</xs:documentation>
+					<xs:documentation>An annotation is a description related to the xml document and the current element.  For example, some processing that has edited content in the element itself.</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:sequence>
@@ -417,7 +417,7 @@
 		<xs:attribute name="ID" type="xs:string"/>
 		<xs:attribute name="rev" type="xs:string">
 			<xs:annotation>
-				<xs:documentation>Revision number, should correspond with an appropriate revision ID in the XCEDE/history element</xs:documentation>
+				<xs:documentation>Revision number, should correspond with an appropriate revision ID in the XCEDE/revisionList element</xs:documentation>
 			</xs:annotation>
 		</xs:attribute>
 		<xs:attribute name="type" type="xs:string">
@@ -523,6 +523,7 @@
 			<xs:extension base="abstract_info_t">
 				<xs:sequence>
 					<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
+					<xs:element name="subjectAge" type="xs:duration" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
