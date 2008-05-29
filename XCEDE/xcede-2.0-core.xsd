@@ -515,7 +515,11 @@
 	</xs:complexType>
 	<xs:complexType name="studyInfo_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_info_t"/>
+			<xs:extension base="abstract_info_t">
+				<xs:sequence>
+					<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="visitInfo_t">
@@ -530,12 +534,20 @@
 	</xs:complexType>
 	<xs:complexType name="episodeInfo_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_info_t"/>
+			<xs:extension base="abstract_info_t">
+				<xs:sequence>
+					<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="acquisitionInfo_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_info_t"/>
+			<xs:extension base="abstract_info_t">
+				<xs:sequence>
+					<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<!--*********            Resource types            *********-->
