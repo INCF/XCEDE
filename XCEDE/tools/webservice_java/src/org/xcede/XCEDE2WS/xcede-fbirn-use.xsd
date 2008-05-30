@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:import schemaLocation="../../xcede-2.0-mr.xsd" namespace="http://www.xcede.org/xcede-2"/>
+  <xs:import schemaLocation="xcede-fbirn-base.xsd" namespace="http://www.xcede.org/xcede-2/extensions/fbirn"/>
+</xs:schema>
