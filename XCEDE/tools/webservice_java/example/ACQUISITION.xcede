@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<XCEDE xmlns='http://www.xcede.org/xcede-2'
+       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+       version="2.0">
+  <acquisition ID='MR' episodeID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
+    <acquisitionInfo xsi:type="mrAcquisitionInfo_t">
+      <scanner>
+        <manufacturer>GE</manufacturer>
+      </scanner>
+      <sliceThickness>4</sliceThickness>
+      <scanningSequence>RM</scanningSequence>
+      <sequenceVariant>NONE</sequenceVariant>
+      <tr>2000</tr>
+      <te>6</te>
+      <sequenceName>invspiral</sequenceName>
+      <fieldStrength>4</fieldStrength>
+      <pixelBandwidth>32</pixelBandwidth>
+      <receiveCoilName>HEAD</receiveCoilName>
+      <acquisitionMatrix>64</acquisitionMatrix>
+      <flipAngle>90</flipAngle>
+  
+      <param name="studyid">BIRN20</param>
+      <param name="seriesnumber">4</param>
+      <param name="runnumber">2</param>
+      <param name="description">Head,Obl,2D,invspiral</param>
+      <param name="scandate">2005-07-12</param>
+      <param name="scantime">16:35:33</param>
+      <param name="operator">jt</param>
+      <param name="prescribedslicespacing">5</param>
+      <param name="sliceorder">1,3,5,7,9,11,13,15,17,19,21,23,25,27,2,4,6,8,10,12,14,16,18,20,22,24,26</param>
+      <param name="discacq">0</param>
+    </acquisitionInfo>
+    <dataResourceRef ID="XXXX" />
+  </acquisition>
+  <resource ID="XXXX" xsi:type="mappedBinaryDataResource_t" format="NIfTI-1" level="acquisition" acquisitionID="MR" episodeID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
+    <uri offset="0" size="221184">f0001.img</uri>
+    <uri offset="0" size="221184">f0002.img</uri>
+    <uri offset="0" size="221184">f0003.img</uri>
+    <uri offset="0" size="221184">f0004.img</uri>
+    <uri offset="0" size="221184">f0005.img</uri>
+    <uri offset="0" size="221184">f0006.img</uri>
+    <uri offset="0" size="221184">f0007.img</uri>
+    <uri offset="0" size="221184">f0008.img</uri>
+    <uri offset="0" size="221184">f0009.img</uri>
+    <uri offset="0" size="221184">f0010.img</uri>
+    <uri offset="0" size="221184">f0011.img</uri>
+    <uri offset="0" size="221184">f0012.img</uri>
+    <uri offset="0" size="221184">f0013.img</uri>
+    <uri offset="0" size="221184">f0014.img</uri>
+    <uri offset="0" size="221184">f0015.img</uri>
+    <uri offset="0" size="221184">f0016.img</uri>
+    <uri offset="0" size="221184">f0017.img</uri>
+    <uri offset="0" size="221184">f0018.img</uri>
+    <uri offset="0" size="221184">f0019.img</uri>
+    <uri offset="0" size="221184">f0020.img</uri>
+    <uri offset="0" size="221184">f0021.img</uri>
+    <uri offset="0" size="221184">f0022.img</uri>
+    <uri offset="0" size="221184">f0023.img</uri>
+    <uri offset="0" size="221184">f0024.img</uri>
+    <uri offset="0" size="221184">f0025.img</uri>
+    <uri offset="0" size="221184">f0026.img</uri>
+    <uri offset="0" size="221184">f0027.img</uri>
+    <uri offset="0" size="221184">f0028.img</uri>
+    <uri offset="0" size="221184">f0029.img</uri>
+    <uri offset="0" size="221184">f0030.img</uri>
+    <uri offset="0" size="221184">f0031.img</uri>
+    <uri offset="0" size="221184">f0032.img</uri>
+    <uri offset="0" size="221184">f0033.img</uri>
+    <uri offset="0" size="221184">f0034.img</uri>
+    <uri offset="0" size="221184">f0035.img</uri>
+    <uri offset="0" size="221184">f0036.img</uri>
+    <uri offset="0" size="221184">f0037.img</uri>
+    <uri offset="0" size="221184">f0038.img</uri>
+    <uri offset="0" size="221184">f0039.img</uri>
+    <uri offset="0" size="221184">f0040.img</uri>
+    <uri offset="0" size="221184">f0041.img</uri>
+    <uri offset="0" size="221184">f0042.img</uri>
+    <uri offset="0" size="221184">f0043.img</uri>
+    <uri offset="0" size="221184">f0044.img</uri>
+    <uri offset="0" size="221184">f0045.img</uri>
+    <uri offset="0" size="221184">f0046.img</uri>
+    <uri offset="0" size="221184">f0047.img</uri>
+    <uri offset="0" size="221184">f0048.img</uri>
+    <uri offset="0" size="221184">f0049.img</uri>
+    <uri offset="0" size="221184">f0050.img</uri>
+    <uri offset="0" size="221184">f0051.img</uri>
+    <uri offset="0" size="221184">f0052.img</uri>
+    <uri offset="0" size="221184">f0053.img</uri>
+    <uri offset="0" size="221184">f0054.img</uri>
+    <uri offset="0" size="221184">f0055.img</uri>
+    <uri offset="0" size="221184">f0056.img</uri>
+    <uri offset="0" size="221184">f0057.img</uri>
+    <uri offset="0" size="221184">f0058.img</uri>
+    <uri offset="0" size="221184">f0059.img</uri>
+    <uri offset="0" size="221184">f0060.img</uri>
+    <uri offset="0" size="221184">f0061.img</uri>
+    <uri offset="0" size="221184">f0062.img</uri>
+    <uri offset="0" size="221184">f0063.img</uri>
+    <uri offset="0" size="221184">f0064.img</uri>
+    <uri offset="0" size="221184">f0065.img</uri>
+    <uri offset="0" size="221184">f0066.img</uri>
+    <uri offset="0" size="221184">f0067.img</uri>
+    <uri offset="0" size="221184">f0068.img</uri>
+    <uri offset="0" size="221184">f0069.img</uri>
+    <uri offset="0" size="221184">f0070.img</uri>
+    <uri offset="0" size="221184">f0071.img</uri>
+    <uri offset="0" size="221184">f0072.img</uri>
+    <uri offset="0" size="221184">f0073.img</uri>
+    <uri offset="0" size="221184">f0074.img</uri>
+    <uri offset="0" size="221184">f0075.img</uri>
+    <uri offset="0" size="221184">f0076.img</uri>
+    <uri offset="0" size="221184">f0077.img</uri>
+    <uri offset="0" size="221184">f0078.img</uri>
+    <uri offset="0" size="221184">f0079.img</uri>
+    <uri offset="0" size="221184">f0080.img</uri>
+    <uri offset="0" size="221184">f0081.img</uri>
+    <uri offset="0" size="221184">f0082.img</uri>
+    <uri offset="0" size="221184">f0083.img</uri>
+    <uri offset="0" size="221184">f0084.img</uri>
+    <uri offset="0" size="221184">f0085.img</uri>
+    <uri offset="0" size="221184">f0086.img</uri>
+    <uri offset="0" size="221184">f0087.img</uri>
+    <uri offset="0" size="221184">f0088.img</uri>
+    <uri offset="0" size="221184">f0089.img</uri>
+    <uri offset="0" size="221184">f0090.img</uri>
+    <uri offset="0" size="221184">f0091.img</uri>
+    <uri offset="0" size="221184">f0092.img</uri>
+    <uri offset="0" size="221184">f0093.img</uri>
+    <uri offset="0" size="221184">f0094.img</uri>
+    <uri offset="0" size="221184">f0095.img</uri>
+    <uri offset="0" size="221184">f0096.img</uri>
+    <uri offset="0" size="221184">f0097.img</uri>
+    <uri offset="0" size="221184">f0098.img</uri>
+    <uri offset="0" size="221184">f0099.img</uri>
+    <uri offset="0" size="221184">f0100.img</uri>
+    <uri offset="0" size="221184">f0101.img</uri>
+    <uri offset="0" size="221184">f0102.img</uri>
+    <uri offset="0" size="221184">f0103.img</uri>
+    <uri offset="0" size="221184">f0104.img</uri>
+    <uri offset="0" size="221184">f0105.img</uri>
+    <uri offset="0" size="221184">f0106.img</uri>
+    <uri offset="0" size="221184">f0107.img</uri>
+    <uri offset="0" size="221184">f0108.img</uri>
+    <uri offset="0" size="221184">f0109.img</uri>
+    <uri offset="0" size="221184">f0110.img</uri>
+    <uri offset="0" size="221184">f0111.img</uri>
+    <uri offset="0" size="221184">f0112.img</uri>
+    <uri offset="0" size="221184">f0113.img</uri>
+    <uri offset="0" size="221184">f0114.img</uri>
+    <uri offset="0" size="221184">f0115.img</uri>
+    <uri offset="0" size="221184">f0116.img</uri>
+    <uri offset="0" size="221184">f0117.img</uri>
+    <uri offset="0" size="221184">f0118.img</uri>
+    <uri offset="0" size="221184">f0119.img</uri>
+    <uri offset="0" size="221184">f0120.img</uri>
+    <uri offset="0" size="221184">f0121.img</uri>
+    <uri offset="0" size="221184">f0122.img</uri>
+    <uri offset="0" size="221184">f0123.img</uri>
+    <uri offset="0" size="221184">f0124.img</uri>
+    <uri offset="0" size="221184">f0125.img</uri>
+    <uri offset="0" size="221184">f0126.img</uri>
+    <uri offset="0" size="221184">f0127.img</uri>
+    <uri offset="0" size="221184">f0128.img</uri>
+    <uri offset="0" size="221184">f0129.img</uri>
+    <uri offset="0" size="221184">f0130.img</uri>
+    <uri offset="0" size="221184">f0131.img</uri>
+    <uri offset="0" size="221184">f0132.img</uri>
+    <uri offset="0" size="221184">f0133.img</uri>
+    <uri offset="0" size="221184">f0134.img</uri>
+    <uri offset="0" size="221184">f0135.img</uri>
+    <uri offset="0" size="221184">f0136.img</uri>
+    <uri offset="0" size="221184">f0137.img</uri>
+    <uri offset="0" size="221184">f0138.img</uri>
+    <uri offset="0" size="221184">f0139.img</uri>
+    <uri offset="0" size="221184">f0140.img</uri>
+    <provenance>
+      <processStep>
+        <program version="1.8.3pre">pfile2bxh</program>
+        <programArguments>V0001.img V0002.img V0003.img V0004.img V0005.img V0006.img V0007.img V0008.img V0009.img V0010.img V0011.img V0012.img V0013.img V0014.img V0015.img V0016.img V0017.img V0018.img V0019.img V0020.img V0021.img V0022.img V0023.img V0024.img V0025.img V0026.img V0027.img V0028.img V0029.img V0030.img V0031.img V0032.img V0033.img V0034.img V0035.img V0036.img V0037.img V0038.img V0039.img V0040.img V0041.img V0042.img V0043.img V0044.img V0045.img V0046.img V0047.img V0048.img V0049.img V0050.img V0051.img V0052.img V0053.img V0054.img V0055.img V0056.img V0057.img V0058.img V0059.img V0060.img V0061.img V0062.img V0063.img V0064.img V0065.img V0066.img V0067.img V0068.img V0069.img V0070.img V0071.img V0072.img V0073.img V0074.img V0075.img V0076.img V0077.img V0078.img V0079.img V0080.img V0081.img V0082.img V0083.img V0084.img V0085.img V0086.img V0087.img V0088.img V0089.img V0090.img V0091.img V0092.img V0093.img V0094.img V0095.img V0096.img V0097.img V0098.img V0099.img V0100.img V0101.img V0102.img V0103.img V0104.img V0105.img V0106.img V0107.img V0108.img V0109.img V0110.img V0111.img V0112.img V0113.img V0114.img V0115.img V0116.img V0117.img V0118.img V0119.img V0120.img V0121.img V0122.img V0123.img V0124.img V0125.img V0126.img V0127.img V0128.img V0129.img V0130.img V0131.img V0132.img V0133.img V0134.img V0135.img V0136.img V0137.img V0138.img V0139.img V0140.img /scratch/LHU-tmp/_tempLocalHumanUpload.27170/odd1/ImageWrapper.xml</programArguments>
+        <timeStamp>2007-09-04T11:23:00-04:00</timeStamp>
+        <user>gadde</user>
+        <architecture>i386</architecture>
+        <platform>linux</platform>
+        <cvs>/home/gadde/xmlheader/utils/pfile2bxh.c v1.68
+        /home/gadde/xmlheader/utils/minc2bxh.c v1.12
+        /home/gadde/xmlheader/libsrc/bxh_dicom.cpp v1.75
+        /home/gadde/xmlheader/utils/ximg2bxh.c v1.18
+        /home/gadde/xmlheader/utils/bxhabsorb.c v1.31
+        /home/gadde/xmlheader/utils/dicom2bxh.cpp v1.43
+        /home/gadde/xmlheader/utils/signafive2bxh.c v1.18
+        /home/gadde/xmlheader/libsrc/bxh_dom_utils-xerces.cpp v1.4
+        /home/gadde/xmlheader/libsrc/bxh_utils.cpp v1.42
+        /home/gadde/xmlheader/utils/iowa-signafive2bxh.c v1.12
+        /home/gadde/xmlheader/utils/analyze2bxh.c v1.28
+        /home/gadde/xmlheader/libsrc/bxh_datarec.cpp v1.69
+        /home/gadde/xmlheader/libsrc/bxh_signa.c v1.47</cvs>
+        <package version="1.8.3pre">BXH utilities</package>
+      </processStep>
+      <processStep>
+        <program version="1.8.3pre">bxh2analyze</program>
+        <programArguments>/scratch/LHU-tmp/_tempLocalHumanUpload.27170/odd1/ImageWrapper.xml /scratch/LHU-tmp/_tempLocalHumanUpload.27170/odd1/SPMFormat/f</programArguments>
+        <timeStamp>2007-09-04T11:24:06-04:00</timeStamp>
+        <user>gadde</user>
+        <architecture>i386</architecture>
+        <platform>linux</platform>
+        <cvs>/home/gadde/xmlheader/utils/pfile2bxh.c v1.68
+        /home/gadde/xmlheader/utils/minc2bxh.c v1.12
+        /home/gadde/xmlheader/libsrc/bxh_dicom.cpp v1.75
+        /home/gadde/xmlheader/utils/ximg2bxh.c v1.18
+        /home/gadde/xmlheader/utils/bxhabsorb.c v1.31
+        /home/gadde/xmlheader/utils/dicom2bxh.cpp v1.43
+        /home/gadde/xmlheader/utils/signafive2bxh.c v1.18
+        /home/gadde/xmlheader/libsrc/bxh_dom_utils-xerces.cpp v1.4
+        /home/gadde/xmlheader/libsrc/bxh_utils.cpp v1.42
+        /home/gadde/xmlheader/utils/iowa-signafive2bxh.c v1.12
+        /home/gadde/xmlheader/utils/analyze2bxh.c v1.28
+        /home/gadde/xmlheader/libsrc/bxh_datarec.cpp v1.69
+        /home/gadde/xmlheader/libsrc/bxh_signa.c v1.47</cvs>
+        <package version="1.8.3pre">BXH utilities</package>
+      </processStep>
+    </provenance>
+    <elementType>int16</elementType>
+    <byteOrder>lsbfirst</byteOrder>
+    <dimension label="x">
+      <size>64</size>
+      <spacing>3.4375</spacing>
+      <gap>0</gap>
+      <direction>-1 0 0</direction>
+      <units>mm</units>
+    </dimension>
+    <dimension label="y">
+      <size>64</size>
+      <spacing>3.4375</spacing>
+      <gap>0</gap>
+      <direction>0 -1 0</direction>
+      <units>mm</units>
+    </dimension>
+    <dimension label="z">
+      <size>27</size>
+      <spacing>5</spacing>
+      <gap>1</gap>
+      <direction>0 0 1</direction>
+      <units>mm</units>
+    </dimension>
+    <dimension label="t">
+      <size>140</size>
+      <origin>0</origin>
+      <spacing>2000</spacing>
+      <gap>0</gap>
+      <units>ms</units>
+    </dimension>
+    <originCoords>108.28125 108.28125 -65 </originCoords>
+  </resource>
+</XCEDE>

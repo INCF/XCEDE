@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       version="2.0">
+  <visit ID="1" subjectID="1" projectID="A">
+    <visitInfo>
+      <timeStamp>2005-05-05T09:00:00-05:00</timeStamp>
+    </visitInfo>
+  </visit>
+</XCEDE>

@@ -1,0 +1,45 @@
+This is a very bare-bones prototype of an XCEDE web service.
+None of the functions have been formalized, just examples that
+I have been able to cobble together in a short period of time.
+
+To run this, edit the "run.sh" script to point to your java
+executable (Sun version 1.5 or newer), and then run:
+
+  ./run.sh
+
+from within the XCEDE2WS root directory.  Hopefully the class
+path is set up correctly.  You can look at the Makefile to see
+how it was compiled.  (In a hurry, obviously.)
+
+The available functions are:
+
+  get_function_list
+  get_full_XCEDE
+  apply_xpath (the "xcede:" prefix is mapped to the XCEDE 2.0 namespace)
+
+The document (such as it is) for each function is in the
+src/org/xcede/XCEDE2WS directory, in HTML files with the
+name func_FUNCNAME.html.  They are also included in the
+"documentation" field when you call the get_function_list
+function.
+
+The "get_function_list" function uses reflection to find the
+methods in the org.xcede.XCEDE2WS.WebService class that start
+with "func_" and exports them via the service.
+
+The service operates on port 8182 and is accessed using simple URLs.
+If you have "curl", you can do this:
+
+  curl http://localhost:8182/get_function_list
+
+  curl http://localhost:8182/get_full_XCEDE
+
+  curl http://localhost:8182/apply_xpath?xpath=/xcede:XCEDE
+
+  curl http://localhost:8182/apply_xpath?xpath=//xcede:subject
+
+  curl 'http://localhost:8182/apply_xpath?xpath=//xcede:subject%5B%40ID=1%5D'
+      (that's //xcede:subject[ID=1] unescaped)
+
+  curl 'http://localhost:8182/apply_xpath?xpath=//xcede:event%5Bxcede:value%5B%40name="tonebin"%5D=2%5D'
+      (that's //xcede:event[xcede:value[@name="tonebin"]=2] unescaped)

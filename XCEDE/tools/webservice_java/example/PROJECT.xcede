@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       version="2.0">
+  <project ID="A">
+    <projectInfo>
+      <subjectGroupList>
+        <subjectGroup ID="X">
+          <subjectID>1</subjectID>
+          <subjectID>2</subjectID>
+        </subjectGroup>
+      </subjectGroupList>
+    </projectInfo>
+  </project>
+  <project ID="B">
+    <projectInfo>
+      <subjectGroupList>
+        <subjectGroup ID="Z">
+          <subjectID>3</subjectID>
+        </subjectGroup>
+      </subjectGroupList>
+    </projectInfo>
+    <contributorList>
+      <contributor ID="00001" role="Principal Investigator">
+        <salutation>Dr.</salutation>
+        <givenName>Zaphod</givenName>
+        <middleName>Q.</middleName>
+        <surname>Beeblebrox</surname>
+        <academicTitles>M.D., Ph.D</academicTitles>
+        <institution>Betelgeuse Academy</institution>
+        <department>Department of Psychiatry</department>
+      </contributor>
+    </contributorList>
+  </project>
+</XCEDE>

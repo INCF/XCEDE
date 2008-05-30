@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       xmlns:xcede="http://www.xcede.org/xcede-2"
+       xmlns:fbirn="http://www.xcede.org/xcede-2/extensions/fbirn"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       version="2.0">
+  <episode ID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
+    <xcede:episodeInfo xsi:type="fbirn:fipsEpisodeInfo_t" xmlns="http://www.xcede.org/xcede-2/extensions/fbirn">
+      <nameLocal>AudOdd1</nameLocal>
+      <nameStandard>AudOdd1</nameStandard>
+      <segmentID/>
+      <seriesTime>12:26:00</seriesTime>
+      <comment>No exceptions happened in this series. </comment>
+      <type>functional</type>
+      <paradigm>auditory_oddball</paradigm>
+      <paradigmVersion>1</paradigmVersion>
+      <number>1</number>
+      <sliceOrder>1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30</sliceOrder>
+      <skipInitialVols>0</skipInitialVols>
+      <analysisLevel>
+        <level> none </level>
+        <name>DICOM</name>
+      </analysisLevel>
+    </xcede:episodeInfo>
+  </episode>
+</XCEDE>
