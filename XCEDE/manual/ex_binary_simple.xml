@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+	<resource xsi:type="binaryDataResource_t">
+		<uri offset="0" size="8192">random_data_file.bin</uri>
+		<elementType>float32</elementType>
+		<byteOrder>lsbfirst</byteOrder>
+	</resource>
+</XCEDE>

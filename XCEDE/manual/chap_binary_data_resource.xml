@@ -46,14 +46,10 @@
 
       <figure id="binary_data_resource.simple_example">
         <title>Simple <type>binaryDataResource_t</type> example</title>
-        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
-  <uri offset="0" size="8192">random_data_file.bin</uri>
-  <elementType>float32</elementType>
-  <byteOrder>lsbfirst</byteOrder>
-</dataResource>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_binary_simple.xml" parse="text"/></programlisting>
       </figure>
 
-      <para>Note the <literal>xsi:type</literal> specifying that this <literal>&lt;dataResource&gt;</literal> element is of type <type>binaryDataResource_t</type>.  (The <literal>xsi:</literal> prefix should have already been declared previously in the XML file using something similar to <literal>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</literal>)</para>
+      <para>Note the <literal>xsi:type</literal> specifying that this <literal>&lt;resource&gt;</literal> element is of type <type>binaryDataResource_t</type>.  (The <literal>xsi:</literal> prefix should have already been declared previously in the XML file using something similar to <literal>xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"</literal>)</para>
 
       <para>The <literal>&lt;elementType&gt;</literal> element is restricted to one of several pre-defined strings (see the schema for details).  The <literal>&lt;byteOrder&gt;</literal> element must be <literal>lsbfirst</literal> for little-endian data or <literal>msbfirst</literal> for big-endian data.</para>
 
@@ -61,23 +57,14 @@
 
       <figure id="binary_data_resource.gzip_example">
         <title><type>binaryDataResource_t</type> with compression</title>
-        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
-  <uri offset="0" size="8192">random_data_file.bin.gz</uri>
-  <elementType>float32</elementType>
-  <byteOrder>lsbfirst</byteOrder>
-  <compression>gzip</compression>
-</dataResource>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_binary_with_compression.xml" parse="text"/></programlisting>
       </figure>
 
       <para>As a special case, if the application does not find the file pointed to by a URI, and the <literal>&lt;compression&gt;</literal> element is <emphasis>not</emphasis> present, it may search for the same file with an appended <literal>.gz</literal> suffix, and if it exists, treat it as implicitly gzip-compressed data.  <xref linkend='binary_data_resource.implicit_gzip_example'/> shows how the same data in <xref linkend='binary_data_resource.gzip_example'/> could be expressed using this alternative method.  Pointing to the uncompressed version of the file (even when only the compressed version exists) allows the user to decompress or compress the data file at will, without affecting the ability of the application to read the data using the same <type>binaryDataResource_t</type>.  Note that the <literal>&lt;uri&gt;</literal> and <literal>&lt;compression&gt;</literal> elements must be internally consistent.  It would be an error to reference the uncompressed file <literal>random_data_file.bin</literal> and yet say that it was compressed using <literal>&lt;compression&gt;gzip&lt;/compression&gt;</literal>.  Likewise, explicit references to the compressed file (especially files that do not have the <literal>.gz</literal> suffix) must specify the compression method explicitly using the <literal>compression</literal> element.</para>
 
       <figure id="binary_data_resource.implicit_gzip_example">
         <title><type>binaryDataResource_t</type> with implicit compression</title>
-        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
-  <uri offset="0" size="8192">random_data_file.bin</uri>
-  <elementType>float32</elementType>
-  <byteOrder>lsbfirst</byteOrder>
-</dataResource>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_binary_with_implicit_compression.xml" parse="text"/></programlisting>
       </figure>
 
     </section>
@@ -89,17 +76,7 @@
 
       <figure id="binary_data_resource.dimension_example">
         <title><type>dimensionedBinaryDataResource_t</type> example</title>
-        <programlisting><![CDATA[<dataResource xsi:type="dimensionedBinaryDataResource_t">
-  <uri offset="0" size="262144">rawdata.img</uri>
-  <elementType>int32</elementType>
-  <byteOrder>msbfirst</byteOrder>
-  <dimension label="x">
-    <size>256</size>
-  </dimension>
-  <dimension label="y">
-    <size>256</size>
-  </dimension>
-</dataResource>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_binary_dimensioned.xml" parse="text"/></programlisting>
       </figure>
 
       <para>Dimensions are ordered from fastest-moving to slowest-moving.  So in the above example, the <inlineequation>x</inlineequation> dimension index changes on each consecutive data item, but the <inlineequation>y</inlineequation> dimension changes every 256 elements.</para>
@@ -123,45 +100,7 @@
 
       <figure id="binary_data_resource.map_example">
         <title><type>mappedBinaryDataResource_t</type> example</title>
-        <programlisting><![CDATA[<dataResource xsi:type="mappedBinaryDataResource_t">
-  <uri offset="0" size="442368">V0001.img</uri>
-  <uri offset="0" size="442368">V0002.img</uri>
-  <uri offset="0" size="442368">V0003.img</uri>
-  <uri offset="0" size="442368">V0004.img</uri>
-  <uri offset="0" size="442368">V0005.img</uri>
-  <!-- ... 135 more <uri> elements omitted for space ... -->
-  <elementType>int32</elementType>
-  <byteOrder>msbfirst</byteOrder>
-  <dimension label="x">
-    <size>64</size>
-    <spacing>3.75</spacing>
-    <gap>0</gap>
-    <direction>1 0 0</direction>
-    <units>mm</units>
-  </dimension>
-  <dimension label="y">
-    <size>64</size>
-    <spacing>3.75</spacing>
-    <gap>0</gap>
-    <direction>0 1 0</direction>
-    <units>mm</units>
-  </dimension>
-  <dimension label="z">
-    <size>27</size>
-    <spacing>4</spacing>
-    <gap>1</gap>
-    <direction>0 0 1</direction>
-    <units>mm</units>
-  </dimension>
-  <dimension label="t">
-    <size>140</size>
-    <spacing>2</spacing>
-    <gap>0</gap>
-    <datapoints>0 2 4 6 8</datapoints>
-    <units>sec</units>
-  </dimension>
-  <originCoords>-120 -120 -52</originCoords>
-</dataResource>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_binary_mapped.xml" parse="text"/></programlisting>
       </figure>
 
     </section>
@@ -183,23 +122,7 @@
 
       <figure id="binary_data_resource.splitdim">
         <title>Split dimension example</title>
-        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
-  <uri offset="9240" size="589824">img0001.dcm</uri>
-  <elementType>uint32</elementType>
-  <byteOrder>lsbfirst</byteOrder>
-  <dimension label="x">
-    <size>64</size>
-  </dimension>
-  <dimension label="z" splitRank="1">
-    <size>6</size>
-  </dimension>
-  <dimension label="y">
-    <size>64</size>
-  </dimension>
-  <dimension label="z" splitRank="2">
-    <size>6</size>
-  </dimension>
-</dataResource>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_binary_split.xml" parse="text"/></programlisting>
       </figure>
 
       <para>Applications should read this data as if it were four dimensions, and then permute the data to bring the two <inlineequation>z</inlineequation> dimensions together (in the order specified by splitRank) in the position of the highest-ranked split dimension, and the two dimensions can then be merged into one.  The size of the new <inlineequation>z</inlineequation> dimension is the product of the sizes of the component split dimensions, so <inlineequation>6 * 6 = 36</inlineequation>.</para>
@@ -208,23 +131,7 @@
 
       <figure id="binary_data_resource.outputSelect">
         <title><literal>outputSelect</literal> example</title>
-        <programlisting><![CDATA[<dataResource xsi:type="binaryDataResource_t">
-  <uri offset="0" size="589824">img0001.dcm</uri>
-  <elementType>uint32</elementType>
-  <byteOrder>lsbfirst</byteOrder>
-  <dimension label="x">
-    <size>64</size>
-  </dimension>
-  <dimension label="z" splitRank="1">
-    <size>6</size>
-  </dimension>
-  <dimension label="y">
-    <size>64</size>
-  </dimension>
-  <dimension label="z" splitRank="2" outputSelect="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31">
-    <size>6</size>
-  </dimension>
-</dataResource>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_binary_output_select.xml" parse="text"/></programlisting>
       </figure>
 
       <para>The <literal>outputSelect</literal> attribute specifies a list of indices along the given dimension (or combined dimension if it occurs on the highest-ranked component of a split dimension) that should be regarded as valid data.  Data in the other indices should be ignored.</para>

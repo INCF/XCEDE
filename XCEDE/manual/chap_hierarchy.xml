@@ -40,49 +40,7 @@
     </section>
     <figure id="hierarchy.example_instance">
       <title>Metadata hierarchy instance</title>
-      <programlisting><![CDATA[<XCEDE xmlns="http://www.xcede.org/xcede-2">
-  <project ID="A">
-    <projectInfo>
-      <subjectGroupList>
-        <subjectGroup ID="X">
-          <subjectID>1</subjectID>
-          <subjectID>2</subjectID>
-        </subjectGroup>
-      </subjectGroupList>
-    </projectInfo>
-  </project>
-  <project ID="B">
-    <projectInfo>
-      <subjectGroupList>
-        <subjectGroup ID="Z">
-          <subjectID>3</subjectID>
-        </subjectGroup>
-      </subjectGroupList>
-    </projectInfo>
-  </project>
-  <subject ID="1" />
-  <subject ID="2" />
-  <subject ID="3" />
-  <visit ID="1"
-         projectID="A" subjectID="1" subjectGroupID="X" />
-  <study ID="MR scan"
-         projectID="A" subjectID="1" subjectGroupID="X" visitID="1" />
-  <episode ID="task run 1"
-         projectID="A" subjectID="1" subjectGroupID="X" visitID="1" studyID="MR" />
-  <acquisition ID="MR image"
-         projectID="A" subjectID="1" subjectGroupID="X" visitID="1" studyID="MR"
-         episodeID="task run 1" />
-  <acquisition ID="behavioral data"
-         projectID="A" subjectID="1" subjectGroupID="X" visitID="1" studyID="MR"
-         episodeID="task run 1" />
-  <acquisition ID="heart rate"
-         projectID="A" subjectID="1" subjectGroupID="X" visitID="1" studyID="MR"
-         episodeID="task run 1" />
-  <study ID="Clinical interview"
-         projectID="A" subjectID="1" subjectGroupID="X" visitID="2" />
-  <!-- ... etc. ... -->
-</XCEDE>
-]]></programlisting>
+      <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_hierarchy.xml" parse="text" /></programlisting>
     </figure>
     <para></para>
   </section>

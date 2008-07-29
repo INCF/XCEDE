@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+	<resource xsi:type="mappedBinaryDataResource_t">
+		<uri offset="0" size="442368">V0001.img</uri>
+		<uri offset="0" size="442368">V0002.img</uri>
+		<uri offset="0" size="442368">V0003.img</uri>
+		<uri offset="0" size="442368">V0004.img</uri>
+		<uri offset="0" size="442368">V0005.img</uri>
+		<!-- ... 135 more <uri> elements omitted for space ... -->
+		<elementType>int32</elementType>
+		<byteOrder>msbfirst</byteOrder>
+		<dimension label="x">
+			<size>64</size>
+			<spacing>3.75</spacing>
+			<gap>0</gap>
+			<direction>1 0 0</direction>
+			<units>mm</units>
+		</dimension>
+		<dimension label="y">
+			<size>64</size>
+			<spacing>3.75</spacing>
+			<gap>0</gap>
+			<direction>0 1 0</direction>
+			<units>mm</units>
+		</dimension>
+		<dimension label="z">
+			<size>27</size>
+			<spacing>4</spacing>
+			<gap>1</gap>
+			<direction>0 0 1</direction>
+			<units>mm</units>
+		</dimension>
+		<dimension label="t">
+			<size>140</size>
+			<spacing>2</spacing>
+			<gap>0</gap>
+			<datapoints>0 2 4 6 8</datapoints>
+			<units>sec</units>
+		</dimension>
+		<originCoords>-120 -120 -52</originCoords>
+	</resource>
+</XCEDE>

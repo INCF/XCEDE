@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+
+	<data xsi:type="assessment_t" subjectID="00301882920">
+		<name>Socio-Economic Status</name>
+		<dataInstance validated="true">
+			<assessmentInfo>
+				<description>This is the socio-economic scale.</description>
+			</assessmentInfo>
+			<assessmentItem ID="ses_education_subject">
+				<value>1</value>
+			</assessmentItem>
+			<assessmentItem ID="ses_education_p_caretaker_prior_18">
+				<value>2</value>
+			</assessmentItem>
+			<assessmentItem ID="ses_education_p_caretaker_lifetime">
+				<value>2</value>
+			</assessmentItem>
+			<assessmentItem ID="ses_education_s_caretaker_prior18">
+				<value>1</value>
+			</assessmentItem>
+		</dataInstance>
+	</data>
+
+</XCEDE>

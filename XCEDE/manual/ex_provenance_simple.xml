@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+
+	<resource xsi:type="binaryDataResource_t">
+		<uri offset="352" size="8192">random_generated_data_file.nii</uri>
+		<provenance ID="1">
+			<processStep parent="1" ID="1">
+				<program build="1.0" version="1.0">filter1</program>
+				<programArguments inputs="-in analyze" outputs="-out minc">-size 10 -reps 100 -v -in minc -out nifti</programArguments>
+				<!-- <timeStamp>11:20:37</timeStamp> -->
+				<user>xnatmaster</user>
+				<hostName>lablin1</hostName>
+				<architecture>x86</architecture>
+				<platform version="6">fedora</platform>
+			</processStep>
+			<processStep parent="1" ID="2">
+				<program build="String" version="1.2">filter2</program>
+				<programArguments inputs="-in minc" outputs="-out nifti">-size 20 -reps 200 -v -in minc -out nifti</programArguments>
+				<!-- <timeStamp>11:50:21</timeStamp> -->
+				<user>xnatmaster</user>
+				<hostName>lablin1</hostName>
+				<architecture>x86</architecture>
+				<platform version="6">fedora</platform>
+			</processStep>
+		</provenance>
+		<elementType>float32</elementType>
+		<byteOrder>lsbfirst</byteOrder>
+	</resource>
+</XCEDE>

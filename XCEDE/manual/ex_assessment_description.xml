@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" version="2.0">
+	<protocol ID="An Assessment Description" name="The Name of the Assessment" minOccurences="1" maxOccurences="1" required="true" description="The description of the Assessment">
+		<steps>
+			<step ID="SES" name="Socio-Economic Scale" minOccurences="1" maxOccurences="1" required="true">
+				<items>
+					<item ID="ses_education_subject">
+						<itemText>
+							<textLabel location="leadText" value="What is the highest level of education or professional training that you have achieved?"/>
+							<textLabel location="trailText" value="Any trailing text might go here"/>
+						</itemText>
+						<itemChoice itemCode="1" itemValue="professional or graduate training (received degree)"/>
+						<itemChoice itemCode="2" itemValue="college graduate"/>
+						<itemChoice itemCode="3" itemValue="some college (at least one year)"/>
+					</item>
+					<item ID="ses_education_p_caretaker_prior_18">
+						<itemText>
+							<textLabel location="leadText" value="What is the highest level of education or professional training that your primary caretaker until you were 18 years old has achieved?"/>
+						</itemText>
+						<itemChoice itemCode="1" itemValue="professional or graduate training (received degree)"/>
+						<itemChoice itemCode="2" itemValue="college graduate"/>
+						<itemChoice itemCode="3" itemValue="some college (at least one year)"/>
+					</item>
+				</items>
+			</step>
+		</steps>
+	</protocol>
+</XCEDE>

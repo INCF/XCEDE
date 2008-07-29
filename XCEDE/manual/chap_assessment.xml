@@ -34,63 +34,17 @@
     <section>
       <title>Formal Assessment Description</title>
       <para>The formal description of each question for the assessment and possible answer choices:</para>
-      <figure id="assessment_description.simple_example">
+      <figure id="assessment.description_example">
         <title>Assessment description</title>
-        <programlisting><![CDATA[ <xcede:step ID="SES" name="Socio-Economic Scale" minOccurences="1" maxOccurences="1"
-                required="true">
-                   <xcede:items>
-                    <xcede:item ID="ses_education_subject">
-                        <xcede:itemText>
-                            <xcede:textLabel location="leadText"
-                                value="What is the highest level of education or professional training
-                                that you have achieved?"/>
-                            <xcede:textLabel location="trailText"
-                                value="Any trailing text might go here"/>
-                        </xcede:itemText>
-                        <xcede:itemChoice itemCode="1"
-                            itemValue="professional or graduate training (received degree)"/>
-                        <xcede:itemChoice itemCode="2" itemValue="college graduate"/>
-                        <xcede:itemChoice itemCode="3" itemValue="some college (at least one year)"/>
-                    </xcede:item>
-                    <xcede:item ID="ses_education_p_caretaker_prior_18">
-                        <xcede:itemText>
-                            <xcede:textLabel location="leadText"
-                                value="What is the highest level of education or professional training that your primary caretaker until you were 18 years old has achieved?"/>
-                        </xcede:itemText>
-                        <xcede:itemChoice itemCode="1"
-                            itemValue="professional or graduate training (received degree)"/>
-                        <xcede:itemChoice itemCode="2" itemValue="college graduate"/>
-                        <xcede:itemChoice itemCode="3" itemValue="some college (at least one year)"/>
-                    </xcede:item>
-                </xcede:items>
-            </xcede:step>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_assessment_description.xml" parse="text"/></programlisting>
       </figure>
     </section>
     <section>
       <title>Actual Acquired Assessment Data</title>
       <para>An instance of actual assessment data acquired on a subject during a protocol collection:</para>
-      <figure id="acquired_assessment.simple_example">
+      <figure id="assessment.data_example">
         <title>Acquired assessment data</title>
-        <programlisting><![CDATA[<xcede:data xsi:type="xcede:assessment_t" subjectID="00301882920">
-        <xcede:name>Socio-Economic Status</xcede:name>
-        <xcede:dataInstance validated="true">
-            <xcede:assessmentInfo>
-                <xcede:description>This is the socio-economic scale.</xcede:description>
-            </xcede:assessmentInfo>
-            <xcede:assessmentItem ID="ses_education_subject">
-                <xcede:value>1</xcede:value>
-            </xcede:assessmentItem>
-            <xcede:assessmentItem ID="ses_education_p_caretaker_prior_18">
-                <xcede:value>2</xcede:value>
-            </xcede:assessmentItem>
-            <xcede:assessmentItem ID="ses_education_p_caretaker_lifetime">
-                <xcede:value>2</xcede:value>
-            </xcede:assessmentItem>
-            <xcede:assessmentItem ID="ses_education_s_caretaker_prior18">
-                <xcede:value>1</xcede:value>
-            </xcede:assessmentItem>
-        </xcede:dataInstance>
-    </xcede:data>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_assessment_data.xml" parse="text"/></programlisting>
       </figure>       
     </section>
   </section>

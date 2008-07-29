@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+
+<protocol ID="MRIV1" name="MRI Visit 1" minOccurences="1" maxOccurences="1"
+       required="true" level="visit" description="MRI scanning visit 1">
+       <steps>
+           <step ID="SES" name="Socio-Economic Scale" minOccurences="1" maxOccurences="1"
+               required="true">
+               <protocolOffset>
+                   <protocolTimeRef>MRIV1</protocolTimeRef>
+                   <preferredTimeOffset units="days">0</preferredTimeOffset>
+                   <minTimeOffset units="days">0</minTimeOffset>
+                   <maxTimeOffset units="days">0</maxTimeOffset>
+               </protocolOffset>
+               <items>
+                   <item ID="ses_education_subject">
+                       <itemText>
+                           <textLabel location="leadText"
+                               value="What is the highest level of education or professional training
+                               that you have achieved?"/>
+                           <textLabel location="trailText"
+                               value="Any trailing text might go here"/>
+                       </itemText>
+                       <itemChoice itemCode="1"
+                           itemValue="professional or graduate training (received degree)"/>
+                       <itemChoice itemCode="2" itemValue="college graduate"/>
+                       <itemChoice itemCode="3" itemValue="some college (at least one year)"/>
+
+                   </item>
+                   <item ID="ses_education_p_caretaker_prior_18">
+                       <itemText>
+                           <textLabel location="leadText"
+                               value="What is the highest level of education or professional training that your primary caretaker until you were 18 years old has achieved?"/>
+                       </itemText>
+                       <itemChoice itemCode="1"
+                           itemValue="professional or graduate training (received degree)"/>
+                       <itemChoice itemCode="2" itemValue="college graduate"/>
+                       <itemChoice itemCode="3" itemValue="some college (at least one year)"/>
+                   </item>
+               </items>
+           </step>
+           <step ID="MRISCN1" name="MRI Scan Protocol, Visit 1" minOccurences="1"
+               maxOccurences="1" required="true">
+               <protocolOffset>
+                   <protocolTimeRef>SES</protocolTimeRef>
+                   <preferredTimeOffset units="hours">1</preferredTimeOffset>
+                   <minTimeOffset units="hours">1</minTimeOffset>
+                   <maxTimeOffset units="hours">8</maxTimeOffset>
+               </protocolOffset>
+               <steps>
+                   <step name="T1" required="true" minOccurences="1">
+                       <items>
+                           <item xsi:type="protocolItem_t" name="FOV">
+                               <itemRange min="24" max="24" units="mm"/>
+                           </item>
+                           <item xsi:type="protocolItem_t" name="Sequence">
+                               <itemChoice itemValue="FSPGR"/>
+                               <itemChoice itemValue="MP-RAGE"/>
+                           </item>
+                           <item xsi:type="protocolItem_t" name="Slice Thickness">
+                               <itemRange min="1.2" max="1.5" units="mm"/>
+                           </item>
+                           <item xsi:type="protocolItem_t" name="Slices">
+                               <itemRange min="160" max="170"/>
+                           </item>
+                       </items>
+                   </step>
+                   <step name="Sensory Motor" required="true" minOccurences="1"
+                       maxOccurences="4" ID="SM">
+                       <items>
+                           <item name="weighting" xsi:type="protocolItem_t">
+                               <itemChoice itemValue="t2"/>
+                           </item>
+                           <item name="TR" xsi:type="protocolItem_t">
+                               <itemRange min="2" max="2" units="s"/>
+                           </item>
+                           <item name="NumberTRs" xsi:type="protocolItem_t">
+                               <itemRange min="123" max="123" units="TR"/>
+                           </item>
+                           <item name="TE" xsi:type="protocolItem_t">
+                               <itemRange min="30" max="30" units="ms"/>
+                           </item>
+                           <item name="FlipAngle" xsi:type="protocolItem_t">
+                               <itemRange min="90" max="90" units="degrees"/>
+                           </item>
+                       </items>
+                   </step>
+               </steps>
+           </step>
+       </steps>
+   </protocol>
+</XCEDE>
+

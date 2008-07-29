@@ -45,12 +45,7 @@
       </varlistentry>
     </variablelist>
     <para>The following instance shows how each of these fields may be populated.</para>
-    <programlisting><![CDATA[<event type="visual" name="event#1" units="sec">
-  <onset>0</onset>
-  <duration>2</duration>
-  <value name="shape">square</value>
-  <value name="shapecolor">red</value>
-</event>]]></programlisting>
+    <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_events_fields.xml" parse="text"/></programlisting>
     <para>Event elements are stored within the <literal>&lt;data&gt;</literal> element of an <literal>&lt;acquisition&gt;</literal>.  The <literal>&lt;data&gt;</literal> element should be of type <type>events_t</type> (using <literal>xsi:type</literal> &#x2014; see examples below).</para>
     <para>All onsets are relative to an arbitrary time reference.  Typically, time 0 (zero) could mean the start of data acquisition.  An event list may be interpreted as concurrent with data in other <literal>&lt;acquisition&gt;</literal> elements (which could be other event lists).  If so, the same time reference should be used in all concurrent acquisition data.</para>
     <para>There is no ordering constraint on events in a list.  Applications should depend on using the <literal>&lt;onset&gt;</literal> elements to order the events chronologically if they so desire.</para>
@@ -68,76 +63,13 @@
     <para>Consider the timeline shown in <xref linkend='events.timeline'/>, representing stimuli and responses in a neuroimaging study.  We show in <xref linkend='events.stimuli_example'/> how the first 5 seconds' worth of the events might be represented in XCEDE.</para>
     <figure id="events.stimuli_example">
       <title>XCEDE Events example - stimulus/response data</title>
-      <programlisting><![CDATA[<XCEDE xmlns="http://www.xcede.org/xcede-2"
-       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <acquisition ID="my_stimulus_response_data">
-    <dataRef ID="my_events" />
-  </acquisition>
-  <data ID="my_events" xsi:type="events_t">
-    <event type="visual">
-      <onset>0</onset>
-      <duration>2</duration>
-      <value name="shape">square</value>
-      <value name="shapecolor">red</value>
-    </event>
-    <event type="visual">
-      <onset>2.5</onset>
-      <duration>2</duration>
-      <value name="shape">square</value>
-      <value name="shapecolor">blue</value>
-    </event>
-    <event type="audio">
-      <onset>0.3</onset>
-      <duration>1.4</onset>
-      <value name="frequency">low</value>
-    </event>
-    <event type="audio">
-      <onset>2.0</onset>
-      <duration>1.4</onset>
-      <value name="frequency">low</value>
-    </event>
-    <event type="audio">
-      <onset>3.5</onset>
-      <duration>1.4</onset>
-      <value name="frequency">low</value>
-    </event>
-    <event type="response">
-      <onset>3.4</onset>
-      <value name="button">1</value>
-    </event>
-  </data>
-</XCEDE>
-]]></programlisting>
+      <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_events_stimulus.xml" parse="text"/></programlisting>
     </figure>
     <para>Each stimulus and each response are stored as separate event elements.  Note that all the visual events appear first in the XCEDE file, then the audio events, and then the response event.  This ordering is arbitrary, and the events could easily have been presented in chronological (or random!) order.  The semantic interpretation of the events within an event list must not depend on their document order.</para>
     <para>Stimulus and response data are not the only appropriate content to represent in XCEDE events.  <xref linkend='events.QA_example'/> shows how quality assurance (QA) statistics for each volume/timepoint in an fMRI scan can be stored as events.  Note that the time reference for the onsets is arbitrary, but if the <literal>acquisition</literal> containing the event data is contained within the same <literal>episode</literal> as other time-locked data, it should be assumed that the time reference is the same for all <literal>acquisitions</literal> within the <literal>episode</literal>, unless otherwise explicitly specified.  So, for example, this QA data might be associated with MR image data in the same <literal>episode</literal>, and time 0 (zero) would by default be assumed to have the same meaning in both sets of data.</para>
     <figure id="events.QA_example">
       <title>XCEDE Events example - QA data</title>
-      <programlisting><![CDATA[<XCEDE xmlns="http://www.xcede.org/xcede-2"
-       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <acquisition ID="my_stimulus_response_data">
-    <dataRef ID="my_events" />
-  </acquisition>
-  <data ID="my_events" xsi:type="events_t">
-    <event>
-      <onset>0</onset>
-      <duration>2</duration>
-      <value name="volmean">759.218</value>
-      <value name="cmassx">106.781</value>
-      <value name="cmassy">118.279</value>
-      <value name="cmassz">66.9694</value>
-    </event>
-    <event>
-      <onset>2</onset>
-      <duration>2</duration>
-      <value name="volmean">759.218</value>
-      <value name="cmassx">106.801</value>
-      <value name="cmassy">118.242</value>
-      <value name="cmassz">67.1636</value>
-    </event>
-    <!-- ... etc. ... -->
-  </data>
-</XCEDE>]]></programlisting>
+      <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_events_QA.xml" parse="text"/></programlisting>
     </figure>
   </section>
 </chapter>

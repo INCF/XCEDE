@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" version="2.0">
+       <subject>
+        <annotationList>
+            <annotation author="Annotation Author">
+                <comment>This is an example annotation</comment>
+            </annotation>
+        </annotationList>
+    </subject>
+</XCEDE>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+	<catalog ID="ID0">
+		<catalogList>
+			<catalog ID="ID1">
+				<entryList>
+					<entry ID="ID2" name="lh.pial" description="pial surface of left hemisphere" format="FreeSurfer:surface-1" content="lh.pial" cachePath="">
+						<uri>file://c:/data/fBIRN-AHM2006/fbph2-000648622547/surf/lh.pial</uri>
+					</entry>
+					<entry ID="ID3" name="brain" description="extracted brain mri" format="FreeSurfer:mgz-1" content="brain" cachePath="">
+						<uri>file://c:/data/fBIRN-AHM2006/fbph2-000648622547/mri/brain.mgz</uri>
+					</entry>
+					<entry ID="ID4" name="zstat8" description="8th zstatisic contrast" format="nifti:nii-1" content="zstat8" cachePath="">
+						<uri>file://c:/data/fBIRN-AHM2006/sirp-hp65-stc-to7-gam.feat/stats/zstat8.nii</uri>
+					</entry>
+					<entry ID="ID5" name="aparc+aseg" description="parcellation and segmentation label map" format="FreeSurfer:mgz-1" content="aparc+aseg" cachePath="">
+						<uri>file://c:/data/fBIRN-AHM2006/fbph2-000648622547/mri/aparc+aseg.mgz</uri>
+					</entry>
+				</entryList>
+			</catalog>
+			<catalog ID="ID1">
+				<entryList>
+					<entry ID="ID2" name="lh.pial" description="pial surface of left hemisphere" format="FreeSurfer:surface-1" content="lh.pial" cachePath="">
+						<uri>file://c:/data/fBIRN-AHM2006/fbph2-000648622547/surf/lh.pial</uri>
+					</entry>
+					<entry ID="ID3" name="brain" description="extracted brain mri" format="FreeSurfer:mgz-1" content="brain" cachePath="">
+						<uri>file://c:/data/fBIRN-AHM2006/fbph2-000648622547/mri/brain.mgz</uri>
+					</entry>
+					<entry ID="ID4" name="zstat8" description="8th zstatisic contrast" format="nifti:nii-1" content="zstat8" cachePath="">
+						<uri>file://c:/data/fBIRN-AHM2006/sirp-hp65-stc-to7-gam.feat/stats/zstat8.nii</uri>
+					</entry>
+					<entry ID="ID5" name="aparc+aseg" description="parcellation and segmentation label map" format="FreeSurfer:mgz-1" content="aparc+aseg" cachePath="">
+						<uri>file://c:/data/fBIRN-AHM2006/fbph2-000648622547/mri/aparc+aseg.mgz</uri>
+					</entry>
+				</entryList>
+			</catalog>
+		</catalogList>
+	</catalog>
+</XCEDE>

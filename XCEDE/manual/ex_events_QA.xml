@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+	<acquisition ID="my_stimulus_response_data">
+		<dataRef ID="my_events" />
+	</acquisition>
+	<data ID="my_events" xsi:type="events_t">
+		<event>
+			<onset>0</onset>
+			<duration>2</duration>
+			<value name="volmean">759.218</value>
+			<value name="cmassx">106.781</value>
+			<value name="cmassy">118.279</value>
+			<value name="cmassz">66.9694</value>
+		</event>
+		<event>
+			<onset>2</onset>
+			<duration>2</duration>
+			<value name="volmean">759.218</value>
+			<value name="cmassx">106.801</value>
+			<value name="cmassy">118.242</value>
+			<value name="cmassz">67.1636</value>
+		</event>
+		<!-- ... etc. ... -->
+	</data>
+</XCEDE>

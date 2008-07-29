@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+	<resource xsi:type="dimensionedBinaryDataResource_t">
+		<uri offset="0" size="262144">rawdata.img</uri>
+		<elementType>int32</elementType>
+		<byteOrder>msbfirst</byteOrder>
+		<dimension label="x">
+			<size>256</size>
+		</dimension>
+		<dimension label="y">
+			<size>256</size>
+		</dimension>
+	</resource>
+</XCEDE>

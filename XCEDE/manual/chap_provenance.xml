@@ -75,7 +75,7 @@
 	<varlistentry>
 	<term>cvs</term>
 	<listitem>
-		<para>Revision control repository information.  Use the CVS keyword Id, inserted into your source code file as <literal>$Id: chap_provenance.xml,v 1.14 2007-09-10 17:01:14 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
+		<para>Revision control repository information.  Use the CVS keyword Id, inserted into your source code file as <literal>$Id: chap_provenance.xml,v 1.15 2008-07-29 20:21:31 gadde Exp $</literal> and it will be replaced with the file name, version, date of change and who changed it. 
 Also works with SVN, but see SVN notes for enabling it.</para>
 	</listitem>
 	</varlistentry>
@@ -126,32 +126,7 @@ Also works with SVN, but see SVN notes for enabling it.</para>
 
       <figure id="provenance.simple_example">
         <title>Simple provenance example</title>
-        <programlisting><![CDATA[
-		<dataResource xsi:type="binaryDataResource_t">
-  		<uri offset="352" size="8192">random_generated_data_file.nii</uri>
-  		<provenance ID="1">
-			<processStep parent="1" ID="1">
-				<program build="1.0" version="1.0">filter1</program>
-				<programArguments inputs="-in analyze" outputs="-out minc">-size 10 -reps 100 -v -in minc -out nifti</programArguments>
-				<timeStamp>11:20:37</timestamp>
-				<user>xnatmaster</xnat>
-				<hostName>lablin1</hostname>
-				<architecture>x86</architecture>
-				<platform version="6">fedora</platform>
-			</processStep>
-			<processStep parent="1" ID="2">
-				<program build="String" version="1.2">filter2</program>
-				<programArguments inputs="-in minc" outputs="-out nifti">-size 20 -reps 200 -v -in minc -out nifti</programArguments>
-				<timeStamp>11:50:21</timestamp>
-				<user>xnatmaster</user>
-				<hostName>lablin1</hostname>
-				<architecture>x86</architecture>
-				<platform version="6">fedora</platform>
-			</processStep>
-  		</provenance>
-  		<elementType>float32</elementType>
-  		<byteOrder>lsbfirst</byteOrder>
-		</dataResource>]]></programlisting>
+        <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="ex_provenance_simple.xml" parse="text"/></programlisting>
       </figure>
 
 
@@ -173,14 +148,14 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.14 $\">%s</ProgramName>\n", argv[0]);
+  fprintf(stdout, "<Program version=\"$Revision: 1.15 $\">%s</ProgramName>\n", argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
     {
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.14 2007-09-10 17:01:14 gadde Exp $</CVS> <TimeStamp>");
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.15 2008-07-29 20:21:31 gadde Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
   strftime (timeStr, 27, "%Y/%m/%d-%H-%M-%S-00-%Z", timeInfo);

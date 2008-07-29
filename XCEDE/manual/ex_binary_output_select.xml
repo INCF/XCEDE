@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' version="2.0">
+	<resource xsi:type="dimensionedBinaryDataResource_t">
+		<uri offset="0" size="589824">img0001.dcm</uri>
+		<elementType>uint32</elementType>
+		<byteOrder>lsbfirst</byteOrder>
+		<dimension label="x">
+			<size>64</size>
+		</dimension>
+		<dimension label="z" splitRank="1">
+			<size>6</size>
+		</dimension>
+		<dimension label="y">
+			<size>64</size>
+		</dimension>
+		<dimension label="z" splitRank="2" outputSelect="0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31">
+			<size>6</size>
+		</dimension>
+	</resource>
+</XCEDE>
