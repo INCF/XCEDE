@@ -545,7 +545,7 @@ function showhide_sw_close(id)
 
     <xsl:variable name="ID" select="xcede:xcedeID()" />
 
-    <xsl:element name="li">
+    <xsl:element name="div">
       <xsl:attribute name="class">
         <xsl:value-of select="concat($levelname, '-nav')"/>
       </xsl:attribute>
