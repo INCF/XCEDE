@@ -2,7 +2,8 @@
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
        xmlns:xcede="http://www.xcede.org/xcede-2"
        xmlns:fbirn="http://www.xcede.org/xcede-2/extensions/fbirn"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       version="2.0">
   <episode ID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
     <xcede:episodeInfo xsi:type="fbirn:fipsEpisodeInfo_t" xmlns="http://www.xcede.org/xcede-2/extensions/fbirn">
       <nameLocal>AudOdd1</nameLocal>

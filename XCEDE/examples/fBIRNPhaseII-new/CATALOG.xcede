@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       version="2.0">
   <catalog ID="WS/0001" name="My workspace" description="Written by a GUI-based tool that saves the current workspace.  I currently had open images and event data from two subject's first oddball runs.">
     <catalogList>
       <catalog ID="WS/1/1" name="Subject 1 visit 1" description="Subject 1's oddball run images and events from visit 1">

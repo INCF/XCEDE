@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       version="2.0">
   <study ID="MR" visitID="1" subjectID="1" projectID="A">
     <annotationList>
       <annotation><comment>This study contains a subset of a full fBIRN Phase II study, including only the first auditory oddball run.</comment></annotation>

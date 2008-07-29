@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <XCEDE xmlns='http://www.xcede.org/xcede-2'
-       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+       version="2.0">
   <acquisition ID='MR' episodeID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
     <acquisitionInfo xsi:type="mrAcquisitionInfo_t">
       <scanner>

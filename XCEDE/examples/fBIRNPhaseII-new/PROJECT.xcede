@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XCEDE xmlns="http://www.xcede.org/xcede-2">
+<XCEDE xmlns="http://www.xcede.org/xcede-2"
+       version="2.0">
   <project ID="A">
     <projectInfo>
       <subjectGroupList>

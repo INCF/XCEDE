@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  version="2.0" >
   <analysis level="acquisition" acquisitionID="MR" episodeID="task run 1" studyID="MR" visitID="1" subjectID="1" projectID="A">
     <provenance>
       <processStep>
@@ -9,7 +10,7 @@
         <user>gadde</user>
         <hostName>golgi</hostName>
         <platform>AIX</platform>
-        <cvs>$Id: ANALYSIS.xml,v 1.3 2008-03-14 17:26:36 gadde Exp $</cvs>
+        <cvs>$Id: ANALYSIS.xml,v 1.4 2008-07-29 20:22:33 gadde Exp $</cvs>
         <package>FreeSurfer</package>
       </processStep>
     </provenance>
