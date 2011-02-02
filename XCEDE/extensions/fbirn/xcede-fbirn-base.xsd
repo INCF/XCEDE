@@ -28,4 +28,20 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="labeledEntity_t">
+    <xs:annotation>
+      <xs:documentation>Entity elements are used to describe the resultant scope of an analysis</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="xcede:abstract_entity_t">
+        <xs:sequence>
+          <xs:element name="label" type="xcede:terminologyString_t" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The set of terms that name this entity.  This set can contain a collection of synonymous terms</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
 </xs:schema>
