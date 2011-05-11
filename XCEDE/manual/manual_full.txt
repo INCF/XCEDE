@@ -1,7 +1,10 @@
+
    #[1]XCEDE 2.0 - A Manual [2]Introduction
 
 XCEDE 2.0 - A Manual
-     __________________________________________________________________
+     _________________________________________________________________
+
+   Table of Contents
 
    Introduction
 
@@ -100,86 +103,82 @@ XCEDE 2.0 - A Manual
 
 Introduction
 
-   This is a manual for version 2 of XCEDE (XML-based Clinical and
-   Experimental Data Exchange). XCEDE 2 is an extensible schema designed
-   to enable the transfer and storage of several types of scientific data
-   and metadata including (but not limited to) clinical, demographic,
-   behavioral, physiological and image data. The target audience for this
-   manual is anyone who is interested in using or learning more about
-   XCEDE 2. This manual will serve as both a tutorial and as a reference.
+   This is a manual for version 2 of XCEDE (XML-based Clinical and Experimental
+   Data Exchange). XCEDE 2 is an extensible schema designed to enable the
+   transfer  and storage of several types of scientific data and metadata
+   including  (but  not  limited  to)  clinical, demographic, behavioral,
+   physiological and image data. The target audience for this manual is anyone
+   who is interested in using or learning more about XCEDE 2. This manual will
+   serve as both a tutorial and as a reference.
 
-   Though the schema was designed in the context of neuroscientific
-   projects, the structure of the schema is quite generic and can be
-   applied as is to a wide variety of scientific disciplines.
+   Though the schema was designed in the context of neuroscientific projects,
+   the structure of the schema is quite generic and can be applied as is to a
+   wide variety of scientific disciplines.
 
 Manual structure
 
    This manual has two parts. Part I, “XCEDE 2 Core Specification”
-   describes the various components of XCEDE 2 and describes the
-   specification in some detail. Part II, “Using and Extending XCEDE 2” is
-   a more practical guide to the use of XCEDE 2, providing guidance to
-   those users who wish to extend the schema to represent project-specific
-   metadata, or integrate XCEDE 2 into software applications and services.
+   describes the various components of XCEDE 2 and describes the specification
+   in some detail. Part II, “Using and Extending XCEDE 2” is a more practical
+   guide to the use of XCEDE 2, providing guidance to those users who wish to
+   extend the schema to represent project-specific metadata, or integrate XCEDE
+   2 into software applications and services.
 
 Development
 
    XCEDE 2 development started as an effort to “harmonize” the uses of XML
-   within the testbeds of the Biomedical Informatics Research Network
-   [BIRN
-   ] and their collaborators within the neuroscientific community. The
-   feedback from these discussion sessions led to an initial prototype
-   (based on XCEDE 1.0) of a next-generation schema. Over the course of
-   four months of daily teleconferences, the first public release of XCEDE
-   2 took form.
+   within the testbeds of the Biomedical Informatics Research Network [BIRN]
+   and their collaborators within the neuroscientific community. The feedback
+   from these discussion sessions led to an initial prototype (based on XCEDE
+   1.0) of a next-generation schema. Over the course of four months of daily
+   teleconferences, the first public release of XCEDE 2 took form.
 
-   XCEDE 2 has its origins in various XML schemas developed for
-   collaborative neuroinformatics projects, including:
+   XCEDE 2 has its origins in various XML schemas developed for collaborative
+   neuroinformatics projects, including:
 
    fMRI Data Center schema
           a general scientific metadata storage framework.
 
    XNAT (Extensible Neuroimaging Toolkit)
-          database and web service designed to facilitate management and
+          database  and web service designed to facilitate management and
           exploration of neuroimaging and related data.
 
    BIAC XML Header schema
-          provides a format-agnostic interface to image data and is the
-          basis for the binary data resource in XCEDE 2.
+          provides a format-agnostic interface to image data and is the basis
+          for the binary data resource in XCEDE 2.
 
    BIRN Data Provenance schema
           records the history of processing steps and is the basis for the
           <provenance> element in the schema
 
    XCEDE (1.0) SPM Toolbox
-          provides a general framework (and MATLAB interface) for storage
-          and retrieval of thresholded statistical parametric maps and
-          associated anatomical labels.
+          provides a general framework (and MATLAB interface) for storage and
+          retrieval of thresholded statistical parametric maps and associated
+          anatomical labels.
 
-   The primary developers of XCEDE 2 are (in alphabetical order): Syam
-   Gadde (Duke University), Jeff Grethe (University of California, San
-   Diego), Dave Keator (University of California, Irvine), and Dan Marcus
-   (Washington University, St. Louis), all of whom have received support
-   for this project through various BIRN testbeds. Nicole Aucoin (Brigham
-   & Women's Hospital, Harvard University) led the development of the Data
-   Provenance schema.
+   The primary developers of XCEDE 2 are (in alphabetical order): Syam Gadde
+   (Duke University), Jeff Grethe (University of California, San Diego), Dave
+   Keator  (University of California, Irvine), and Dan Marcus (Washington
+   University, St. Louis), all of whom have received support for this project
+   through various BIRN testbeds. Nicole Aucoin (Brigham & Women's Hospital,
+   Harvard University) led the development of the Data Provenance schema.
 
 For More Information
 
-   XCEDE is an evolving format -- later versions will be informed by
-   feedback from users and developers. The latest schema and related
-   information can be found on the project's web page at
-   [3]http://www.xcede.org/.
+   XCEDE is an evolving format -- later versions will be informed by feedback
+   from users and developers. The latest schema and related information can be
+   found on the project's web page at [3]http://www.xcede.org/.
 
 Part I. XCEDE 2 Core Specification
 
-   This section of the XCEDE 2.0 manual focuses on the high-level
-   structure and major components of the XCEDE 2 Core schema. Each chapter
-   contains a description of the component and provides examples of usage.
-   The examples in this section are largely drawn from neuroscientific
-   metadata, as this data served as the driving force behind development.
-   However, these examples are by no means comprehensive; the schema was
-   designed to be generally applicable (and extensible) to many types of
-   scientific data, and this manual by necessity focuses on only a few.
+   This section of the XCEDE 2.0 manual focuses on the high-level structure and
+   major  components  of the XCEDE 2 Core schema. Each chapter contains a
+   description of the component and provides examples of usage. The examples in
+   this section are largely drawn from neuroscientific metadata, as this data
+   served as the driving force behind development. However, these examples are
+   by  no  means  comprehensive;  the schema was designed to be generally
+   applicable (and extensible) to many types of scientific data, and this
+   manual by necessity focuses on only a few.
 
    Table of Contents
 
@@ -252,152 +251,143 @@ Chapter 1. Structure and Conventions
 The XCEDE 2 Dataset
 
    An XCEDE 2 dataset is a data repository (stored in files, databases, or
-   using other storage mechanisms) that can be represented as a collection
-   of one or more XML documents, each of which validates against the XCEDE
-   2 XML schema (Appendix A, XML Schema for XCEDE 2.0
-   ). The XCEDE 2 specification does not prescribe any particular
-   mechanism by which these documents are located, stored, grouped, or
-   linked, though XCEDE 2 allows certain XML elements to link to other
-   target elements and to optionally specify URLs as hints as to the
-   location of the documents containing these targets.
+   using other storage mechanisms) that can be represented as a collection of
+   one or more XML documents, each of which validates against the XCEDE 2 XML
+   schema (Appendix A, XML Schema for XCEDE 2.0
+   ). The XCEDE 2 specification does not prescribe any particular mechanism by
+   which these documents are located, stored, grouped, or linked, though XCEDE
+   2  allows certain XML elements to link to other target elements and to
+   optionally  specify  URLs as hints as to the location of the documents
+   containing these targets.
 
-   For example, a given XCEDE 2 dataset may be stored as a single XML
-   document, or a collection of files in a single directory on a file
-   system, or may be distributed within a hierarchical directory structure
-   (which may or may not reflect the structure of the data within), or may
-   be stored within a database accessible by query through a web
-   interface. The semantics of the dataset should be fully reflected in
-   the XML representation, and should not be dependent on how the dataset
-   is stored.
+   For example, a given XCEDE 2 dataset may be stored as a single XML document,
+   or a collection of files in a single directory on a file system, or may be
+   distributed within a hierarchical directory structure (which may or may not
+   reflect  the  structure of the data within), or may be stored within a
+   database accessible by query through a web interface. The semantics of the
+   dataset should be fully reflected in the XML representation, and should not
+   be dependent on how the dataset is stored.
 
-   A schema-compliant XCEDE 2 document must be a valid XML 1.0 document
-   [XML10
-   ], and must have one root element, <XCEDE>, which (like all other XCEDE
-   2 elements) is in the http://www.xcede.org/xcede-2 XML namespace.
+   A  schema-compliant  XCEDE 2 document must be a valid XML 1.0 document
+   [XML10], and must have one root element, <XCEDE>, which (like all other
+   XCEDE 2 elements) is in the http://www.xcede.org/xcede-2 XML namespace.
 
-   Several major components of the XCEDE 2 dataset are represented as
-   children of the XCEDE root element. These components include:
-     * Experiment hierarchy. The components in the experiment hierarchy
-       are represented by elements <project>, <subject>, <visit>, <study>,
-       <episode>, <acquisition>. These are described in more detail in
+   Several major components of the XCEDE 2 dataset are represented as children
+   of the XCEDE root element. These components include:
+     * Experiment hierarchy. The components in the experiment hierarchy are
+       represented  by  elements  <project>, <subject>, <visit>, <study>,
+       <episode>,  <acquisition>.  These  are described in more detail in
        Chapter 2, Experiment Hierarchy
        .
-     * Data. The element <data> is used to store actual data within the
-       XML document. Examples include events (Chapter 6, Events
+     * Data. The element <data> is used to store actual data within the XML
+       document. Examples include events (Chapter 6, Events
        ) and assessments (Chapter 8, Assessments).
-     * Data resources. Represented by the element <resource>, these point
-       to external files which store actual data. See Chapter 3, Binary
-       Data Resources
+     * Data resources. Represented by the element <resource>, these point to
+       external files which store actual data. See Chapter 3, Binary Data
+       Resources
        .
-     * Analyses. The <analysis> element encapsulates metadata about data
-       that is derived from one or more inputs, whose data may be
-       represented by other XCEDE components, such as <data> or data
-       resources. See Chapter 9, Analysis
+     * Analyses. The <analysis> element encapsulates metadata about data that
+       is derived from one or more inputs, whose data may be represented by
+       other XCEDE components, such as <data> or data resources. See Chapter 9,
+       Analysis
        .
-     * Protocols. Structures to describe the expected course of an
-       experimental paradigm are provided by the <protocol> element. See
-       Chapter 7, Protocols
-       .
-
-   Other XCEDE components appear as subcomponents of other XCEDE
-   structures:
-     * Data provenance. The <provenance> element appears in the types
-       analysis_t (on which the <analysis> element is based) and
-       dataResource_t (one of the available data models for the top-level
-       <resource> element). See Chapter 5, Data Provenance
+     * Protocols. Structures to describe the expected course of an experimental
+       paradigm  are  provided  by the <protocol> element. See Chapter 7,
+       Protocols
        .
 
-     * Comments and annotations. The <commentList> and <annotationList>
-       elements provide mechanisms to store, respectively, descriptive
-       text regarding the real-world entities or concepts represented by
-       the associated XML element, or about the stored XML element itself.
-       These are available in all elements based on abstract_container_t,
-       which includes all the hierarchy elements and <analysis>.
-     * Informational resources. These point to documentation that may
-       illuminate aspects of the data, data collection, protocol, etc. --
-       these might include peer-reviewed publications, equipment manuals,
-       and others. Informational resources are represented in the type
-       informationResource_t which is used in the <resourceList> element
-       in abstract_container_t (as with the comments and annotations).
-     * Terminology. Various elements in XCEDE 2 include the attribute
-       group terminology_ag or use the type terminologyString, which allow
-       the user to associate them with terms from particular
-       nomenclatures/ontologies. For example, a subject's <species> may
-       refer to a standard term listed in a well-known public
-       nomenclature. See Chapter 10, Terminology
+   Other XCEDE components appear as subcomponents of other XCEDE structures:
+     * Data  provenance. The  <provenance>  element  appears in the types
+       analysis_t (on which the <analysis> element is based) and dataResource_t
+       (one of the available data models for the top-level <resource> element).
+       See Chapter 5, Data Provenance
+       .
+
+     * Comments  and  annotations. The <commentList> and <annotationList>
+       elements provide mechanisms to store, respectively, descriptive text
+       regarding  the  real-world entities or concepts represented by the
+       associated XML element, or about the stored XML element itself. These
+       are available in all elements based on abstract_container_t, which
+       includes all the hierarchy elements and <analysis>.
+     * Informational  resources. These  point  to  documentation that may
+       illuminate aspects of the data, data collection, protocol, etc. -- these
+       might include peer-reviewed publications, equipment manuals, and others.
+       Informational    resources    are    represented   in   the   type
+       informationResource_t which is used in the <resourceList> element in
+       abstract_container_t (as with the comments and annotations).
+     * Terminology. Various elements in XCEDE 2 include the attribute group
+       terminology_ag or use the type terminologyString, which allow the user
+       to associate them with terms from particular nomenclatures/ontologies.
+       For example, a subject's <species> may refer to a standard term listed
+       in a well-known public nomenclature. See Chapter 10, Terminology
        .
 
 XCEDE 2 Schema conventions
 
-   The XCEDE XML document structure is defined using W3C XML Schema
-   language [XMLSchema10
-   ]. With a few exceptions, the XCEDE 2 XML schema subscribes to the
-   following conventions and best practices.
+   The XCEDE XML document structure is defined using W3C XML Schema language
+   [XMLSchema10]. With a few exceptions, the XCEDE 2 XML schema subscribes to
+   the following conventions and best practices.
 
-   Naming and capitalization.
-     * Element and attribute names are alphanumeric (<project>). All
-       letters are lowercase, with the exception of acronyms, which are
-       uppercase (<XCEDE>, projectID), and, in multi-word names, the
-       initial letters of the second and following words which are
-       capitalized (<dataResourceRef>). For the purposes of this rule, ID
-       (for “identifier”) is considered an acronym.
-     * Schema type names (which do not appear in XML instance documents
-       except in xsi:type attributes) follow the same naming conventions
-       as element and attribute names, but have the _t suffix
-       (analysis_t). If the type is “abstract”, then it has an abstract_
-       prefix (abstract_container_t).
-     * Attribute group names (which do not appear in XML instance
-       documents) follow the same naming conventions as element and
-       attribute names, but have the _ag suffix (allLevelExternalIDs_ag).
+   Naming and capitalization. 
+     * Element and attribute names are alphanumeric (<project>). All letters
+       are lowercase, with the exception of acronyms, which are uppercase
+       (<XCEDE>, projectID), and, in multi-word names, the initial letters of
+       the   second   and   following   words   which   are   capitalized
+       (<dataResourceRef>).  For  the  purposes  of  this  rule,  ID (for
+       “identifier”) is considered an acronym.
+     * Schema type names (which do not appear in XML instance documents except
+       in xsi:type attributes) follow the same naming conventions as element
+       and attribute names, but have the _t suffix (analysis_t). If the type is
+       “abstract”, then it has an abstract_ prefix (abstract_container_t).
+     * Attribute group names (which do not appear in XML instance documents)
+       follow the same naming conventions as element and attribute names, but
+       have the _ag suffix (allLevelExternalIDs_ag).
 
-   Schema best practices.
-     * Follow the schema versioning best practices recommended by Roger
-       Costello in [CostelloSchemaVersioning
-       ]. Some of the implications are listed below:
-          + The XCEDE namespace will change for major versions, but not
-            minor versions. So, the namespace is as follows:
-            http://www.xcede.org/xcede-major_version. For example:
+   Schema best practices. 
+     * Follow  the  schema versioning best practices recommended by Roger
+       Costello in [CostelloSchemaVersioning]. Some of the implications are
+       listed below:
+          + The XCEDE namespace will change for major versions, but not minor
+            versions.     So,    the    namespace    is    as    follows:
+            http://www.xcede.org/xcede-major_version.     For    example:
             http://www.xcede.org/xcede-2
-          + XSD files will be named xcede-VERSION-DOMAIN. For example:
+          + XSD  files  will  be named xcede-VERSION-DOMAIN. For example:
             xcede-2.0-core.xsd
-          + All elements should have a corresponding named complexType.
-            For example: <project> is of type project_t.
-          + The schema prescribes that some elements precede or follow
-            other elements -- document creators should follow this
-            strictly. However, applications should be written without
-            expecting a particular element order, in case later versions
-            of the schema change the order of elements. That is, be
-            conservative in what you write, but liberal in what you
-            accept.
+          + All elements should have a corresponding named complexType. For
+            example: <project> is of type project_t.
+          + The schema prescribes that some elements precede or follow other
+            elements -- document creators should follow this strictly. However,
+            applications should be written without expecting a particular
+            element order, in case later versions of the schema change the
+            order of elements. That is, be conservative in what you write, but
+            liberal in what you accept.
             This is not to say that element order is not important -- the
-            relative order of multiple elements with the same name should
-            be preserved and can be relied upon by applications. So, if
-            the schema specifies the content model of an element to have
-            multiple <A> children and then multiple <B> children,
-            applications should treat a dataset the same whether all the
-            <A> children came before or after (or even interleaved with)
-            the <B> elements, but all <A> elements should be presented to
-            the application in the same order they appear in the document.
-            The corollary is that the semantics of any XCEDE 2 element
-            must not depend on the order in which differently-named
-            children are presented in the document.
+            relative order of multiple elements with the same name should be
+            preserved and can be relied upon by applications. So, if the schema
+            specifies the content model of an element to have multiple <A>
+            children and then multiple <B> children, applications should treat
+            a dataset the same whether all the <A> children came before or
+            after (or even interleaved with) the <B> elements, but all <A>
+            elements should be presented to the application in the same order
+            they appear in the document. The corollary is that the semantics of
+            any  XCEDE  2  element  must not depend on the order in which
+            differently-named children are presented in the document.
 
-   Document validation.
-     * The structure of an XCEDE 2 document can be validated using the
-       XCEDE 2 Core schema. Several XML Schema validators are available to
-       perform this task. Validating against the schema will ensure that
-       generic XCEDE 2 parsers can read the document.
-       Users may wish to perform content-based validation of an XCEDE
-       document, for example, to make sure that “MR” image metadata stored
-       in an XCEDE document have certain required fields such as TR, TE,
-       magnet field strength, etc., and that their values fall within
-       reasonable ranges. This kind of validation is not possible using
-       XML Schema. However, other content-based schema languages exist for
-       this purpose, most notably Schematron [Schematron
-       ]. As long as the XCEDE 2 Core schema is structurally sufficient to
-       represent data for a given project or type of data, using a
-       content-based schema language such as Schematron allows users to
-       restrict or “specialize” the content of XCEDE documents without
+   Document validation. 
+     * The structure of an XCEDE 2 document can be validated using the XCEDE 2
+       Core schema. Several XML Schema validators are available to perform this
+       task. Validating against the schema will ensure that generic XCEDE 2
+       parsers can read the document.
+       Users may wish to perform content-based validation of an XCEDE document,
+       for example, to make sure that “MR” image metadata stored in an XCEDE
+       document have certain required fields such as TR, TE, magnet field
+       strength, etc., and that their values fall within reasonable ranges.
+       This kind of validation is not possible using XML Schema. However, other
+       content-based schema languages exist for this purpose, most notably
+       Schematron  [Schematron].  As  long  as the XCEDE 2 Core schema is
+       structurally sufficient to represent data for a given project or type of
+       data, using a content-based schema language such as Schematron allows
+       users to restrict or “specialize” the content of XCEDE documents without
        needing to modify or extend from the XCEDE 2 Core schema itself.
 
 Chapter 2. Experiment Hierarchy
@@ -405,97 +395,91 @@ Chapter 2. Experiment Hierarchy
 Overview
 
    As illustrated in Figure 2.1, “XCEDE hierarchy”
-   , the XCEDE experiment hierarchy consists of several levels
-   representing divisions of experiment data at various granularities.
-   Elements at each level contain level-specific “info” elements, whose
-   schema types may be derived to store experiment-specific or data
-   modality-specific metadata. The linking mechanism between levels is
-   flexible enough to support the omission of levels if the schema user
-   finds them unnecessary.
+   , the XCEDE experiment hierarchy consists of several levels representing
+   divisions of experiment data at various granularities. Elements at each
+   level contain level-specific “info” elements, whose schema types may be
+   derived to store experiment-specific or data modality-specific metadata. The
+   linking mechanism between levels is flexible enough to support the omission
+   of levels if the schema user finds them unnecessary.
 
    Figure 2.1. XCEDE hierarchy
    XCEDE hierarchy
 
 Hierarchy Levels
 
-   In the typical intended usage, a project is the top-level division of
-   experiment data, and represents a research project which collects and
-   analyzes data from one or more subjects which are divided (within the
-   project) into subject groups. A subject may be a member of multiple
-   research projects, and it is the subject group that maintains and
-   distinguishes the mappings between subjects and research projects.
+   In  the typical intended usage, a project is the top-level division of
+   experiment  data, and represents a research project which collects and
+   analyzes  data from one or more subjects which are divided (within the
+   project) into subject groups. A subject may be a member of multiple research
+   projects, and it is the subject group that maintains and distinguishes the
+   mappings between subjects and research projects.
 
-   A visit may represent a subject's appearance at an experiment “site”
-   (for collaborative projects, this could be the institution or lab at
-   which the data is being collected or analyzed). A visit may be further
-   subdivided into one or more studies, each of would consist of one or
-   more data collection episodes.
+   A visit may represent a subject's appearance at an experiment “site” (for
+   collaborative projects, this could be the institution or lab at which the
+   data is being collected or analyzed). A visit may be further subdivided into
+   one or more studies, each of would consist of one or more data collection
+   episodes.
 
-   Visit and study are more or less arbitrary divisions of the data that
-   exist for convenience, and do not in themselves have any inherent
-   meaning as far as the schema is concerned. However, an episode does
-   have a meaning, and is intended to represent a unit of data collection
-   by one or more instruments over a given time interval. Each set of data
-   collected (perhaps by different instruments) over this time interval
-   should be represented by an acquisition. Multiple acquisitions within
-   an episode should be understood to occur simultaneously over the time
-   interval represented by the episode. So, for example, an episode in an
-   fMRI study may encapsulate the acquisition of a time-series of volume
-   images from an MR scanner, as well as other acquisitions of behavioral
-   or physiological data; all these (simultaneously collected) data would
-   be stored as individual acquisitions and stored as part of the same
-   episode.
+   Visit and study are more or less arbitrary divisions of the data that exist
+   for convenience, and do not in themselves have any inherent meaning as far
+   as the schema is concerned. However, an episode does have a meaning, and is
+   intended to represent a unit of data collection by one or more instruments
+   over a given time interval. Each set of data collected (perhaps by different
+   instruments)  over  this  time  interval  should  be represented by an
+   acquisition. Multiple acquisitions within an episode should be understood to
+   occur simultaneously over the time interval represented by the episode. So,
+   for example, an episode in an fMRI study may encapsulate the acquisition of
+   a  time-series  of  volume images from an MR scanner, as well as other
+   acquisitions of behavioral or physiological data; all these (simultaneously
+   collected) data would be stored as individual acquisitions and stored as
+   part of the same episode.
 
-   At first thought, it might seem natural to represent the experiment
-   hierarchy as described as a traditional XML hierarchy, where
-   higher-level elements encapsulate lower-level elements as child
-   elements. However, in XCEDE, all level elements (<project>, <visit>,
-   etc.) are stored as children of the root <XCEDE> element. Links between
-   levels are implicit in the level IDs assigned to each element and
-   propagated to elements in lower levels. The great benefit of this
-   approach is that applications are easier to write because all major
-   elements are stored in the same place (under the XCEDE root element),
-   and that XCEDE documents can be merged by merely concatenating the
-   lists of top-level elements under a single XCEDE root element. Another
-   advantage is to allow users of the schema to omit levels merely by
-   omitting the unnecessary elements and IDs/links.
+   At  first  thought,  it might seem natural to represent the experiment
+   hierarchy as described as a traditional XML hierarchy, where higher-level
+   elements encapsulate lower-level elements as child elements. However, in
+   XCEDE, all level elements (<project>, <visit>, etc.) are stored as children
+   of the root <XCEDE> element. Links between levels are implicit in the level
+   IDs assigned to each element and propagated to elements in lower levels. The
+   great benefit of this approach is that applications are easier to write
+   because all major elements are stored in the same place (under the XCEDE
+   root  element),  and  that  XCEDE  documents  can  be merged by merely
+   concatenating the lists of top-level elements under a single XCEDE root
+   element. Another advantage is to allow users of the schema to omit levels
+   merely by omitting the unnecessary elements and IDs/links.
 
 IDs and Linking
 
-   Specifying one or more level IDs allows one to explicitly define the
-   hierarchical relations between XCEDE elements in different levels in
-   the experiment hierarchy. Every level element has a set of these level
-   IDs, composed of the element's own ID attribute, plus its “ancestor” ID
+   Specifying  one  or more level IDs allows one to explicitly define the
+   hierarchical relations between XCEDE elements in different levels in the
+   experiment hierarchy. Every level element has a set of these level IDs,
+   composed  of  the  element's  own ID attribute, plus its “ancestor” ID
    attributes, indicating which higher-level elements have this element in
    their scope. For example, the <visit> element contains the ancestor ID
    attributes subjectGroupID, subjectID, and projectID. Level elements are
-   linked to their ancestors in the hierarchy by sharing the appropriate
-   subset of level IDs. In addition, any level element can linked from
-   another XCEDE element that likewise specifies the appropriate level
-   IDs.
+   linked to their ancestors in the hierarchy by sharing the appropriate subset
+   of level IDs. In addition, any level element can linked from another XCEDE
+   element that likewise specifies the appropriate level IDs.
 
    For example, a link to a visit element may specify visitID, subjectID,
-   subjectGroupID, and projectID attributes, and a level attribute with
-   the value visit, indicating that this link is to a visit element. An
-   application resolving this link will search for a visit element in the
-   XCEDE 2 dataset whose attributes match those specified in the link (the
-   visitID attribute in the link is matched against the ID attribute in
-   the visit element).
+   subjectGroupID, and projectID attributes, and a level attribute with the
+   value visit, indicating that this link is to a visit element. An application
+   resolving this link will search for a visit element in the XCEDE 2 dataset
+   whose attributes match those specified in the link (the visitID attribute in
+   the link is matched against the ID attribute in the visit element).
 
-   Though the individual ID attributes are not required to be unique, the
-   set of these level IDs applied to a level element must be unique. In
-   addition, any link to a level element must provide enough level IDs to
-   uniquely describe a single target level element. Level ID attributes
-   not specified in the link are understood to match any value, but a link
-   must specify enough of these IDs match at most one level element.
+   Though the individual ID attributes are not required to be unique, the set
+   of these level IDs applied to a level element must be unique. In addition,
+   any  link to a level element must provide enough level IDs to uniquely
+   describe a single target level element. Level ID attributes not specified in
+   the link are understood to match any value, but a link must specify enough
+   of these IDs match at most one level element.
 
-   The elements that can link to level elements are <catalog>, <resource>,
-   and <data> (children of the <XCEDE> root element), and <inputRef> and
-   <outputRef> (children of the <analysis> element). As previously
-   described, level elements (except for <project> and <subject>, which
-   are at the top of the experiment hierarchy), by virtue of specifying
-   their own ancestor IDs, automatically incorporate links to their
-   ancestor elements.
+   The elements that can link to level elements are <catalog>, <resource>, and
+   <data>  (children  of  the  <XCEDE>  root element), and <inputRef> and
+   <outputRef> (children of the <analysis> element). As previously described,
+   level elements (except for <project> and <subject>, which are at the top of
+   the experiment hierarchy), by virtue of specifying their own ancestor IDs,
+   automatically incorporate links to their ancestor elements.
 
 Examples
 
@@ -503,19 +487,18 @@ Metadata hierarchy
 
    The metadata hierarchy illustrated in Figure 2.1, “XCEDE hierarchy”
    can be represented in XCEDE as shown in Figure 2.2, “Metadata hierarchy
-   instance” (only those elements/attributes relevant to linking are
-   shown; the actual metadata contents of the elements are omitted for
-   space). Note that subject “1” in the illustration is represented in two
-   different projects, and so the corresponding <subject> element may be
-   an ancestor for visits in both project “A” and “B”. However, the
-   subject's role in each project is specified by the combination of the
-   project ID and subject group ID (defined in the subject group lists in
-   <project>), and these are used in every level element starting with
-   <visit> and below.
+   instance” (only those elements/attributes relevant to linking are shown; the
+   actual metadata contents of the elements are omitted for space). Note that
+   subject “1” in the illustration is represented in two different projects,
+   and so the corresponding <subject> element may be an ancestor for visits in
+   both project “A” and “B”. However, the subject's role in each project is
+   specified by the combination of the project ID and subject group ID (defined
+   in the subject group lists in <project>), and these are used in every level
+   element starting with <visit> and below.
 
    Figure 2.2. Metadata hierarchy instance
 <?xml version="1.0" encoding="UTF-8"?>
-<XCEDE xmlns="http://www.xcede.org/xcede-2" >
+<XCEDE xmlns="http://www.xcede.org/xcede-2" version="2.0">
   <project ID="A">
     <projectInfo>
       <subjectGroupList>
@@ -567,59 +550,56 @@ Chapter 3. Binary Data Resources
 Overview
 
    The XCEDE 2 Binary Data Resource component is used to provide a generic
-   interface to a binary data stream stored in one or more external files.
-   Any of the binary data resource types described in this chapter can be
-   used anywhere an abstract_resource_t is called for (with the
-   appropriate xsi:type attribute); in the current XCEDE schema, these
-   locations are the top-level <resource> element and the <dataResource>
-   child element of <acquisition>.
+   interface to a binary data stream stored in one or more external files. Any
+   of the binary data resource types described in this chapter can be used
+   anywhere an abstract_resource_t is called for (with the appropriate xsi:type
+   attribute); in the current XCEDE schema, these locations are the top-level
+   <resource> element and the <dataResource> child element of <acquisition>.
 
-   XCEDE provides multiple layers of derived types to store more
-   specialized information about the binary data. The base type and each
-   of the derived types are described in turn.
+   XCEDE provides multiple layers of derived types to store more specialized
+   information about the binary data. The base type and each of the derived
+   types are described in turn.
 
-   abstract_resource_t. The abstract base type abstract_resource_t
-   provides a few elements and attributes that are especially important
-   for binary data resources. In particular, the <uri> element and its
-   offset and size attributes point to a “chunk” of data stored in an
-   external file. A series of <uri> elements define a stream of data that
-   may be described in greater detail by the data types described below.
+   abstract_resource_t. The abstract base type abstract_resource_t provides a
+   few elements and attributes that are especially important for binary data
+   resources.  In  particular,  the <uri> element and its offset and size
+   attributes point to a “chunk” of data stored in an external file. A series
+   of <uri> elements define a stream of data that may be described in greater
+   detail by the data types described below.
 
-   binaryDataResource_t. This type derives from abstract_resource_t and
-   allows an application to interpret the data stream as a sequence of
-   data items with a given data type (<elementType>) and byte order
-   (<byteOrder>).
+   binaryDataResource_t. This type derives from abstract_resource_t and allows
+   an application to interpret the data stream as a sequence of data items with
+   a given data type (<elementType>) and byte order (<byteOrder>).
 
-   dimensionedBinaryDataResource_t. The data stream, until now, could only
-   be interpreted as a one-dimensional sequence. This type provides
-   <dimension> elements that allow the data stream to be interpreted as a
-   multi-dimensional array of data items. Each dimension has a <size> and
-   a <label>, as well as the ability to discard subsets of the data in the
-   data stream (using the outputSelect attribute).
+   dimensionedBinaryDataResource_t. The data stream, until now, could only be
+   interpreted as a one-dimensional sequence. This type provides <dimension>
+   elements that allow the data stream to be interpreted as a multi-dimensional
+   array of data items. Each dimension has a <size> and a <label>, as well as
+   the ability to discard subsets of the data in the data stream (using the
+   outputSelect attribute).
 
-   mappedBinaryDataResource_t. This type places the multi-dimensional
-   array of data items represented by dimensionedBinaryDataResource_t into
-   an arbitrary coordinate system.
+   mappedBinaryDataResource_t. This type places the multi-dimensional array of
+   data items represented by dimensionedBinaryDataResource_t into an arbitrary
+   coordinate system.
 
 Examples
 
-   Several examples of binary data are presented here, each showing the
-   use of one of the different binary data types described in this
-   chapter.
+   Several examples of binary data are presented here, each showing the use of
+   one of the different binary data types described in this chapter.
 
 Basic data stream
 
-   The basic binary data resource type describes a sequence of data items.
-   For example, consider a data file (random_data_file.bin) containing
-   2048 random 32-bit floating point numbers, stored in little-endian
-   (least-significant-byte first) order. The <dataResource> describing
-   this data is shown in Figure 3.1, “Simple binaryDataResource_t example”
+   The basic binary data resource type describes a sequence of data items. For
+   example, consider a data file (random_data_file.bin) containing 2048 random
+   32-bit    floating    point    numbers,    stored   in   little-endian
+   (least-significant-byte first) order. The <dataResource> describing this
+   data is shown in Figure 3.1, “Simple binaryDataResource_t example”
    .
 
    Figure 3.1. Simple binaryDataResource_t example
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <resource xsi:type="binaryDataResource_t">
                 <uri offset="0" size="8192">random_data_file.bin</uri>
                 <elementType>float32</elementType>
@@ -627,28 +607,28 @@ MLSchema-instance'>
         </resource>
 </XCEDE>
 
-   Note the xsi:type specifying that this <resource> element is of type
-   binaryDataResource_t. (The xsi: prefix should have already been
-   declared previously in the XML file using something similar to
+   Note  the  xsi:type specifying that this <resource> element is of type
+   binaryDataResource_t. (The xsi: prefix should have already been declared
+   previously    in   the   XML   file   using   something   similar   to
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance")
 
-   The <elementType> element is restricted to one of several pre-defined
-   strings (see the schema for details). The <byteOrder> element must be
+   The  <elementType> element is restricted to one of several pre-defined
+   strings  (see the schema for details). The <byteOrder> element must be
    lsbfirst for little-endian data or msbfirst for big-endian data.
 
-   If the <compression> element is specified, it specifies that the
-   file(s) pointed to by the <uri> elements are compressed. The content of
-   the element should specify which type of compression (the only
-   compression method specifically recognized by this specification is
-   gzip). The size and offset attributes in the <uri> element always refer
-   to the uncompressed data. An example of this is shown in Figure 3.2,
-   “binaryDataResource_t with compression”
+   If the <compression> element is specified, it specifies that the file(s)
+   pointed to by the <uri> elements are compressed. The content of the element
+   should  specify which type of compression (the only compression method
+   specifically recognized by this specification is gzip). The size and offset
+   attributes in the <uri> element always refer to the uncompressed data. An
+   example  of  this  is  shown in Figure 3.2, “binaryDataResource_t with
+   compression”
    .
 
    Figure 3.2. binaryDataResource_t with compression
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <resource xsi:type="binaryDataResource_t">
           <uri offset="0" size="8192">random_data_file.bin.gz</uri>
           <elementType>float32</elementType>
@@ -657,28 +637,27 @@ MLSchema-instance'>
         </resource>
 </XCEDE>
 
-   As a special case, if the application does not find the file pointed to
-   by a URI, and the <compression> element is not present, it may search
-   for the same file with an appended .gz suffix, and if it exists, treat
-   it as implicitly gzip-compressed data. Figure 3.3,
-   “binaryDataResource_t with implicit compression”
-   shows how the same data in Figure 3.2, “binaryDataResource_t with
-   compression” could be expressed using this alternative method. Pointing
-   to the uncompressed version of the file (even when only the compressed
-   version exists) allows the user to decompress or compress the data file
-   at will, without affecting the ability of the application to read the
-   data using the same binaryDataResource_t. Note that the <uri> and
-   <compression> elements must be internally consistent. It would be an
-   error to reference the uncompressed file random_data_file.bin and yet
-   say that it was compressed using <compression>gzip</compression>.
-   Likewise, explicit references to the compressed file (especially files
-   that do not have the .gz suffix) must specify the compression method
-   explicitly using the compression element.
+   As a special case, if the application does not find the file pointed to by a
+   URI, and the <compression> element is not present, it may search for the
+   same  file  with an appended .gz suffix, and if it exists, treat it as
+   implicitly gzip-compressed data. Figure 3.3, “binaryDataResource_t with
+   implicit compression”
+   shows  how  the  same  data  in Figure 3.2, “binaryDataResource_t with
+   compression” could be expressed using this alternative method. Pointing to
+   the uncompressed version of the file (even when only the compressed version
+   exists) allows the user to decompress or compress the data file at will,
+   without affecting the ability of the application to read the data using the
+   same binaryDataResource_t. Note that the <uri> and <compression> elements
+   must  be  internally consistent. It would be an error to reference the
+   uncompressed file random_data_file.bin and yet say that it was compressed
+   using <compression>gzip</compression>. Likewise, explicit references to the
+   compressed file (especially files that do not have the .gz suffix) must
+   specify the compression method explicitly using the compression element.
 
    Figure 3.3. binaryDataResource_t with implicit compression
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <resource xsi:type="binaryDataResource_t">
                 <uri offset="0" size="8192">random_data_file.bin</uri>
                 <elementType>float32</elementType>
@@ -688,17 +667,17 @@ MLSchema-instance'>
 
 Dimensioned data
 
-   Consider a camera that acquires an image using a 256x256 matrix of
-   big-endian 32-bit signed integer voxels. This data has two spatial
-   dimensions, which, by convention, we label x, and y (and z if a third
-   spatial dimension is needed, and t if there is a time dimension).
+   Consider  a  camera  that  acquires an image using a 256x256 matrix of
+   big-endian  32-bit  signed  integer  voxels. This data has two spatial
+   dimensions,  which, by convention, we label x, and y (and z if a third
+   spatial  dimension  is  needed,  and  t if there is a time dimension).
    Figure 3.4, “dimensionedBinaryDataResource_t example”
    shows how this data might be represented.
 
    Figure 3.4. dimensionedBinaryDataResource_t example
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <resource xsi:type="dimensionedBinaryDataResource_t">
                 <uri offset="0" size="262144">rawdata.img</uri>
                 <elementType>int32</elementType>
@@ -713,32 +692,30 @@ MLSchema-instance'>
 </XCEDE>
 
    Dimensions are ordered from fastest-moving to slowest-moving. So in the
-   above example, the x dimension index changes on each consecutive data
-   item, but the y dimension changes every 256 elements.
+   above example, the x dimension index changes on each consecutive data item,
+   but the y dimension changes every 256 elements.
 
 Mapped data
 
-   A “mapped” binary data resource is a (perhaps multidimensional) array
-   of values, the matrix indices of which can be converted into a location
-   in a given coordinate system. The location of the bounding box of the
-   data in this space is given by specifying a location (in target-space
-   coordinates) for the the first data item, and two things for each
-   dimension: a unit-length direction vector (in the target-space
-   coordinate system) and the spacing between successive data items in
-   that dimension. The transformation matrix for a three-dimensional
-   coordinate system has the form shown in Figure 3.5, “Transformation
-   matrix”
+   A “mapped” binary data resource is a (perhaps multidimensional) array of
+   values, the matrix indices of which can be converted into a location in a
+   given coordinate system. The location of the bounding box of the data in
+   this space is given by specifying a location (in target-space coordinates)
+   for  the  the  first  data  item, and two things for each dimension: a
+   unit-length direction vector (in the target-space coordinate system) and the
+   spacing between successive data items in that dimension. The transformation
+   matrix for a three-dimensional coordinate system has the form shown in
+   Figure 3.5, “Transformation matrix”
    . This transformation matrix converts from matrix indices (x,y,z) to a
-   coordinate location (a,b,c). Figure 3.6, “mappedBinaryDataResource_t
-   example” shows how the components of a transformation of MR image data
-   into scanner RAS (Right/Anterior/Superior) coordinates are represented
-   in a mappedBinaryDataResource_t. The unit vectors for each dimension
-   are (X[A] X[B] X[C]) = (1 0 0), (Y[A] Y[B] Y[C]) = ( 0 1 0 ), and (Z[A]
-   Z[B] Z[C]) = ( 0 0 1 ), and are placed in the <direction> elements in
-   each <dimension> element. The spacing values (S[X] S[Y] S[Z]) = (
-   3.75mm 3.75mm 4mm ) are put in the <spacing> element in each
-   <dimension>. The coordinates of the first voxel in the data are given
-   by (O[A] O[B] O[C]) = ( -120 -120 -52 ).
+   coordinate  location  (a,b,c). Figure 3.6, “mappedBinaryDataResource_t
+   example” shows how the components of a transformation of MR image data into
+   scanner RAS (Right/Anterior/Superior) coordinates are represented in a
+   mappedBinaryDataResource_t. The unit vectors for each dimension are (X[A]
+   X[B] X[C]) = (1 0 0), (Y[A] Y[B] Y[C]) = ( 0 1 0 ), and (Z[A] Z[B] Z[C]) = (
+   0 0 1 ), and are placed in the <direction> elements in each <dimension>
+   element. The spacing values (S[X] S[Y] S[Z]) = ( 3.75mm 3.75mm 4mm ) are put
+   in the <spacing> element in each <dimension>. The coordinates of the first
+   voxel in the data are given by (O[A] O[B] O[C]) = ( -120 -120 -52 ).
 
    Figure 3.5. Transformation matrix
    Transformation matrix
@@ -746,7 +723,7 @@ Mapped data
    Figure 3.6. mappedBinaryDataResource_t example
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <resource xsi:type="mappedBinaryDataResource_t">
                 <uri offset="0" size="442368">V0001.img</uri>
                 <uri offset="0" size="442368">V0002.img</uri>
@@ -790,43 +767,42 @@ MLSchema-instance'>
 
 Advanced topic: split dimensions and outputSelect
 
-   A more complicated example is given by data generated by a Siemens MR
+   A  more complicated example is given by data generated by a Siemens MR
    scanner. In this case, the data represents a three-dimensional 64x64x32
-   image, stored in DICOM format. However, because the earlier versions of
-   the DICOM format did not support three-dimensional data in one file,
-   Siemens came upon the clever idea to “tile” the 32 two-dimensional
-   slices across an NxN two-dimensional grid (Figure 3.7, “A “tiled”image”
+   image, stored in DICOM format. However, because the earlier versions of the
+   DICOM format did not support three-dimensional data in one file, Siemens
+   came upon the clever idea to “tile” the 32 two-dimensional slices across an
+   NxN two-dimensional grid (Figure 3.7, “A “tiled”image”
    ).
 
    Figure 3.7. A “tiled”image
    A tiledimage
 
-   Applications may naturally want to express this data as a
-   three-dimensional block, with columns, rows, and slices. In a
-   conventionally-stored three-dimensional X×Y×Z image, the first X voxels
-   compose the first row in the first slice, and then the next X voxels
-   are the second row in the first slice; likewise the first X*Y voxels
-   are the first slice, and the next X*Y voxels are the second slice, and
-   so on. However, in the “tiled” image, though the first X voxels are
-   again the first row in the first slice, the next X voxels are the first
-   row in the second slice! At first it would seem that the dimension
-   order has merely been switched, and specifying the labels of the
-   dimensions as x, z, and y would fix things. However, we only hit six
-   slices' first rows before hitting going to the second row of the same
-   six slices. Only after going through all the rows in this fashion in
-   the first six slices do we go on to the next six slices.
+   Applications may naturally want to express this data as a three-dimensional
+   block,  with  columns,  rows,  and  slices. In a conventionally-stored
+   three-dimensional X×Y×Z image, the first X voxels compose the first row in
+   the first slice, and then the next X voxels are the second row in the first
+   slice; likewise the first X*Y voxels are the first slice, and the next X*Y
+   voxels are the second slice, and so on. However, in the “tiled” image,
+   though the first X voxels are again the first row in the first slice, the
+   next X voxels are the first row in the second slice! At first it would seem
+   that the dimension order has merely been switched, and specifying the labels
+   of the dimensions as x, z, and y would fix things. However, we only hit six
+   slices' first rows before hitting going to the second row of the same six
+   slices. Only after going through all the rows in this fashion in the first
+   six slices do we go on to the next six slices.
 
-   The end result is that the dimension that we are calling the z
-   dimension has been split in two. The two components of the z dimension
-   are interleaved with the x and y dimensions like so: x, z[1], y, z[2].
-   The two components of the z dimension are distinguished with the
-   splitRank attribute, as shown in Figure 3.8, “Split dimension example”
+   The end result is that the dimension that we are calling the z dimension has
+   been split in two. The two components of the z dimension are interleaved
+   with the x and y dimensions like so: x, z[1], y, z[2]. The two components of
+   the z dimension are distinguished with the splitRank attribute, as shown in
+   Figure 3.8, “Split dimension example”
    .
 
    Figure 3.8. Split dimension example
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <resource xsi:type="dimensionedBinaryDataResource_t">
           <uri offset="9240" size="589824">img0001.dcm</uri>
           <elementType>uint32</elementType>
@@ -846,25 +822,24 @@ MLSchema-instance'>
         </resource>
 </XCEDE>
 
-   Applications should read this data as if it were four dimensions, and
-   then permute the data to bring the two z dimensions together (in the
-   order specified by splitRank) in the position of the highest-ranked
-   split dimension, and the two dimensions can then be merged into one.
-   The size of the new z dimension is the product of the sizes of the
-   component split dimensions, so 6 * 6 = 36.
+   Applications should read this data as if it were four dimensions, and then
+   permute  the data to bring the two z dimensions together (in the order
+   specified  by  splitRank)  in the position of the highest-ranked split
+   dimension, and the two dimensions can then be merged into one. The size of
+   the new z dimension is the product of the sizes of the component split
+   dimensions, so 6 * 6 = 36.
 
-   You may recall that the original data was acquired as a 64x64x32
-   volume, but the NxN tiling representation requires that the number of
-   tiles be the square of an integer N. One more mechanism has been added
-   to the <dimension> element to accomodate the presence of data that
-   should be disregarded: the outputSelect attribute (see Figure 3.9,
-   “outputSelect example”
+   You may recall that the original data was acquired as a 64x64x32 volume, but
+   the NxN tiling representation requires that the number of tiles be the
+   square of an integer N. One more mechanism has been added to the <dimension>
+   element to accomodate the presence of data that should be disregarded: the
+   outputSelect attribute (see Figure 3.9, “outputSelect example”
    ).
 
    Figure 3.9. outputSelect example
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <resource xsi:type="dimensionedBinaryDataResource_t">
                 <uri offset="0" size="589824">img0001.dcm</uri>
                 <elementType>uint32</elementType>
@@ -886,54 +861,53 @@ MLSchema-instance'>
 </XCEDE>
 
    The outputSelect attribute specifies a list of indices along the given
-   dimension (or combined dimension if it occurs on the highest-ranked
-   component of a split dimension) that should be regarded as valid data.
-   Data in the other indices should be ignored.
+   dimension  (or  combined  dimension if it occurs on the highest-ranked
+   component of a split dimension) that should be regarded as valid data. Data
+   in the other indices should be ignored.
 
 Chapter 4. Catalogs
 
 Overview
 
-   Catalogs in XCEDE 2 are containers of related resources, resource
-   references, and data references. They are recursive in that catalogs
-   can contain a list of catalogs and catalog references.
+   Catalogs  in  XCEDE  2  are  containers of related resources, resource
+   references, and data references. They are recursive in that catalogs can
+   contain a list of catalogs and catalog references.
 
-   Catalogs are useful in a number of contexts. A catalog could be
-   created, for example, to represent all of the acquisition resources
-   associated with an episode. These catalogs could be contained within a
-   parent catalog that represents each of the episodes in an MR study.
-   Catalogs could also be used to represent the various resources
-   generated as part of an analysis or uploaded and tagged by users.
+   Catalogs are useful in a number of contexts. A catalog could be created, for
+   example, to represent all of the acquisition resources associated with an
+   episode. These catalogs could be contained within a parent catalog that
+   represents each of the episodes in an MR study. Catalogs could also be used
+   to represent the various resources generated as part of an analysis or
+   uploaded and tagged by users.
 
-   A benefit of using catalogs, as opposed to linking resources directly
-   in analysis and acquisition elements, is that the catalogs can be sent
-   independent of the parent content to client applications that choose
-   not to support the full XCEDE specification. Additionally, catalog
-   documents can be quite large when they contain thousands of entries
-   (for example, when pointing to individual DICOM files for an
-   acquisition), so separating the catalogs from their parents can be more
-   efficient.
+   A benefit of using catalogs, as opposed to linking resources directly in
+   analysis  and  acquisition  elements, is that the catalogs can be sent
+   independent of the parent content to client applications that choose not to
+   support the full XCEDE specification. Additionally, catalog documents can be
+   quite  large when they contain thousands of entries (for example, when
+   pointing to individual DICOM files for an acquisition), so separating the
+   catalogs from their parents can be more efficient.
 
-   Catalogs are represented by the catalog_t complex type, derived from
-   abstract_tagged_entity_t. The catalog child element of the root XCEDE
-   element is of type catalog_t. The resources included in the catalog can
-   be pointed to from by resource references in a number of places in
-   XCEDE, including analysis_t and acquisition_t.
+   Catalogs  are  represented by the catalog_t complex type, derived from
+   abstract_tagged_entity_t.  The catalog child element of the root XCEDE
+   element is of type catalog_t. The resources included in the catalog can be
+   pointed to from by resource references in a number of places in XCEDE,
+   including analysis_t and acquisition_t.
 
-   The abstract base type abstract_tagged_entity_t provides an unbounded
-   set of tags that users and applications can populate to attach ad-hoc
-   documentation and labels to the catalog and its contents. catalog_t
-   also includes an unbounded list of child subcatalogs (or references to
-   child catalogs) and an unbounded list of entries. Each entry is either
-   a resource, a reference to a resource, or a reference to an XCEDE data
-   element (an analysis, for example).
+   The abstract base type abstract_tagged_entity_t provides an unbounded set of
+   tags that users and applications can populate to attach ad-hoc documentation
+   and labels to the catalog and its contents. catalog_t also includes an
+   unbounded list of child subcatalogs (or references to child catalogs) and an
+   unbounded list of entries. Each entry is either a resource, a reference to a
+   resource,  or  a  reference to an XCEDE data element (an analysis, for
+   example).
 
 Examples
 
    Figure 4.1. Catalog instance
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <catalog ID="ID0">
                 <catalogList>
                         <catalog ID="ID1">
@@ -1001,41 +975,41 @@ Chapter 5. Data Provenance
 
 Overview
 
-   Various elements in XCEDE 2 refer to data or data resources that were
-   generated from other input data by processing tools. Data provenance
-   refers to the art of tracking the origins of the derived data and the
-   processing steps that resulted in the output data. Besides being
-   informative, provenance information could allow a user to recreate the
-   processing stream and replicate the output data using the same tools
-   and inputs. Provenance information could either be written by the
-   software tools themselves, or could be extracted by wrapper scripts
-   that write the provenance information on the tool's behalf (the likely
-   scenario for external or legacy applications).
+   Various  elements in XCEDE 2 refer to data or data resources that were
+   generated from other input data by processing tools. Data provenance refers
+   to the art of tracking the origins of the derived data and the processing
+   steps  that  resulted  in  the output data. Besides being informative,
+   provenance information could allow a user to recreate the processing stream
+   and replicate the output data using the same tools and inputs. Provenance
+   information could either be written by the software tools themselves, or
+   could be extracted by wrapper scripts that write the provenance information
+   on  the  tool's  behalf  (the  likely  scenario for external or legacy
+   applications).
 
-   Some of the following documentation comes from Nicole Aucoin who is
-   leading the Data Provenance effort for the MBIRN.
+   Some of the following documentation comes from Nicole Aucoin who is leading
+   the Data Provenance effort for the MBIRN.
 
-   provenance_t. Data represented by an instance of dataResource_t or
-   analysis_t may contain a <provenance> element of this type, which
-   contains an ordered sequence of processing steps (processStep_t)
-   representing the processing steps used to generate this data.
+   provenance_t. Data  represented  by  an  instance of dataResource_t or
+   analysis_t may contain a <provenance> element of this type, which contains
+   an ordered sequence of processing steps (processStep_t) representing the
+   processing steps used to generate this data.
 
-   processStep_t. This type contains two attributes, ID and parent,
-   indicating a unique ID for the step and its parent step, respectively.
-   It includes a number of child elements that describe the conditions
-   under which an executable was run. All of the child elements are
-   formally optional. The following are strongly recommended:
+   processStep_t. This type contains two attributes, ID and parent, indicating
+   a unique ID for the step and its parent step, respectively. It includes a
+   number  of  child elements that describe the conditions under which an
+   executable was run. All of the child elements are formally optional. The
+   following are strongly recommended:
 
    program
-          The name of the executable. Version and build numbers may be
-          specified using the attributes version and build. See
-          instructions below for inserting version control content.
-          Alternately, you can define it as a user string.
+          The  name  of  the executable. Version and build numbers may be
+          specified using the attributes version and build. See instructions
+          below for inserting version control content. Alternately, you can
+          define it as a user string.
 
    programArguments
-          The arguments passed into the executable. Optional attributes
-          inputs and outputs are used to break down the full list of
-          arguments into input and output arguments.
+          The arguments passed into the executable. Optional attributes inputs
+          and outputs are used to break down the full list of arguments into
+          input and output arguments.
 
    timeStamp
           The time at which the program started to run.
@@ -1048,59 +1022,56 @@ Overview
           Machine from old schema.
 
    architecture
-          The type of hardware that the processing step is run on, sun,
-          x86, etc.
+          The type of hardware that the processing step is run on, sun, x86,
+          etc.
 
    platform
-          The operating system under which the processing step is being
-          run.
+          The operating system under which the processing step is being run.
 
    These are optional:
 
    cvs
           Revision control repository information. Use the CVS keyword Id,
-          inserted into your source code file as $Id:
-          chap_provenance.xml,v 1.14 2007/09/10 17:01:14 gadde Exp $ and
-          it will be replaced with the file name, version, date of change
-          and who changed it. Also works with SVN, but see SVN notes for
-          enabling it.
+          inserted into your source code file as $Id: chap_provenance.xml,v
+          1.15 2008-07-29 20:21:31 gadde Exp $ and it will be replaced with the
+          file name, version, date of change and who changed it. Also works
+          with SVN, but see SVN notes for enabling it.
 
    compiler
           What was used to compile this executable? Name and version.
 
    library
-          The name and version of a linked library. Can be repeated as
-          many times as necessary. This is dependent on the library in
-          question, examples are given for VTK and Tcl and Tk.
+          The name and version of a linked library. Can be repeated as many
+          times as necessary. This is dependent on the library in question,
+          examples are given for VTK and Tcl and Tk.
 
    buildTimeStamp
           The time stamp indicating when the executable was built.
 
    package
-          This tag gives the overall package version, if the executable is
-          part of a larger unit. For example, mri_convert is part of
-          FreeSurfer, and the whole FreeSurfer package may have a
-          different version number than the mri_convert executable.
+          This tag gives the overall package version, if the executable is part
+          of a larger unit. For example, mri_convert is part of FreeSurfer, and
+          the whole FreeSurfer package may have a different version number than
+          the mri_convert executable.
 
    repository
-          Where can the software be found? Link to a code repository or a
-          web page. Can be extracted automatically if using SVN, via the
-          HeadURL keyword.
+          Where can the software be found? Link to a code repository or a web
+          page. Can be extracted automatically if using SVN, via the HeadURL
+          keyword.
 
 Examples
 
    Provenance elements are children of dataReource and analysis types and
-   describe the sequence of processing steps that were executed to
-   generate the data represented by the parent element. In the example
-   below, the provenance of the NIfTI data file (represented as a
-   binaryDataResource) indicates that it was generated in two processing
-   steps (filter1 and filter2) on the same machine (lablin1) about 30
-   mintues apart.
+   describe the sequence of processing steps that were executed to generate the
+   data represented by the parent element. In the example below, the provenance
+   of the NIfTI data file (represented as a binaryDataResource) indicates that
+   it was generated in two processing steps (filter1 and filter2) on the same
+   machine (lablin1) about 30 mintues apart.
 
    Figure 5.1. Simple provenance example
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
 
         <resource xsi:type="binaryDataResource_t">
                 <uri offset="352" size="8192">random_generated_data_file.nii</u
@@ -1136,9 +1107,9 @@ ut nifti">-size 20 -reps 200 -v -in minc -out nifti</programArguments>
 
 Generating provenance XML from applications
 
-   The figure below illustrates a C code snippet (written by Nicole Aucoin
-   and implemented in 3DSlicer) that generates provenance XML from an
-   application. [Note: This may not be completely compliant with XCEDE2.]
+   The figure below illustrates a C code snippet (written by Nicole Aucoin and
+   implemented in 3DSlicer) that generates provenance XML from an application.
+   [Note: This may not be completely compliant with XCEDE2.]
 void printAllInfo(int argc, char **argv)
 {
   int i;
@@ -1149,7 +1120,7 @@ void printAllInfo(int argc, char **argv)
   char timeStr[27];
 
   fprintf(stdout, "<ProcessStep>\n");
-  fprintf(stdout, "<Program version=\"$Revision: 1.14 $\">%s</ProgramName>\n",
+  fprintf(stdout, "<Program version=\"$Revision: 1.15 $\">%s</ProgramName>\n",
 argv[0]);
   fprintf(stdout, "<ProgramArguments>");
   for (i = 1; i < argc; i++)
@@ -1157,7 +1128,7 @@ argv[0]);
     fprintf(stdout, " %s", argv[i]);
     }
   fprintf(stdout, "</ProgramArguments>\n");
-  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.14 2007/09/10 17:01:14 gad
+  fprintf(stdout, "<CVS>$Id: chap_provenance.xml,v 1.15 2008-07-29 20:21:31 gad
 de Exp $</CVS> <TimeStamp>");
   time ( &rawtime );
   timeInfo = localtime (&rawtime);
@@ -1266,15 +1237,15 @@ k/Applications/GUI/Slicer3.cxx $</Repository>\n");
   fprintf(stdout, "\n");
 }
 
-   For the version, you can use the CVS keyword Name, inserted into your
-   source code file as $Name: $ and it will be replaced with a the version
-   tag when you check out the code with a tag:
+   For the version, you can use the CVS keyword Name, inserted into your source
+   code file as $Name: not supported by cvs2svn $ and it will be replaced with
+   a the version tag when you check out the code with a tag:
 cvs -r tag co [modulename]</programlisting>
 
-   If you are using SVN, in order to use CVS style keywords and have them
-   be replaced with the appropriate values, you must enable the SVN
-   repository's properties on a file by file (and keyword by keyword)
-   basis by issuing the following command:
+   If you are using SVN, in order to use CVS style keywords and have them be
+   replaced with the appropriate values, you must enable the SVN repository's
+   properties on a file by file (and keyword by keyword) basis by issuing the
+   following command:
 svn propset svn:keywords "Revision Id Date HeadURL" [filename.ext]
 
 Reference
@@ -1286,11 +1257,11 @@ Chapter 6. Events
 
 Overview
 
-   Events in XCEDE are merely time intervals annotated with arbitrary
-   metadata. This component can be used to represent several types of
-   behavioral data, statistics calculated on time series data, or any
-   other metadata whose proper interpretation requires that it be
-   associated with a particular interval in time.
+   Events in XCEDE are merely time intervals annotated with arbitrary metadata.
+   This component can be used to represent several types of behavioral data,
+   statistics calculated on time series data, or any other metadata whose
+   proper interpretation requires that it be associated with a particular
+   interval in time.
 
    An XCEDE event consists of the following:
 
@@ -1307,11 +1278,10 @@ Overview
           Usage of this field is user-specified
 
    units
-          The units of the onset and duration fields. This field is
-          optional, and it is recommended that users of the schema
-          prescribe an implicit unit of measurement and use it
-          consistently. In that case, this field may be considered
-          informational only.
+          The units of the onset and duration fields. This field is optional,
+          and it is recommended that users of the schema prescribe an implicit
+          unit of measurement and use it consistently. In that case, this field
+          may be considered informational only.
 
    values
           A value adds named metadata to this event.
@@ -1319,7 +1289,7 @@ Overview
    The following instance shows how each of these fields may be populated.
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <acquisition ID="my_stimulus_response_data">
                 <dataRef ID="my_events" />
         </acquisition>
@@ -1333,23 +1303,23 @@ MLSchema-instance'>
         </data>
 </XCEDE>
 
-   Event elements are stored within the <data> element of an
-   <acquisition>. The <data> element should be of type events_t (using
-   xsi:type — see examples below).
+   Event elements are stored within the <data> element of an <acquisition>. The
+   <data> element should be of type events_t (using xsi:type — see examples
+   below).
 
-   All onsets are relative to an arbitrary time reference. Typically, time
-   0 (zero) could mean the start of data acquisition. An event list may be
-   interpreted as concurrent with data in other <acquisition> elements
-   (which could be other event lists). If so, the same time reference
-   should be used in all concurrent acquisition data.
+   All onsets are relative to an arbitrary time reference. Typically, time 0
+   (zero)  could mean the start of data acquisition. An event list may be
+   interpreted as concurrent with data in other <acquisition> elements (which
+   could be other event lists). If so, the same time reference should be used
+   in all concurrent acquisition data.
 
-   There is no ordering constraint on events in a list. Applications
-   should depend on using the <onset> elements to order the events
-   chronologically if they so desire.
+   There is no ordering constraint on events in a list. Applications should
+   depend on using the <onset> elements to order the events chronologically if
+   they so desire.
 
-   An optional <params> element may precede the first event in a list, and
-   this element stores arbitrary metadata (using the same <value> element
-   used above) that apply to all events in the list.
+   An optional <params> element may precede the first event in a list, and this
+   element stores arbitrary metadata (using the same <value> element used
+   above) that apply to all events in the list.
 
 Examples
 
@@ -1357,14 +1327,14 @@ Examples
    An event timeline
 
    Consider the timeline shown in Figure 6.1, “An event timeline”
-   , representing stimuli and responses in a neuroimaging study. We show
-   in Figure 6.2, “XCEDE Events example - stimulus/response data” how the
-   first 5 seconds' worth of the events might be represented in XCEDE.
+   , representing stimuli and responses in a neuroimaging study. We show in
+   Figure 6.2, “XCEDE Events example - stimulus/response data” how the first 5
+   seconds' worth of the events might be represented in XCEDE.
 
    Figure 6.2. XCEDE Events example - stimulus/response data
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <acquisition ID="my_stimulus_response_data">
                 <dataRef ID="my_events" />
         </acquisition>
@@ -1403,29 +1373,29 @@ MLSchema-instance'>
         </data>
 </XCEDE>
 
-   Each stimulus and each response are stored as separate event elements.
-   Note that all the visual events appear first in the XCEDE file, then
-   the audio events, and then the response event. This ordering is
-   arbitrary, and the events could easily have been presented in
-   chronological (or random!) order. The semantic interpretation of the
-   events within an event list must not depend on their document order.
+   Each stimulus and each response are stored as separate event elements. Note
+   that all the visual events appear first in the XCEDE file, then the audio
+   events, and then the response event. This ordering is arbitrary, and the
+   events could easily have been presented in chronological (or random!) order.
+   The semantic interpretation of the events within an event list must not
+   depend on their document order.
 
-   Stimulus and response data are not the only appropriate content to
-   represent in XCEDE events. Figure 6.3, “XCEDE Events example - QA data”
-   shows how quality assurance (QA) statistics for each volume/timepoint
-   in an fMRI scan can be stored as events. Note that the time reference
-   for the onsets is arbitrary, but if the acquisition containing the
-   event data is contained within the same episode as other time-locked
-   data, it should be assumed that the time reference is the same for all
-   acquisitions within the episode, unless otherwise explicitly specified.
-   So, for example, this QA data might be associated with MR image data in
-   the same episode, and time 0 (zero) would by default be assumed to have
-   the same meaning in both sets of data.
+   Stimulus and response data are not the only appropriate content to represent
+   in XCEDE events. Figure 6.3, “XCEDE Events example - QA data”
+   shows how quality assurance (QA) statistics for each volume/timepoint in an
+   fMRI scan can be stored as events. Note that the time reference for the
+   onsets is arbitrary, but if the acquisition containing the event data is
+   contained within the same episode as other time-locked data, it should be
+   assumed that the time reference is the same for all acquisitions within the
+   episode, unless otherwise explicitly specified. So, for example, this QA
+   data might be associated with MR image data in the same episode, and time 0
+   (zero) would by default be assumed to have the same meaning in both sets of
+   data.
 
    Figure 6.3. XCEDE Events example - QA data
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
         <acquisition ID="my_stimulus_response_data">
                 <dataRef ID="my_events" />
         </acquisition>
@@ -1457,65 +1427,63 @@ Overview
    Specifications of experimental protocols are stored in XCEDE using the
    protocol_t tag structures.
 
-   Protocols in XCEDE consists of a hierarchial organization of steps
-   defining the protocol and items within the steps defining the
-   particular parameters of the protocol step. Formal protocols are built
-   either from top down or bottom up using these building blocks
+   Protocols in XCEDE consists of a hierarchial organization of steps defining
+   the protocol and items within the steps defining the particular parameters
+   of the protocol step. Formal protocols are built either from top down or
+   bottom up using these building blocks
 
-   protocol_t. The protocol_t tag extends the abstract_protocol_t tag to
+   protocol_t. The  protocol_t tag extends the abstract_protocol_t tag to
    include steps and items making up a protocol description.
 
-   An XCEDE protocol consists of the following tag groups. Each protocol
-   block can be specified
+   An XCEDE protocol consists of the following tag groups. Each protocol block
+   can be specified
 
    steps
-          Steps are used to specify an ordered list of step blocks that
+          Steps  are  used to specify an ordered list of step blocks that
           comprise the protocol. Each step block can be another protocol_t
           block or a reference to a step usign the stepRef tag.
 
    items
-          Items are the smallest building blocks of a protocol. They are
-          made up of any number of item tags which contain a specification
-          of the parameters for the particular protocol step..
+          Items are the smallest building blocks of a protocol. They are made
+          up of any number of item tags which contain a specification of the
+          parameters for the particular protocol step..
 
-   abstract_protocol_t. The abstract_protocol_t abstract tag provides
-   basic information related to a protocol such as protocol time offset,
-   min and max occurences, concept linkages, and more described below.The
-   protocol_offset_t tag is used to specify timing of this particular
-   protocol relative to other protocols or steps within an experiment. The
-   protocolTimeRef and preferrredTimeOffset tags are used to describe the
-   offset.The ID_name_description tag is used to specify an ID, name, and
-   description for the protocol.The terminology_ag reference is used to
-   give contextual meaning to the question and link it with known
-   ontologies and concepts.The level attribute is used to specify the
-   level hierarchically that the protocol refers to. For example, if the
-   protocol is specifying scanner specific parameters then the level would
-   point to the "study level" of the XCEDE hierarchy.The minOccurences and
-   maxOccurences attributes are set to specify the min and max occurrences
-   of the protocol.The minTimeFromStart and maxTimeFromStart attributes
-   are set to specify a timing window from the start of the parent
-   protocol. If this protocol block is at the top of the protcol hierarchy
-   then "TimeFromStart" is the start of the study.
+   abstract_protocol_t. The abstract_protocol_t abstract tag provides basic
+   information related to a protocol such as protocol time offset, min and max
+   occurences, concept linkages, and more described below.The protocol_offset_t
+   tag is used to specify timing of this particular protocol relative to other
+   protocols  or  steps  within  an  experiment.  The protocolTimeRef and
+   preferrredTimeOffset   tags   are  used  to  describe  the  offset.The
+   ID_name_description tag is used to specify an ID, name, and description for
+   the protocol.The terminology_ag reference is used to give contextual meaning
+   to the question and link it with known ontologies and concepts.The level
+   attribute is used to specify the level hierarchically that the protocol
+   refers to. For example, if the protocol is specifying scanner specific
+   parameters then the level would point to the "study level" of the XCEDE
+   hierarchy.The minOccurences and maxOccurences attributes are set to specify
+   the  min  and max occurrences of the protocol.The minTimeFromStart and
+   maxTimeFromStart attributes are set to specify a timing window from the
+   start of the parent protocol. If this protocol block is at the top of the
+   protcol hierarchy then "TimeFromStart" is the start of the study.
 
-   steps. The steps group and enclosing step and/or stepRef tags are used
-   to embed or reference other parts of a protocol.
+   steps. The steps group and enclosing step and/or stepRef tags are used to
+   embed or reference other parts of a protocol.
 
    item. The protocolItem_t type is used to specify the smallest building
-   blocks of the protocol.The itemText group and enclosing textLabel
-   groups are used to specify one or more text labels. These labels are
-   most often used when specifying the formal description of an assessment
-   where each question on an assessment has some text most often asking a
-   question. The location specifies where the text occurs. For example,
-   the text could occur before or after some data entry field of an
-   assessment questionaire. The value tag is used to specify the actual
-   text.The itemRange group derived from the protocolItemRange_t is used
-   define a valid range of values for a particular item via the attributes
-   min, max, and unitsThe itemChoice group is used to specify valid
-   entries for a particular protocol item. This is most often used when
-   specifying assessment questions that have a fixed number of choices.
-   The two attributes, itemCode and itemValue together specify the numeric
-   code that correlates to the actual value (presumably string of text) of
-   the choice as shown in the example below:
+   blocks of the protocol.The itemText group and enclosing textLabel groups are
+   used to specify one or more text labels. These labels are most often used
+   when specifying the formal description of an assessment where each question
+   on an assessment has some text most often asking a question. The location
+   specifies where the text occurs. For example, the text could occur before or
+   after some data entry field of an assessment questionaire. The value tag is
+   used  to  specify the actual text.The itemRange group derived from the
+   protocolItemRange_t is used define a valid range of values for a particular
+   item via the attributes min, max, and unitsThe itemChoice group is used to
+   specify valid entries for a particular protocol item. This is most often
+   used  when specifying assessment questions that have a fixed number of
+   choices. The two attributes, itemCode and itemValue together specify the
+   numeric code that correlates to the actual value (presumably string of text)
+   of the choice as shown in the example below:
  <xcede:itemChoice itemCode="1" itemValue="professional or graduate training (r
 eceived degree)"/>
  <xcede:itemChoice itemCode="2" itemValue="college graduate"/>
@@ -1523,16 +1491,16 @@ eceived degree)"/>
 
 Examples
 
-   The protocol example below shows a formal protocol definition for an
-   MRI visit that consists of an Socio-Economic scale assessment, followed
-   by an MRI scanning session consisting of a T1 and a Sensory Motor fMRI
+   The protocol example below shows a formal protocol definition for an MRI
+   visit that consists of an Socio-Economic scale assessment, followed by an
+   MRI  scanning  session  consisting  of  a  T1 and a Sensory Motor fMRI
    acquisition.
 
 MRI visit protocol example
 
 <?xml version="1.0" encoding="UTF-8"?>
-<XCEDE xmlns="http://www.xcede.org/xcede-2"
-       xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
+MLSchema-instance' version="2.0">
 
 <protocol ID="MRIV1" name="MRI Visit 1" minOccurences="1" maxOccurences="1"
        required="true" level="visit" description="MRI scanning visit 1">
@@ -1634,57 +1602,51 @@ s">
    </protocol>
 </XCEDE>
 
-
 Reference
 
 Chapter 8. Assessments
 
 Overview
 
-   Complete data storage and assessment specifications and descriptions
-   are stored in XCEDE using the assessment_t and assessmentDescItem_t tag
+   Complete data storage and assessment specifications and descriptions are
+   stored  in  XCEDE  using the assessment_t and assessmentDescItem_t tag
    structures.
 
-   In XCEDE the formal definition of an assessment and the cataloging of
-   the actual data values collected for that assessment are specified in
-   different parts of the schema. The formal description of the assessment
-   questions and possible answer choices are specified in the protocol
-   section of the schema using the type protocol_t (described at a high
-   level in Chapter 7, Protocols
-   ) whereas the actual assessment data for an acquisition are stored in
-   the assessment_t tags
+   In XCEDE the formal definition of an assessment and the cataloging of the
+   actual data values collected for that assessment are specified in different
+   parts of the schema. The formal description of the assessment questions and
+   possible answer choices are specified in the protocol section of the schema
+   using the type protocol_t (described at a high level in Chapter 7, Protocols
+   ) whereas the actual assessment data for an acquisition are stored in the
+   assessment_t tags
 
-   assessment_t. The assessment_t tag extends the abstract_data_t tag to
-   include information about the acquired assessment.The name element
-   contains the assessment name which is unique within the document and
-   links the acquired listing of assessment data back to the formal
-   assessment definition optionally contained within the protocol
-   descriptionThe dataInstance element specifies the state of the acquired
-   data. Specifically whether it is first entry, second entry, validated,
-   unvalidated, etc.
+   assessment_t. The  assessment_t tag extends the abstract_data_t tag to
+   include information about the acquired assessment.The name element contains
+   the  assessment name which is unique within the document and links the
+   acquired listing of assessment data back to the formal assessment definition
+   optionally contained within the protocol descriptionThe dataInstance element
+   specifies the state of the acquired data. Specifically whether it is first
+   entry, second entry, validated, unvalidated, etc.
 
-   assessmentInfo_t. The assessmentInfo_t tag is derived from the
-   abstract_info_t element and is used to store a description of the
-   assessment
+   assessmentInfo_t. The   assessmentInfo_t   tag  is  derived  from  the
+   abstract_info_t element and is used to store a description of the assessment
 
-   assessmentItem_t. The assessmentItem_t tag is used to store the actual
-   data captured by the assessment. The assessmentItem_t tag is composed
-   of a <valueStatus> element which contains information about whether the
-   subject declined to answer the question or why the data value might be
-   missing. The <value> element stores the actual value of the assessment
-   item as captured on the assessment iteself. The <normValue> is used to
-   store the normalized value for the element. The <reconciliationNote> is
-   used to document whether the values have been reconcilied if this data
-   is part of multiple data entries. The <annotation> is used to annotate
-   the assessment item.The terminology_ag reference is used to give
-   contextual meaning to the question and link it with known ontologies
-   and concepts.
+   assessmentItem_t. The assessmentItem_t tag is used to store the actual data
+   captured  by the assessment. The assessmentItem_t tag is composed of a
+   <valueStatus> element which contains information about whether the subject
+   declined to answer the question or why the data value might be missing. The
+   <value> element stores the actual value of the assessment item as captured
+   on the assessment iteself. The <normValue> is used to store the normalized
+   value for the element. The <reconciliationNote> is used to document whether
+   the values have been reconcilied if this data is part of multiple data
+   entries.  The <annotation> is used to annotate the assessment item.The
+   terminology_ag reference is used to give contextual meaning to the question
+   and link it with known ontologies and concepts.
 
 Examples
 
    The assessment example below shows both a formal assessment description
-   stored in the <protocol> block and also the actual acquired assessment
-   data
+   stored in the <protocol> block and also the actual acquired assessment data
 
 Formal Assessment Description
 
@@ -1693,7 +1655,7 @@ Formal Assessment Description
 
    Figure 8.1. Assessment description
 <?xml version="1.0" encoding="UTF-8"?>
-<XCEDE xmlns="http://www.xcede.org/xcede-2">
+<XCEDE xmlns="http://www.xcede.org/xcede-2" version="2.0">
         <protocol ID="An Assessment Description" name="The Name of the Assessme
 nt" minOccurences="1" maxOccurences="1" required="true" description="The descri
 ption of the Assessment">
@@ -1738,13 +1700,13 @@ lue="some college (at least one year)"/>
 
 Actual Acquired Assessment Data
 
-   An instance of actual assessment data acquired on a subject during a
+   An  instance  of actual assessment data acquired on a subject during a
    protocol collection:
 
    Figure 8.2. Acquired assessment data
 <?xml version="1.0" encoding="UTF-8"?>
 <XCEDE xmlns="http://www.xcede.org/xcede-2" xmlns:xsi='http://www.w3.org/2001/X
-MLSchema-instance'>
+MLSchema-instance' version="2.0">
 
         <data xsi:type="assessment_t" subjectID="00301882920">
                 <name>Socio-Economic Status</name>
@@ -1776,23 +1738,22 @@ Reference
 
 Chapter 9. Analysis
 
-   The analysis_t type and its corresponding elements are used to document
-   the collected output and/or results from an analysis or processing of
-   data.
+   The analysis_t type and its corresponding elements are used to document the
+   collected output and/or results from an analysis or processing of data.
 
 Overview
 
-   An analysis is composed of the "inputs" (i.e. the files and parameters
-   used in an analysis or processing of data), a list of the
-   application(s) or method(s) used in the analysis, and the resultant
-   data (i.e. values and output files):
+   An analysis is composed of the "inputs" (i.e. the files and parameters used
+   in an analysis or processing of data), a list of the application(s) or
+   method(s) used in the analysis, and the resultant data (i.e. values and
+   output files):
 
    Analysis Constituents
 
    provenance
-          The record of the origin and transformations applied to source
-          data that produced this analysis. More information on this
-          element can be found in Chapter 5, Data Provenance
+          The record of the origin and transformations applied to source data
+          that produced this analysis. More information on this element can be
+          found in Chapter 5, Data Provenance
 
           .
 
@@ -1800,56 +1761,55 @@ Overview
           References to the data file(s) that were used in the analysis.
 
    outputRef
-          Reference to the data file(s) generated by the analysis. Summary
-          data or statistics may be generated from these files and noted
-          inthe measurementGroup element.
+          Reference to the data file(s) generated by the analysis. Summary data
+          or statistics may be generated from these files and noted inthe
+          measurementGroup element.
 
    measurementGroup
           A measurement group contains information and data related to the
-          outcome of an analysis. For example, this could be a statistic
-          (e.g. from a Statistical Parametric Map) or a measurement (e.g.
-          the volume of the hippocmapus).
+          outcome of an analysis. For example, this could be a statistic (e.g.
+          from a Statistical Parametric Map) or a measurement (e.g. the volume
+          of the hippocmapus).
 
 Measurement Group
 
-   measurementGroup contains information and data related to the outcome
-   of an analysis and is based on the measurementGroup_t type. Extending
-   abstract_container_t, this allows for the annotation and documentation
-   of the measurements being described. The measurements being described
-   by this element are described by two specific elements:
+   measurementGroup contains information and data related to the outcome of an
+   analysis  and  is  based  on  the  measurementGroup_t  type. Extending
+   abstract_container_t, this allows for the annotation and documentation of
+   the measurements being described. The measurements being described by this
+   element are described by two specific elements:
 
    Measurement Group Constituents
 
    entity
           In the context of a measurement group, this is the entity being
-          measured. For example, the hippocampus. In more complicated
-          instances this could be an entity described by multiple entries,
-          for example, in a region of interest analysis where multiple or
-          multiple partial regions are involved.
+          measured. For example, the hippocampus. In more complicated instances
+          this could be an entity described by multiple entries, for example,
+          in a region of interest analysis where multiple or multiple partial
+          regions are involved.
 
    observation
-          In the context of a measurement group, these are the
-          observations that are made concerning the entity. For example,
-          following the hippocmapus example, this might store the total
-          volume, surface area, etc.
+          In the context of a measurement group, these are the observations
+          that are made concerning the entity. For example, following the
+          hippocmapus example, this might store the total volume, surface area,
+          etc.
 
-   The entity element is based on the abstract_entity_t type that allows
-   for the definition of specific entity classes. Currently two such
-   classes are defined:
+   The entity element is based on the abstract_entity_t type that allows for
+   the definition of specific entity classes. Currently two such classes are
+   defined:
 
    Entity Classes
 
    anatomicalEntity_t
-          Defines an anatomical entity through a set of terms that name
-          this entity. This set can contain a collection of synonymous
-          terms. In addition to the anatomical region itself a laterality
-          and tissue type can be specified to narrow the focus (e.g. left
-          hippocampal gray metter).
+          Defines an anatomical entity through a set of terms that name this
+          entity. This set can contain a collection of synonymous terms. In
+          addition to the anatomical region itself a laterality and tissue type
+          can be specified to narrow the focus (e.g. left hippocampal gray
+          metter).
 
    atalsEntity_t
-          Defines an atlas-based region through the definition of
-          geometries. These are defined using the abstract_geometry_t
-          type.
+          Defines an atlas-based region through the definition of geometries.
+          These are defined using the abstract_geometry_t type.
 
 Examples
 
@@ -1874,37 +1834,35 @@ Chapter 10. Terminology
 
 Overview
 
-   Ontologies specify the terms used to describe and represent areas of
-   knowledge. They are commonly used by people, databases, and
-   applications that have a requirement to share information about a
-   subject. For example, the subject areas of medicine, real estate, and
-   automobile repair all have specific ways of representing and
-   communicating knowledge. Ontologies include computer-usable definitions
-   of the basic terms describing the domain and the relationships between
-   concepts. They encode knowledge within a domain and also knowledge that
-   spans multiple domains. In this way, they make that knowledge reusable.
-   For comprehensive information on ontologies and their use in biomedical
-   science, please visit the National Center for Biomedical Ontology
-   (NCBiO; http://www.bioontology.org/).
+   Ontologies  specify  the terms used to describe and represent areas of
+   knowledge. They are commonly used by people, databases, and applications
+   that have a requirement to share information about a subject. For example,
+   the subject areas of medicine, real estate, and automobile repair all have
+   specific  ways of representing and communicating knowledge. Ontologies
+   include computer-usable definitions of the basic terms describing the domain
+   and the relationships between concepts. They encode knowledge within a
+   domain and also knowledge that spans multiple domains. In this way, they
+   make that knowledge reusable. For comprehensive information on ontologies
+   and their use in biomedical science, please visit the National Center for
+   Biomedical Ontology (NCBiO; http://www.bioontology.org/).
 
-   In the context of XCEDE, the use of terminologies (and ontologies) is
-   critical for data exchange. By specifying the exact terminological
-   correspondences for data within XCEDE a user of the data is clear about
-   what the data represents.
+   In  the context of XCEDE, the use of terminologies (and ontologies) is
+   critical  for  data  exchange.  By specifying the exact terminological
+   correspondences for data within XCEDE a user of the data is clear about what
+   the data represents.
 
-   In order to accomplish this within XCEDE, two constructs are primarily
-   used: terminology_ag and terminologyString_t. The terminology_ag
-   attribute group defines the necessary information required to annotate
-   a data item with its terminology correspondence. The
-   terminologyString_t utilizes this attribute group and provides a basic
-   type that can be utilized in the schema for data items that should have
-   an associated terminology reference.
+   In order to accomplish this within XCEDE, two constructs are primarily used:
+   terminology_ag and terminologyString_t. The terminology_ag attribute group
+   defines the necessary information required to annotate a data item with its
+   terminology correspondence. The terminologyString_t utilizes this attribute
+   group and provides a basic type that can be utilized in the schema for data
+   items that should have an associated terminology reference.
 
 Examples
 
-   The use of terminologies is embedded within the XCEDE schema itself.
-   For example, in regards to subject information, terminology strings are
-   utilized to define the sex and species.
+   The use of terminologies is embedded within the XCEDE schema itself. For
+   example, in regards to subject information, terminology strings are utilized
+   to define the sex and species.
 
    Figure 10.1. Terminology String Use In XCEDE Schema
         <xs:complexType name="subjectInfo_t">
@@ -1926,9 +1884,10 @@ tents="lax"/>
                 </xs:complexContent>
         </xs:complexType>
 
-   As an example of the use of terminology strings, in the context of a
-   subject detailed above, the following example shows how sex and species
-   are represented for a human female subject.
+
+   As an example of the use of terminology strings, in the context of a subject
+   detailed  above,  the  following example shows how sex and species are
+   represented for a human female subject.
 
    Figure 10.2. Terminology String Instance
         <sex preferredLabel="Female" abbreviation="F" nomenclature="UMLS" termI
@@ -1936,9 +1895,10 @@ D="C0015780" termPath="SNOMED CT Concept:Observable entity:General clinical sta
 te:Gender:Female">f</sex>
         <species preferredLabel="Human" abbreviation="human" nomenclature="BIRN
 Lex" termID="birn_org_anat:birnOrgAnatomy_366" termPath="Thing:entity:continuan
-t:independent_continuant:object:Biomaterial_object:Organismal_object:Organism:M
-ammal:Eutheria:Euarchontoglires:Primate:Haplorrhini:Simiiformes:Catarrhini:Homi
-noidea:Hominidae:Homo_Pan_Gorilla_group:Homo:Human">human</species>
+t:independent_continuant:object:Biomaterial_object:Organismal_object:Organism:-
+Mammal:Eutheria:Euarchontoglires:Primate:Haplorrhini:Simiiformes:Catarrhini:Hom
+inoidea:Hominidae:Homo_Pan_Gorilla_group:Homo:Human">human</species>
+
 
 Reference
 
@@ -1952,16 +1912,16 @@ Chapter 11. Comments and Annotations
 
 Overview
 
-   Annotations and comments critical in providing a well documented
-   instance document. These annotations can be either human generated
-   (e.g. notes taken by researcher during an fMRI 'study' that discuss the
-   subject's demeanor during a scan 'segment') or generated by processing
-   tools (e.g. when a software tool reads/modifies/generates a document).
+   Annotations and comments critical in providing a well documented instance
+   document. These annotations can be either human generated (e.g. notes taken
+   by researcher during an fMRI 'study' that discuss the subject's demeanor
+   during a scan 'segment') or generated by processing tools (e.g. when a
+   software tool reads/modifies/generates a document).
 
 Examples
 
-   The use of annotations (and comments) is embedded within the XCEDE
-   schema itself.
+   The use of annotations (and comments) is embedded within the XCEDE schema
+   itself.
 
    Figure 11.1. Annotation Schema Components
         <xs:simpleType name="comment_t">
@@ -1990,7 +1950,8 @@ t_t" minOccurs="1" maxOccurs="1"/>
         </xs:complexType>
 
 
-   As an example of the use of annotations, in the context of a subject
+
+   As  an  example of the use of annotations, in the context of a subject
    detailed above, the following example shows a quick example.
 
    Figure 11.2. Terminology String Instance
@@ -2005,6 +1966,7 @@ t_t" minOccurs="1" maxOccurs="1"/>
     </subject>
 </XCEDE>
 
+
 Reference
 
    Figure 11.3. comment_t
@@ -2018,10 +1980,10 @@ Reference
 
 Part II. Using and Extending XCEDE 2
 
-   This section of the XCEDE 2.0 manual provides practical lessons on
-   using the schema, as well as discussions on how to use W3C XML Schema
-   to extend the core XCEDE 2 datatypes and how to integrate it into
-   applications, databases and web services.
+   This section of the XCEDE 2.0 manual provides practical lessons on using the
+   schema, as well as discussions on how to use W3C XML Schema to extend the
+   core XCEDE 2 datatypes and how to integrate it into applications, databases
+   and web services.
 
    This part of the manual is not yet written.
 
@@ -3501,7 +3463,7 @@ otation>
 
 <xs:documentation>Block for describing things like
 
-informant, clinical rater, assessment date,
+        informant, clinical rater, assessment date,
 
 etc</xs:documentation>
                                                                         </xs:an
@@ -3926,29 +3888,29 @@ inOccurs="0"/>
 
 Bibliography
 
-   [BIRN] Biomedical Informatics Research Network.
+   [BIRN]       Biomedical       Informatics       Research      Network.
    URL:<[4]http://www.nbirn.net/>.
 
-   [CostelloSchemaVersioning] Impact of XML Schema Versioning on System
-   Design. URL:<[5]http://www.xfront.com/SchemaVersioning.html>.
+   [CostelloSchemaVersioning] Impact of XML Schema Versioning on System Design.
+   URL:<[5]http://www.xfront.com/SchemaVersioning.html>.
 
-   [Schematron] Rick Jelliffe. URL:<[6]http://www.schematron.com/>. ISO
+   [Schematron]  Rick  Jelliffe. URL:<[6]http://www.schematron.com/>. ISO
    specification for Schematron available as ISO/IEC 19757-3:2006.
 
-   [XML10] Extensible Markup Language (XML) 1.0 (Fourth Edition). Tim
-   Bray, Jean Paoli, C. M. Sperberg-McQueen, Eve Maler, and François
-   Yergeau. W3C. URL:<[7]http://www.w3.org/TR/xml/>.
+   [XML10] Extensible Markup Language (XML) 1.0 (Fourth Edition). Tim Bray,
+   Jean Paoli, C. M. Sperberg-McQueen, Eve Maler, and François Yergeau. W3C.
+   URL:<[7]http://www.w3.org/TR/xml/>.
 
-   [XMLSchema10] XML Schema 1.0. Henry S. Thompson, David Beech, Murray
+   [XMLSchema10]  XML  Schema 1.0. Henry S. Thompson, David Beech, Murray
    Maloney, and Noah Mendelsohn. W3C. Primer:
-   <[8]http://www.w3.org/TR/xmlschema-0/>, Structures:
-   <[9]http://www.w3.org/TR/xmlschema-1/>, Datatypes:
+   <[8]http://www.w3.org/TR/xmlschema-0/>,                    Structures:
+   <[9]http://www.w3.org/TR/xmlschema-1/>,                     Datatypes:
    <[10]http://www.w3.org/TR/xmlschema-2/>.
 
 References
 
-   1. file://localhost/home/gadde/L31018-7497TMP.html#id299818
-   2. file://localhost/home/gadde/L31018-7497TMP.html#chapter.intro
+   1. file://localhost/home/gadde/L22093-953TMP.html#id969517
+   2. file://localhost/home/gadde/L22093-953TMP.html#chapter.intro
    3. http://www.xcede.org/
    4. http://www.nbirn.net/
    5. http://www.xfront.com/SchemaVersioning.html
