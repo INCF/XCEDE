@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xcede2="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:annotation>
 		<xs:documentation>The XCEDE schema provides an extensive metadata hierarchy for describing and documenting research and clinical studies. The schema organizes information into five general hierarchical levels: a complete project; studies within a project; subjects involved in the studies; visits for each of the subjects; the full description of the subject's participation during each visit</xs:documentation>
 		<xs:documentation>Each of these sub-schemas is composed of information relevant to that aspect of an experiment and can be stored in separate XML files or spliced into one large file allowing for the XML data to be stored in a hierarchical directory structure along with the primary data. Each sub-schema also allows for the storage of data provenance information allowing for a traceable record of processing and/or changes to the underlying data. Additionally, the sub-schemas contain support for derived statistical data in the form of human imaging activation maps and simple statistical value lists.</xs:documentation>
@@ -143,11 +143,17 @@
 			<xs:documentation>Points out to a level element (using level and {project|subject|subjectGroup|visit|study|episode|acquisition}{ID|URI} attributes) and/or a data/analysis element (using {data|analysis}{ID|URI} attributes).</xs:documentation>
 		</xs:annotation>
 		<xs:attributeGroup ref="levelRef_ag" />
+		<xs:attributeGroup ref="dataRef_ag" />
+		<xs:attributeGroup ref="analysisRef_ag" />
+	</xs:complexType>
+	<xs:attributeGroup name="dataRef_ag">
 		<xs:attribute name="dataID" />
 		<xs:attribute name="dataURI" />
+	</xs:attributeGroup>
+	<xs:attributeGroup name="analysisRef_ag">
 		<xs:attribute name="analysisID" />
 		<xs:attribute name="analysisURI" />
-	</xs:complexType>
+	</xs:attributeGroup>
 	<xs:complexType name="analysis_t">
 		<xs:annotation>
 			<xs:documentation>A collection of output from an analysis of data.</xs:documentation>
@@ -266,6 +272,16 @@
 				</xs:sequence>
 				<xs:attributeGroup ref="ID_name_description"/>
 				<xs:attributeGroup ref="levelRef_ag"/>
+				<xs:attributeGroup ref="dataRef_ag">
+					<xs:annotation>
+						<xs:appinfo xcede2:firstAppearedIn="2.1"/>
+					</xs:annotation>
+				</xs:attributeGroup>
+				<xs:attributeGroup ref="analysisRef_ag">
+					<xs:annotation>
+						<xs:appinfo xcede2:firstAppearedIn="2.1"/>
+					</xs:annotation>
+				</xs:attributeGroup>
 				<xs:attribute name="format" type="xs:string" use="optional">
 					<xs:annotation>
 						<xs:documentation>Format of file. E.g. DICOM, Analyze, 4dfp</xs:documentation>
@@ -804,8 +820,30 @@
 	<!--*********            Provenance types            *********-->
 	<xs:complexType name="processStep_t">
 		<xs:sequence>
-			<xs:element name="program" type="versionedProgramEntity_t" minOccurs="0"/>
-			<xs:element name="programArguments" type="argumentsType_t" minOccurs="0"/>
+			<xs:element name="program" type="versionedProgramEntity_t" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This element is named 'program', but could also refer to a function/procedure name.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="programArguments" type="argumentsType_t" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The use of the 'parameters' element is preferred to programArguments, as it provides explicit separation between optionally-named arguments (whereas you would need to imply the argument separator(s) in the 'programArguments' string, and it does not formally define any way to encode/escape an occurrence of the separator(s) within a given argument)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="parameters" type="namedParameterList_t" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Lists the parameters specified for this program/function.</xs:documentation>
+						<xs:appinfo xcede2:firstAppearedIn="2.1"/>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="workingURI" type="xs:anyURI" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>This is the equivalent to "current working directory", but represented as a URI for those applications that support the notion.  It serves as a base URI for any relative paths/URIs in the &lt;programArguments&gt; or &lt;parameters&gt;&lt;param&gt; elements with attribute ispath="true".</xs:documentation>
+					<xs:appinfo xcede2:firstAppearedIn="2.1"/>
+				</xs:annotation>
+			</xs:element>
 			<xs:element name="timeStamp" type="xs:dateTime" minOccurs="0"/>
 			<xs:element name="user" type="xs:string" minOccurs="0"/>
 			<xs:element name="hostName" type="xs:string" minOccurs="0"/>
@@ -838,6 +876,29 @@
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
+	<xs:complexType name="namedParameterList_t">
+		<xs:sequence>
+			<xs:element name="param" type="namedParameter_t" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="namedParameter_t">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="name" type="xs:string"/>
+				<xs:attribute name="io" type="parameterIOType_t"/>
+				<xs:attribute name="ispath" type="xs:boolean" default="false"/>
+				<xs:attribute name="type" type="valueTypes_t"/>
+				<xs:attribute name="description" type="xs:string"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="parameterIOType_t">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="input"/>
+			<xs:enumeration value="output"/>
+			<xs:enumeration value="input/output"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="versionedEntity_t">
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
@@ -847,10 +908,11 @@
 	</xs:complexType>
 	<xs:complexType name="versionedProgramEntity_t">
 		<xs:annotation>
-			<xs:documentation>version and build type of the processing tool</xs:documentation>
+			<xs:documentation>package, version and build type of the processing tool</xs:documentation>
 		</xs:annotation>
 		<xs:simpleContent>
 			<xs:extension base="xs:string">
+				<xs:attribute name="package" type="xs:string"/>
 				<xs:attribute name="version" type="xs:string"/>
 				<xs:attribute name="build" type="xs:string"/>
 			</xs:extension>
