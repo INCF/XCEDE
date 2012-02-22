@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xcede2="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xcede.org/xcede-2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xcede2="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xcede.org/xcede-2" xmlns:prov="http://openprovenance.org/prov-xml#" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xs:annotation>
 		<xs:documentation>The XCEDE schema provides an extensive metadata hierarchy for describing and documenting research and clinical studies. The schema organizes information into five general hierarchical levels: a complete project; studies within a project; subjects involved in the studies; visits for each of the subjects; the full description of the subject's participation during each visit</xs:documentation>
 		<xs:documentation>Each of these sub-schemas is composed of information relevant to that aspect of an experiment and can be stored in separate XML files or spliced into one large file allowing for the XML data to be stored in a hierarchical directory structure along with the primary data. Each sub-schema also allows for the storage of data provenance information allowing for a traceable record of processing and/or changes to the underlying data. Additionally, the sub-schemas contain support for derived statistical data in the form of human imaging activation maps and simple statistical value lists.</xs:documentation>
 		<xs:documentation>XCEDE was originally designed in the context of neuroimaging studies and complements the Biomedical Informatics Research Network (BIRN) Human Imaging Database, an extensible database and intuitive web-based user interface for the management, discovery, retrieval, and analysis of clinical and brain imaging data. This close coupling allows for an interchangeable source-sink relationship between the database and the XML files, which can be used for the import/export of data to/from the database, the standardized transport and interchange of experimental data, the local storage of experimental information within data collections, and human and machine readable description of the actual data.</xs:documentation>
+		<xs:documentation>Some XCEDE elements or attributes below may contain XML Schema annotations with an attribute named "introducedInXCEDE", whose value indicates the first XCEDE version in which that XCEDE element or XCEDE attribute was introduced.  Any element or attribute without an annotation of this type may be interpreted as if it had an annotation with the attribute introducedInXCEDE="2.0" .  These annotations can be used by PSVI (post-schema-validation infoset) equipped tools to figure out the earliest XCEDE schema that a given document could support.</xs:documentation>
 	</xs:annotation>
 	<xs:element name="XCEDE">
 		<xs:complexType>
@@ -36,6 +37,9 @@
 				<xs:element name="resource" type="resource_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="protocol" type="protocol_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="data" type="abstract_data_t" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="provenance" type="prov:Container" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation><xs:appinfo introducedInXCEDE="2.1" /></xs:annotation>
+				</xs:element>
 			</xs:choice>
 			<xs:attribute name="version" type="xs:string" use="required"/>
 		</xs:complexType>
@@ -43,7 +47,7 @@
 	<!--*********            Top-level containers            *********-->
 	<xs:complexType name="project_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
+			<xs:extension base="abstract_level_t">
 				<xs:sequence>
 					<xs:element name="projectInfo" type="projectInfo_t" minOccurs="0"/>
 					<xs:element name="contributorList" minOccurs="0">
@@ -79,7 +83,7 @@
 	</xs:complexType>
 	<xs:complexType name="visit_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
+			<xs:extension base="abstract_level_t">
 				<xs:sequence>
 					<xs:element name="visitInfo" type="visitInfo_t" minOccurs="0"/>
 					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
@@ -91,7 +95,7 @@
 	</xs:complexType>
 	<xs:complexType name="study_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
+			<xs:extension base="abstract_level_t">
 				<xs:sequence>
 					<xs:element name="studyInfo" type="studyInfo_t" minOccurs="0"/>
 					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
@@ -103,7 +107,7 @@
 	</xs:complexType>
 	<xs:complexType name="episode_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
+			<xs:extension base="abstract_level_t">
 				<xs:sequence>
 					<xs:element name="episodeInfo" type="episodeInfo_t" minOccurs="0"/>
 					<xs:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
@@ -115,7 +119,7 @@
 	</xs:complexType>
 	<xs:complexType name="acquisition_t">
 		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
+			<xs:extension base="abstract_level_t">
 				<xs:sequence>
 					<xs:element name="acquisitionInfo" type="acquisitionInfo_t" minOccurs="0"/>
 					<xs:choice minOccurs="0">
@@ -159,7 +163,7 @@
 			<xs:documentation>A collection of output from an analysis of data.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="abstract_container_t">
+			<xs:extension base="abstract_process_t">
 				<xs:sequence>
 					<xs:element name="provenance" type="provenance_t" minOccurs="0" maxOccurs="unbounded">
 						<xs:annotation>
@@ -299,6 +303,12 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:attribute>
+				<xs:attribute name="provEntityID" type="xs:QName" use="optional">
+					<xs:annotation>
+						<xs:appinfo introducedInXCEDE="2.1" />
+						<xs:documentation>If this resource is modeled as an Entity in a PROV container, this is the ID of that entity element.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -394,7 +404,30 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_container_t">
 				<xs:attributeGroup ref="levelRef_ag"/>
+				<xs:attribute name="provEntityID" type="xs:QName" use="optional">
+					<xs:annotation>
+						<xs:appinfo introducedInXCEDE="2.1" />
+						<xs:documentation>If this data is modeled as an Entity in an PROV container, this is the ID of that entity element.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
 			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="abstract_process_t" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="abstract_container_t">
+				<xs:attribute name="provActivityID" type="xs:QName" use="optional">
+					<xs:annotation>
+						<xs:appinfo introducedInXCEDE="2.1" />
+						<xs:documentation>If this level is modeled as a Activity in an PROV container, this is the ID of that activity element.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="abstract_level_t" abstract="true">
+		<xs:complexContent>
+			<xs:extension base="abstract_process_t" />
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="abstract_container_t" abstract="true">
@@ -739,6 +772,7 @@
 							<xs:sequence>
 								<xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
+							<xs:attribute name="label" type="xs:string" use="optional" />
 						</xs:complexType>
 					</xs:element>
 					<xs:element name="direction" type="listoffloats_t" minOccurs="0">
