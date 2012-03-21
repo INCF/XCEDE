@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xcede2="http://www.xcede.org/xcede-2" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xcede.org/xcede-2" xmlns:prov="http://openprovenance.org/prov-xml#" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns="http://www.xcede.org/xcede-2" xmlns:xcede2="http://www.xcede.org/xcede-2"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.xcede.org/xcede-2"
+	xmlns:prov="http://openprovenance.org/prov-xml#" elementFormDefault="qualified"
+	attributeFormDefault="qualified">
 	<xs:annotation>
 		<xs:documentation>The XCEDE schema provides an extensive metadata hierarchy for describing and documenting research and clinical studies. The schema organizes information into five general hierarchical levels: a complete project; studies within a project; subjects involved in the studies; visits for each of the subjects; the full description of the subject's participation during each visit</xs:documentation>
 		<xs:documentation>Each of these sub-schemas is composed of information relevant to that aspect of an experiment and can be stored in separate XML files or spliced into one large file allowing for the XML data to be stored in a hierarchical directory structure along with the primary data. Each sub-schema also allows for the storage of data provenance information allowing for a traceable record of processing and/or changes to the underlying data. Additionally, the sub-schemas contain support for derived statistical data in the form of human imaging activation maps and simple statistical value lists.</xs:documentation>
 		<xs:documentation>XCEDE was originally designed in the context of neuroimaging studies and complements the Biomedical Informatics Research Network (BIRN) Human Imaging Database, an extensible database and intuitive web-based user interface for the management, discovery, retrieval, and analysis of clinical and brain imaging data. This close coupling allows for an interchangeable source-sink relationship between the database and the XML files, which can be used for the import/export of data to/from the database, the standardized transport and interchange of experimental data, the local storage of experimental information within data collections, and human and machine readable description of the actual data.</xs:documentation>
 		<xs:documentation>Some XCEDE elements or attributes below may contain XML Schema annotations with an attribute named "introducedInXCEDE", whose value indicates the first XCEDE version in which that XCEDE element or XCEDE attribute was introduced.  Any element or attribute without an annotation of this type may be interpreted as if it had an annotation with the attribute introducedInXCEDE="2.0" .  These annotations can be used by PSVI (post-schema-validation infoset) equipped tools to figure out the earliest XCEDE schema that a given document could support.</xs:documentation>
 	</xs:annotation>
+	<xs:import namespace="http://openprovenance.org/prov-xml#"
+		schemaLocation="https://raw.github.com/lucmoreau/ProvToolbox/master/xml/src/main/resources/prov-20120110.xsd"/>
 	<xs:element name="XCEDE">
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
 				<xs:element name="annotationList" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
+								maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -22,7 +28,8 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="revision" type="revision_t" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="revision" type="revision_t" minOccurs="0"
+								maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -31,14 +38,18 @@
 				<xs:element name="visit" type="visit_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="study" type="study_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="episode" type="episode_t" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="acquisition" type="acquisition_t" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="acquisition" type="acquisition_t" minOccurs="0"
+					maxOccurs="unbounded"/>
 				<xs:element name="catalog" type="catalog_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="analysis" type="analysis_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="resource" type="resource_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="protocol" type="protocol_t" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="data" type="abstract_data_t" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="provenance" type="prov:Container" minOccurs="0" maxOccurs="unbounded">
-					<xs:annotation><xs:appinfo introducedInXCEDE="2.1" /></xs:annotation>
+				<xs:element name="provenance" type="prov:Container" minOccurs="0"
+					maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:appinfo xcede2:firstAppearedIn="2.1"/>
+					</xs:annotation>
 				</xs:element>
 			</xs:choice>
 			<xs:attribute name="version" type="xs:string" use="required"/>
@@ -53,7 +64,8 @@
 					<xs:element name="contributorList" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="contributor" type="person_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="contributor" type="person_t" minOccurs="0"
+									maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -146,17 +158,17 @@
 		<xs:annotation>
 			<xs:documentation>Points out to a level element (using level and {project|subject|subjectGroup|visit|study|episode|acquisition}{ID|URI} attributes) and/or a data/analysis element (using {data|analysis}{ID|URI} attributes).</xs:documentation>
 		</xs:annotation>
-		<xs:attributeGroup ref="levelRef_ag" />
-		<xs:attributeGroup ref="dataRef_ag" />
-		<xs:attributeGroup ref="analysisRef_ag" />
+		<xs:attributeGroup ref="levelRef_ag"/>
+		<xs:attributeGroup ref="dataRef_ag"/>
+		<xs:attributeGroup ref="analysisRef_ag"/>
 	</xs:complexType>
 	<xs:attributeGroup name="dataRef_ag">
-		<xs:attribute name="dataID" />
-		<xs:attribute name="dataURI" />
+		<xs:attribute name="dataID"/>
+		<xs:attribute name="dataURI"/>
 	</xs:attributeGroup>
 	<xs:attributeGroup name="analysisRef_ag">
-		<xs:attribute name="analysisID" />
-		<xs:attribute name="analysisURI" />
+		<xs:attribute name="analysisID"/>
+		<xs:attribute name="analysisURI"/>
 	</xs:attributeGroup>
 	<xs:complexType name="analysis_t">
 		<xs:annotation>
@@ -165,20 +177,24 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_process_t">
 				<xs:sequence>
-					<xs:element name="provenance" type="provenance_t" minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="provenance" type="provenance_t" minOccurs="0"
+						maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>The record of the origin and transformations applied to source data that produced this analysis</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="input" type="levelDataRefs_t" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="output" type="levelDataRefs_t" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="measurementGroup" type="measurementGroup_t" minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="input" type="levelDataRefs_t" minOccurs="0"
+						maxOccurs="unbounded"/>
+					<xs:element name="output" type="levelDataRefs_t" minOccurs="0"
+						maxOccurs="unbounded"/>
+					<xs:element name="measurementGroup" type="measurementGroup_t" minOccurs="0"
+						maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>A measurementGroup contains information and data related to the outcome of an analysis.  For example, this could be a statistic (e.g. from a Statistical Parametric Map) or a measurement (e.g. the volume of the hippocmapus).</xs:documentation>
 						</xs:annotation>
 					</xs:element>
 				</xs:sequence>
-				<xs:attributeGroup ref="levelRef_ag" />
+				<xs:attributeGroup ref="levelRef_ag"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -221,7 +237,8 @@
 					<xs:element name="items" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="item" type="protocolItem_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="item" type="protocolItem_t" minOccurs="0"
+									maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -305,7 +322,7 @@
 				</xs:attribute>
 				<xs:attribute name="provEntityID" type="xs:QName" use="optional">
 					<xs:annotation>
-						<xs:appinfo introducedInXCEDE="2.1" />
+						<xs:appinfo xcede2:firstAppearedIn="2.1"/>
 						<xs:documentation>If this resource is modeled as an Entity in a PROV container, this is the ID of that entity element.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
@@ -406,7 +423,7 @@
 				<xs:attributeGroup ref="levelRef_ag"/>
 				<xs:attribute name="provEntityID" type="xs:QName" use="optional">
 					<xs:annotation>
-						<xs:appinfo introducedInXCEDE="2.1" />
+						<xs:appinfo xcede2:firstAppearedIn="2.1"/>
 						<xs:documentation>If this data is modeled as an Entity in an PROV container, this is the ID of that entity element.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
@@ -418,7 +435,7 @@
 			<xs:extension base="abstract_container_t">
 				<xs:attribute name="provActivityID" type="xs:QName" use="optional">
 					<xs:annotation>
-						<xs:appinfo introducedInXCEDE="2.1" />
+						<xs:appinfo xcede2:firstAppearedIn="2.1"/>
 						<xs:documentation>If this level is modeled as a Activity in an PROV container, this is the ID of that activity element.</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
@@ -427,7 +444,7 @@
 	</xs:complexType>
 	<xs:complexType name="abstract_level_t" abstract="true">
 		<xs:complexContent>
-			<xs:extension base="abstract_process_t" />
+			<xs:extension base="abstract_process_t"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:complexType name="abstract_container_t" abstract="true">
@@ -440,7 +457,8 @@
 						</xs:annotation>
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="comment" type="authoredText_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="comment" type="authoredText_t" minOccurs="0"
+									maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -450,7 +468,8 @@
 						</xs:annotation>
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
+									maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -460,7 +479,8 @@
 						</xs:annotation>
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="resource" type="informationResource_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="resource" type="informationResource_t"
+									minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -505,7 +525,8 @@
 	</xs:complexType>
 	<xs:complexType name="abstract_protocol_t" abstract="true">
 		<xs:sequence>
-			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="protocolOffset" type="protocolOffset_t" minOccurs="0"
+				maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attributeGroup ref="ID_name_description"/>
 		<xs:attributeGroup ref="terminology_ag"/>
@@ -542,7 +563,8 @@
 						</xs:annotation>
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="subjectGroup" type="subjectGroup_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="subjectGroup" type="subjectGroup_t" minOccurs="0"
+									maxOccurs="unbounded"/>
 							</xs:sequence>
 							<xs:anyAttribute namespace="##other" processContents="lax"/>
 						</xs:complexType>
@@ -616,13 +638,17 @@
 					<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="creator" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="subject" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="publisher" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="contributor" type="orderedString_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="description" type="xs:string" minOccurs="0"
+						maxOccurs="unbounded"/>
+					<xs:element name="publisher" type="xs:string" minOccurs="0"
+						maxOccurs="unbounded"/>
+					<xs:element name="contributor" type="orderedString_t" minOccurs="0"
+						maxOccurs="unbounded"/>
 					<xs:element name="date" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="type" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="format" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="identifier" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="identifier" type="xs:string" minOccurs="0"
+						maxOccurs="unbounded"/>
 					<xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="language" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="relation" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
@@ -696,7 +722,8 @@
 		<xs:complexContent>
 			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
-					<xs:element name="dimension" type="binaryDataDimension_t" maxOccurs="unbounded"/>
+					<xs:element name="dimension" type="binaryDataDimension_t" maxOccurs="unbounded"
+					/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -708,7 +735,8 @@
 		<xs:complexContent>
 			<xs:extension base="binaryDataResource_t">
 				<xs:sequence>
-					<xs:element name="dimension" type="mappedBinaryDataDimension_t" maxOccurs="unbounded"/>
+					<xs:element name="dimension" type="mappedBinaryDataDimension_t"
+						maxOccurs="unbounded"/>
 					<xs:element name="originCoords" type="xs:string" minOccurs="0">
 						<xs:annotation>
 							<xs:documentation xml:lang="en">This is a coordinate tuple giving the location of the first item in the data. For example, if this is an MR volume, this could be a triple giving the location in RAS coordinates of the first voxel in the data.</xs:documentation>
@@ -770,9 +798,10 @@
 						</xs:annotation>
 						<xs:complexType mixed="true">
 							<xs:sequence>
-								<xs:element name="value" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="value" type="xs:string" minOccurs="0"
+									maxOccurs="unbounded"/>
 							</xs:sequence>
-							<xs:attribute name="label" type="xs:string" use="optional" />
+							<xs:attribute name="label" type="xs:string" use="optional"/>
 						</xs:complexType>
 					</xs:element>
 					<xs:element name="direction" type="listoffloats_t" minOccurs="0">
@@ -794,7 +823,8 @@
 						</xs:annotation>
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="vector" type="listoffloats_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="vector" type="listoffloats_t" minOccurs="0"
+									maxOccurs="unbounded"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -837,14 +867,16 @@
 			<xs:element name="documentationList" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="documentation" type="informationResource_t" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="documentation" type="informationResource_t" minOccurs="0"
+							maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
 			<xs:element name="extensionList" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="extension" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="extension" type="xs:string" minOccurs="0"
+							maxOccurs="unbounded"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -960,7 +992,8 @@
 					<xs:element name="params" type="eventParams_t" minOccurs="0"/>
 					<xs:element name="event" type="event_t" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="description" type="xs:string" minOccurs="0"/>
-					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
+						maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -974,7 +1007,8 @@
 			<xs:element name="onset" type="xs:float" minOccurs="0"/>
 			<xs:element name="duration" type="xs:float" minOccurs="0"/>
 			<xs:element name="value" type="eventValue_t" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
+				maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="type" type="xs:string" use="optional"/>
 		<xs:attribute name="units" type="xs:string" use="optional">
@@ -1043,7 +1077,8 @@
 				</xs:complexType>
 			</xs:element>
 			<xs:choice>
-				<xs:element name="itemRange" type="protocolItemRange_t" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="itemRange" type="protocolItemRange_t" minOccurs="0"
+					maxOccurs="unbounded"/>
 				<xs:element name="itemChoice" minOccurs="0" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:attribute name="itemCode" type="xs:string"/>
@@ -1101,14 +1136,16 @@
 					<xs:element name="dataInstance" minOccurs="0" maxOccurs="unbounded">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="assessmentInfo" type="assessmentInfo_t" minOccurs="0">
+								<xs:element name="assessmentInfo" type="assessmentInfo_t"
+									minOccurs="0">
 									<xs:annotation>
 										<xs:documentation>Block for describing things like
 											informant, clinical rater, assessment date,
 										etc</xs:documentation>
 									</xs:annotation>
 								</xs:element>
-								<xs:element name="assessmentItem" type="assessmentItem_t" minOccurs="0" maxOccurs="unbounded"/>
+								<xs:element name="assessmentItem" type="assessmentItem_t"
+									minOccurs="0" maxOccurs="unbounded"/>
 							</xs:sequence>
 							<xs:attribute name="validated" type="xs:boolean">
 								<xs:annotation>
@@ -1120,7 +1157,8 @@
 							</xs:attribute>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="annotation" type="textAnnotation_t" minOccurs="0"
+						maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -1277,7 +1315,8 @@
 		<xs:complexContent>
 			<xs:extension base="abstract_entity_t">
 				<xs:sequence>
-					<xs:element name="label" type="terminologyString_t" minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="label" type="terminologyString_t" minOccurs="0"
+						maxOccurs="unbounded">
 						<xs:annotation>
 							<xs:documentation>The set of terms that name this entity.  This set can contain a collection of synonymous terms</xs:documentation>
 						</xs:annotation>
@@ -1335,9 +1374,8 @@
 		<xs:attributeGroup ref="authoredText_ag"/>
 	</xs:complexType>
 	<xs:simpleType name="comment_t">
-		<xs:restriction base="xs:string"> 
-		</xs:restriction>
-	</xs:simpleType> 
+		<xs:restriction base="xs:string"> </xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="textAnnotation_t">
 		<xs:complexContent>
 			<xs:extension base="abstract_annotation_t">
