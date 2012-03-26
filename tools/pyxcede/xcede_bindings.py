@@ -4,6 +4,10 @@
 #
 # Generated Mon Mar 26 16:33:24 2012 by generateDS.py version 2.7b.
 #
+# generateDS.py -o xcede_bindings.py -s pyxcede.py --root-element='XCEDE' \
+# --namespacedef='xmlns:xcede2="http://www.xcede.org/xcede-2"' \
+# --super="xcede_bindings" ../../xcede-2.1-core.xsd
+#
 
 import sys
 import getopt
