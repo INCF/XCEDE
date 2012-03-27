@@ -4,6 +4,15 @@
 # Generated Mon Mar 26 16:33:24 2012 by generateDS.py version 2.7b.
 #
 
+"""
+pyXCEDE is set of python bindings to the XCEDE-2.1-core.xsd schema that consists of
+utilities for parsing, generating, and publishing XCEDE compliant files.
+
+The xcede_bindings.py superclass defines the primary data structures, while pyXCEDE
+aims to create an intuitive and high level interface for parsing XCEDE
+xml into a python object model, and for serializing python objects into XCEDE xml.
+"""
+
 import sys
 
 import xcede_bindings as supermod
@@ -70,914 +79,839 @@ ExternalEncoding = 'ascii'
 # Data representation classes
 #
 
-class XCEDESub(supermod.XCEDE):
+class XCEDE(supermod.XCEDE):
     def __init__(self, version=None, annotationList=None, revisionList=None, project=None, subject=None, visit=None, study=None, episode=None, acquisition=None, catalog=None, analysis=None, resource=None, protocol=None, data=None, provenance=None):
-        super(XCEDESub, self).__init__(version, annotationList, revisionList, project, subject, visit, study, episode, acquisition, catalog, analysis, resource, protocol, data, provenance, )
-supermod.XCEDE.subclass = XCEDESub
-# end class XCEDESub
+        super(XCEDE, self).__init__(version, annotationList, revisionList, project, subject, visit, study, episode, acquisition, catalog, analysis, resource, protocol, data, provenance, )
+supermod.XCEDE.subclass = XCEDE
+# end class XCEDE
 
 
-class subjectGroup_tSub(supermod.subjectGroup_t):
+class subjectGroup_t(supermod.subjectGroup_t):
     def __init__(self, ID=None, subjectID=None):
-        super(subjectGroup_tSub, self).__init__(ID, subjectID, )
-supermod.subjectGroup_t.subclass = subjectGroup_tSub
-# end class subjectGroup_tSub
+        super(subjectGroup_t, self).__init__(ID, subjectID, )
+supermod.subjectGroup_t.subclass = subjectGroup_t
+# end class subjectGroup_t
 
 
-class levelDataRefs_tSub(supermod.levelDataRefs_t):
+class levelDataRefs_t(supermod.levelDataRefs_t):
     def __init__(self, dataURI=None, dataID=None, analysisID=None, analysisURI=None, level=None):
-        super(levelDataRefs_tSub, self).__init__(dataURI, dataID, analysisID, analysisURI, level, )
-supermod.levelDataRefs_t.subclass = levelDataRefs_tSub
-# end class levelDataRefs_tSub
+        super(levelDataRefs_t, self).__init__(dataURI, dataID, analysisID, analysisURI, level, )
+supermod.levelDataRefs_t.subclass = levelDataRefs_t
+# end class levelDataRefs_t
 
 
-class observation_tSub(supermod.observation_t):
+class observation_t(supermod.observation_t):
     def __init__(self, units=None, type_=None, name=None, valueOf_=None):
-        super(observation_tSub, self).__init__(units, type_, name, valueOf_, )
-supermod.observation_t.subclass = observation_tSub
-# end class observation_tSub
+        super(observation_t, self).__init__(units, type_, name, valueOf_, )
+supermod.observation_t.subclass = observation_t
+# end class observation_t
 
-
-class abstract_entity_tSub(supermod.abstract_entity_t):
-    def __init__(self, preferredEntityLabel=None, ID=None, description=None, extensiontype_=None):
-        super(abstract_entity_tSub, self).__init__(preferredEntityLabel, ID, description, extensiontype_, )
-supermod.abstract_entity_t.subclass = abstract_entity_tSub
-# end class abstract_entity_tSub
-
-
-class abstract_info_tSub(supermod.abstract_info_t):
-    def __init__(self, description=None, extensiontype_=None):
-        super(abstract_info_tSub, self).__init__(description, extensiontype_, )
-supermod.abstract_info_t.subclass = abstract_info_tSub
-# end class abstract_info_tSub
-
-
-class abstract_protocol_tSub(supermod.abstract_protocol_t):
-    def __init__(self, termPath=None, description=None, maxOccurences=None, required=None, nomenclature=None, minOccurences=None, abbreviation=None, preferredLabel=None, termID=None, level=None, ID=None, name=None, protocolOffset=None, extensiontype_=None):
-        super(abstract_protocol_tSub, self).__init__(termPath, description, maxOccurences, required, nomenclature, minOccurences, abbreviation, preferredLabel, termID, level, ID, name, protocolOffset, extensiontype_, )
-supermod.abstract_protocol_t.subclass = abstract_protocol_tSub
-# end class abstract_protocol_tSub
-
-
-class projectInfo_tSub(supermod.projectInfo_t):
+class projectInfo_t(supermod.projectInfo_t):
     def __init__(self, description=None, exptDesignList=None, subjectGroupList=None, anytypeobjs_=None):
-        super(projectInfo_tSub, self).__init__(description, exptDesignList, subjectGroupList, anytypeobjs_, )
-supermod.projectInfo_t.subclass = projectInfo_tSub
-# end class projectInfo_tSub
+        super(projectInfo_t, self).__init__(description, exptDesignList, subjectGroupList, anytypeobjs_, )
+supermod.projectInfo_t.subclass = projectInfo_t
+# end class projectInfo_t
 
 
-class subjectInfo_tSub(supermod.subjectInfo_t):
+class subjectInfo_t(supermod.subjectInfo_t):
     def __init__(self, description=None, sex=None, species=None, birthdate=None, anytypeobjs_=None):
-        super(subjectInfo_tSub, self).__init__(description, sex, species, birthdate, anytypeobjs_, )
-supermod.subjectInfo_t.subclass = subjectInfo_tSub
-# end class subjectInfo_tSub
+        super(subjectInfo_t, self).__init__(description, sex, species, birthdate, anytypeobjs_, )
+supermod.subjectInfo_t.subclass = subjectInfo_t
+# end class subjectInfo_t
 
 
-class studyInfo_tSub(supermod.studyInfo_t):
+class studyInfo_t(supermod.studyInfo_t):
     def __init__(self, description=None, timeStamp=None):
-        super(studyInfo_tSub, self).__init__(description, timeStamp, )
-supermod.studyInfo_t.subclass = studyInfo_tSub
-# end class studyInfo_tSub
+        super(studyInfo_t, self).__init__(description, timeStamp, )
+supermod.studyInfo_t.subclass = studyInfo_t
+# end class studyInfo_t
 
 
-class visitInfo_tSub(supermod.visitInfo_t):
+class visitInfo_t(supermod.visitInfo_t):
     def __init__(self, description=None, timeStamp=None, subjectAge=None):
-        super(visitInfo_tSub, self).__init__(description, timeStamp, subjectAge, )
-supermod.visitInfo_t.subclass = visitInfo_tSub
-# end class visitInfo_tSub
+        super(visitInfo_t, self).__init__(description, timeStamp, subjectAge, )
+supermod.visitInfo_t.subclass = visitInfo_t
+# end class visitInfo_t
 
 
-class episodeInfo_tSub(supermod.episodeInfo_t):
+class episodeInfo_t(supermod.episodeInfo_t):
     def __init__(self, description=None, timeStamp=None):
-        super(episodeInfo_tSub, self).__init__(description, timeStamp, )
-supermod.episodeInfo_t.subclass = episodeInfo_tSub
-# end class episodeInfo_tSub
+        super(episodeInfo_t, self).__init__(description, timeStamp, )
+supermod.episodeInfo_t.subclass = episodeInfo_t
+# end class episodeInfo_t
 
 
-class acquisitionInfo_tSub(supermod.acquisitionInfo_t):
+class acquisitionInfo_t(supermod.acquisitionInfo_t):
     def __init__(self, description=None, timeStamp=None):
-        super(acquisitionInfo_tSub, self).__init__(description, timeStamp, )
-supermod.acquisitionInfo_t.subclass = acquisitionInfo_tSub
-# end class acquisitionInfo_tSub
+        super(acquisitionInfo_t, self).__init__(description, timeStamp, )
+supermod.acquisitionInfo_t.subclass = acquisitionInfo_t
+# end class acquisitionInfo_t
 
 
-class binaryDataDimension_tSub(supermod.binaryDataDimension_t):
+class binaryDataDimension_t(supermod.binaryDataDimension_t):
     def __init__(self, splitRank=None, outputSelect=None, label=None, size=None, extensiontype_=None):
-        super(binaryDataDimension_tSub, self).__init__(splitRank, outputSelect, label, size, extensiontype_, )
-supermod.binaryDataDimension_t.subclass = binaryDataDimension_tSub
-# end class binaryDataDimension_tSub
+        super(binaryDataDimension_t, self).__init__(splitRank, outputSelect, label, size, extensiontype_, )
+supermod.binaryDataDimension_t.subclass = binaryDataDimension_t
+# end class binaryDataDimension_t
 
 
-class mappedBinaryDataDimension_tSub(supermod.mappedBinaryDataDimension_t):
+class mappedBinaryDataDimension_t(supermod.mappedBinaryDataDimension_t):
     def __init__(self, splitRank=None, outputSelect=None, label=None, size=None, origin=None, spacing=None, gap=None, datapoints=None, direction=None, units=None, measurementFrame=None):
-        super(mappedBinaryDataDimension_tSub, self).__init__(splitRank, outputSelect, label, size, origin, spacing, gap, datapoints, direction, units, measurementFrame, )
-supermod.mappedBinaryDataDimension_t.subclass = mappedBinaryDataDimension_tSub
-# end class mappedBinaryDataDimension_tSub
+        super(mappedBinaryDataDimension_t, self).__init__(splitRank, outputSelect, label, size, origin, spacing, gap, datapoints, direction, units, measurementFrame, )
+supermod.mappedBinaryDataDimension_t.subclass = mappedBinaryDataDimension_t
+# end class mappedBinaryDataDimension_t
 
 
-class frag_uri_tSub(supermod.frag_uri_t):
+class frag_uri_t(supermod.frag_uri_t):
     def __init__(self, size=None, offset=None, valueOf_=None):
-        super(frag_uri_tSub, self).__init__(size, offset, valueOf_, )
-supermod.frag_uri_t.subclass = frag_uri_tSub
-# end class frag_uri_tSub
+        super(frag_uri_t, self).__init__(size, offset, valueOf_, )
+supermod.frag_uri_t.subclass = frag_uri_t
+# end class frag_uri_t
 
 
-class format_tSub(supermod.format_t):
+class format_t(supermod.format_t):
     def __init__(self, name=None, description=None, documentationList=None, extensionList=None):
-        super(format_tSub, self).__init__(name, description, documentationList, extensionList, )
-supermod.format_t.subclass = format_tSub
-# end class format_tSub
+        super(format_t, self).__init__(name, description, documentationList, extensionList, )
+supermod.format_t.subclass = format_t
+# end class format_t
 
 
-class processStep_tSub(supermod.processStep_t):
+class processStep_t(supermod.processStep_t):
     def __init__(self, ID=None, parent=None, program=None, programArguments=None, parameters=None, workingURI=None, timeStamp=None, user=None, hostName=None, architecture=None, platform=None, cvs=None, compiler=None, library=None, buildTimeStamp=None, package=None, repository=None):
-        super(processStep_tSub, self).__init__(ID, parent, program, programArguments, parameters, workingURI, timeStamp, user, hostName, architecture, platform, cvs, compiler, library, buildTimeStamp, package, repository, )
-supermod.processStep_t.subclass = processStep_tSub
-# end class processStep_tSub
+        super(processStep_t, self).__init__(ID, parent, program, programArguments, parameters, workingURI, timeStamp, user, hostName, architecture, platform, cvs, compiler, library, buildTimeStamp, package, repository, )
+supermod.processStep_t.subclass = processStep_t
+# end class processStep_t
 
 
-class provenance_tSub(supermod.provenance_t):
+class provenance_t(supermod.provenance_t):
     def __init__(self, ID=None, processStep=None):
-        super(provenance_tSub, self).__init__(ID, processStep, )
-supermod.provenance_t.subclass = provenance_tSub
-# end class provenance_tSub
+        super(provenance_t, self).__init__(ID, processStep, )
+supermod.provenance_t.subclass = provenance_t
+# end class provenance_t
 
 
-class argumentsType_tSub(supermod.argumentsType_t):
+class argumentsType_t(supermod.argumentsType_t):
     def __init__(self, inputs=None, outputs=None, valueOf_=None):
-        super(argumentsType_tSub, self).__init__(inputs, outputs, valueOf_, )
-supermod.argumentsType_t.subclass = argumentsType_tSub
-# end class argumentsType_tSub
+        super(argumentsType_t, self).__init__(inputs, outputs, valueOf_, )
+supermod.argumentsType_t.subclass = argumentsType_t
+# end class argumentsType_t
 
 
-class namedParameterList_tSub(supermod.namedParameterList_t):
+class namedParameterList_t(supermod.namedParameterList_t):
     def __init__(self, param=None):
-        super(namedParameterList_tSub, self).__init__(param, )
-supermod.namedParameterList_t.subclass = namedParameterList_tSub
-# end class namedParameterList_tSub
+        super(namedParameterList_t, self).__init__(param, )
+supermod.namedParameterList_t.subclass = namedParameterList_t
+# end class namedParameterList_t
 
 
-class namedParameter_tSub(supermod.namedParameter_t):
+class namedParameter_t(supermod.namedParameter_t):
     def __init__(self, ispath=False, type_=None, name=None, io=None, description=None, valueOf_=None):
-        super(namedParameter_tSub, self).__init__(ispath, type_, name, io, description, valueOf_, )
-supermod.namedParameter_t.subclass = namedParameter_tSub
-# end class namedParameter_tSub
+        super(namedParameter_t, self).__init__(ispath, type_, name, io, description, valueOf_, )
+supermod.namedParameter_t.subclass = namedParameter_t
+# end class namedParameter_t
 
 
-class versionedEntity_tSub(supermod.versionedEntity_t):
+class versionedEntity_t(supermod.versionedEntity_t):
     def __init__(self, version=None, valueOf_=None):
-        super(versionedEntity_tSub, self).__init__(version, valueOf_, )
-supermod.versionedEntity_t.subclass = versionedEntity_tSub
-# end class versionedEntity_tSub
+        super(versionedEntity_t, self).__init__(version, valueOf_, )
+supermod.versionedEntity_t.subclass = versionedEntity_t
+# end class versionedEntity_t
 
 
-class versionedProgramEntity_tSub(supermod.versionedProgramEntity_t):
+class versionedProgramEntity_t(supermod.versionedProgramEntity_t):
     def __init__(self, version=None, build_=None, package=None, valueOf_=None):
-        super(versionedProgramEntity_tSub, self).__init__(version, build_, package, valueOf_, )
-supermod.versionedProgramEntity_t.subclass = versionedProgramEntity_tSub
-# end class versionedProgramEntity_tSub
+        super(versionedProgramEntity_t, self).__init__(version, build_, package, valueOf_, )
+supermod.versionedProgramEntity_t.subclass = versionedProgramEntity_t
+# end class versionedProgramEntity_t
 
 
-class event_tSub(supermod.event_t):
+class event_t(supermod.event_t):
     def __init__(self, units=None, type_=None, name=None, onset=None, duration=None, value=None, annotation=None):
-        super(event_tSub, self).__init__(units, type_, name, onset, duration, value, annotation, )
-supermod.event_t.subclass = event_tSub
-# end class event_tSub
+        super(event_t, self).__init__(units, type_, name, onset, duration, value, annotation, )
+supermod.event_t.subclass = event_t
+# end class event_t
 
 
-class eventValue_tSub(supermod.eventValue_t):
+class eventValue_t(supermod.eventValue_t):
     def __init__(self, name=None, valueOf_=None):
-        super(eventValue_tSub, self).__init__(name, valueOf_, )
-supermod.eventValue_t.subclass = eventValue_tSub
-# end class eventValue_tSub
+        super(eventValue_t, self).__init__(name, valueOf_, )
+supermod.eventValue_t.subclass = eventValue_t
+# end class eventValue_t
 
 
-class eventParams_tSub(supermod.eventParams_t):
+class eventParams_t(supermod.eventParams_t):
     def __init__(self, value=None):
-        super(eventParams_tSub, self).__init__(value, )
-supermod.eventParams_t.subclass = eventParams_tSub
-# end class eventParams_tSub
+        super(eventParams_t, self).__init__(value, )
+supermod.eventParams_t.subclass = eventParams_t
+# end class eventParams_t
 
-
-class abstract_tagged_entity_tSub(supermod.abstract_tagged_entity_t):
-    def __init__(self, metaFields=None, extensiontype_=None):
-        super(abstract_tagged_entity_tSub, self).__init__(metaFields, extensiontype_, )
-supermod.abstract_tagged_entity_t.subclass = abstract_tagged_entity_tSub
-# end class abstract_tagged_entity_tSub
-
-
-class protocolItem_tSub(supermod.protocolItem_t):
+class protocolItem_t(supermod.protocolItem_t):
     def __init__(self, required=None, name=None, ID=None, itemText=None, itemRange=None, itemChoice=None, extensiontype_=None):
-        super(protocolItem_tSub, self).__init__(required, name, ID, itemText, itemRange, itemChoice, extensiontype_, )
-supermod.protocolItem_t.subclass = protocolItem_tSub
-# end class protocolItem_tSub
+        super(protocolItem_t, self).__init__(required, name, ID, itemText, itemRange, itemChoice, extensiontype_, )
+supermod.protocolItem_t.subclass = protocolItem_t
+# end class protocolItem_t
 
 
-class protocolOffset_tSub(supermod.protocolOffset_t):
+class protocolOffset_t(supermod.protocolOffset_t):
     def __init__(self, protocolTimeRef=None, preferredTimeOffset=None, minTimeOffset=None, maxTimeOffset=None):
-        super(protocolOffset_tSub, self).__init__(protocolTimeRef, preferredTimeOffset, minTimeOffset, maxTimeOffset, )
-supermod.protocolOffset_t.subclass = protocolOffset_tSub
-# end class protocolOffset_tSub
+        super(protocolOffset_t, self).__init__(protocolTimeRef, preferredTimeOffset, minTimeOffset, maxTimeOffset, )
+supermod.protocolOffset_t.subclass = protocolOffset_t
+# end class protocolOffset_t
 
 
-class protocolItemChoice_tSub(supermod.protocolItemChoice_t):
+class protocolItemChoice_t(supermod.protocolItemChoice_t):
     def __init__(self, units=None, value=None):
-        super(protocolItemChoice_tSub, self).__init__(units, value, )
-supermod.protocolItemChoice_t.subclass = protocolItemChoice_tSub
-# end class protocolItemChoice_tSub
+        super(protocolItemChoice_t, self).__init__(units, value, )
+supermod.protocolItemChoice_t.subclass = protocolItemChoice_t
+# end class protocolItemChoice_t
 
 
-class protocolItemRange_tSub(supermod.protocolItemRange_t):
+class protocolItemRange_t(supermod.protocolItemRange_t):
     def __init__(self, units=None, max=None, min=None):
-        super(protocolItemRange_tSub, self).__init__(units, max, min, )
-supermod.protocolItemRange_t.subclass = protocolItemRange_tSub
-# end class protocolItemRange_tSub
+        super(protocolItemRange_t, self).__init__(units, max, min, )
+supermod.protocolItemRange_t.subclass = protocolItemRange_t
+# end class protocolItemRange_t
 
 
-class assessmentInfo_tSub(supermod.assessmentInfo_t):
+class assessmentInfo_t(supermod.assessmentInfo_t):
     def __init__(self, description=None):
-        super(assessmentInfo_tSub, self).__init__(description, )
-supermod.assessmentInfo_t.subclass = assessmentInfo_tSub
-# end class assessmentInfo_tSub
+        super(assessmentInfo_t, self).__init__(description, )
+supermod.assessmentInfo_t.subclass = assessmentInfo_t
+# end class assessmentInfo_t
 
 
-class assessmentDescItem_tSub(supermod.assessmentDescItem_t):
+class assessmentDescItem_t(supermod.assessmentDescItem_t):
     def __init__(self, required=None, name=None, ID=None, itemText=None, itemRange=None, itemChoice=None, formRef=None, version=None):
-        super(assessmentDescItem_tSub, self).__init__(required, name, ID, itemText, itemRange, itemChoice, formRef, version, )
-supermod.assessmentDescItem_t.subclass = assessmentDescItem_tSub
-# end class assessmentDescItem_tSub
+        super(assessmentDescItem_t, self).__init__(required, name, ID, itemText, itemRange, itemChoice, formRef, version, )
+supermod.assessmentDescItem_t.subclass = assessmentDescItem_t
+# end class assessmentDescItem_t
 
 
-class assessmentItem_tSub(supermod.assessmentItem_t):
+class assessmentItem_t(supermod.assessmentItem_t):
     def __init__(self, termPath=None, name=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, ID=None, valueStatus=None, value=None, normValue=None, reconciliationNote=None, annotation=None):
-        super(assessmentItem_tSub, self).__init__(termPath, name, nomenclature, abbreviation, preferredLabel, termID, ID, valueStatus, value, normValue, reconciliationNote, annotation, )
-supermod.assessmentItem_t.subclass = assessmentItem_tSub
-# end class assessmentItem_tSub
+        super(assessmentItem_t, self).__init__(termPath, name, nomenclature, abbreviation, preferredLabel, termID, ID, valueStatus, value, normValue, reconciliationNote, annotation, )
+supermod.assessmentItem_t.subclass = assessmentItem_t
+# end class assessmentItem_t
 
 
-class terminologyString_tSub(supermod.terminologyString_t):
+class terminologyString_t(supermod.terminologyString_t):
     def __init__(self, abbreviation=None, preferredLabel=None, termID=None, termPath=None, nomenclature=None, valueOf_=None):
-        super(terminologyString_tSub, self).__init__(abbreviation, preferredLabel, termID, termPath, nomenclature, valueOf_, )
-supermod.terminologyString_t.subclass = terminologyString_tSub
-# end class terminologyString_tSub
+        super(terminologyString_t, self).__init__(abbreviation, preferredLabel, termID, termPath, nomenclature, valueOf_, )
+supermod.terminologyString_t.subclass = terminologyString_t
+# end class terminologyString_t
 
 
-class nomenclature_tSub(supermod.nomenclature_t):
+class nomenclature_t(supermod.nomenclature_t):
     def __init__(self, abbreviation=None, nomenclature=None, valueOf_=None):
-        super(nomenclature_tSub, self).__init__(abbreviation, nomenclature, valueOf_, )
-supermod.nomenclature_t.subclass = nomenclature_tSub
-# end class nomenclature_tSub
+        super(nomenclature_t, self).__init__(abbreviation, nomenclature, valueOf_, )
+supermod.nomenclature_t.subclass = nomenclature_t
+# end class nomenclature_t
 
 
-class atlasEntity_tSub(supermod.atlasEntity_t):
+class atlasEntity_t(supermod.atlasEntity_t):
     def __init__(self, preferredEntityLabel=None, ID=None, description=None, geometry=None):
-        super(atlasEntity_tSub, self).__init__(preferredEntityLabel, ID, description, geometry, )
-supermod.atlasEntity_t.subclass = atlasEntity_tSub
-# end class atlasEntity_tSub
+        super(atlasEntity_t, self).__init__(preferredEntityLabel, ID, description, geometry, )
+supermod.atlasEntity_t.subclass = atlasEntity_t
+# end class atlasEntity_t
 
-
-class abstract_geometry_tSub(supermod.abstract_geometry_t):
-    def __init__(self):
-        super(abstract_geometry_tSub, self).__init__()
-supermod.abstract_geometry_t.subclass = abstract_geometry_tSub
-# end class abstract_geometry_tSub
-
-
-class anatomicalEntity_tSub(supermod.anatomicalEntity_t):
+class anatomicalEntity_t(supermod.anatomicalEntity_t):
     def __init__(self, preferredEntityLabel=None, ID=None, description=None, laterality=None, tissueType=None, label=None):
-        super(anatomicalEntity_tSub, self).__init__(preferredEntityLabel, ID, description, laterality, tissueType, label, )
-supermod.anatomicalEntity_t.subclass = anatomicalEntity_tSub
-# end class anatomicalEntity_tSub
+        super(anatomicalEntity_t, self).__init__(preferredEntityLabel, ID, description, laterality, tissueType, label, )
+supermod.anatomicalEntity_t.subclass = anatomicalEntity_t
+# end class anatomicalEntity_t
 
 
-class nameValue_tSub(supermod.nameValue_t):
+class nameValue_t(supermod.nameValue_t):
     def __init__(self, name=None, valueOf_=None):
-        super(nameValue_tSub, self).__init__(name, valueOf_, )
-supermod.nameValue_t.subclass = nameValue_tSub
-# end class nameValue_tSub
+        super(nameValue_t, self).__init__(name, valueOf_, )
+supermod.nameValue_t.subclass = nameValue_t
+# end class nameValue_t
 
 
-class metadataList_tSub(supermod.metadataList_t):
+class metadataList_t(supermod.metadataList_t):
     def __init__(self, value=None):
-        super(metadataList_tSub, self).__init__(value, )
-supermod.metadataList_t.subclass = metadataList_tSub
-# end class metadataList_tSub
+        super(metadataList_t, self).__init__(value, )
+supermod.metadataList_t.subclass = metadataList_t
+# end class metadataList_t
 
 
-class ref_tSub(supermod.ref_t):
+class ref_t(supermod.ref_t):
     def __init__(self, ID=None, URI=None, valueOf_=None):
-        super(ref_tSub, self).__init__(ID, URI, valueOf_, )
-supermod.ref_t.subclass = ref_tSub
-# end class ref_tSub
+        super(ref_t, self).__init__(ID, URI, valueOf_, )
+supermod.ref_t.subclass = ref_t
+# end class ref_t
 
 
-class authoredText_tSub(supermod.authoredText_t):
+class authoredText_t(supermod.authoredText_t):
     def __init__(self, timestamp=None, author=None, valueOf_=None):
-        super(authoredText_tSub, self).__init__(timestamp, author, valueOf_, )
-supermod.authoredText_t.subclass = authoredText_tSub
-# end class authoredText_tSub
+        super(authoredText_t, self).__init__(timestamp, author, valueOf_, )
+supermod.authoredText_t.subclass = authoredText_t
+# end class authoredText_t
 
-
-class abstract_annotation_tSub(supermod.abstract_annotation_t):
-    def __init__(self, timestamp=None, author=None, extensiontype_=None):
-        super(abstract_annotation_tSub, self).__init__(timestamp, author, extensiontype_, )
-supermod.abstract_annotation_t.subclass = abstract_annotation_tSub
-# end class abstract_annotation_tSub
-
-
-class textAnnotation_tSub(supermod.textAnnotation_t):
+class textAnnotation_t(supermod.textAnnotation_t):
     def __init__(self, timestamp=None, author=None, comment=None):
-        super(textAnnotation_tSub, self).__init__(timestamp, author, comment, )
-supermod.textAnnotation_t.subclass = textAnnotation_tSub
-# end class textAnnotation_tSub
+        super(textAnnotation_t, self).__init__(timestamp, author, comment, )
+supermod.textAnnotation_t.subclass = textAnnotation_t
+# end class textAnnotation_t
 
 
-class generator_tSub(supermod.generator_t):
+class generator_t(supermod.generator_t):
     def __init__(self, application=None, invocation=None, dataSource=None):
-        super(generator_tSub, self).__init__(application, invocation, dataSource, )
-supermod.generator_t.subclass = generator_tSub
-# end class generator_tSub
+        super(generator_t, self).__init__(application, invocation, dataSource, )
+supermod.generator_t.subclass = generator_t
+# end class generator_t
 
 
-class person_tSub(supermod.person_t):
+class person_t(supermod.person_t):
     def __init__(self, role=None, ID=None, salutation=None, givenName=None, middleName=None, surname=None, academicTitles=None, institution=None, department=None):
-        super(person_tSub, self).__init__(role, ID, salutation, givenName, middleName, surname, academicTitles, institution, department, )
-supermod.person_t.subclass = person_tSub
-# end class person_tSub
+        super(person_t, self).__init__(role, ID, salutation, givenName, middleName, surname, academicTitles, institution, department, )
+supermod.person_t.subclass = person_t
+# end class person_t
 
 
-class unitString_tSub(supermod.unitString_t):
+class unitString_t(supermod.unitString_t):
     def __init__(self, units=None, valueOf_=None):
-        super(unitString_tSub, self).__init__(units, valueOf_, )
-supermod.unitString_t.subclass = unitString_tSub
-# end class unitString_tSub
+        super(unitString_t, self).__init__(units, valueOf_, )
+supermod.unitString_t.subclass = unitString_t
+# end class unitString_t
 
 
-class revision_tSub(supermod.revision_t):
+class revision_t(supermod.revision_t):
     def __init__(self, ID=None, timestamp=None, generator=None, annotation=None):
-        super(revision_tSub, self).__init__(ID, timestamp, generator, annotation, )
-supermod.revision_t.subclass = revision_tSub
-# end class revision_tSub
+        super(revision_t, self).__init__(ID, timestamp, generator, annotation, )
+supermod.revision_t.subclass = revision_t
+# end class revision_t
 
 
-class orderedString_tSub(supermod.orderedString_t):
+class orderedString_t(supermod.orderedString_t):
     def __init__(self, order=None, valueOf_=None):
-        super(orderedString_tSub, self).__init__(order, valueOf_, )
-supermod.orderedString_t.subclass = orderedString_tSub
-# end class orderedString_tSub
+        super(orderedString_t, self).__init__(order, valueOf_, )
+supermod.orderedString_t.subclass = orderedString_t
+# end class orderedString_t
 
 
-class value_tSub(supermod.value_t):
+class value_t(supermod.value_t):
     def __init__(self, units=None, valueOf_=None):
-        super(value_tSub, self).__init__(units, valueOf_, )
-supermod.value_t.subclass = value_tSub
-# end class value_tSub
+        super(value_t, self).__init__(units, valueOf_, )
+supermod.value_t.subclass = value_t
+# end class value_t
 
 
-class EntitySub(supermod.Entity):
+class Entity(supermod.Entity):
     def __init__(self, id=None, label=None, type_=None, anytypeobjs_=None):
-        super(EntitySub, self).__init__(id, label, type_, anytypeobjs_, )
-supermod.Entity.subclass = EntitySub
-# end class EntitySub
+        super(Entity, self).__init__(id, label, type_, anytypeobjs_, )
+supermod.Entity.subclass = Entity
+# end class Entity
 
 
-class ActivitySub(supermod.Activity):
+class Activity(supermod.Activity):
     def __init__(self, id=None, startTime=None, endTime=None, label=None, type_=None, anytypeobjs_=None):
-        super(ActivitySub, self).__init__(id, startTime, endTime, label, type_, anytypeobjs_, )
-supermod.Activity.subclass = ActivitySub
-# end class ActivitySub
+        super(Activity, self).__init__(id, startTime, endTime, label, type_, anytypeobjs_, )
+supermod.Activity.subclass = Activity
+# end class Activity
 
 
-class UsedSub(supermod.Used):
+class Used(supermod.Used):
     def __init__(self, id=None, time=None, activity=None, entity=None, type_=None, role=None, anytypeobjs_=None):
-        super(UsedSub, self).__init__(id, time, activity, entity, type_, role, anytypeobjs_, )
-supermod.Used.subclass = UsedSub
-# end class UsedSub
+        super(Used, self).__init__(id, time, activity, entity, type_, role, anytypeobjs_, )
+supermod.Used.subclass = Used
+# end class Used
 
 
-class WasGeneratedBySub(supermod.WasGeneratedBy):
+class WasGeneratedBy(supermod.WasGeneratedBy):
     def __init__(self, id=None, time=None, entity=None, activity=None, type_=None, role=None, anytypeobjs_=None):
-        super(WasGeneratedBySub, self).__init__(id, time, entity, activity, type_, role, anytypeobjs_, )
-supermod.WasGeneratedBy.subclass = WasGeneratedBySub
-# end class WasGeneratedBySub
+        super(WasGeneratedBy, self).__init__(id, time, entity, activity, type_, role, anytypeobjs_, )
+supermod.WasGeneratedBy.subclass = WasGeneratedBy
+# end class WasGeneratedBy
 
 
-class WasStartedBySub(supermod.WasStartedBy):
+class WasStartedBy(supermod.WasStartedBy):
     def __init__(self, id=None, time=None, activity=None, trigger=None, type_=None, role=None, anytypeobjs_=None):
-        super(WasStartedBySub, self).__init__(id, time, activity, trigger, type_, role, anytypeobjs_, )
-supermod.WasStartedBy.subclass = WasStartedBySub
-# end class WasStartedBySub
+        super(WasStartedBy, self).__init__(id, time, activity, trigger, type_, role, anytypeobjs_, )
+supermod.WasStartedBy.subclass = WasStartedBy
+# end class WasStartedBy
 
 
-class WasEndedBySub(supermod.WasEndedBy):
+class WasEndedBy(supermod.WasEndedBy):
     def __init__(self, id=None, time=None, activity=None, trigger=None, type_=None, role=None, anytypeobjs_=None):
-        super(WasEndedBySub, self).__init__(id, time, activity, trigger, type_, role, anytypeobjs_, )
-supermod.WasEndedBy.subclass = WasEndedBySub
-# end class WasEndedBySub
+        super(WasEndedBy, self).__init__(id, time, activity, trigger, type_, role, anytypeobjs_, )
+supermod.WasEndedBy.subclass = WasEndedBy
+# end class WasEndedBy
 
 
-class WasInformedBySub(supermod.WasInformedBy):
+class WasInformedBy(supermod.WasInformedBy):
     def __init__(self, id=None, time=None, effect=None, cause=None, type_=None, role=None, anytypeobjs_=None):
-        super(WasInformedBySub, self).__init__(id, time, effect, cause, type_, role, anytypeobjs_, )
-supermod.WasInformedBy.subclass = WasInformedBySub
-# end class WasInformedBySub
+        super(WasInformedBy, self).__init__(id, time, effect, cause, type_, role, anytypeobjs_, )
+supermod.WasInformedBy.subclass = WasInformedBy
+# end class WasInformedBy
 
 
-class WasStartedByActivitySub(supermod.WasStartedByActivity):
+class WasStartedByActivity(supermod.WasStartedByActivity):
     def __init__(self, id=None, started=None, starter=None, type_=None, role=None, anytypeobjs_=None):
-        super(WasStartedByActivitySub, self).__init__(id, started, starter, type_, role, anytypeobjs_, )
-supermod.WasStartedByActivity.subclass = WasStartedByActivitySub
-# end class WasStartedByActivitySub
+        super(WasStartedByActivity, self).__init__(id, started, starter, type_, role, anytypeobjs_, )
+supermod.WasStartedByActivity.subclass = WasStartedByActivity
+# end class WasStartedByActivity
 
 
-class AgentSub(supermod.Agent):
+class Agent(supermod.Agent):
     def __init__(self, id=None, label=None, type_=None, anytypeobjs_=None):
-        super(AgentSub, self).__init__(id, label, type_, anytypeobjs_, )
-supermod.Agent.subclass = AgentSub
-# end class AgentSub
+        super(Agent, self).__init__(id, label, type_, anytypeobjs_, )
+supermod.Agent.subclass = Agent
+# end class Agent
 
 
-class WasAssociatedWithSub(supermod.WasAssociatedWith):
+class WasAssociatedWith(supermod.WasAssociatedWith):
     def __init__(self, id=None, activity=None, agent=None, plan=None, type_=None, role=None, anytypeobjs_=None):
-        super(WasAssociatedWithSub, self).__init__(id, activity, agent, plan, type_, role, anytypeobjs_, )
-supermod.WasAssociatedWith.subclass = WasAssociatedWithSub
-# end class WasAssociatedWithSub
+        super(WasAssociatedWith, self).__init__(id, activity, agent, plan, type_, role, anytypeobjs_, )
+supermod.WasAssociatedWith.subclass = WasAssociatedWith
+# end class WasAssociatedWith
 
 
-class WasAttributedToSub(supermod.WasAttributedTo):
+class WasAttributedTo(supermod.WasAttributedTo):
     def __init__(self, id=None, entity=None, agent=None, type_=None, role=None, anytypeobjs_=None):
-        super(WasAttributedToSub, self).__init__(id, entity, agent, type_, role, anytypeobjs_, )
-supermod.WasAttributedTo.subclass = WasAttributedToSub
-# end class WasAttributedToSub
+        super(WasAttributedTo, self).__init__(id, entity, agent, type_, role, anytypeobjs_, )
+supermod.WasAttributedTo.subclass = WasAttributedTo
+# end class WasAttributedTo
 
 
-class ActedOnBehalfOfSub(supermod.ActedOnBehalfOf):
+class ActedOnBehalfOf(supermod.ActedOnBehalfOf):
     def __init__(self, id=None, subordinate=None, responsible=None, activity=None, type_=None, role=None, anytypeobjs_=None):
-        super(ActedOnBehalfOfSub, self).__init__(id, subordinate, responsible, activity, type_, role, anytypeobjs_, )
-supermod.ActedOnBehalfOf.subclass = ActedOnBehalfOfSub
-# end class ActedOnBehalfOfSub
+        super(ActedOnBehalfOf, self).__init__(id, subordinate, responsible, activity, type_, role, anytypeobjs_, )
+supermod.ActedOnBehalfOf.subclass = ActedOnBehalfOf
+# end class ActedOnBehalfOf
 
 
-class WasDerivedFromSub(supermod.WasDerivedFrom):
+class WasDerivedFrom(supermod.WasDerivedFrom):
     def __init__(self, id=None, generation=None, usage=None, activity=None, generatedEntity=None, usedEntity=None, type_=None, role=None, anytypeobjs_=None):
-        super(WasDerivedFromSub, self).__init__(id, generation, usage, activity, generatedEntity, usedEntity, type_, role, anytypeobjs_, )
-supermod.WasDerivedFrom.subclass = WasDerivedFromSub
-# end class WasDerivedFromSub
+        super(WasDerivedFrom, self).__init__(id, generation, usage, activity, generatedEntity, usedEntity, type_, role, anytypeobjs_, )
+supermod.WasDerivedFrom.subclass = WasDerivedFrom
+# end class WasDerivedFrom
 
 
-class WasRevisionOfSub(supermod.WasRevisionOf):
+class WasRevisionOf(supermod.WasRevisionOf):
     def __init__(self, id=None, newer=None, older=None, responsibility=None, type_=None, anytypeobjs_=None):
-        super(WasRevisionOfSub, self).__init__(id, newer, older, responsibility, type_, anytypeobjs_, )
-supermod.WasRevisionOf.subclass = WasRevisionOfSub
-# end class WasRevisionOfSub
+        super(WasRevisionOf, self).__init__(id, newer, older, responsibility, type_, anytypeobjs_, )
+supermod.WasRevisionOf.subclass = WasRevisionOf
+# end class WasRevisionOf
 
 
-class WasQuotedFromSub(supermod.WasQuotedFrom):
+class WasQuotedFrom(supermod.WasQuotedFrom):
     def __init__(self, id=None, quote=None, original=None, quoterAgent=None, quotedAgent=None, type_=None, anytypeobjs_=None):
-        super(WasQuotedFromSub, self).__init__(id, quote, original, quoterAgent, quotedAgent, type_, anytypeobjs_, )
-supermod.WasQuotedFrom.subclass = WasQuotedFromSub
-# end class WasQuotedFromSub
+        super(WasQuotedFrom, self).__init__(id, quote, original, quoterAgent, quotedAgent, type_, anytypeobjs_, )
+supermod.WasQuotedFrom.subclass = WasQuotedFrom
+# end class WasQuotedFrom
 
 
-class HadOriginalSourceSub(supermod.HadOriginalSource):
+class HadOriginalSource(supermod.HadOriginalSource):
     def __init__(self, id=None, derived=None, source=None, type_=None, anytypeobjs_=None):
-        super(HadOriginalSourceSub, self).__init__(id, derived, source, type_, anytypeobjs_, )
-supermod.HadOriginalSource.subclass = HadOriginalSourceSub
-# end class HadOriginalSourceSub
+        super(HadOriginalSource, self).__init__(id, derived, source, type_, anytypeobjs_, )
+supermod.HadOriginalSource.subclass = HadOriginalSource
+# end class HadOriginalSource
 
 
-class TracedToSub(supermod.TracedTo):
+class TracedTo(supermod.TracedTo):
     def __init__(self, id=None, entity=None, ancestor=None, type_=None, anytypeobjs_=None):
-        super(TracedToSub, self).__init__(id, entity, ancestor, type_, anytypeobjs_, )
-supermod.TracedTo.subclass = TracedToSub
-# end class TracedToSub
+        super(TracedTo, self).__init__(id, entity, ancestor, type_, anytypeobjs_, )
+supermod.TracedTo.subclass = TracedTo
+# end class TracedTo
 
 
-class AlternateOfSub(supermod.AlternateOf):
+class AlternateOf(supermod.AlternateOf):
     def __init__(self, entity2=None, entity1=None):
-        super(AlternateOfSub, self).__init__(entity2, entity1, )
-supermod.AlternateOf.subclass = AlternateOfSub
-# end class AlternateOfSub
+        super(AlternateOf, self).__init__(entity2, entity1, )
+supermod.AlternateOf.subclass = AlternateOf
+# end class AlternateOf
 
 
-class SpecializationOfSub(supermod.SpecializationOf):
+class SpecializationOf(supermod.SpecializationOf):
     def __init__(self, specializedEntity=None, generalEntity=None):
-        super(SpecializationOfSub, self).__init__(specializedEntity, generalEntity, )
-supermod.SpecializationOf.subclass = SpecializationOfSub
-# end class SpecializationOfSub
+        super(SpecializationOf, self).__init__(specializedEntity, generalEntity, )
+supermod.SpecializationOf.subclass = SpecializationOf
+# end class SpecializationOf
 
 
-class NoteSub(supermod.Note):
+class Note(supermod.Note):
     def __init__(self, id=None, anytypeobjs_=None):
-        super(NoteSub, self).__init__(id, anytypeobjs_, )
-supermod.Note.subclass = NoteSub
-# end class NoteSub
+        super(Note, self).__init__(id, anytypeobjs_, )
+supermod.Note.subclass = Note
+# end class Note
 
 
-class HasAnnotationSub(supermod.HasAnnotation):
+class HasAnnotation(supermod.HasAnnotation):
     def __init__(self, id=None, thing=None, note=None, anytypeobjs_=None):
-        super(HasAnnotationSub, self).__init__(id, thing, note, anytypeobjs_, )
-supermod.HasAnnotation.subclass = HasAnnotationSub
-# end class HasAnnotationSub
+        super(HasAnnotation, self).__init__(id, thing, note, anytypeobjs_, )
+supermod.HasAnnotation.subclass = HasAnnotation
+# end class HasAnnotation
 
 
-class ActivityRefSub(supermod.ActivityRef):
+class ActivityRef(supermod.ActivityRef):
     def __init__(self, ref=None):
-        super(ActivityRefSub, self).__init__(ref, )
-supermod.ActivityRef.subclass = ActivityRefSub
-# end class ActivityRefSub
+        super(ActivityRef, self).__init__(ref, )
+supermod.ActivityRef.subclass = ActivityRef
+# end class ActivityRef
 
 
-class EntityRefSub(supermod.EntityRef):
+class EntityRef(supermod.EntityRef):
     def __init__(self, ref=None):
-        super(EntityRefSub, self).__init__(ref, )
-supermod.EntityRef.subclass = EntityRefSub
-# end class EntityRefSub
+        super(EntityRef, self).__init__(ref, )
+supermod.EntityRef.subclass = EntityRef
+# end class EntityRef
 
 
-class AgentRefSub(supermod.AgentRef):
+class AgentRef(supermod.AgentRef):
     def __init__(self, ref=None):
-        super(AgentRefSub, self).__init__(ref, )
-supermod.AgentRef.subclass = AgentRefSub
-# end class AgentRefSub
+        super(AgentRef, self).__init__(ref, )
+supermod.AgentRef.subclass = AgentRef
+# end class AgentRef
 
 
-class DependencyRefSub(supermod.DependencyRef):
+class DependencyRef(supermod.DependencyRef):
     def __init__(self, ref=None):
-        super(DependencyRefSub, self).__init__(ref, )
-supermod.DependencyRef.subclass = DependencyRefSub
-# end class DependencyRefSub
+        super(DependencyRef, self).__init__(ref, )
+supermod.DependencyRef.subclass = DependencyRef
+# end class DependencyRef
 
 
-class NoteRefSub(supermod.NoteRef):
+class NoteRef(supermod.NoteRef):
     def __init__(self, ref=None):
-        super(NoteRefSub, self).__init__(ref, )
-supermod.NoteRef.subclass = NoteRefSub
-# end class NoteRefSub
+        super(NoteRef, self).__init__(ref, )
+supermod.NoteRef.subclass = NoteRef
+# end class NoteRef
 
 
-class DependenciesSub(supermod.Dependencies):
+class Dependencies(supermod.Dependencies):
     def __init__(self, used=None, wasGeneratedBy=None, wasStartedBy=None, wasEndedBy=None, wasInformedBy=None, wasStartedByActivity=None, wasAttributedTo=None, wasAssociatedWith=None, actedOnBehalfOf=None, wasDerivedFrom=None, wasRevisionOf=None, wasQuotedFrom=None, hadOriginalSource=None, tracedTo=None, alternateOf=None, specializationOf=None, hasAnnotation=None):
-        super(DependenciesSub, self).__init__(used, wasGeneratedBy, wasStartedBy, wasEndedBy, wasInformedBy, wasStartedByActivity, wasAttributedTo, wasAssociatedWith, actedOnBehalfOf, wasDerivedFrom, wasRevisionOf, wasQuotedFrom, hadOriginalSource, tracedTo, alternateOf, specializationOf, hasAnnotation, )
-supermod.Dependencies.subclass = DependenciesSub
-# end class DependenciesSub
+        super(Dependencies, self).__init__(used, wasGeneratedBy, wasStartedBy, wasEndedBy, wasInformedBy, wasStartedByActivity, wasAttributedTo, wasAssociatedWith, actedOnBehalfOf, wasDerivedFrom, wasRevisionOf, wasQuotedFrom, hadOriginalSource, tracedTo, alternateOf, specializationOf, hasAnnotation, )
+supermod.Dependencies.subclass = Dependencies
+# end class Dependencies
 
 
-class AccountSub(supermod.Account):
+class Account(supermod.Account):
     def __init__(self, id=None, asserter=None, records=None):
-        super(AccountSub, self).__init__(id, asserter, records, )
-supermod.Account.subclass = AccountSub
-# end class AccountSub
+        super(Account, self).__init__(id, asserter, records, )
+supermod.Account.subclass = Account
+# end class Account
 
 
-class RecordsSub(supermod.Records):
+class Records(supermod.Records):
     def __init__(self, id=None, account=None, activity=None, entity=None, agent=None, note=None, dependencies=None):
-        super(RecordsSub, self).__init__(id, account, activity, entity, agent, note, dependencies, )
-supermod.Records.subclass = RecordsSub
-# end class RecordsSub
+        super(Records, self).__init__(id, account, activity, entity, agent, note, dependencies, )
+supermod.Records.subclass = Records
+# end class Records
 
 
-class ContainerSub(supermod.Container):
+class Container(supermod.Container):
     def __init__(self, id=None, records=None):
-        super(ContainerSub, self).__init__(id, records, )
-supermod.Container.subclass = ContainerSub
-# end class ContainerSub
+        super(Container, self).__init__(id, records, )
+supermod.Container.subclass = Container
+# end class Container
 
 
-class annotationListTypeSub(supermod.annotationListType):
+class annotationListType(supermod.annotationListType):
     def __init__(self, annotation=None):
-        super(annotationListTypeSub, self).__init__(annotation, )
-supermod.annotationListType.subclass = annotationListTypeSub
-# end class annotationListTypeSub
+        super(annotationListType, self).__init__(annotation, )
+supermod.annotationListType.subclass = annotationListType
+# end class annotationListType
 
 
-class revisionListTypeSub(supermod.revisionListType):
+class revisionListType(supermod.revisionListType):
     def __init__(self, revision=None):
-        super(revisionListTypeSub, self).__init__(revision, )
-supermod.revisionListType.subclass = revisionListTypeSub
-# end class revisionListTypeSub
+        super(revisionListType, self).__init__(revision, )
+supermod.revisionListType.subclass = revisionListType
+# end class revisionListType
 
 
-class contributorListTypeSub(supermod.contributorListType):
+class contributorListType(supermod.contributorListType):
     def __init__(self, contributor=None):
-        super(contributorListTypeSub, self).__init__(contributor, )
-supermod.contributorListType.subclass = contributorListTypeSub
-# end class contributorListTypeSub
+        super(contributorListType, self).__init__(contributor, )
+supermod.contributorListType.subclass = contributorListType
+# end class contributorListType
 
 
-class stepsTypeSub(supermod.stepsType):
+class stepsType(supermod.stepsType):
     def __init__(self, step=None, stepRef=None):
-        super(stepsTypeSub, self).__init__(step, stepRef, )
-supermod.stepsType.subclass = stepsTypeSub
-# end class stepsTypeSub
+        super(stepsType, self).__init__(step, stepRef, )
+supermod.stepsType.subclass = stepsType
+# end class stepsType
 
 
-class itemsTypeSub(supermod.itemsType):
+class itemsType(supermod.itemsType):
     def __init__(self, item=None):
-        super(itemsTypeSub, self).__init__(item, )
-supermod.itemsType.subclass = itemsTypeSub
-# end class itemsTypeSub
+        super(itemsType, self).__init__(item, )
+supermod.itemsType.subclass = itemsType
+# end class itemsType
 
 
-class catalogListTypeSub(supermod.catalogListType):
+class catalogListType(supermod.catalogListType):
     def __init__(self, catalog=None, catalogRef=None):
-        super(catalogListTypeSub, self).__init__(catalog, catalogRef, )
-supermod.catalogListType.subclass = catalogListTypeSub
-# end class catalogListTypeSub
+        super(catalogListType, self).__init__(catalog, catalogRef, )
+supermod.catalogListType.subclass = catalogListType
+# end class catalogListType
 
 
-class catalogRefTypeSub(supermod.catalogRefType):
+class catalogRefType(supermod.catalogRefType):
     def __init__(self, catalogID=None):
-        super(catalogRefTypeSub, self).__init__(catalogID, )
-supermod.catalogRefType.subclass = catalogRefTypeSub
-# end class catalogRefTypeSub
+        super(catalogRefType, self).__init__(catalogID, )
+supermod.catalogRefType.subclass = catalogRefType
+# end class catalogRefType
 
 
-class entryListTypeSub(supermod.entryListType):
+class entryListType(supermod.entryListType):
     def __init__(self, entry=None, entryDataRef=None, entryResourceRef=None):
-        super(entryListTypeSub, self).__init__(entry, entryDataRef, entryResourceRef, )
-supermod.entryListType.subclass = entryListTypeSub
-# end class entryListTypeSub
+        super(entryListType, self).__init__(entry, entryDataRef, entryResourceRef, )
+supermod.entryListType.subclass = entryListType
+# end class entryListType
 
 
-class commentListTypeSub(supermod.commentListType):
+class commentListType(supermod.commentListType):
     def __init__(self, comment=None):
-        super(commentListTypeSub, self).__init__(comment, )
-supermod.commentListType.subclass = commentListTypeSub
-# end class commentListTypeSub
+        super(commentListType, self).__init__(comment, )
+supermod.commentListType.subclass = commentListType
+# end class commentListType
 
 
-class annotationListType1Sub(supermod.annotationListType1):
+class annotationListType1(supermod.annotationListType1):
     def __init__(self, annotation=None):
-        super(annotationListType1Sub, self).__init__(annotation, )
-supermod.annotationListType1.subclass = annotationListType1Sub
-# end class annotationListType1Sub
+        super(annotationListType1, self).__init__(annotation, )
+supermod.annotationListType1.subclass = annotationListType1
+# end class annotationListType1
 
 
-class resourceListTypeSub(supermod.resourceListType):
+class resourceListType(supermod.resourceListType):
     def __init__(self, resource=None):
-        super(resourceListTypeSub, self).__init__(resource, )
-supermod.resourceListType.subclass = resourceListTypeSub
-# end class resourceListTypeSub
+        super(resourceListType, self).__init__(resource, )
+supermod.resourceListType.subclass = resourceListType
+# end class resourceListType
 
 
-class exptDesignListTypeSub(supermod.exptDesignListType):
+class exptDesignListType(supermod.exptDesignListType):
     def __init__(self, exptDesign=None, exptDesignRef=None):
-        super(exptDesignListTypeSub, self).__init__(exptDesign, exptDesignRef, )
-supermod.exptDesignListType.subclass = exptDesignListTypeSub
-# end class exptDesignListTypeSub
+        super(exptDesignListType, self).__init__(exptDesign, exptDesignRef, )
+supermod.exptDesignListType.subclass = exptDesignListType
+# end class exptDesignListType
 
 
-class subjectGroupListTypeSub(supermod.subjectGroupListType):
+class subjectGroupListType(supermod.subjectGroupListType):
     def __init__(self, subjectGroup=None):
-        super(subjectGroupListTypeSub, self).__init__(subjectGroup, )
-supermod.subjectGroupListType.subclass = subjectGroupListTypeSub
-# end class subjectGroupListTypeSub
+        super(subjectGroupListType, self).__init__(subjectGroup, )
+supermod.subjectGroupListType.subclass = subjectGroupListType
+# end class subjectGroupListType
 
 
-class datapointsTypeSub(supermod.datapointsType):
+class datapointsType(supermod.datapointsType):
     def __init__(self, label=None, value=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(datapointsTypeSub, self).__init__(label, value, valueOf_, mixedclass_, content_, )
-supermod.datapointsType.subclass = datapointsTypeSub
-# end class datapointsTypeSub
+        super(datapointsType, self).__init__(label, value, valueOf_, mixedclass_, content_, )
+supermod.datapointsType.subclass = datapointsType
+# end class datapointsType
 
 
-class measurementFrameTypeSub(supermod.measurementFrameType):
+class measurementFrameType(supermod.measurementFrameType):
     def __init__(self, vector=None):
-        super(measurementFrameTypeSub, self).__init__(vector, )
-supermod.measurementFrameType.subclass = measurementFrameTypeSub
-# end class measurementFrameTypeSub
+        super(measurementFrameType, self).__init__(vector, )
+supermod.measurementFrameType.subclass = measurementFrameType
+# end class measurementFrameType
 
 
-class documentationListTypeSub(supermod.documentationListType):
+class documentationListType(supermod.documentationListType):
     def __init__(self, documentation=None):
-        super(documentationListTypeSub, self).__init__(documentation, )
-supermod.documentationListType.subclass = documentationListTypeSub
-# end class documentationListTypeSub
+        super(documentationListType, self).__init__(documentation, )
+supermod.documentationListType.subclass = documentationListType
+# end class documentationListType
 
 
-class extensionListTypeSub(supermod.extensionListType):
+class extensionListType(supermod.extensionListType):
     def __init__(self, extension=None):
-        super(extensionListTypeSub, self).__init__(extension, )
-supermod.extensionListType.subclass = extensionListTypeSub
-# end class extensionListTypeSub
+        super(extensionListType, self).__init__(extension, )
+supermod.extensionListType.subclass = extensionListType
+# end class extensionListType
 
 
-class metaFieldsTypeSub(supermod.metaFieldsType):
+class metaFieldsType(supermod.metaFieldsType):
     def __init__(self, metaField=None):
-        super(metaFieldsTypeSub, self).__init__(metaField, )
-supermod.metaFieldsType.subclass = metaFieldsTypeSub
-# end class metaFieldsTypeSub
+        super(metaFieldsType, self).__init__(metaField, )
+supermod.metaFieldsType.subclass = metaFieldsType
+# end class metaFieldsType
 
 
-class metaFieldTypeSub(supermod.metaFieldType):
+class metaFieldType(supermod.metaFieldType):
     def __init__(self, name=None, valueOf_=None):
-        super(metaFieldTypeSub, self).__init__(name, valueOf_, )
-supermod.metaFieldType.subclass = metaFieldTypeSub
-# end class metaFieldTypeSub
+        super(metaFieldType, self).__init__(name, valueOf_, )
+supermod.metaFieldType.subclass = metaFieldType
+# end class metaFieldType
 
 
-class itemTextTypeSub(supermod.itemTextType):
+class itemTextType(supermod.itemTextType):
     def __init__(self, textLabel=None):
-        super(itemTextTypeSub, self).__init__(textLabel, )
-supermod.itemTextType.subclass = itemTextTypeSub
-# end class itemTextTypeSub
+        super(itemTextType, self).__init__(textLabel, )
+supermod.itemTextType.subclass = itemTextType
+# end class itemTextType
 
 
-class textLabelTypeSub(supermod.textLabelType):
+class textLabelType(supermod.textLabelType):
     def __init__(self, location=None, value=None):
-        super(textLabelTypeSub, self).__init__(location, value, )
-supermod.textLabelType.subclass = textLabelTypeSub
-# end class textLabelTypeSub
+        super(textLabelType, self).__init__(location, value, )
+supermod.textLabelType.subclass = textLabelType
+# end class textLabelType
 
 
-class itemChoiceTypeSub(supermod.itemChoiceType):
+class itemChoiceType(supermod.itemChoiceType):
     def __init__(self, units=None, itemCode=None, itemValue=None, ID=None):
-        super(itemChoiceTypeSub, self).__init__(units, itemCode, itemValue, ID, )
-supermod.itemChoiceType.subclass = itemChoiceTypeSub
-# end class itemChoiceTypeSub
+        super(itemChoiceType, self).__init__(units, itemCode, itemValue, ID, )
+supermod.itemChoiceType.subclass = itemChoiceType
+# end class itemChoiceType
 
 
-class dataInstanceTypeSub(supermod.dataInstanceType):
+class dataInstanceType(supermod.dataInstanceType):
     def __init__(self, validated=None, assessmentInfo=None, assessmentItem=None):
-        super(dataInstanceTypeSub, self).__init__(validated, assessmentInfo, assessmentItem, )
-supermod.dataInstanceType.subclass = dataInstanceTypeSub
-# end class dataInstanceTypeSub
+        super(dataInstanceType, self).__init__(validated, assessmentInfo, assessmentItem, )
+supermod.dataInstanceType.subclass = dataInstanceType
+# end class dataInstanceType
 
 
-class nsOntologyAnnotation_tSub(supermod.nsOntologyAnnotation_t):
+class nsOntologyAnnotation_t(supermod.nsOntologyAnnotation_t):
     def __init__(self, timestamp=None, author=None, term=None):
-        super(nsOntologyAnnotation_tSub, self).__init__(timestamp, author, term, )
-supermod.nsOntologyAnnotation_t.subclass = nsOntologyAnnotation_tSub
-# end class nsOntologyAnnotation_tSub
+        super(nsOntologyAnnotation_t, self).__init__(timestamp, author, term, )
+supermod.nsOntologyAnnotation_t.subclass = nsOntologyAnnotation_t
+# end class nsOntologyAnnotation_t
 
 
-class nsTermAnnotation_tSub(supermod.nsTermAnnotation_t):
+class nsTermAnnotation_t(supermod.nsTermAnnotation_t):
     def __init__(self, timestamp=None, author=None, ontologyClass=None):
-        super(nsTermAnnotation_tSub, self).__init__(timestamp, author, ontologyClass, )
-supermod.nsTermAnnotation_t.subclass = nsTermAnnotation_tSub
-# end class nsTermAnnotation_tSub
+        super(nsTermAnnotation_t, self).__init__(timestamp, author, ontologyClass, )
+supermod.nsTermAnnotation_t.subclass = nsTermAnnotation_t
+# end class nsTermAnnotation_t
 
 
-class abstract_container_tSub(supermod.abstract_container_t):
-    def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, extensiontype_=None):
-        super(abstract_container_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, extensiontype_, )
-supermod.abstract_container_t.subclass = abstract_container_tSub
-# end class abstract_container_tSub
-
-
-class abstract_process_tSub(supermod.abstract_process_t):
-    def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provActivityID=None, extensiontype_=None):
-        super(abstract_process_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, extensiontype_, )
-supermod.abstract_process_t.subclass = abstract_process_tSub
-# end class abstract_process_tSub
-
-
-class abstract_data_tSub(supermod.abstract_data_t):
-    def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provEntityID=None, level=None, extensiontype_=None):
-        super(abstract_data_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provEntityID, level, extensiontype_, )
-supermod.abstract_data_t.subclass = abstract_data_tSub
-# end class abstract_data_tSub
-
-
-class resource_tSub(supermod.resource_t):
+class resource_t(supermod.resource_t):
     def __init__(self, metaFields=None, dataID=None, description=None, format=None, dataURI=None, cachePath=None, level=None, content=None, provEntityID=None, analysisURI=None, analysisID=None, ID=None, name=None, uri=None, extensiontype_=None):
-        super(resource_tSub, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, extensiontype_, )
-supermod.resource_t.subclass = resource_tSub
-# end class resource_tSub
+        super(resource_t, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, extensiontype_, )
+supermod.resource_t.subclass = resource_t
+# end class resource_t
 
 
-class catalog_tSub(supermod.catalog_t):
+class catalog_t(supermod.catalog_t):
     def __init__(self, metaFields=None, level=None, description=None, name=None, ID=None, catalogList=None, entryList=None):
-        super(catalog_tSub, self).__init__(metaFields, level, description, name, ID, catalogList, entryList, )
-supermod.catalog_t.subclass = catalog_tSub
-# end class catalog_tSub
+        super(catalog_t, self).__init__(metaFields, level, description, name, ID, catalogList, entryList, )
+supermod.catalog_t.subclass = catalog_t
+# end class catalog_t
 
 
-class protocol_tSub(supermod.protocol_t):
+class protocol_t(supermod.protocol_t):
     def __init__(self, termPath=None, description=None, maxOccurences=None, required=None, nomenclature=None, minOccurences=None, abbreviation=None, preferredLabel=None, termID=None, level=None, ID=None, name=None, protocolOffset=None, steps=None, items=None):
-        super(protocol_tSub, self).__init__(termPath, description, maxOccurences, required, nomenclature, minOccurences, abbreviation, preferredLabel, termID, level, ID, name, protocolOffset, steps, items, )
-supermod.protocol_t.subclass = protocol_tSub
-# end class protocol_tSub
+        super(protocol_t, self).__init__(termPath, description, maxOccurences, required, nomenclature, minOccurences, abbreviation, preferredLabel, termID, level, ID, name, protocolOffset, steps, items, )
+supermod.protocol_t.subclass = protocol_t
+# end class protocol_t
 
 
-class analysis_tSub(supermod.analysis_t):
+class analysis_t(supermod.analysis_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provActivityID=None, level=None, provenance=None, input=None, output=None, measurementGroup=None):
-        super(analysis_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, level, provenance, input, output, measurementGroup, )
-supermod.analysis_t.subclass = analysis_tSub
-# end class analysis_tSub
+        super(analysis_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, level, provenance, input, output, measurementGroup, )
+supermod.analysis_t.subclass = analysis_t
+# end class analysis_t
 
 
-class subject_tSub(supermod.subject_t):
+class subject_t(supermod.subject_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, subjectInfo=None):
-        super(subject_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, subjectInfo, )
-supermod.subject_t.subclass = subject_tSub
-# end class subject_tSub
+        super(subject_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, subjectInfo, )
+supermod.subject_t.subclass = subject_t
+# end class subject_t
 
 
-class measurementGroup_tSub(supermod.measurementGroup_t):
+class measurementGroup_t(supermod.measurementGroup_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, entity=None, observation=None):
-        super(measurementGroup_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, entity, observation, )
-supermod.measurementGroup_t.subclass = measurementGroup_tSub
-# end class measurementGroup_tSub
+        super(measurementGroup_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, entity, observation, )
+supermod.measurementGroup_t.subclass = measurementGroup_t
+# end class measurementGroup_t
 
 
-class assessment_tSub(supermod.assessment_t):
+class assessment_t(supermod.assessment_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provEntityID=None, level=None, name=None, dataInstance=None, annotation=None):
-        super(assessment_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provEntityID, level, name, dataInstance, annotation, )
-supermod.assessment_t.subclass = assessment_tSub
-# end class assessment_tSub
+        super(assessment_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provEntityID, level, name, dataInstance, annotation, )
+supermod.assessment_t.subclass = assessment_t
+# end class assessment_t
 
 
-class events_tSub(supermod.events_t):
+class events_t(supermod.events_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provEntityID=None, level=None, params=None, event=None, description=None, annotation=None):
-        super(events_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provEntityID, level, params, event, description, annotation, )
-supermod.events_t.subclass = events_tSub
-# end class events_tSub
+        super(events_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provEntityID, level, params, event, description, annotation, )
+supermod.events_t.subclass = events_t
+# end class events_t
 
 
-class dataResource_tSub(supermod.dataResource_t):
+class dataResource_t(supermod.dataResource_t):
     def __init__(self, metaFields=None, dataID=None, description=None, format=None, dataURI=None, cachePath=None, level=None, content=None, provEntityID=None, analysisURI=None, analysisID=None, ID=None, name=None, uri=None, provenance=None, extensiontype_=None):
-        super(dataResource_tSub, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, provenance, extensiontype_, )
-supermod.dataResource_t.subclass = dataResource_tSub
-# end class dataResource_tSub
+        super(dataResource_t, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, provenance, extensiontype_, )
+supermod.dataResource_t.subclass = dataResource_t
+# end class dataResource_t
 
 
-class informationResource_tSub(supermod.informationResource_t):
+class informationResource_t(supermod.informationResource_t):
     def __init__(self, metaFields=None, dataID=None, description=None, format=None, dataURI=None, cachePath=None, level=None, content=None, provEntityID=None, analysisURI=None, analysisID=None, ID=None, name=None, uri=None, extensiontype_=None):
-        super(informationResource_tSub, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, extensiontype_, )
-supermod.informationResource_t.subclass = informationResource_tSub
-# end class informationResource_tSub
+        super(informationResource_t, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, extensiontype_, )
+supermod.informationResource_t.subclass = informationResource_t
+# end class informationResource_t
 
-
-class abstract_level_tSub(supermod.abstract_level_t):
-    def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provActivityID=None, extensiontype_=None):
-        super(abstract_level_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, extensiontype_, )
-supermod.abstract_level_t.subclass = abstract_level_tSub
-# end class abstract_level_tSub
-
-
-class acquisition_tSub(supermod.acquisition_t):
+class acquisition_t(supermod.acquisition_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provActivityID=None, acquisitionProtocol=None, acquisitionInfo=None, dataResourceRef=None, dataRef=None, anytypeobjs_=None):
-        super(acquisition_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, acquisitionProtocol, acquisitionInfo, dataResourceRef, dataRef, anytypeobjs_, )
-supermod.acquisition_t.subclass = acquisition_tSub
-# end class acquisition_tSub
+        super(acquisition_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, acquisitionProtocol, acquisitionInfo, dataResourceRef, dataRef, anytypeobjs_, )
+supermod.acquisition_t.subclass = acquisition_t
+# end class acquisition_t
 
 
-class episode_tSub(supermod.episode_t):
+class episode_t(supermod.episode_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provActivityID=None, episodeInfo=None, anytypeobjs_=None):
-        super(episode_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, episodeInfo, anytypeobjs_, )
-supermod.episode_t.subclass = episode_tSub
-# end class episode_tSub
+        super(episode_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, episodeInfo, anytypeobjs_, )
+supermod.episode_t.subclass = episode_t
+# end class episode_t
 
 
-class study_tSub(supermod.study_t):
+class study_t(supermod.study_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provActivityID=None, studyInfo=None, anytypeobjs_=None):
-        super(study_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, studyInfo, anytypeobjs_, )
-supermod.study_t.subclass = study_tSub
-# end class study_tSub
+        super(study_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, studyInfo, anytypeobjs_, )
+supermod.study_t.subclass = study_t
+# end class study_t
 
 
-class visit_tSub(supermod.visit_t):
+class visit_t(supermod.visit_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provActivityID=None, subjectURI=None, projectID=None, subjectGroupID=None, projectURI=None, subjectID=None, visitInfo=None, anytypeobjs_=None):
-        super(visit_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, subjectURI, projectID, subjectGroupID, projectURI, subjectID, visitInfo, anytypeobjs_, )
-supermod.visit_t.subclass = visit_tSub
-# end class visit_tSub
+        super(visit_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, subjectURI, projectID, subjectGroupID, projectURI, subjectID, visitInfo, anytypeobjs_, )
+supermod.visit_t.subclass = visit_t
+# end class visit_t
 
 
-class project_tSub(supermod.project_t):
+class project_t(supermod.project_t):
     def __init__(self, metaFields=None, termPath=None, rev=None, nomenclature=None, abbreviation=None, preferredLabel=None, termID=None, type_=None, ID=None, commentList=None, annotationList=None, resourceList=None, provActivityID=None, projectInfo=None, contributorList=None, anytypeobjs_=None):
-        super(project_tSub, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, projectInfo, contributorList, anytypeobjs_, )
-supermod.project_t.subclass = project_tSub
-# end class project_tSub
+        super(project_t, self).__init__(metaFields, termPath, rev, nomenclature, abbreviation, preferredLabel, termID, type_, ID, commentList, annotationList, resourceList, provActivityID, projectInfo, contributorList, anytypeobjs_, )
+supermod.project_t.subclass = project_t
+# end class project_t
 
 
-class binaryDataResource_tSub(supermod.binaryDataResource_t):
+class binaryDataResource_t(supermod.binaryDataResource_t):
     def __init__(self, metaFields=None, dataID=None, description=None, format=None, dataURI=None, cachePath=None, level=None, content=None, provEntityID=None, analysisURI=None, analysisID=None, ID=None, name=None, uri=None, provenance=None, elementType=None, byteOrder=None, compression=None, extensiontype_=None):
-        super(binaryDataResource_tSub, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, provenance, elementType, byteOrder, compression, extensiontype_, )
-supermod.binaryDataResource_t.subclass = binaryDataResource_tSub
-# end class binaryDataResource_tSub
+        super(binaryDataResource_t, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, provenance, elementType, byteOrder, compression, extensiontype_, )
+supermod.binaryDataResource_t.subclass = binaryDataResource_t
+# end class binaryDataResource_t
 
 
-class dcResource_tSub(supermod.dcResource_t):
+class dcResource_t(supermod.dcResource_t):
     def __init__(self, metaFields=None, dataID=None, description=None, format=None, dataURI=None, cachePath=None, level=None, content=None, provEntityID=None, analysisURI=None, analysisID=None, ID=None, name=None, uri=None, title=None, creator=None, subject=None, publisher=None, contributor=None, date=None, type_=None, identifier=None, source=None, language=None, relation=None, coverage=None, rights=None):
-        super(dcResource_tSub, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, title, creator, subject, publisher, contributor, date, type_, identifier, source, language, relation, coverage, rights, )
-supermod.dcResource_t.subclass = dcResource_tSub
-# end class dcResource_tSub
+        super(dcResource_t, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, title, creator, subject, publisher, contributor, date, type_, identifier, source, language, relation, coverage, rights, )
+supermod.dcResource_t.subclass = dcResource_t
+# end class dcResource_t
 
 
-class mappedBinaryDataResource_tSub(supermod.mappedBinaryDataResource_t):
+class mappedBinaryDataResource_t(supermod.mappedBinaryDataResource_t):
     def __init__(self, metaFields=None, dataID=None, description=None, format=None, dataURI=None, cachePath=None, level=None, content=None, provEntityID=None, analysisURI=None, analysisID=None, ID=None, name=None, uri=None, provenance=None, elementType=None, byteOrder=None, compression=None, dimension=None, originCoords=None):
-        super(mappedBinaryDataResource_tSub, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, provenance, elementType, byteOrder, compression, dimension, originCoords, )
-supermod.mappedBinaryDataResource_t.subclass = mappedBinaryDataResource_tSub
-# end class mappedBinaryDataResource_tSub
+        super(mappedBinaryDataResource_t, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, provenance, elementType, byteOrder, compression, dimension, originCoords, )
+supermod.mappedBinaryDataResource_t.subclass = mappedBinaryDataResource_t
+# end class mappedBinaryDataResource_t
 
 
-class dimensionedBinaryDataResource_tSub(supermod.dimensionedBinaryDataResource_t):
+class dimensionedBinaryDataResource_t(supermod.dimensionedBinaryDataResource_t):
     def __init__(self, metaFields=None, dataID=None, description=None, format=None, dataURI=None, cachePath=None, level=None, content=None, provEntityID=None, analysisURI=None, analysisID=None, ID=None, name=None, uri=None, provenance=None, elementType=None, byteOrder=None, compression=None, dimension=None):
-        super(dimensionedBinaryDataResource_tSub, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, provenance, elementType, byteOrder, compression, dimension, )
-supermod.dimensionedBinaryDataResource_t.subclass = dimensionedBinaryDataResource_tSub
-# end class dimensionedBinaryDataResource_tSub
+        super(dimensionedBinaryDataResource_t, self).__init__(metaFields, dataID, description, format, dataURI, cachePath, level, content, provEntityID, analysisURI, analysisID, ID, name, uri, provenance, elementType, byteOrder, compression, dimension, )
+supermod.dimensionedBinaryDataResource_t.subclass = dimensionedBinaryDataResource_t
+# end class dimensionedBinaryDataResource_t
 
 
 
