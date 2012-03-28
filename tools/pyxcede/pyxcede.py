@@ -25,8 +25,7 @@ import sys
 
 import xcede_bindings as supermod
 
-class Project(object):
-    # This is a mess... need feedback. I should probably just subclass the project_t class rather than
+class Project(supermod.XCEDE):
     """
     Project entity and associated setter/getter methods
         The project entity can represent one or more projects, where each project consists of a
@@ -40,17 +39,48 @@ class Project(object):
         Each level of the project hierarchy also has a set of attributes specific to the level
 
     """
-    def __init__(self, ID=None, abbreviation=None, name=None, description=None, uri=None):
-        self.ID = ID
-        self.abbreviation = abbreviation
-        self.name = name
-        self.description = description
-        self.uri = uri
-        # create project level instances of the required datatypes
-        self._xcedeType = supermod.XCEDE()
+    def __init__(self, project=None):
+        super(Project, self).__init__(project)
+
+        # these are attributes from the INCF API for the Project entity
+        #self.ID = ID
+        #self.abbreviation = abbreviation
+        #self.name = name
+        #self.description = description
+        #self.uri = uri
+    def get_project(self):
+        return self.project
+
+    def add_project(self, value):
+        """
+        value is a list of project_t instances
+        """
+        self.project.append(value)
+
+    def insert_project(self, index, value):
+        """
+        index is an existing position in the project hierarchy, value is a project_t instance
+        """
+        self.project[index] = value
+
+    def delete_project(self, ID):
+        """
+        ID is the text of the projectID field
+        """
+        for i in range(len(self.project)):
+            if self.project[i].ID == ID:
+                del(self.project[i])
+
+    def create_projectType(self):
         self._projectType = supermod.project_t()
+
+    def create_projectInfoType(self):
         self._projectInfoType = supermod.projectInfo_t()
+
+    def create_projectGroupListType(self):
         self._subjectGroupListType = supermod.subjectGroupListType()
+
+    def create_subjectGroupType(self):
         self._subjectGroupType = supermod.subjectGroup_t()
 
     def set_ID(self,ID):
@@ -58,24 +88,7 @@ class Project(object):
         self.ID = self._projectType.get_ID()
     def get_ID(self): return self.ID
 
-    def set_abbreviation(self,abbreviation): self._projectType.set_abbreviation(abbreviation)
-
-    def get_abbreviation(self): return self.abbreviation
-
-    def set_name(self):
-        pass
-    def get_name(self):
-        pass
-    def set_description(self):
-        pass
-    def get_description(self):
-        pass
-    def set_uri(self):
-        pass
-    def get_uri(self):
-        pass
-        self._resourceList = supermod.resourceListType()
-        self._resource = supermod.resource_t()
+supermod.XCEDE.subclass = Project
 
 etree_ = None
 Verbose_import_ = False

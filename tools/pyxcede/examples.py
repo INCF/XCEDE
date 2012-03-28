@@ -39,5 +39,39 @@ projectA.set_termPath('http://usefulinc.com/ns/doap#Project')
 # now that we have built up to hierarchy for a single project let's add it to the root XCEDE object
 xcede = pyxcede.XCEDE(project=[projectA,])
 
-# we can print out the project object to the terminal as xml by running this
-xcede.export(sys.stdout,0)
+# we can print out the project object to the terminal after adding a few namespaces
+namespace = 'xmlns:prov="http://openprovenance.org/prov-xml#" '
+namespace += 'xmlns:cu="http://www.w3.org/1999/xhtml/datatypes/" '
+namespace += 'xmlns="http://www.xcede.org/xcede-2" '
+namespace += 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" '
+namespace += 'xsi:schemaLocation="http://www.xcede.org/xcede-2 http://...xcede-2.1-core.xsd" '
+namespace += 'xmlns:xcede2="http://www.xcede.org/xcede-2" xcede2:version="version1"'
+
+# and print it out
+xcede.export(sys.stdout,0, namespacedef_= namespace)
+
+'''
+<xcede2:XCEDE xmlns:prov="http://openprovenance.org/prov-xml#" xmlns:cu="http://www.w3.org/1999/xhtml/datatypes/" xmlns="http://www.xcede.org/xcede-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.xcede.org/xcede-2 xcede-2.1.1-core.xsd" xmlns:xcede2="http://www.xcede.org/xcede-2" xcede2:version="version1">
+    <xcede2:project termPath="http://usefulinc.com/ns/doap#Project" nomenclature="DOAP" abbreviation="proj-a" termID="Project" ID="projectA">
+        <xcede2:projectInfo>
+            <xcede2:description>This is ProjectA</xcede2:description>
+            <xcede2:subjectGroupList>
+                <xcede2:subjectGroup ID="groupA">
+                    <xcede2:subjectID>subject1</xcede2:subjectID>
+                    <xcede2:subjectID>subject2</xcede2:subjectID>
+                    <xcede2:subjectID>subject3</xcede2:subjectID>
+                    <xcede2:subjectID>subject4</xcede2:subjectID>
+                    <xcede2:subjectID>subject5</xcede2:subjectID>
+                </xcede2:subjectGroup>
+                <xcede2:subjectGroup ID="groupB">
+                    <xcede2:subjectID>subject6</xcede2:subjectID>
+                    <xcede2:subjectID>subject7</xcede2:subjectID>
+                    <xcede2:subjectID>subject8</xcede2:subjectID>
+                    <xcede2:subjectID>subject9</xcede2:subjectID>
+                    <xcede2:subjectID>subject10</xcede2:subjectID>
+                </xcede2:subjectGroup>
+            </xcede2:subjectGroupList>
+        </xcede2:projectInfo>
+    </xcede2:project>
+</xcede2:XCEDE>
+'''
