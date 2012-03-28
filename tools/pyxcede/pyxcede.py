@@ -8,14 +8,74 @@
 pyXCEDE is set of python bindings to the XCEDE-2.1-core.xsd schema that consists of
 utilities for parsing, generating, and publishing XCEDE compliant files.
 
-The xcede_bindings.py superclass defines the primary data structures, while pyXCEDE
-aims to create an intuitive and high level interface for parsing XCEDE
-xml into a python object model, and for serializing python objects into XCEDE xml.
+The xcede_bindings.py superclass defines the primary xml to python data structures, while pyxcede
+aims to create an intuitive and high level interface for parsing XCEDE xml into a python object model,
+and for serializing python objects into XCEDE xml.
+
+You'll notice that there are primary objects/models, that each define their own hierarchy of nested elements and
+attributtes. Each one other the primary objects, have a single data type (e.g. Project has project_t, and
+Subject has subject_t).
+
+However, secondary objects can have a number of different data types (e.g., Resource can have a
+informationResource_t, dcResource_t, or a binaryDataResource_t). These additional types (xsi:type) are used
+to extend the XML Schema to be specific about modeling different structures.
 """
 
 import sys
 
 import xcede_bindings as supermod
+
+class Project(object):
+    # This is a mess... need feedback. I should probably just subclass the project_t class rather than
+    """
+    Project entity and associated setter/getter methods
+        The project entity can represent one or more projects, where each project consists of a
+        hierarchy with minimal information about the project, including:
+          - project
+            - projectInfo
+              - groupList
+                - group
+                  - subjectID
+
+        Each level of the project hierarchy also has a set of attributes specific to the level
+
+    """
+    def __init__(self, ID=None, abbreviation=None, name=None, description=None, uri=None):
+        self.ID = ID
+        self.abbreviation = abbreviation
+        self.name = name
+        self.description = description
+        self.uri = uri
+        # create project level instances of the required datatypes
+        self._xcedeType = supermod.XCEDE()
+        self._projectType = supermod.project_t()
+        self._projectInfoType = supermod.projectInfo_t()
+        self._subjectGroupListType = supermod.subjectGroupListType()
+        self._subjectGroupType = supermod.subjectGroup_t()
+
+    def set_ID(self,ID):
+        self._projectType.set_ID(ID=ID)
+        self.ID = self._projectType.get_ID()
+    def get_ID(self): return self.ID
+
+    def set_abbreviation(self,abbreviation): self._projectType.set_abbreviation(abbreviation)
+
+    def get_abbreviation(self): return self.abbreviation
+
+    def set_name(self):
+        pass
+    def get_name(self):
+        pass
+    def set_description(self):
+        pass
+    def get_description(self):
+        pass
+    def set_uri(self):
+        pass
+    def get_uri(self):
+        pass
+        self._resourceList = supermod.resourceListType()
+        self._resource = supermod.resource_t()
 
 etree_ = None
 Verbose_import_ = False
@@ -979,7 +1039,7 @@ def parseLiteral(inFilename):
 
 
 USAGE_TEXT = """
-Usage: python ???.py <infilename>
+Usage: python pyxcede.py <infilename>
 """
 
 def usage():
